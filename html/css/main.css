@@ -86,7 +86,158 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+   .heading1{
+      background: #F4F4F4;
+      min-height: 850px;
+   }
+    .heading1 h5 a{
+      font-size: 25px;
+      font-weight: bolder;
+      text-decoration: none;
+   }
+    .heading1 h5 :hover{
+      text-decoration: underline;
+   }
+    .custom-list-style a{
+      background-color: #FFFFCC;
+      padding: 2px 3px;
+      width: 0px!important;
+      
+    }
+    .input-style{
+      width: 74%;
+    padding: 4px 42px;
+    border: 1px solid #EEEEEE;
+    border-radius: 6px;
+    font-size: 14px;
+}
+.heading1 ul li{
+  list-style: none;
+}
+.heading1 ul li a{
+  text-decoration: none;
+}
+.heading1 ul li :hover{
+  text-decoration: underline;
+}
+.custom-calender h5{
+  font-size: 14px;
+  text-align: center;
+  margin-top: 5px;
+}
+ 
+   .heading2{
+     
+      background: #EEEEEE;
+   }
+   .heading2 h5{
+    color: #545454;
+    font-size: 22px;
+   }
+   .heading-child{
+      background: #EEEEEE;
+      padding: 1px 1px;
+      padding-top: 2px !important;
+   }
+   .heading-child h5{
+      font-size: 15px !important;
+      
+   }
+   .list-style {
+          padding: 0px 5px !important;
+         font-size: 12px !important;
+         display: inline-block !important;
+         width: 100%;
+}
+  .list-style3 {
+      padding: 0px 5px !important;
+      font-size: 10px !important;
+      display: inline-block !important;
+}
+.heading3{
+     
+      background: #F4F4F4;
+      min-height: 850px;
+   }
+   .heading3 ul li{
+    list-style: none;
+   }
+   .heading3 ul li a{
+      text-decoration: none;
+      color: #000;
+   }
+    .heading-child3{
+      background: #EEEEEE;
+      padding: 1px 1px;
+      padding-top: 2px !important;
+   }
+    .input-style3{
+      width: 50%;
+    /* padding: 1px 30px; */
+    border: 1px solid #EEEEEE;
+    border-radius: 3px;
+    font-size: 12px;
+}
+.custom-list-style4 a{
+    background: #fff;
+    padding: 2px 37px;
+    border: 1px solid #EEEEEE;
+    
+}
+.custom-list-style5{
+  line-height: 16px;
+}
+.custom-list-style5 a{
+     font-size: 12px;
 
+}
+.custom-list-style5 :hover{
+  text-decoration: underline;
+}
+.custom-style6{
+  background: #F4F4F4;
+}
+.list-syle-hover ul li:hover{
+  background:#FFFFFF ;
+}
+.first-list-style ul li a{
+  text-decoration: none;
+  color: #000;
+}
+.first-list-style ul li  :hover{
+  text-decoration: underline;
+}
+.calender-style{
+  margin-left: 7%;
+}
+.table-condensed{
+  width: 250px;
+}
+thead{
+  background: #FFFFCC;
+}
+
+.list-style1 ul li a{
+  font-size: 12px;
+ color: #000;
+}
+.footer-style{
+  background: #F4F4F4;
+  text-align: center;
+  width: 100%;
+}
+.footer-style ul li{
+  list-style: none;
+  display: inline-block !important;
+    
+}
+/* .list-group{
+  display: block;
+} */
+.footer-style ul li a{
+  text-decoration: none;
+  color: #000;
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
