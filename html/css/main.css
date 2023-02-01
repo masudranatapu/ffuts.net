@@ -88,7 +88,7 @@ textarea {
    ========================================================================== */
    .heading1{
       background: #F4F4F4;
-      min-height: 850px;
+      min-height: 1250px;
    }
     .heading1 h5 a{
       font-size: 25px;
@@ -120,8 +120,8 @@ textarea {
 .heading1 ul li :hover{
   text-decoration: underline;
 }
-.custom-calender h5{
-  font-size: 14px;
+.custom-calender h5 a{
+  font-size: 16px;
   text-align: center;
   margin-top: 5px;
 }
@@ -134,37 +134,60 @@ textarea {
     color: #545454;
     font-size: 22px;
    }
+    .heading2 a{
+      text-decoration: none;
+   }
+   .heading2 h5:hover{
+    text-decoration: underline;
+   }
    .heading-child{
       background: #EEEEEE;
       padding: 1px 1px;
       padding-top: 2px !important;
+     border: 2px solid #EEEEEE;
+     
+
+
    }
    .heading-child h5{
-      font-size: 15px !important;
+      font-size: 19px !important;
+    
+      
       
    }
+   .heading-child a{
+      text-decoration: none;
+   }
+   /* .heading-child h5:hover{
+      background: #fff; 
+   } */
+   .heading-child:hover{
+    background: #fff;
+    border: 2px solid #ccc;
+   }
    .list-style {
-          padding: 0px 5px !important;
+          padding: 5px !important;
          font-size: 12px !important;
          display: inline-block !important;
          width: 100%;
 }
   .list-style3 {
-      padding: 0px 5px !important;
-      font-size: 10px !important;
-      display: inline-block !important;
+         padding: 5px !important;
+         font-size: 11px !important;
+         display: inline-block !important;
+         width: 100%;
 }
 .heading3{
      
       background: #F4F4F4;
-      min-height: 850px;
+      min-height: 1250px;
    }
    .heading3 ul li{
     list-style: none;
    }
    .heading3 ul li a{
       text-decoration: none;
-      color: #000;
+      /* color: #000; */
    }
     .heading-child3{
       background: #EEEEEE;
@@ -201,11 +224,16 @@ textarea {
   background:#FFFFFF ;
 }
 .first-list-style ul li a{
-  text-decoration: none;
-  color: #000;
+
+  color: #0A58CA;
+  font-size: 16px;
+  margin-left: 0px !important;
+}
+.list-group{
+  list-style: none;
 }
 .first-list-style ul li  :hover{
-  text-decoration: underline;
+  background: #F4F4F4;
 }
 .calender-style{
   margin-left: 7%;
@@ -219,7 +247,7 @@ thead{
 
 .list-style1 ul li a{
   font-size: 12px;
- color: #000;
+ /* color: #000; */
 }
 .footer-style{
   background: #F4F4F4;
@@ -236,8 +264,56 @@ thead{
 } */
 .footer-style ul li a{
   text-decoration: none;
-  color: #000;
+  /* color: #000; */
 }
+/*
+ * Mobile view css
+ */
+.heading-style1 ul li a{
+  background: #EEEEEE;
+  font-size: 20px;
+  color: #0A58CA;
+}
+.heading-style2 ul li a{
+  text-align: right;
+  background: #EEEEEE;
+  font-size: 20px;
+  color: #0A58CA;
+}
+.custom-collapes ul li a{
+  background: #EEEEEE;
+  font-size: 20px;
+  color: #0A58CA;
+}
+
+.list-style-colla{
+    padding: 5px !important;
+    font-size: 12px !important;
+    display: inline-block !important;
+    width: 100%;
+    background: #fff;
+}
+.first-list-style-colla ul li a{
+  background: #fff;
+  color: #0A58CA;
+  font-size: 16px;
+  margin-left: 0px !important;
+}
+.list-group{
+  list-style: none;
+}
+.first-list-style-colla ul li  :hover{
+  background: #F4F4F4;
+}
+.custom-button{
+  text-decoration: none;
+  text-align: left;
+  font-size: 19px;
+}
+.custom-heading{
+  background:#EEEEEE ;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
