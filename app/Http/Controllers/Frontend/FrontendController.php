@@ -11,9 +11,9 @@ class FrontendController extends Controller
     {
         return view('frontend.index');
     }
-    public function details()
+    public function shop()
     {
-        return view('frontend.details');
+        return view('frontend.shop');
     }
 
 }

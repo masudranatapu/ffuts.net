@@ -9,7 +9,7 @@
         {{-- meta  --}}
         @yield('meta')
         {{-- style --}}
-        @include('frontend.layouts.partial.head')
+        @include('frontend.layouts_one.partial.head')
         <!-- for css input -->
         @stack('style')
     </head>
@@ -19,7 +19,7 @@
                 <div class="row g-0">
                     <div class="col-md-3">
                         <div class="sidebar_left overflow-hidden">
-                            @include('frontend.layouts.partial.sidebar_left')
+                            @include('frontend.layouts_one.partial.sidebar_left')
                         </div>
                     </div>
                     <div class="col-md-7">
@@ -36,13 +36,13 @@
                     </div>
                     <div class="col-md-2">
                         <div class="sidebar_right">
-                            @include('frontend.layouts.partial.sidebar_right')
+                            @include('frontend.layouts_one.partial.sidebar_right')
                         </div>
                     </div>
                 </div>
                 <footer class="text-center footer_menu">
                     <div class="container">
-                        @include('frontend.layouts.partial.footer')
+                        @include('frontend.layouts_one.partial.footer')
                     </div>
                 </footer>
             </div>
@@ -50,7 +50,7 @@
         {{-- mobile view  --}}
         <div class="mobile-view d-block d-md-none">
             <div class="mobile_header">
-                @include('frontend.layouts.partial.mobile_header')
+                @include('frontend.layouts_one.partial.mobile_header')
             </div>
             <div class="container">
                 <div class="mobile_body">
@@ -59,12 +59,12 @@
             </div>
             <footer class="text-center footer_menu">
                 <div class="container">
-                    @include('frontend.layouts.partial.footer')
+                    @include('frontend.layouts_one.partial.footer')
                 </div>
             </footer>
         </div>
         {{-- script  --}}
-        @include('frontend.layouts.partial.foot')
+        @include('frontend.layouts_one.partial.foot')
         <!-- for css input -->
         @stack('script')
     </body>

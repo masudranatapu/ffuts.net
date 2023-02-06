@@ -89,44 +89,44 @@
     <div class="mt-5 list-style1 mb-3">
         <ul class="list-group">
             <li class="list-item custom-list-style1">
-                <a href="shop.html">hjælp. faq, misbrug, juridisk</a>
+                <a href="{{ route('shop') }}">hjælp. faq, misbrug, juridisk</a>
             </li>
             <li class="custom-list-style1">
-                <a href="shop.html">undgå svindel og bedrag </a>
+                <a href="{{ route('shop') }}">undgå svindel og bedrag </a>
             </li>
             <li class="custom-list-style1">
-                <a href="shop.html">personlige sikkerhedsråd </a>
+                <a href="{{ route('shop') }}">personlige sikkerhedsråd </a>
             </li>
             <li class="custom-list-style1">
-                <a href="shop.html">anvendelsesvilkår </a>
+                <a href="{{ route('shop') }}">anvendelsesvilkår </a>
             </li>
             <li class="custom-list-style1">
-                <a href="shop.html">datapolitik</a>
+                <a href="{{ route('shop') }}">datapolitik</a>
             </li>
             <li class="custom-list-style1">
-                <a href="shop.html">systemstatus </a>
+                <a href="{{ route('shop') }}">systemstatus </a>
             </li>
         </ul>
     </div>
     <div class="list-style1">
         <ul class="list-group ">
             <li class="list-item custom-list-style1">
-                <a href="shop.html">om craigslist </a>
+                <a href="{{ route('shop') }}">om craigslist </a>
             </li>
             <li class="custom-list-style1">
-                <a href="shop.html">craigslist åben kilde </a>
+                <a href="{{ route('shop') }}">craigslist åben kilde </a>
             </li>
             <li class="custom-list-style1">
-                <a href="shop.html">craigslist blog </a>
+                <a href="{{ route('shop') }}">craigslist blog </a>
             </li>
             <li class="custom-list-style1">
-                <a href="shop.html">bedste-fra-craigslist </a>
+                <a href="{{ route('shop') }}">bedste-fra-craigslist </a>
             </li>
             <li class="custom-list-style1">
-                <a href="shop.html">"craigslist joe" </a>
+                <a href="{{ route('shop') }}">"craigslist joe" </a>
             </li>
             <li class="custom-list-style1">
-                <a href="shop.html">craig newmark philanthropies </a>
+                <a href="{{ route('shop') }}">craig newmark philanthropies </a>
             </li>
         </ul>
     </div>
