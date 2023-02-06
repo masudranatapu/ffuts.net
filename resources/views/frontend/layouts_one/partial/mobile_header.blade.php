@@ -3,16 +3,16 @@
         <div class="col-5">
             <div class="mobile_heade_left">
                 <div class="site_logo">
-                    <a class="header_logo" name="logoLink" href="index.html">CL</a>
-                    <a href="index.html">Jerusalem</a>
+                    <a class="header_logo" name="logoLink" href="{{ route('index') }}">CL</a>
+                    <a href="{{ route('index') }}">Jerusalem</a>
                 </div>
             </div>
         </div>
         <div class="col-7">
             <div class="mobile_heade_right float-end">
                 <ul>
-                    <li><a href="shop.html">Post</a></li>
-                    <li><a href="shop.html">Account</a></li>
+                    <li><a href="{{ route('post.step.one') }}">{{ __('post') }}</a></li>
+                    <li><a href="{{ route('user.signup') }}">Account</a></li>
                 </ul>
             </div>
         </div>

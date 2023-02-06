@@ -35,13 +35,20 @@
         <div class="col-lg-3">
             <div class="header_end float-lg-end">
                 <ul>
-                    <li><a href="#" class="badge text-bg-warning"><i class="las la-star"></i> 2
-                            favourites</a>
+                    <li>
+                        <a href="#" class="badge text-bg-warning">
+                            <i class="las la-star"></i>
+                            2 favourites
+                        </a>
                     </li>
-                    <li><a href="#" class="badge text-bg-danger"><i class="las la-times-circle"></i> 2
-                            hidden</a></li>
-                    <li><a href="post/step1.html">post</a></li>
-                    <li><a href="login.html">account</a></li>
+                    <li>
+                        <a href="#" class="badge text-bg-danger">
+                            <i class="las la-times-circle"></i>
+                            2 hidden
+                        </a>
+                    </li>
+                    <li><a href="{{ route('post.step.one') }}">post</a></li>
+                    <li><a href="{{ route('user.signup') }}">account</a></li>
                 </ul>
             </div>
         </div>

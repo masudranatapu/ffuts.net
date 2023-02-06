@@ -16,9 +16,9 @@ Auth::routes(['login' => false, 'register' => false]);
 
 // registration proccess
 Route::controller(FrontendController::class)->group(function () {
-    Route::get('/sign-up', 'signUp')->name('frontend.signup');
+    Route::get('/sign-up', 'signUp')->name('user.signup');
     Route::post('customer/register', 'register')->name('customer.register');
-    Route::post('/frontend/logout', 'frontendLogout')->name('frontend.logout');
+    Route::post('/user/logout', 'userLogout')->name('user.logout');
 });
 
 // login proccess

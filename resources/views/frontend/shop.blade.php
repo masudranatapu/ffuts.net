@@ -33,11 +33,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/1.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/1.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
@@ -55,11 +55,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/2.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/2.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
@@ -77,11 +77,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/3.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/3.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
@@ -99,11 +99,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/1.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/1.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
@@ -121,11 +121,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/4.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/4.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
@@ -143,11 +143,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/3.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/3.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
@@ -165,11 +165,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/2.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/2.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
@@ -187,11 +187,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/1.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/1.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
@@ -209,11 +209,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/2.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/2.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
@@ -231,11 +231,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/3.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/3.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
@@ -253,11 +253,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/4.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/4.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
@@ -275,11 +275,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/2.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/2.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
@@ -297,11 +297,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/4.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/4.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
@@ -319,11 +319,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/3.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/3.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
@@ -341,11 +341,11 @@
                     <span>Jan, 20</span>
                 </div>
                 <div class="product_img">
-                    <a href="details.html"><img src="{{ asset('frontend/images/1.jpg') }}" class="w-100" alt="image"></a>
+                    <a href="{{ route('details') }}"><img src="{{ asset('frontend/images/1.jpg') }}" class="w-100" alt="image"></a>
                 </div>
                 <div class="product_content">
                     <h5>$55.55</h5>
-                    <h4><a href="details.html">Hotel Apartment for sale in the city center on an Upper
+                    <h4><a href="{{ route('details') }}">Hotel Apartment for sale in the city center on an Upper
                             Floor</a>
                     </h4>
                     <p>(Jeruselam, City Center) <a href="javascript:void(0)"><i class="la la-times"></i></a>
