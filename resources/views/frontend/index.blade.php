@@ -11,101 +11,77 @@
     <div class="row g-2">
         <div class="col-md-6 col-lg-4">
             <div class="category_heading text-center">
-                <h5>community</h5>
+                <h5>Community</h5>
             </div>
             <div class="row g-1">
                 <div class="col-md-6 col-lg-6">
                     <div class="mt-2">
                         <ul class="list-group category_list">
-                            <li><a href="{{ route('shop') }}">An item</a></li>
-                            <li><a href="{{ route('shop') }}">A second</a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A third</a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A fourth</a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A third</a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A fourth</a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a>
-                            </li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">activities<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">artists<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">childcare<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">classes<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">events<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">general<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">groups<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">local&nbsp;news<sup class="c"></sup></span></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6">
                     <div class="mt-2">
                         <ul class="list-group category_list">
-                            <li><a href="{{ route('shop') }}">An item</a></li>
-                            <li><a href="{{ route('shop') }}">A second </a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A third </a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A fourth </a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A third </a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A fourth</a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a>
-                            </li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">lost+found<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">missed connections<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">musicians<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">pets<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">politics<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">rants &amp; raves<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">rideshare<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">volunteers<sup class="c"></sup></span></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="category_heading text-center mt-2">
-                <h5>community</h5>
+                <h5>Housing</h5>
             </div>
             <div class="row g-1">
                 <div class="col-md-6 col-lg-6">
                     <div class="mt-2">
                         <ul class="list-group category_list">
-                            <li><a href="{{ route('shop') }}">An item</a></li>
-                            <li><a href="{{ route('shop') }}">A second </a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A third </a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A fourth </a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A third </a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A fourth </a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a>
-                            </li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">apts / housing<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">housing swap<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">housing wanted<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">office / commercial<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">parking / storage<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">real estate for sale<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">rooms / shared<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">rooms wanted<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">sublets / temporary<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">vacation rentals<sup class="c"></sup></span></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6">
                     <div class="mt-2">
                         <ul class="list-group category_list">
-                            <li><a href="{{ route('shop') }}">An item</a></li>
-                            <li><a href="{{ route('shop') }}">A second</a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A third </a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A fourth </a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A third </a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">A fourth </a>
-                            </li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a>
-                            </li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">rooms wanted<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">sublets / temporary<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">apts / housing<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">housing swap<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">housing wanted<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">office / commercial<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">vacation rentals<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">parking / storage<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">real estate for sale<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">rooms / shared<sup class="c"></sup></span></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="category_heading text-center mt-2">
-                <h5>community</h5>
+                <h5>Jobs</h5>
             </div>
             <div class="row g-1">
                 <div class="col-md-6 col-lg-6">
@@ -140,7 +116,7 @@
         </div>
         <div class="col-md-6 col-lg-4">
             <div class="category_heading text-center">
-                <h5>community</h5>
+                <h5>Discussion forums</h5>
             </div>
             <div class="mt-2">
                 <ul class="list-group category_list">
@@ -159,52 +135,65 @@
                 </ul>
             </div>
             <div class="category_heading text-center mt-2">
-                <h5>community</h5>
+                <h5>For sale</h5>
             </div>
             <div class="row g-1">
                 <div class="col-md-6 col-lg-6">
                     <div class="mt-2">
                         <ul class="list-group category_list">
-                            <li><a href="{{ route('shop') }}">An item</a></li>
-                            <li><a href="{{ route('shop') }}">A second </a></li>
-                            <li><a href="{{ route('shop') }}">A third </a></li>
-                            <li><a href="{{ route('shop') }}">A fourth </a></li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                            <li><a href="{{ route('shop') }}">A third </a></li>
-                            <li><a href="{{ route('shop') }}">A fourth </a></li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                            <li><a href="{{ route('shop') }}">A third </a></li>
-                            <li><a href="{{ route('shop') }}">A fourth </a></li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                            <li><a href="{{ route('shop') }}">An item</a></li>
-                            <li><a href="{{ route('shop') }}">A second </a></li>
-                            <li><a href="{{ route('shop') }}">A third </a></li>
-                            <li><a href="{{ route('shop') }}">A fourth </a></li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                            <li><a href="{{ route('shop') }}">A third</a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">antiques<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">appliances<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">arts+crafts<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">atv/utv/sno<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">auto parts<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">aviation<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">baby+kid<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">barter<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">beauty+hlth<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">bike parts<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">bikes<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">boat parts<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">boats<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">books<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">business<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">cars+trucks<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">cds/dvd/vhs<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">cell phones<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">clothes+acc<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">collectibles<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">computer parts<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">computers<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">electronics<sup class="c"></sup></span></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6">
                     <div class="mt-2">
                         <ul class="list-group category_list">
-                            <li><a href="{{ route('shop') }}">An item</a></li>
-                            <li><a href="{{ route('shop') }}">A second </a></li>
-                            <li><a href="{{ route('shop') }}">A third </a></li>
-                            <li><a href="{{ route('shop') }}">A fourth </a></li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                            <li><a href="{{ route('shop') }}">A third </a></li>
-                            <li><a href="{{ route('shop') }}">A fourth </a></li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                            <li><a href="{{ route('shop') }}">A third</a></li>
-                            <li><a href="{{ route('shop') }}">A fourth</a></li>
-                            <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                            <li><a href="{{ route('shop') }}">An item</a></li>
-                            <li><a href="{{ route('shop') }}">A second</a></li>
-                            <li><a href="{{ route('shop') }}">A third</a></li>
-                            <li><a href="{{ route('shop') }}">A fourth</a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">antiques<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">appliances<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">arts+crafts<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">atv/utv/sno<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">auto parts<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">aviation<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">baby+kid<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">barter<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">beauty+hlth<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">bike parts<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">bikes<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">boat parts<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">boats<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">books<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">business<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">cars+trucks<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">cds/dvd/vhs<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">cell phones<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">clothes+acc<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">collectibles<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">computer parts<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">computers<sup class="c"></sup></span></a></li>
+                            <li><a href="{{ route('shop') }}"><span class="txt">electronics<sup class="c"></sup></span></a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -213,45 +202,41 @@
         </div>
         <div class="col-md-6 col-lg-4">
             <div class="category_heading text-center">
-                <h5>community</h5>
+                <h5>Jobs</h5>
             </div>
             <div class="mt-2">
                 <ul class="list-group category_list">
-                    <li><a href="{{ route('shop') }}">An item</a></li>
-                    <li><a href="{{ route('shop') }}">A second </a></li>
-                    <li><a href="{{ route('shop') }}">A third </a></li>
-                    <li><a href="{{ route('shop') }}">A fourth </a></li>
-                    <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                    <li><a href="{{ route('shop') }}">A third </a></li>
-                    <li><a href="{{ route('shop') }}">A fourth </a></li>
-                    <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                    <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                    <li><a href="{{ route('shop') }}">A third </a></li>
-                    <li><a href="{{ route('shop') }}">A fourth </a></li>
-                    <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                    <li><a href="{{ route('shop') }}">An item</a></li>
-                    <li><a href="{{ route('shop') }}">A second </a></li>
-                    <li><a href="{{ route('shop') }}">A third </a></li>
-                    <li><a href="{{ route('shop') }}">A fourth </a></li>
-                    <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                    <li><a href="{{ route('shop') }}">A third </a></li>
-                    <li><a href="{{ route('shop') }}">A fourth </a></li>
-                    <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                    <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                    <li><a href="{{ route('shop') }}">A third </a></li>
-                    <li><a href="{{ route('shop') }}">A fourth </a></li>
-                    <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                    <li><a href="{{ route('shop') }}">An item</a></li>
-                    <li><a href="{{ route('shop') }}">A second </a></li>
-                    <li><a href="{{ route('shop') }}">A third </a></li>
-                    <li><a href="{{ route('shop') }}">A fourth </a></li>
-                    <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                    <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                    <li><a href="{{ route('shop') }}">A third </a></li>
-                    <li><a href="{{ route('shop') }}">A fourth </a></li>
-                    <li><a href="{{ route('shop') }}">And a fifth</a></li>
-                    <li><a href="{{ route('shop') }}">An item</a></li>
-
+                    <li><a href="{{ route('shop') }}"><span class="txt">accounting+finance<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">admin / office<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">arch / engineering<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">art / media / design<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">biotech / science<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">business / mgmt<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">customer service<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">education<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">etc / misc<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">food / bev / hosp<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">general labor<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">government<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">human resources<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">legal  /  paralegal<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">manufacturing<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">marketing / pr / ad<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">medical / health<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">nonprofit sector<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">real estate<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">retail / wholesale<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">sales / biz dev<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">salon / spa / fitness<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">security<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">skilled trade / craft<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">software / qa / dba<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">systems / network<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">technical support<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">transport<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">tv / film / video<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">web / info design<sup class="c"></sup></span></a></li>
+                    <li><a href="{{ route('shop') }}"><span class="txt">writing / editing<sup class="c"></sup></span></a></li>
                 </ul>
             </div>
         </div>
