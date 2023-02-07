@@ -14,12 +14,13 @@ use Illuminate\Http\Request;
 Auth::routes(['login' => false, 'register' => false]);
 
 // login
-Route::get('sing-in', [LoginController::class, 'signIn'])->name('signin');
-Route::post('user-sing-in', [LoginController::class, 'userSignIn'])->name('user.signin');
-Route::post('user-logout', [LoginController::class, 'userLogOut'])->name('user.logout');
+Route::get('sign-in', [LoginController::class, 'signIn'])->name('signin');
+Route::post('user-sign-in', [LoginController::class, 'userSignIn'])->name('user.signin');
 // register
-Route::post('user-sing-up', [RegisterController::class, 'userSignUp'])->name('user.singup');
-
+Route::post('user-sign-up', [RegisterController::class, 'userSignUp'])->name('user.signup');
+Route::get('user-verify/{token}', [RegisterController::class, 'userVerify'])->name('user.verify');
+Route::post('user-sign-up-success', [RegisterController::class, 'userSignUpSuccess'])->name('user.signup.success');
+Route::post('user-sign-up-success-with-out-password', [RegisterController::class, 'userSignUpSuccesswithOurPassword'])->name('user.signup.success.withoutpassword');
 
 Route::post('/customer/login', [App\Http\Controllers\Frontend\LoginController::class, 'login'])->name('frontend.login')->middleware('auth_logout');
 
