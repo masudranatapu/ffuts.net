@@ -6,6 +6,10 @@
                 @yield('breadcrumb')
             </div>
         </div>
+
+        @if (Route::is('about') || Route::is('terms.condition') || Route::is('privacy.policy'))
+
+        @else
         <div class="col-lg-5">
             <div class="header_end float-lg-end">
                 <ul>
@@ -21,5 +25,7 @@
                 </ul>
             </div>
         </div>
+        @endif
+
     </div>
 </div>

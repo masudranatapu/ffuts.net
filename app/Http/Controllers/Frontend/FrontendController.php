@@ -27,4 +27,19 @@ class FrontendController extends Controller
         return view('frontend.auth.login');
     }
 
+    public function about()
+    {
+        return view('frontend.about');
+    }
+
+    public function termsCondition(){
+        return view('frontend.terms_conditon');
+    }
+
+    public function privacyPolicy(){
+        return view('frontend.privacy_policy');
+    }
+
+
+
 }
