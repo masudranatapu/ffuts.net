@@ -8,7 +8,7 @@
 @section('breadcrumb')
     <ul>
         <li>Jerusalem > </li>
-        <li>Login & Register</li>
+        <li>Set your password for account security</li>
     </ul>
 @endsection
 
@@ -17,45 +17,44 @@
         <div class="col-md-6 col-lg-5 my-5">
             <div class="card">
                 <div class="card-header text-center">
-                    <h3>Log in</h3>
+                    <h3>Continue without a password</h3>
                 </div>
                 <div class="card-content">
-                    <form action="{{ route('user.signin') }}" method="post" class="login_form border p-3 rounded">
+                    <form action="{{ route('user.signup.success.withoutpassword') }}" method="post" class="login_form border p-3 rounded">
                         @csrf
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="text" name="email" id="email" class="form-control" required value="{{ old('email') }}"
-                                placeholder="Email Address">
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" id="password" class="form-control" required
-                                placeholder="Password">
-                        </div>
+                        <input type="hidden" name="user_id" value="{{ $user->id }}">
                         <div class="mb-3 text-center">
-                            <button type="submit" class="btn btn-light">Login</button>
+                            <button type="submit" class="btn btn-light">Go Passwordless</button>
                         </div>
                     </form>
                 </div>
             </div>
-
-            <hr>
-
+            <h5 class="text-center"> Or </h5>
             <div class="card">
                 <div class="card-header text-center">
-                    <h3>Create an account</h3>
+                    <h3>Change your password</h3>
                 </div>
                 <div class="card-content">
-                    <form action="{{ route('user.signup') }}" method="post" class="login_form border p-3 rounded">
+                    <form action="{{ route('user.signup.success') }}" method="post" class="login_form border p-3 rounded">
                         @csrf
+                        <input type="hidden" name="user_id" value="{{ $user->id }}">
                         <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" required placeholder="Email Address">
+                            <label class="form-label">New Password</label>
+                            <input type="password" name="password" class="form-control" required placeholder="New Password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Confirm Password</label>
+                            <input type="password" name="password_confirmation" class="form-control" required
+                                placeholder="Confirm Password">
                         </div>
                         <div class="mb-3 text-center">
-                            <button type="submit" class="btn btn-light">Register</button>
+                            <button type="submit" class="btn btn-light">Change Password</button>
                         </div>
                     </form>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item" style="font-size: 14px;">Try using a mixture of letters, numbers, and symbols.</li>
+                        <li class="list-group-item" style="font-size: 14px;">Avoid using common words, phrases, or personal information.</li>
+                    </ol>
                 </div>
             </div>
         </div>

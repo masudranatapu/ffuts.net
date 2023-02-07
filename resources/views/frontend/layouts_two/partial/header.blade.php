@@ -48,7 +48,11 @@
                         </a>
                     </li>
                     <li><a href="{{ route('post.step.one') }}">post</a></li>
-                    <li><a href="{{ route('signin') }}">account</a></li>
+                    @if(auth('user')->check())
+                        <a href="{{ route('user.profile') }}">My Account</a>
+                    @else
+                        <a href="{{ route('signin') }}">My Account</a>
+                    @endif
                 </ul>
             </div>
         </div>
