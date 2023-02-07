@@ -1,4 +1,4 @@
-@extends('frontend.layouts_three.app_three')
+@extends('frontend.layouts.app',['nav'=>'yes'])
 
 @push('style')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">

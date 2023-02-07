@@ -9,16 +9,18 @@
     {{-- meta --}}
     @yield('meta')
     {{-- style --}}
-    @include('frontend.layouts_three.head')
+    @include('frontend.layouts.header_script')
     {{-- custom style --}}
     @stack('style')
 </head>
 
 <body>
+    @if($nav != 'no')
     {{-- header --}}
     <header class="header sticky-top">
-        @include('frontend.layouts_three.header')
+        @include('frontend.layouts.header')
     </header>
+    @endif
     {{-- maiin section --}}
     <div class="main_template">
         <div class="container">
@@ -27,12 +29,12 @@
         <!-- footer -->
         <footer class="text-center footer_menu">
             <div class="container">
-                @include('frontend.layouts_one.partial.footer')
+                @include('frontend.layouts.footer')
             </div>
         </footer>
     </div>
     {{-- script --}}
-    @include('frontend.layouts_three.foot')
+    @include('frontend.layouts.footer_script')
     {{-- custom script --}}
     @stack('script')
 </body>

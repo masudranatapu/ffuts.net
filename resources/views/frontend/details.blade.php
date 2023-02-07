@@ -1,4 +1,4 @@
-@extends('frontend.layouts_three.app_three')
+@extends('frontend.layouts.app',['nav'=>'yes'])
 
 @section('meta')
 
