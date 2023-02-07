@@ -4,7 +4,7 @@
             <a href="{{ route('post.step.one') }}">Create a posting</a>
         </li>
         <li class="mt-1 mb-3 text-center">
-            <a href="{{ route('user.signup') }}">My Account</a>
+            <a href="{{ route('user.singup') }}">My Account</a>
         </li>
     </ul>
     <div class="search-style mb-4">
@@ -44,3 +44,4 @@
         </ul>
     </div>
 </div>
+

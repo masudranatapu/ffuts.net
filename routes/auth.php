@@ -9,7 +9,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController as UserLoginController;
 use App\Http\Controllers\Admin\Auth\LoginController as AdminLoginController;
-
+use Illuminate\Http\Request;
 
 Auth::routes(['login' => false, 'register' => false]);
 
