@@ -3,25 +3,24 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\SocialLoginController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController as UserLoginController;
 use App\Http\Controllers\Admin\Auth\LoginController as AdminLoginController;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Frontend\FrontendController;
-use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
 
-//====================Frontend Authentication=========================
 Auth::routes(['login' => false, 'register' => false]);
 
-// registration proccess
-Route::controller(FrontendController::class)->group(function () {
-    Route::get('/sign-up', 'signUp')->name('user.signup');
-    Route::post('customer/register', 'register')->name('customer.register');
-    Route::post('/user/logout', 'userLogout')->name('user.logout');
-});
+// login
+Route::get('sing-in', [LoginController::class, 'signIn'])->name('signin');
+Route::post('user-sing-in', [LoginController::class, 'userSignIn'])->name('user.signin');
+Route::post('user-logout', [LoginController::class, 'userLogOut'])->name('user.logout');
+// register
+Route::post('user-sing-up', [RegisterController::class, 'userSignUp'])->name('user.singup');
 
-// login proccess
+
 Route::post('/customer/login', [App\Http\Controllers\Frontend\LoginController::class, 'login'])->name('frontend.login')->middleware('auth_logout');
 
 // Customer Reset Password
@@ -49,11 +48,9 @@ Route::post('auth-logout', function (Request $request) {
     }
 })->name('auth.logout');
 
+Route::get('login', [App\Http\Controllers\Frontend\LoginController::class, 'showLoginForm'])->name('users.login');
 
-Route::get('login', [App\Http\Controllers\Frontend\LoginController::class, 'showLoginForm'])
-    ->name('users.login');
-
-//====================Admin Authentication=========================
+// Admin Authentication
 Route::controller(AdminLoginController::class)->prefix('admin')->group(function () {
     Route::get('/login', 'showLoginForm')->name('login.admin');
     Route::post('/login', 'login')->name('admin.login');
@@ -61,7 +58,6 @@ Route::controller(AdminLoginController::class)->prefix('admin')->group(function 
 });
 
 Route::middleware(['guest:admin'])->group(function () {
-    // reset password
     Route::controller(ForgotPasswordController::class)->group(function () {
         Route::post('password/email', 'sendResetLinkEmail')->name('admin.password.email');
         Route::get('password/reset', 'showLinkRequestForm')->name('admin.password.request');

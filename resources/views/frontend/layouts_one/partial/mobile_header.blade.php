@@ -12,7 +12,7 @@
             <div class="mobile_heade_right float-end">
                 <ul>
                     <li><a href="{{ route('post.step.one') }}">{{ __('post') }}</a></li>
-                    <li><a href="{{ route('user.signup') }}">Account</a></li>
+                    <li><a href="{{ route('signin') }}">Account</a></li>
                 </ul>
             </div>
         </div>

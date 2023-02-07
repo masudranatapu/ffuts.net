@@ -17,7 +17,7 @@
                         </a>
                     </li>
                     <li><a href="{{ route('post.step.one') }}">{{ __('post') }}</a></li>
-                    <li><a href="{{ route('user.signup') }}">account</a></li>
+                    <li><a href="{{ route('signin') }}">account</a></li>
                 </ul>
             </div>
         </div>
