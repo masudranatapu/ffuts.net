@@ -1049,7 +1049,7 @@ body {
 
 .form_wrapper {
     border: 1px solid #c8c8c8;
-    padding: 0px 13px;
+    padding: 0px 12px 10px 12px;
     border-radius: 1px;
     background: #F7F7F7;
     position: relative;
@@ -1140,7 +1140,6 @@ body {
     padding: 0px 10px 0px 10px;
     font-size: 13px;
     font-weight: 500;
-    color: #008800 !important;
 }
 
 .inline_checkbox .form-check {
@@ -1154,6 +1153,10 @@ body {
     font-weight: 600;
 }
 
+.ad_post_form .form-label {
+    font-size: 13px;
+    color: #333;
+}
 
 .text-success {
     color: #008800 !important;
