@@ -55,23 +55,7 @@
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6 col-lg-5">
-                    <form action="{{ route('user.signup.success.withoutpassword') }}" method="post"
-                        class="login_form border p-3 rounded">
-                        @csrf
-                        <h1 class="accountform-banner-one">Continue without a password</h1>
-                        <input type="hidden" name="user_id" value="{{ $user->id }}">
-                        <div class="mb-3 text-center">
-                            <button type="submit" class="btn btn-light">Go Passwordless</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="row d-flex justify-content-center py-4">
-                <div class="col-md-6 text-center">Or</div>
-            </div>
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-6 col-lg-5">
-                    <form action="{{ route('user.signup.success') }}" method="post" class="login_form border p-3 rounded">
+                    <form action="{{ route('user.password.update') }}" method="post" class="login_form border p-3 rounded">
                         @csrf
                         <h1 class="accountform-banner-one">Change your password</h1>
                         <input type="hidden" name="user_id" value="{{ $user->id }}">

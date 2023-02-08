@@ -1,4 +1,4 @@
-@extends('frontend.layouts_three.app_three')
+@extends('frontend.layouts.app', ['nav' => 'yes'])
 
 @push('style')
 @endpush
@@ -12,8 +12,8 @@
 @endsection
 
 @section('content')
-    <div class="row d-flex mt-5 justify-content-center">
-        <div class="col-lg-8">
+    <div class="main_template mt-5">
+        <div class="container">
             <div class="ad_post_form">
                 <form action="#" method="post">
                     <div class="row">

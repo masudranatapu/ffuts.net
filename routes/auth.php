@@ -24,16 +24,12 @@ Route::post('user-sign-up-success-with-out-password', [RegisterController::class
 
 Route::post('/customer/login', [App\Http\Controllers\Frontend\LoginController::class, 'login'])->name('frontend.login')->middleware('auth_logout');
 
-// Customer Reset Password
-Route::controller(ForgotPasswordController::class)->group(function () {
-    Route::get('forgot/password', 'customerResetPasswordForm')->name('customer.forgot.password');
-    Route::post('customer/password/mail', 'sendResetLinkEmail')->name('customer.password.email');
-});
-
-Route::controller(ResetPasswordController::class)->group(function () {
-    Route::get('password-reset/{token}', 'showResetForm')->name('password.reset');
-    Route::post('customer-password-update', 'reset')->name('customer.password.update');
-});
+// Reset Password
+Route::get('user/forgot/password', [ForgotPasswordController::class, 'userResetPasswordForm'])->name('user.forgot.password');
+Route::post('user/forgot/password/mail', [ForgotPasswordController::class, 'userResetPasswordMail'])->name('user.password.mail');
+// password update
+Route::get('user/password-reset/{token}', [ResetPasswordController::class, 'userShowResetForm'])->name('user.password.reset');
+Route::post('user/password-change', [ResetPasswordController::class, 'passwordUpdate'])->name('user.password.update');
 
 // Social Authentication
 Route::controller(SocialLoginController::class)->group(function () {

@@ -13,6 +13,7 @@ use App\Mail\UserLoginMail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -53,9 +54,10 @@ class RegisterController extends Controller
         if ($user->count() > 0) {
             return redirect()->back()->with('info', 'Your email has already an account. Plase login to your account');
         } else {
+            $random_token = Str::random(40);
             User::insert([
                 'email' => $request->email,
-                'token' => $request->_token,
+                'token' => $random_token,
                 'created_at' => Carbon::now(),
             ]);
 
@@ -66,7 +68,7 @@ class RegisterController extends Controller
                 'email' => 'Your email is : ' . $request->email,
                 'thanks' => 'Thank you and stay with ' . ' ' . config('app.name'),
                 'actionText' => 'Click Here to Verify',
-                'actionURL' => route('user.verify', $request->_token),
+                'actionURL' => route('user.verify', $random_token),
                 'site_url' => route('index'),
                 'site_name' => config('app.name'),
                 'copyright' => ' © ' . ' ' . Carbon::now()->format('Y') . config('app.name') . ' ' . 'All rights reserved.',
@@ -87,7 +89,6 @@ class RegisterController extends Controller
         }
     }
 
-
     public function userSignUpSuccesswithOurPassword(Request $request)
     {
         $user = User::where('id', $request->user_id)->first();
@@ -100,8 +101,9 @@ class RegisterController extends Controller
                 'greeting' => 'Hi you just login on' . ' ' . config('app.name'),
                 'body' => 'Thanks for Login on ' . ' ' . config('app.name') . ' without set password. Please change your password as soon as possible. For security reasons you can change your password from your proifle setting',
                 'email' => 'Your email is : ' . $user->email,
+                'password' => 'Your password is : N/L ',
                 'thanks' => 'Thank you and stay with ' . ' ' . config('app.name'),
-                'actionText' => 'visit Website',
+                'actionText' => 'Visit Website',
                 'site_url' => route('index'),
                 'site_name' => config('app.name'),
                 'copyright' => ' © ' . ' ' . Carbon::now()->format('Y') . config('app.name') . ' ' . 'All rights reserved.',
@@ -136,7 +138,7 @@ class RegisterController extends Controller
                     'email' => 'Your email is : ' . $user->email,
                     'password' => 'Your password is : ' . $request->password,
                     'thanks' => 'Thank you and stay with ' . ' ' . config('app.name'),
-                    'actionText' => 'visit Website',
+                    'actionText' => 'Visit Website',
                     'site_url' => route('index'),
                     'site_name' => config('app.name'),
                     'copyright' => ' © ' . ' ' . Carbon::now()->format('Y') . config('app.name') . ' ' . 'All rights reserved.',
