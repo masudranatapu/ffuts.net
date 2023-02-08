@@ -1,4 +1,4 @@
-@extends('frontend.layouts_two.app_two')
+@extends('frontend.layouts.app',['nav' => 'yes'])
 
 @section('meta')
 @endsection
