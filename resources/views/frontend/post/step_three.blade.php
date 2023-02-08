@@ -1,6 +1,7 @@
 @extends('frontend.layouts.app', ['nav' => 'yes'])
 
 @push('style')
+
 @endpush
 
 @section('breadcrumb')

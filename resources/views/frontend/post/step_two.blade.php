@@ -98,11 +98,9 @@
                             properties
                         </label>
                     </div>
-
                     <div class="mt-5">
                         <button type="button" class="btn btn-light"><a href="{{ route('post.step.three') }}">Continue</a></button>
                     </div>
-
                 </form>
             </div>
         </div>
