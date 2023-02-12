@@ -18,12 +18,14 @@ class CategoryFormRequest extends FormRequest
                 'name' => "required|unique:categories,name|string",
                 'image' => "required|image|max:3072|mimes:jpeg,png,jpg",
                 'icon' => "required|string",
+                'ad_type_id' => "required",
             ];
         } else {
             return [
                 'name' => "required|string|unique:categories,name,{$this->category->id}",
                 'image' => "image|max:3072|mimes:jpeg,png,jpg",
                 'icon' => "sometimes",
+                'ad_type_id' => "sometimes",
             ];
         }
     }

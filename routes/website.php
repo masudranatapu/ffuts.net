@@ -12,9 +12,10 @@ Route::get('about', [FrontendController::class, 'about'])->name('about');
 Route::get('terms-conditons', [FrontendController::class, 'termsCondition'])->name('terms.condition');
 Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
 
-Route::get('post-step-one', [AdPostController::class, 'postStepOne'])->name('post.step.one');
-Route::get('post-step-two', [AdPostController::class, 'postStepTwo'])->name('post.step.two');
-Route::get('post-step-three', [AdPostController::class, 'postStepThree'])->name('post.step.three');
+Route::get('search/post-type', [AdPostController::class, 'postType'])->name('post.step.one');
+Route::get('search/post-type/category', [AdPostController::class, 'postStepTwo'])->name('post.step.two');
+Route::get('search/post-type/sub-category', [AdPostController::class, 'postSubCategory'])->name('post.subCategory');
+Route::get('search/post-type/sub-category/form', [AdPostController::class, 'postStepThree'])->name('post.step.three');
 
 
 Route::middleware(['auth:user', 'verified'])->group(function () {
@@ -24,3 +25,4 @@ Route::middleware(['auth:user', 'verified'])->group(function () {
 });
 
 Route::post('user-logout', [UserDashboardController::class, 'userLogOut'])->name('user.logout');
+
