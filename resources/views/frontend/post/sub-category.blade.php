@@ -16,13 +16,14 @@
         <div class="container">
             <div class="ad_post_form">
                 <div class="mb-4">
-                    <h6><span>choose a category:</span> (see <a href="#">ban</a> list before posting.)
+                    <h6><span>choose a Sub Category:</span> (see <a href="#">ban</a> list before posting.)
                     </h6>
                 </div>
-                <form action="{{ route('post.subCategory') }}" method="get">
-                    @foreach($add_types_category as $key => $value)
+                <form action="{{ route('post.step.three') }}" method="get">
+
+                    @foreach($post_types_subCategory as $key => $value)
                     <div class="form-check">
-            <input class="form-check-input" type="radio" value="{{ $value ->id}}" name="category" id="category_1"
+            <input class="form-check-input" type="radio" value="{{ $value ->id}}" name="sub_category" id="category_1"
                             required>
                         <label class="form-check-label" for="category_1">
                             {{ $value->name }}
@@ -30,7 +31,7 @@
                     </div>
                     @endforeach
                     <div class="mt-5">
-                          <button type="submit" class="btn btn-light">Continue</button>
+                           <button type="submit" class="btn btn-light">Continue</button>
                     </div>
                 </form>
             </div>

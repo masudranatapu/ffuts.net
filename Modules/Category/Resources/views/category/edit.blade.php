@@ -21,6 +21,21 @@
                                 @method('PUT')
                                 @csrf
                                 <div class="form-group row">
+                                    <x-forms.label name="ad_type_id" required="true" class="col-sm-3" />
+                                    <div class="col-sm-9">
+                                        <select name="ad_type_id" id="ad_type_id" class="form-control @error('ad_type_id') is-invalid @enderror">
+                                            <option value="" disabled selected>Choose One</option>
+                                            @foreach($ad_type as $key => $value)
+                                                <option value="{{ $value->id }}" {{ $category->ad_type_id == $value->id? "selected" : "" }}>{{ $value->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('ad_type_id')
+                                            <span class="invalid-feedback"
+                                                role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <x-forms.label name="category_name" required="true" class="col-sm-3" />
                                     <div class="col-sm-9">
                                         <input value="{{ $category->name }}" name="name" type="text"

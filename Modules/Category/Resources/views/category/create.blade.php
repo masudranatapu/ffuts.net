@@ -21,6 +21,21 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row">
+                                    <x-forms.label name="ad_type_id" required="true" class="col-sm-3 col-form-label" />
+                                    <div class="col-sm-9">
+                                        <select name="ad_type_id" id="ad_type_id" class="form-control @error('ad_type_id') is-invalid @enderror" style="width: 100%;">
+                                            <option value=""disabled selected>Choose One</option>
+                                            @foreach($ad_types as $value)
+                                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('ad_type_id')
+                                            <span class="invalid-feedback"
+                                                role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <x-forms.label name="category_name" required="true" class="col-sm-3 col-form-label" />
                                     <div class="col-sm-9">
                                         <input value="{{ old('name') }}" name="name" type="text"
@@ -80,6 +95,7 @@
 @endsection
 
 @section('script')
+
     <!-- Bootstrap-Iconpicker Bundle -->
     <script type="text/javascript"
         src="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/js/bootstrap-iconpicker.bundle.min.js"></script>

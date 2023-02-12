@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use Modules\Category\Entities\Category;
+use Modules\Category\Entities\SubCategory;
 
 class FrontendController extends Controller
 {
 
     public function index()
     {
-        return view('frontend.index');
+        $categories = Category::orderBy('name','asc')->get();
+        
+        return view('frontend.index',compact('categories'));
     }
 
     public function shop()

@@ -100,136 +100,26 @@
                     </div>
                     <div class="main_body">
                         <div class="row g-2">
-                            <div class="col-md-6 col-lg-4">
-                                <div class="category_heading text-center">
-                                    <h5>community</h5>
-                                </div>
-                                <div class="row g-1">
-                                    <div class="col-md-6 col-lg-6">
-                                        <div class="mt-2">
-                                            <ul class="list-group category_list">
-                                                <li><a href="{{ route('shop') }}">An item</a></li>
-                                                <li><a href="{{ route('shop') }}">A second</a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A third</a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A fourth</a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">And a fifth</a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A third</a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A fourth</a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">And a fifth</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                            @foreach($categories as $key => $category)
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="category_heading text-center">
+                                        <h5>{{ $category->name }}</h5>
                                     </div>
-                                    <div class="col-md-6 col-lg-6">
-                                        <div class="mt-2">
-                                            <ul class="list-group category_list">
-                                                <li><a href="{{ route('shop') }}">An item</a></li>
-                                                <li><a href="{{ route('shop') }}">A second </a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A third </a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A fourth </a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">And a fifth</a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A third </a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A fourth</a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">And a fifth</a>
-                                                </li>
-                                            </ul>
+                                    <div class="row g-1">
+                                        @foreach ($category->subcategories as $item)
+                                            <div class="col-md-6 col-lg-6">
+                                            <div class="mt-2">
+                                                <ul class="list-group category_list">
+                                                    <li><a href="{{ route('shop') }}">{{ $item->name }}</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                                <div class="category_heading text-center mt-2">
-                                    <h5>community</h5>
-                                </div>
-                                <div class="row g-1">
-                                    <div class="col-md-6 col-lg-6">
-                                        <div class="mt-2">
-                                            <ul class="list-group category_list">
-                                                <li><a href="{{ route('shop') }}">An item</a></li>
-                                                <li><a href="{{ route('shop') }}">A second </a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A third </a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A fourth </a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">And a fifth</a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A third </a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A fourth </a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">And a fifth</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6">
-                                        <div class="mt-2">
-                                            <ul class="list-group category_list">
-                                                <li><a href="{{ route('shop') }}">An item</a></li>
-                                                <li><a href="{{ route('shop') }}">A second</a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A third </a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A fourth </a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">And a fifth</a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A third </a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">A fourth </a>
-                                                </li>
-                                                <li><a href="{{ route('shop') }}">And a fifth</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="category_heading text-center mt-2">
-                                    <h5>community</h5>
-                                </div>
-                                <div class="row g-1">
-                                    <div class="col-md-6 col-lg-6">
-                                        <div class="mt-2">
-                                            <ul class="list-group category_list">
-                                                <li><a href="{{ route('shop') }}">An item</a></li>
-                                                <li><a href="{{ route('shop') }}">A second </a></li>
-                                                <li><a href="{{ route('shop') }}">A third </a></li>
-                                                <li><a href="{{ route('shop') }}">A fourth </a></li>
-                                                <li><a href="{{ route('shop') }}">fifth</a></li>
-                                                <li><a href="{{ route('shop') }}">A third </a></li>
-                                                <li><a href="{{ route('shop') }}">A fourth </a></li>
-                                                <li><a href="{{ route('shop') }}">fifth</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6">
-                                        <div class="mt-2">
-                                            <ul class="list-group category_list">
-                                                <li><a href="{{ route('shop') }}">An item</a></li>
-                                                <li><a href="{{ route('shop') }}">A second </a></li>
-                                                <li><a href="{{ route('shop') }}">A third </a></li>
-                                                <li><a href="{{ route('shop') }}">A fourth </a></li>
-                                                <li><a href="{{ route('shop') }}">fifth</a></li>
-                                                <li><a href="{{ route('shop') }}">A third </a></li>
-                                                <li><a href="{{ route('shop') }}">A fourth </a></li>
-                                                <li><a href="{{ route('shop') }}">A fourth </a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
+                            @endforeach
+                            
+                            {{-- <div class="col-md-6 col-lg-4">
                                 <div class="category_heading text-center">
                                     <h5>community</h5>
                                 </div>
@@ -345,7 +235,7 @@
 
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
