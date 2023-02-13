@@ -287,16 +287,12 @@
                     <div class="p-3">
                         <ul>
                             <li class="list-item text-white">
-                                © 2023 craigslist
+                                © 2023 ffuts
                             </li>
-                            <li> <a href="javascript:;">hjælp |</a></li>
-                            <li><a href="javascript:;">sikkerhed |</a></li>
-                            <li><a href="javascript:;">privatliv |</a></li>
-                            <li><a href="javascript:;"> feedback |</a></li>
-                            <li><a href="javascript:;">vilkår |</a></li>
-                            <li><a href="javascript:;">vedr |</a></li>
-                            <li><a href="javascript:;">vedr |</a></li>
-                            <li><a href="javascript:;">vedr |</a></li>
+                            <li> <a href="{{ route('privacy.policy') }}">Privacy |</a></li>
+                            <li><a href="{{ route('terms.condition') }}">Terms & Conditions |</a></li>
+                            <li><a href="{{ route('about') }}">About |</a></li>
+                            <li><a href="sitemap.html">Sitemap </a></li>
                         </ul>
                     </div>
                 </div>
@@ -492,16 +488,12 @@
                 <div class="p-2">
                     <ul>
                         <li class="list-item text-white">
-                            © 2023 craigslist
+                            © 2023 ffuts
                         </li>
-                        <li> <a href="javascript:;">hjælp |</a></li>
-                        <li><a href="javascript:;">sikkerhed |</a></li>
-                        <li><a href="javascript:;">privatliv |</a></li>
-                        <li><a href="javascript:;"> feedback |</a></li>
-                        <li><a href="javascript:;">vilkår |</a></li>
-                        <li><a href="javascript:;">vedr |</a></li>
-                        <li><a href="javascript:;">vedr |</a></li>
-                        <li><a href="javascript:;">vedr |</a></li>
+                        <li> <a href="{{ route('privacy.policy') }}">Privacy |</a></li>
+                        <li><a href="{{ route('terms.condition') }}">Terms & Conditions |</a></li>
+                        <li><a href="{{ route('about') }}">About |</a></li>
+                        <li><a href="sitemap.html">Sitemap </a></li>
                     </ul>
                 </div>
             </div>
