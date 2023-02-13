@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ThemeController;
+use App\Http\Controllers\AdTypesController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\OrderController;
@@ -195,5 +196,16 @@ Route::prefix('admin')->group(function () {
             Route::put('/errorpages', 'updateErrorPages')->name('admin.errorpages.update');
             Route::put('/footer-text', 'footerText')->name('admin.footer.text.update');
         });
+
+        //====================Website CMS Setting==============================
+        Route::prefix('ad-types')->group(function(){
+            Route::get('/',[AdTypesController::class,'index'])->name('adtypes.index');
+            Route::get('/create',[AdTypesController::class,'create'])->name('adtypes.create');
+            Route::post('/store',[AdTypesController::class,'store'])->name('adtypes.store');
+            Route::get('/edit/{slug}',[AdTypesController::class,'edit'])->name('adtypes.edit');
+            Route::put('/update/{slug}',[AdTypesController::class,'update'])->name('adtypes.update');
+            Route::delete('/delete/{id}',[AdTypesController::class,'delete'])->name('adtypes.delete');
+        });
+
     });
 });

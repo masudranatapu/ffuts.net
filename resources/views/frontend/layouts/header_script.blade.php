@@ -3,6 +3,6 @@
 <!-- css -->
 <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-<link rel="stylesheet" href="https://abubazaar.com/frontend/css/swiper-bundle.min.css">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">

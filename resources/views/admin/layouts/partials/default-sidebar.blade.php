@@ -51,6 +51,11 @@
                             {{ __('all_listings') }}
                         </x-sidebar-list>
                     @endif
+                        <x-sidebar-list :linkActive="Route::is('adtypes.index') ? true : false" route="adtypes.index" icon="fas fa-store">
+                            {{ __('Ad Types') }}
+                        </x-sidebar-list>
+                    
+                  
                     @if (Module::collections()->has('Category') && (userCan('category.view') || userCan('subcategory.view')))
                         <x-admin.sidebar-list :linkActive="Route::is('module.category.*') || Route::is('module.subcategory.*') ? true : false" route="module.category.index" icon="fas fa-th">
                             {{ __('category') }}
