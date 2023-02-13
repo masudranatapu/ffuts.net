@@ -15,7 +15,7 @@ Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name
 Route::get('search/post-type', [AdPostController::class, 'postType'])->name('post.step.one');
 Route::get('search/post-type/category', [AdPostController::class, 'postStepTwo'])->name('post.step.two');
 Route::get('search/post-type/sub-category', [AdPostController::class, 'postSubCategory'])->name('post.subCategory');
-Route::get('search/post-type/sub-category/form', [AdPostController::class, 'postStepThree'])->name('post.step.three');
+Route::get('search/post-type/form', [AdPostController::class, 'postStepThree'])->name('post.step.three');
 
 
 Route::middleware(['auth:user', 'verified'])->group(function () {

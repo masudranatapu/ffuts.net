@@ -19,15 +19,21 @@ class AdPostController extends Controller
 
     public function postStepTwo(Request $request)
     {
-        $ad_type = $request->ad_type;
+        $this->validate($request,[
+            'ad_type' => 'required',
+        ]);
 
+        $ad_type = $request->ad_type;
         $add_types_category = Category::where('ad_type_id', $ad_type)->orderBy('id', 'desc')->get();
         return view('frontend.post.step_two', compact('add_types_category'));
     }
     public function postSubCategory(Request $request){
 
-        $sub_category = $request->category;
+        $this->validate($request, [
+            'category' => 'required',
+        ]);
         
+        $sub_category = $request->category;
         $post_types_subCategory = SubCategory::where('category_id', $sub_category)->orderBy('id', 'desc')->get();
         return view('frontend.post.sub-category', compact('post_types_subCategory'));
     }

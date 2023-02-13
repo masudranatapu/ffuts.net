@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title" style="line-height: 36px;">{{ __('add_category') }}</h3>
+                        <h3 class="card-title" style="line-height: 36px;">{{ __('Ad Type') }}</h3>
                         <a href="{{ route('adtypes.index') }}"
                             class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
                                 class="fas fa-arrow-left"></i>&nbsp; {{ __('back') }}</a>
@@ -22,11 +22,11 @@
                                 @csrf
                                 
                                 <div class="form-group row">
-                                    <x-forms.label name="category_name" required="true" class="col-sm-3 col-form-label" />
+                                    <x-forms.label name="Ad Type Name" required="true" class="col-sm-3 col-form-label" />
                                     <div class="col-sm-9">
                                         <input value="{{ old('name') }}" name="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror"
-                                            placeholder="{{ __('enter_category_name') }}">
+                                            placeholder="{{ __('Ad Type Name') }}">
                                         @error('name')
                                             <span class="invalid-feedback"
                                                 role="alert"><strong>{{ $message }}</strong></span>

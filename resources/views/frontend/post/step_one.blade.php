@@ -28,6 +28,10 @@
                                 <label class="form-check-label" for="category_1">
                                     {{ $value->name }}
                                 </label>
+                                @error('ad_type')
+                                    <span class="invalid-feedback"
+                                        role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
                             </div>
                         @endforeach
                     <div class="mt-5">
