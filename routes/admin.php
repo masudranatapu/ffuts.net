@@ -203,7 +203,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/create',[AdTypesController::class,'create'])->name('adtypes.create');
             Route::post('/store',[AdTypesController::class,'store'])->name('adtypes.store');
             Route::get('/edit/{slug}',[AdTypesController::class,'edit'])->name('adtypes.edit');
-            Route::put('/update/{slug}',[AdTypesController::class,'update'])->name('adtypes.update');
+            Route::post('/update/{slug}',[AdTypesController::class,'update'])->name('adtypes.update');
             Route::delete('/delete/{id}',[AdTypesController::class,'delete'])->name('adtypes.delete');
         });
 

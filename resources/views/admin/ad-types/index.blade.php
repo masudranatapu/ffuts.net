@@ -39,97 +39,41 @@ $user = auth()->user();
                             <tbody id="sortable">
                                 @foreach($ad_types as $key => $value)
                                     <tr class="text-center">
-                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{  $ad_types->firstItem() + $key  }}</td>
                                         <td>{{ $value->name }}</td>
                                         <td>{{ $value->slug }}</td>
                                         <td>{{ date('d M Y',strtotime($value->created_at)) }}</td>
                                         <td>
-                                            <a href="" class="btn btn-secondary edit" data-id="{{$value->slug}}"><i class="fas fa-edit"></i></a>
-                                            <a href="" id="deleteData" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            <a href="{{ route('adtypes.edit',$value->slug) }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                                            <form action="{{ route('adtypes.delete', $value->id) }}"
+                                                    method="POST" class="d-inline">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button data-toggle="tooltip" data-placement="top"
+                                                        title="{{ __('Delete Ad Type') }}"
+                                                        onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');"
+                                                        class="btn bg-danger mr-1"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                            {{-- <a href="{{ route('adtypes.delete',$value->id) }}" id="deleteData" class="btn btn-danger"><i class="fas fa-trash"></i></a> --}}
                                         </td>
                                     </tr>
                                 @endforeach
-                                   
                             </tbody>
                         </table>
                     </div>
-                    {{-- @if ($categories->total() > $categories->count())
                         <div class="card-footer ">
                             <div class="d-flex justify-content-center">
-                                {{ $categories->links() }}
+                                {{ $ad_types->links() }}
                             </div>
                         </div>
-                    @endif --}}
                 </div>
             </div>
         </div>
     </div>
 
-    {{-- create modal --}}
-<div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addCategoryModalLabel">Ad Types</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('adtypes.store') }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="name" class="form-label">Ad Type Name</label>
-                        <input type="text" name="name" id="name" value="{{ old('name') }}" class="form-control" placeholder="Ad Type Name"
-                            required>
-                        @error('name')
-                         <span class="text-danger">{{ $message }}</span>
-                        @enderror 
-                    </div>
-                   
-                    
-                    <div class="form-group float-right">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Add</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-{{-- edit modal --}}
-<div class="modal fade" id="editCategoryModal" tabindex="-1" aria-labelledby="editCategoryModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editCategoryModalLabel">Edit Ad Type</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="modal_body"></div>
-                
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
 
 @section('script')
-<script type="text/javascript">
-    $(document).on('click', '.edit', function() {
-        let cat_id = $(this).data('id');
-        $.get('adtypes/edit/' + cat_id, function(data) {
-            console.log(data);
-            $('#editCategoryModal').modal('show');
-            $('#modal_body').html(data);
-        });
-    });
-</script>
     <script type="text/javascript" src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>

@@ -20,20 +20,23 @@
                     <h6><span>what type of posting is this:</span> (see <a href="#">ban</a> list before posting.)
                     </h6>
                 </div>
-                <form action="{{ route('post.step.two') }}" method="get">
+                <form action="{{ route('create-post') }}" method="get" id="create-post-frm">
                         @foreach($add_types as $key => $value)
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="{{ $value ->id}}" name="ad_type" id="category_1"
+                                <input class="form-check-input" type="radio" value="{{ $value ->slug}}" name="ad_type" id="category_{{ $value->id }}"
                                     required>
-                                <label class="form-check-label" for="category_1">
+                                <label class="form-check-label" for="category_{{ $value->id }}">
                                     {{ $value->name }}
                                 </label>
+                                @error('ad_type')
+                                    <span class="invalid-feedback"
+                                        role="alert"><strong>{{ $message }}</strong></span>
+                                @enderror
                             </div>
                         @endforeach
                     <div class="mt-5">
-                        <button type="submit" class="btn btn-light">Continue</button>
+                        <button type="button" class="btn btn-light">Continue</button>
                     </div>
-
                 </form>
             </div>
         </div>
@@ -41,4 +44,17 @@
 @endsection
 
 @push('script')
+<script>
+    $("input[name='ad_type']").click(function(){
+
+    var ad_type = $('input[name="ad_type"]:checked').val();
+    var action = $('#create-post-frm').attr('action');
+    var url = action + '/'+ad_type;
+    window.location.href = url;
+
+
+    })
+
+</script>
+
 @endpush

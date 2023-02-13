@@ -51,7 +51,7 @@
                             hidden
                         </a>
                     </li>
-                    <li><a href="{{ route('post.step.one') }}">post</a></li>
+                    <li><a href="{{ route('create-post') }}">post</a></li>
                     @if(auth('user')->check())
                         <li><a href="{{ route('user.profile') }}">account</a></li>
                     @else

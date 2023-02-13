@@ -12,11 +12,12 @@ Route::get('about', [FrontendController::class, 'about'])->name('about');
 Route::get('terms-conditons', [FrontendController::class, 'termsCondition'])->name('terms.condition');
 Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
 
-Route::get('search/post-type', [AdPostController::class, 'postType'])->name('post.step.one');
-Route::get('search/post-type/category', [AdPostController::class, 'postStepTwo'])->name('post.step.two');
-Route::get('search/post-type/sub-category', [AdPostController::class, 'postSubCategory'])->name('post.subCategory');
-Route::get('search/post-type/sub-category/form', [AdPostController::class, 'postStepThree'])->name('post.step.three');
+// Route::get('create-post/post-type', [AdPostController::class, 'postType'])->name('create-post.step_one');
+// Route::get('create-post/post-type/category', [AdPostController::class, 'postStepTwo'])->name('create-post.step_two');
+// Route::get('create-post/post-type/sub-category', [AdPostController::class, 'postSubCategory'])->name('create-post.step_three');
 
+
+Route::get('create-post/{type?}/{category?}/{subcategory?}', [AdPostController::class, 'createPost'])->name('create-post');
 
 Route::middleware(['auth:user', 'verified'])->group(function () {
 

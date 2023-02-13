@@ -18,7 +18,7 @@
                             </h5>
                             <ul class="list-group pt-3">
                                 <li class="custom-list-style mb-2">
-                                    <a href="{{ route('post.step.one') }}">Create a posting</a>
+                                    <a href="{{ route('create-post') }}">Create a posting</a>
                                 </li>
                                 @if(auth('user')->check())
                                     <li class="mt-1 mb-3">
@@ -118,7 +118,7 @@
                                     </div>
                                 </div>
                             @endforeach
-                            
+
                             {{-- <div class="col-md-6 col-lg-4">
                                 <div class="category_heading text-center">
                                     <h5>community</h5>
