@@ -5,9 +5,9 @@
 
 @section('breadcrumb')
     <ul>
-        <li>Ffuts ></li>
-        <li>{{ $ad_type->name }} ></li>
-        <li>{{ $category->name }}</li>
+        <li>{{ __('ffuts') }} ></li>
+        <li>{{ __($ad_type->slug) }} ></li>
+        <li>{{ __($category->slug) }}</li>
     </ul>
 @endsection
 
@@ -27,7 +27,7 @@
             <input class="form-check-input" type="radio" value="{{ $value->slug}}" name="sub_category" id="category_{{ $value->id }}"
                             required>
                         <label class="form-check-label" for="category_{{ $value->id }}">
-                            {{ $value->name }}
+                            {{ __($value->slug) }}
                         </label>
                     </div>
                     @endforeach

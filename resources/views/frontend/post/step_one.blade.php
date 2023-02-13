@@ -5,7 +5,7 @@
 
 @section('breadcrumb')
     <ul>
-        <li>Ffuts</li>
+        <li>{{__('ffuts')}}</li>
     </ul>
 @endsection
 
@@ -24,7 +24,7 @@
                                 <input class="form-check-input" type="radio" value="{{ $value ->slug}}" name="ad_type" id="category_{{ $value->id }}"
                                     required>
                                 <label class="form-check-label" for="category_{{ $value->id }}">
-                                    {{ $value->name }}
+                                    {{ __($value->slug) }}
                                 </label>
                                 @error('ad_type')
                                     <span class="invalid-feedback"
