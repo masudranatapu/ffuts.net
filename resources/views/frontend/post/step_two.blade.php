@@ -5,9 +5,8 @@
 
 @section('breadcrumb')
     <ul>
-        <li>Jerusalem ></li>
-        <li>case ></li>
-        <li>offices and activities trade</li>
+        <li>Ffuts ></li>
+        <li>{{ $ad_type->name }} </li>
     </ul>
 @endsection
 
