@@ -17,7 +17,8 @@ Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name
 // Route::get('create-post/post-type/sub-category', [AdPostController::class, 'postSubCategory'])->name('create-post.step_three');
 
 
-Route::get('create-post/{type?}/{category?}/{subcategory?}', [AdPostController::class, 'createPost'])->name('create-post');
+Route::get('create-post/{type?}/{category?}/{subcategory?}', [AdPostController::class, 'create'])->name('post.create');
+Route::post('store-post', [AdPostController::class, 'store'])->name('post.store');
 
 Route::middleware(['auth:user', 'verified'])->group(function () {
 
