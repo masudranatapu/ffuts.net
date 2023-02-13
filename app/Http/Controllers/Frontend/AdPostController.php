@@ -15,7 +15,7 @@ class AdPostController extends Controller
     {
 
         if($post_type == null){
-            $add_types = AdType::orderBy('id', 'desc')->get();
+            $add_types = AdType::orderBy('id', 'asc')->get();
             return view('frontend.post.step_one', compact('add_types'));
         }else{
 
