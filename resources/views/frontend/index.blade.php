@@ -103,14 +103,14 @@
                             @foreach($categories as $key => $category)
                                 <div class="col-md-6 col-lg-4">
                                     <div class="category_heading text-center">
-                                        <h5>{{ $category->name }}</h5>
+                                        <h5>{{ __($category->slug) }}</h5>
                                     </div>
                                     <div class="row g-1">
                                         @foreach ($category->subcategories as $item)
                                             <div class="col-md-6 col-lg-6">
                                             <div class="mt-2">
                                                 <ul class="list-group category_list">
-                                                    <li><a href="{{ route('shop') }}">{{ $item->name }}</a></li>
+                                                    <li><a href="{{ route('shop') }}">{{ __($item->slug) }}</a></li>
                                                 </ul>
                                             </div>
                                         </div>
