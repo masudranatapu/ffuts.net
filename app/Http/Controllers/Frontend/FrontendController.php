@@ -14,12 +14,17 @@ class FrontendController extends Controller
 
     public function index()
     {
-        //  dd(app()->getLocale());
-        // dd(session('set_lang'));
+
 
         $countries =  DB::table('country')->orderBy('name', 'asc')->get();
         $categories = Category::orderBy('name','asc')->get();
-        return view('frontend.index',compact('categories', 'countries'));
+        $coutry_iso = strtoupper(getCountryCode());
+
+        $country = DB::table('country')->where('iso', $coutry_iso)->first();
+
+        $cities = DB::table('city')->where('country_id',$country->id)->get();
+
+        return view('frontend.index',compact('categories', 'countries','cities'));
     }
 
     public function setCountry(Request $request){

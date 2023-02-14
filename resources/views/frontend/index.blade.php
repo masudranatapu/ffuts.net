@@ -287,31 +287,29 @@
                             </form>
 
                             <hr>
-                            <form action="{{ route('localization') }}" method="post">
+                            <form action="{{ route('setCountry') }}" method="post">
                                 @csrf
-                                <select name="language" id="language"
-                                    class="form-control form-select language_dropdown mb-3" onchange="this.form.submit()">
-                                    <option value="en" @if(Session::get('locale') == 'en') selected @endif>English</option>
-                                    <option value="hi" @if(Session::get('locale') == 'hi') selected @endif>Hindi</option>
+                                <select name="country" id="country" class="form-control form-select language_dropdown mb-3" onchange="this.form.submit()">
+                                    @if(isset($countries) && count($countries)>0)
+                                        @foreach ($countries as $key => $row )
+                                            @php $iso = strtolower($row->iso) @endphp
+                                            <option value="{{ $iso }}" {{ $country == $iso ? 'selected' : '' }} >{{ $row->name }} </option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </form>
-                         
+
+                            @if(isset($cities) && count($cities)>0)
                             <div class="mt-2 list-syle-hover">
                                 <ul class="list-group ">
-                                    <li><a href="{{ route('shop') }}">An item</a></li>
-                                    <li> <a href="{{ route('shop') }}">A second</a></li>
-                                    <li> <a href="{{ route('shop') }}">A second</a></li>
-                                    <li> <a href="{{ route('shop') }}">A second</a></li>
+                                    @foreach ($cities as $key => $city )
+                                    <li><a href="{{ route('search',['country'=>$country,'category' => $category->slug, 'subcategory' => $item->slug]) }}?city={{ $city->slug }}">{{ $city->name }}</a></li>
+                                    @endforeach
+
                                 </ul>
                             </div>
-                            <div class="mt-2 list-syle-hover">
-                                <ul class="list-group ">
-                                    <li><a href="{{ route('shop') }}">An item</a></li>
-                                    <li> <a href="{{ route('shop') }}">A second</a></li>
-                                    <li> <a href="{{ route('shop') }}">A second</a></li>
-                                    <li> <a href="{{ route('shop') }}">A second</a></li>
-                                </ul>
-                            </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>
