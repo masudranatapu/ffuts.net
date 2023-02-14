@@ -11,8 +11,10 @@ class FrontendController extends Controller
 
     public function index()
     {
+        //  dd(app()->getLocale());
+        // dd(session('set_lang'));
+
         $categories = Category::orderBy('name','asc')->get();
-        
         return view('frontend.index',compact('categories'));
     }
 
