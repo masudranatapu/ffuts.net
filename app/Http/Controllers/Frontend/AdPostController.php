@@ -56,7 +56,17 @@ class AdPostController extends Controller
             'title' => 'required|max:255',
             'city' => 'required|max:255',
             'postcode' => 'required|integer',
+            'description' => 'required',
+            'email' => 'required',
         ]);
+
+        if ($request->ad_type_slug == 'job-wanted') {
+            $request->validate([
+                'availability' => 'required',
+                'education' => 'required'
+            ]);
+        }
+        // dd($request->all());
 
         $ad = new Ad();
         $ad->ad_type_id = $request->ad_type_id;
@@ -80,6 +90,14 @@ class AdPostController extends Controller
         $ad->phone = $request->phone;
         $ad->phone_2 = $request->phone_2;
         $ad->contact_name = $request->contact_name;
+
+        // job wanted
+
+        $ad->availability = $request->availability;
+        $ad->education = $request->education;
+        $ad->is_license = $request->is_license ?? 0;
+        $ad->license_info = $request->license_info;
+        $ad->other_contact = $request->other_contact ?? 0;
         $ad->save();
 
         dd($ad);
