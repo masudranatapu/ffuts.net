@@ -14,8 +14,10 @@ Route::get('about', [FrontendController::class, 'about'])->name('about');
 Route::get('terms-conditons', [FrontendController::class, 'termsCondition'])->name('terms.condition');
 Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
 
-//Localization 
+//Localization
 Route::post('lange',[LocalizationController::class, 'setLang'])->name('localization');
+
+Route::get('search/{country?}/{category?}/{subcategory?}', [FrontendController::class, 'search'])->name('search');
 
 // Route::get('create-post/post-type', [AdPostController::class, 'postType'])->name('create-post.step_one');
 // Route::get('create-post/post-type/category', [AdPostController::class, 'postStepTwo'])->name('create-post.step_two');
@@ -30,6 +32,8 @@ Route::middleware(['auth:user', 'verified'])->group(function () {
     Route::get('user/profile', [UserDashboardController::class, 'profile'])->name('user.profile');
 
 });
+
+
 
 Route::post('user-logout', [UserDashboardController::class, 'userLogOut'])->name('user.logout');
 
