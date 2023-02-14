@@ -208,6 +208,12 @@ function langDirection()
     return $lang_direction;
 }
 
+function getCountryCode()
+{
+    return session()->get('local_country') ?? 'bd';
+}
+
+
 function error($name)
 {
     $errors = session()->get('errors', app(ViewErrorBag::class));

@@ -17,7 +17,10 @@ Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name
 //Localization
 Route::post('lange',[LocalizationController::class, 'setLang'])->name('localization');
 
-Route::get('search/{country?}/{category?}/{subcategory?}', [FrontendController::class, 'search'])->name('search');
+Route::post('country',[FrontendController::class, 'setCountry'])->name('setCountry');
+
+
+
 
 // Route::get('create-post/post-type', [AdPostController::class, 'postType'])->name('create-post.step_one');
 // Route::get('create-post/post-type/category', [AdPostController::class, 'postStepTwo'])->name('create-post.step_two');
@@ -27,6 +30,8 @@ Route::get('search/{country?}/{category?}/{subcategory?}', [FrontendController::
 Route::get('create-post/{type?}/{category?}/{subcategory?}', [AdPostController::class, 'create'])->name('post.create');
 Route::post('store-post', [AdPostController::class, 'store'])->name('post.store');
 
+
+
 Route::middleware(['auth:user', 'verified'])->group(function () {
 
     Route::get('user/profile', [UserDashboardController::class, 'profile'])->name('user.profile');
@@ -34,6 +39,8 @@ Route::middleware(['auth:user', 'verified'])->group(function () {
 });
 
 
-
 Route::post('user-logout', [UserDashboardController::class, 'userLogOut'])->name('user.logout');
 
+
+
+Route::get('{country?}/{category?}/{subcategory?}', [FrontendController::class, 'search'])->name('search');

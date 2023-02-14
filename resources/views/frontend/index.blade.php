@@ -8,7 +8,8 @@
 @endpush
 
 @php
-$country = 'bn';
+    $country = getCountryCode();
+
 @endphp
 
 @section('content')
@@ -117,7 +118,7 @@ $country = 'bn';
                                                         <div class="col-md-6 col-lg-6">
                                                         <div class="mt-2">
                                                             <ul class="list-group category_list">
-                                                                <li><a href="{{ route('shop') }}">{{ __($item->slug) }}</a></li>
+                                                                <li><a href="{{ route('search',['country'=>$country,'category' => $category->slug, 'subcategory' => $item->slug]) }}">{{ __($item->slug) }}</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -133,14 +134,14 @@ $country = 'bn';
                                 @if($category->slug == 'jobs')
                                     <div class="col-md-12">
                                         <div class="category_heading text-center">
-                                            <h5><a>{{ __($category->slug) }}</a></h5>
+                                            <h5><a href="{{ route('search',['country'=>$country,'category' => $category->slug]) }}">{{ __($category->slug) }}</a></h5>
                                         </div>
                                         <div class="row g-1">
                                             @foreach ($category->subcategories as $item)
                                                 <div class="col-md-12">
                                                 <div class="mt-2">
                                                     <ul class="list-group category_list">
-                                                        <li><a href="{{ route('shop') }}">{{ __($item->slug) }}</a></li>
+                                                        <li><a href="{{ route('search',['country'=>$country,'category' => $category->slug, 'subcategory' => $item->slug]) }}">{{ __($item->slug) }}</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
