@@ -285,9 +285,9 @@
                         <ul>
                             <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
                             <li><a href="{{ route('privacy.policy') }}">{{ __('privacy') }} |</a></li>
-                            <li><a href="{{ route('terms.condition') }}">{{ __('Terms & Conditions') }} |</a></li>
-                            <li><a href="{{ route('about') }}">{{ __('About') }} |</a></li>
-                            <li><a href="sitemap.html">{{ __('Sitemap') }} </a></li>
+                            <li><a href="{{ route('terms.condition') }}">{{ __('terms & conditions') }} |</a></li>
+                            <li><a href="{{ route('about') }}">{{ __('about') }} |</a></li>
+                            <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
                         </ul>
                     </div>
                 </div>
@@ -484,11 +484,11 @@
             <div class="container">
                 <div class="p-2">
                     <ul>
-                        <li class="list-item text-white"> © 2023 ffuts |</li>
-                        <li> <a href="{{ route('privacy.policy') }}">Privacy |</a></li>
-                        <li><a href="{{ route('terms.condition') }}">Terms & Conditions |</a></li>
-                        <li><a href="{{ route('about') }}">About |</a></li>
-                        <li><a href="sitemap.html">Sitemap </a></li>
+                        <li class="list-item text-white">© {{ date('Y') }} ffuts |</li>
+                        <li> <a href="{{ route('privacy.policy') }}">{{__('privacy')}} |</a></li>
+                        <li><a href="{{ route('terms.condition') }}">{{ __('terms & conditions') }} |</a></li>
+                        <li><a href="{{ route('about') }}">{{ __('about') }} |</a></li>
+                        <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
                     </ul>
                 </div>
             </div>
