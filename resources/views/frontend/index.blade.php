@@ -284,14 +284,17 @@ $country = 'bn';
                                     <option value="hi" @if(Session::get('locale') == 'hi') selected @endif>Hindi</option>
                                 </select>
                             </form>
-                            <ul class="list-group mb-3">
-                                <li>
-                                    <a href="{{ route('shop') }}">English </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('shop') }}">mellemφsten</a>
-                                </li>
-                            </ul>
+
+                            <hr>
+                            <form action="{{ route('localization') }}" method="post">
+                                @csrf
+                                <select name="language" id="language"
+                                    class="form-control form-select language_dropdown mb-3" onchange="this.form.submit()">
+                                    <option value="en" @if(Session::get('locale') == 'en') selected @endif>English</option>
+                                    <option value="hi" @if(Session::get('locale') == 'hi') selected @endif>Hindi</option>
+                                </select>
+                            </form>
+                         
                             <div class="mt-2 list-syle-hover">
                                 <ul class="list-group ">
                                     <li><a href="{{ route('shop') }}">An item</a></li>

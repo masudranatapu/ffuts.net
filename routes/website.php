@@ -16,6 +16,8 @@ Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name
 
 //Localization
 Route::post('lange',[LocalizationController::class, 'setLang'])->name('localization');
+Route::get('/country',[LocalizationController::class, 'country'])->name('country');
+
 
 Route::get('search/{country?}/{category?}/{subcategory?}', [FrontendController::class, 'search'])->name('search');
 
