@@ -285,14 +285,17 @@
                                     <option value="hi" @if(Session::get('locale') == 'hi') selected @endif>Hindi</option>
                                 </select>
                             </form>
-                            <ul class="list-group mb-3">
-                                <li>
-                                    <a href="{{ route('shop') }}">English </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('shop') }}">mellemφsten</a>
-                                </li>
-                            </ul>
+
+                            <hr>
+                            <form action="{{ route('localization') }}" method="post">
+                                @csrf
+                                <select name="language" id="language"
+                                    class="form-control form-select language_dropdown mb-3" onchange="this.form.submit()">
+                                    <option value="en" @if(Session::get('locale') == 'en') selected @endif>English</option>
+                                    <option value="hi" @if(Session::get('locale') == 'hi') selected @endif>Hindi</option>
+                                </select>
+                            </form>
+                         
                             <div class="mt-2 list-syle-hover">
                                 <ul class="list-group ">
                                     <li><a href="{{ route('shop') }}">An item</a></li>
@@ -319,9 +322,9 @@
                         <ul>
                             <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
                             <li><a href="{{ route('privacy.policy') }}">{{ __('privacy') }} |</a></li>
-                            <li><a href="{{ route('terms.condition') }}">{{ __('Terms & Conditions') }} |</a></li>
-                            <li><a href="{{ route('about') }}">{{ __('About') }} |</a></li>
-                            <li><a href="sitemap.html">{{ __('Sitemap') }} </a></li>
+                            <li><a href="{{ route('terms.condition') }}">{{ __('terms & conditions') }} |</a></li>
+                            <li><a href="{{ route('about') }}">{{ __('about') }} |</a></li>
+                            <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
                         </ul>
                     </div>
                 </div>
@@ -518,11 +521,11 @@
             <div class="container">
                 <div class="p-2">
                     <ul>
-                        <li class="list-item text-white"> © 2023 ffuts |</li>
-                        <li> <a href="{{ route('privacy.policy') }}">Privacy |</a></li>
-                        <li><a href="{{ route('terms.condition') }}">Terms & Conditions |</a></li>
-                        <li><a href="{{ route('about') }}">About |</a></li>
-                        <li><a href="sitemap.html">Sitemap </a></li>
+                        <li class="list-item text-white">© {{ date('Y') }} ffuts |</li>
+                        <li> <a href="{{ route('privacy.policy') }}">{{__('privacy')}} |</a></li>
+                        <li><a href="{{ route('terms.condition') }}">{{ __('terms & conditions') }} |</a></li>
+                        <li><a href="{{ route('about') }}">{{ __('about') }} |</a></li>
+                        <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
                     </ul>
                 </div>
             </div>

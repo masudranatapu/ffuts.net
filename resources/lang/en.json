@@ -1,5 +1,7 @@
 {
-
+    "privacy" : "Privacy",
+    "terms & conditions" : "Terms & Conditions",
+    "sitemap":"Sitemap",
     "community":"Community",
     "housing":"Housing",
     "job-offered": "Job Offered",
@@ -54,7 +56,6 @@
     "posting_rules": "Posting Rules",
     "about": "About",
     "terms": "Terms",
-    "privacy": "Privacy",
     "purchase_plan": "Purchase Plan",
     "plans": "Plans",
     "pricing_plan": "Pricing Plan",

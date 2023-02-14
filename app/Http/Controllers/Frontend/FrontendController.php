@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Http\Controllers\Controller;
+use Google\Service\Dfareporting\Country;
 use Modules\Category\Entities\Category;
 use Modules\Category\Entities\SubCategory;
 
@@ -15,8 +17,9 @@ class FrontendController extends Controller
         //  dd(app()->getLocale());
         // dd(session('set_lang'));
 
+        $countries =  DB::table('country')->orderBy('name', 'asc')->get();
         $categories = Category::orderBy('name','asc')->get();
-        return view('frontend.index',compact('categories'));
+        return view('frontend.index',compact('categories', 'countries'));
     }
 
     public function setCountry(Request $request){
