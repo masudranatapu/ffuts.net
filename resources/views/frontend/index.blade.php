@@ -243,17 +243,14 @@
                 <div class="col-md-2">
                     <div class="sidebar_right">
                         <div class="heading3 text-center">
-                            <select name="language" id="language"
-                                class="form-control form-select language_dropdown mb-3">
-                                <option value="">English</option>
-                                <option value="">Hindi</option>
-                                <option value="">Latvian</option>
-                                <option value="">Polish</option>
-                                <option value="">Tamil</option>
-                                <option value="">Danish</option>
-                                <option value="">Albanian</option>
-                                <option value="">Luganda</option>
-                            </select>
+                            <form action="{{ route('localization') }}" method="post">
+                                @csrf
+                                <select name="language" id="language"
+                                    class="form-control form-select language_dropdown mb-3" onchange="this.form.submit()">
+                                    <option value="en" @if(Session::get('locale') == 'en') selected @endif>English</option>
+                                    <option value="hi" @if(Session::get('locale') == 'hi') selected @endif>Hindi</option>
+                                </select>
+                            </form>
                             <ul class="list-group mb-3">
                                 <li>
                                     <a href="{{ route('shop') }}">English </a>

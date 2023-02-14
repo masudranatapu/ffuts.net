@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\AdPostController;
 use App\Http\Controllers\Frontend\UserDashboardController;
+use App\Http\Controllers\Frontend\LocalizationController;
+
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('shop', [FrontendController::class, 'shop'])->name('shop');
@@ -13,7 +15,7 @@ Route::get('terms-conditons', [FrontendController::class, 'termsCondition'])->na
 Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
 
 //Localization 
-Route::get('lange/{locale}',[LocalizationController::class, 'setLang'])->name('localization');
+Route::post('lange',[LocalizationController::class, 'setLang'])->name('localization');
 
 // Route::get('create-post/post-type', [AdPostController::class, 'postType'])->name('create-post.step_one');
 // Route::get('create-post/post-type/category', [AdPostController::class, 'postStepTwo'])->name('create-post.step_two');
