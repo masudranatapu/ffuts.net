@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 @endpush
 
+@php
+$country = 'bn';
+@endphp
+
 @section('content')
     <div class="template_wrap mt-1 d-none d-md-block">
         <div class="container">
@@ -99,25 +103,54 @@
                         <h5><a href="{{ route('index') }}">Ffuts.net</a></h5>
                     </div>
                     <div class="main_body">
-                        <div class="row g-2">
-                            @foreach($categories as $key => $category)
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="category_heading text-center">
-                                        <h5>{{ __($category->slug) }}</h5>
-                                    </div>
-                                    <div class="row g-1">
-                                        @foreach ($category->subcategories as $item)
-                                            <div class="col-md-6 col-lg-6">
-                                            <div class="mt-2">
-                                                <ul class="list-group category_list">
-                                                    <li><a href="{{ route('shop') }}">{{ __($item->slug) }}</a></li>
-                                                </ul>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    @foreach($categories as $key => $category)
+                                        @if($category->slug != 'jobs')
+                                            <div class="col-md-6">
+                                                <div class="category_heading text-center">
+                                                    <h5><a href="{{ route('search',['country'=>$country,'category' => $category->slug]) }}">{{ __($category->slug) }}</a></h5>
+                                                </div>
+                                                <div class="row g-1">
+                                                    @foreach ($category->subcategories as $item)
+                                                        <div class="col-md-6 col-lg-6">
+                                                        <div class="mt-2">
+                                                            <ul class="list-group category_list">
+                                                                <li><a href="{{ route('shop') }}">{{ __($item->slug) }}</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    @endforeach
+                                                </div>
                                             </div>
-                                        </div>
-                                        @endforeach
-                                    </div>
+                                        @endif
+                                    @endforeach
                                 </div>
+                            </div>
+                            <div class="col-md-3">
+                                @foreach($categories as $key => $category)
+                                @if($category->slug == 'jobs')
+                                    <div class="col-md-12">
+                                        <div class="category_heading text-center">
+                                            <h5><a>{{ __($category->slug) }}</a></h5>
+                                        </div>
+                                        <div class="row g-1">
+                                            @foreach ($category->subcategories as $item)
+                                                <div class="col-md-12">
+                                                <div class="mt-2">
+                                                    <ul class="list-group category_list">
+                                                        <li><a href="{{ route('shop') }}">{{ __($item->slug) }}</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
                             @endforeach
+                            </div>
+
 
                             {{-- <div class="col-md-6 col-lg-4">
                                 <div class="category_heading text-center">

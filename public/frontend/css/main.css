@@ -369,7 +369,7 @@ body {
 }
 
 .main_body {
-    background: #f6f6f6;
+    background: #fff;
     padding: 11px 18px;
 }
 
@@ -1178,7 +1178,6 @@ body {
     background-color: #dedede !important;
     opacity: .7;
 }
-
 
 
 
