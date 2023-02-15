@@ -45,4 +45,4 @@ Route::post('user-logout', [UserDashboardController::class, 'userLogOut'])->name
 
 
 
-Route::get('{country?}/{category?}/{subcategory?}', [FrontendController::class, 'search'])->name('search');
+Route::get('ad/{country?}/{category?}/{subcategory?}', [FrontendController::class, 'search'])->name('search');
