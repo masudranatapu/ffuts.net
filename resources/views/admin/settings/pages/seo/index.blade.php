@@ -59,6 +59,7 @@
                         <th width="50">#</th>
                         <th style="max-width: 300px;"> {{ __('page_name') }} </th>
                         <th style="max-width: 300px;"> {{ __('meta_title') }} </th>
+                        <th style="max-width: 300px;"> {{ __('Meta Keyword') }} </th>
                         <th style="max-width: 500px;"> 
                             {{ __('meta_description') }}
                             ({{ request('lang_query') ?? __('en') }})
@@ -80,6 +81,11 @@
                                 <td style="max-width: 300px; white-space: normal">
                                     @foreach ($seo->contents as $content)
                                         {{ $content->title }}
+                                    @endforeach
+                                </td>
+                                <td style="max-width: 300px; white-space: normal">
+                                    @foreach ($seo->contents as $content)
+                                        {{ $content->keywords }}
                                     @endforeach
                                 </td>
                                 <td style="max-width: 500px; white-space: normal">
