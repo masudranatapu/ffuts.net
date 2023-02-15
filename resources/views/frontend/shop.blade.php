@@ -5,7 +5,9 @@
 
 @push('style')
 @endpush
-
+@section('title')
+{{ __('Shop') }}
+@endsection
 @section('content')
     <div class="main_template">
         <div id="mySidenav" class="container-fluid sidenav sidebar_menu">

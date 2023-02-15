@@ -7,7 +7,9 @@
 @push('script')
 
 @endpush
-
+@section('title')
+{{ __('Details') }}
+@endsection
 @section('breadcrumb')
     <ul>
         <li><a href="#">Jerusalem ></a></li>

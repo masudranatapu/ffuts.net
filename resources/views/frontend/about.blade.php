@@ -5,7 +5,9 @@
 
 @push('style')
 @endpush
-
+@section('title')
+{{ __('about') }}
+@endsection
 @section('breadcrumb')
     <ul>
         <li>About</li>

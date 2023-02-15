@@ -5,7 +5,9 @@
 
 @push('style')
 @endpush
-
+@section('title')
+{{ __('Terms & Conditon') }}
+@endsection
 @section('breadcrumb')
     <ul>
         <li>Terms & Conditions</li>

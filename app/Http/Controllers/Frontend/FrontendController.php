@@ -20,11 +20,7 @@ class FrontendController extends Controller
         $categories = Category::orderBy('id','asc')->get();
         $coutry_iso = strtoupper(getCountryCode());
 
-
-
         $country = DB::table('country')->where('iso', $coutry_iso)->first();
-
-
 
         $cities = DB::table('city')->where('country_id',$country->id)->get();
 

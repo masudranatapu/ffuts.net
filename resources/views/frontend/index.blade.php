@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endpush
-
+@section('title')
+     {{ config('app.name') }}
+@endsection
 @php
     $country = getCountryCode();
 
