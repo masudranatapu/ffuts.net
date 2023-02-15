@@ -55,7 +55,7 @@
                             {{ __('Ad Types') }}
                         </x-sidebar-list>
 
-                        <x-sidebar-list :linkActive="Route::is('city.*') ? true : false" route="city.index" icon="fa fa-bars">
+                        <x-sidebar-list :linkActive="Route::is('city.*') ? true : false" route="city.index" icon="fa fa-plus-square">
                             {{ __('City') }}
                         </x-sidebar-list>
 

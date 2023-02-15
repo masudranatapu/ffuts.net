@@ -63,8 +63,8 @@
                                     <x-forms.label name="Status" required="true" class="col-sm-3 col-form-label" />
                                     <div class="col-sm-9">
                                         <select name="status" id="status" class="form-control">
-                                            <option value="1" {{  $city->status == 1? "selcted" : "" }}>Active</option>
-                                            <option value="0" {{  $city->Status == 0? "selcted" : "" }}>Inactive</option>
+                                            <option value="1" {{  $city->status == 1? "selected" : "" }}>Active</option>
+                                            <option value="0" {{  $city->status == 0? "selected" : "" }}>Inactive</option>
                                         </select>
                                         @error('status')
                                             <span class="invalid-feedback"
@@ -75,7 +75,7 @@
                                 <div class="form-group row">
                                     <div class="offset-sm-3 col-sm-4">
                                         <button type="submit" class="btn btn-success">
-                                            <i class="fas fa-plus"></i>&nbsp; {{ __('create') }}
+                                            <i class="fas fa-plus"></i>&nbsp; {{ __('Update') }}
                                         </button>
                                     </div>
                                 </div>

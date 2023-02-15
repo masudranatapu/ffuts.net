@@ -212,7 +212,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/',[CityController::class,'index'])->name('city.index');
             Route::get('/create',[CityController::class,'create'])->name('city.create');
             Route::post('/store',[CityController::class,'store'])->name('city.store');
-            Route::get('/edit/{slug}',[CityController::class,'edit'])->name('city.edit');
+            Route::get('/edit/{id}',[CityController::class,'edit'])->name('city.edit');
             Route::post('/update/{id}',[CityController::class,'update'])->name('city.update');
             Route::delete('/delete/{id}',[CityController::class,'delete'])->name('city.delete');
         });
