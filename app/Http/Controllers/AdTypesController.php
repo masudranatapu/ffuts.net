@@ -74,16 +74,16 @@ class AdTypesController extends Controller
     }
 
     public function delete($id){
-        // DB::beginTransaction();
-        // try {
+        DB::beginTransaction();
+        try {
             $ad_type = AdType::find($id);
             $ad_type->delete();
         
-        // } catch (\Exception $e) {
-        //     DB::rollback();
-        //     flashSuccess('Data not Deleted');
-        //     return redirect()->route('adtypes.index');
-        // }
+        } catch (\Exception $e) {
+            DB::rollback();
+            flashSuccess('Data not Deleted');
+            return redirect()->route('adtypes.index');
+        }
         DB::commit();
         flashSuccess('Data Deleted Successfully');
         return redirect()->route('adtypes.index');    

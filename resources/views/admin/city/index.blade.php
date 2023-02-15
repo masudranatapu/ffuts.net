@@ -5,7 +5,7 @@ $user = auth()->user();
 @extends('admin.layouts.app')
 
 @section('title')
-    {{ __('Ad Types') }}
+    {{ __('City') }}
 @endsection
 
 @section('content')
@@ -15,11 +15,11 @@ $user = auth()->user();
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h3 class="card-title" style="line-height: 36px;">{{ __('Ad Types list') }}</h3>
+                            <h3 class="card-title" style="line-height: 36px;">{{ __('City list') }}</h3>
                             <div>
-                                <a href="{{ route('adtypes.create') }}"
+                                <a href="{{ route('city.create') }}"
                                          class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
-                                class="fas fa-plus"></i>&nbsp; {{ __('Ad Type') }}</a>
+                                class="fas fa-plus"></i>&nbsp; {{ __('City') }}</a>
                                 
                             </div>
                         </div>
@@ -29,23 +29,32 @@ $user = auth()->user();
                             <thead>
                                 <tr class="text-center">
                                     <th>{{ __('Sl.No') }}</th>
-                                    <th>{{ __('Name') }}</th>
+                                    <th>{{ __('Country Name') }}</th>
+                                    <th>{{ __('City Name') }}</th>
                                     <th>{{ __('Slug') }}</th>
-                                    <th>{{ __('Time') }}</th>
+                                    <th>{{ __('Order No') }}</th>
+                                    <th>{{ __('Status') }}</th>
                                     <th>{{ __('Action') }}</th>
                                     
                                 </tr>
                             </thead>
                             <tbody id="sortable">
-                                @foreach($ad_types as $key => $value)
+                                {{-- @foreach($cities as $key => $value) --}}
                                     <tr class="text-center">
-                                        <td>{{  $ad_types->firstItem() + $key  }}</td>
+                                        <td>{{  $cities->firstItem() + $key  }}</td>
+                                        <td>{{ $value->country_id }}</td>
                                         <td>{{ $value->name }}</td>
                                         <td>{{ $value->slug }}</td>
-                                        <td>{{ date('d M Y',strtotime($value->created_at)) }}</td>
+                                        <td>{{ $value->order_id }}</td>
                                         <td>
-                                            <a href="{{ route('adtypes.edit',$value->slug) }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
-                                            <form action="{{ route('adtypes.delete', $value->id) }}"
+                                            @if($value->status == 1)
+                                                <span class="badge badge-success">Active</span>
+                                            @else
+                                                <span class="badge badge-danger">Inactive</span>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('city.edit',$value->slug) }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                                            <form action="{{ route('city.delete', $value->id) }}"
                                                     method="POST" class="d-inline">
                                                     @method('DELETE')
                                                     @csrf
@@ -54,16 +63,15 @@ $user = auth()->user();
                                                         onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');"
                                                         class="btn bg-danger mr-1"><i class="fas fa-trash"></i></button>
                                             </form>
-                                            {{-- <a href="{{ route('adtypes.delete',$value->id) }}" id="deleteData" class="btn btn-danger"><i class="fas fa-trash"></i></a> --}}
                                         </td>
                                     </tr>
-                                @endforeach
+                                {{-- @endforeach --}}
                             </tbody>
                         </table>
                     </div>
                         <div class="card-footer ">
                             <div class="d-flex justify-content-center">
-                                {{ $ad_types->links() }}
+                                {{-- {{ $cities->links() }} --}}
                             </div>
                         </div>
                 </div>

@@ -54,7 +54,9 @@
                         <x-sidebar-list :linkActive="Route::is('adtypes.*') ? true : false" route="adtypes.index" icon="fa fa-bars">
                             {{ __('Ad Types') }}
                         </x-sidebar-list>
-                    
+                        <x-sidebar-list :linkActive="Route::is('city.*') ? true : false" route="city.index" icon="fa fa-bars">
+                            {{ __('Ad Types') }}
+                        </x-sidebar-list>
                   
                     @if (Module::collections()->has('Category') && (userCan('category.view') || userCan('subcategory.view')))
                         <x-admin.sidebar-list :linkActive="Route::is('module.category.*') || Route::is('module.subcategory.*') ? true : false" route="module.category.index" icon="fas fa-th">
@@ -66,7 +68,7 @@
                             {{ __('custom_field') }}
                         </x-admin.sidebar-list>
                     @endif
-                    @if (Module::collections()->has('Location'))
+                    {{-- @if (Module::collections()->has('Location'))
                         @if (userCan('city.view') || userCan('town.view'))
                             <x-sidebar-dropdown :linkActive="Route::is('module.city.*') || Route::is('module.town.*') ? true : false" :subLinkActive="Route::is('module.city.*') || Route::is('module.town.*') ? true : false" icon="fas fa-location-arrow">
                                 @slot('title')
@@ -92,7 +94,7 @@
 
                             </x-sidebar-dropdown>
                         @endif
-                    @endif
+                    @endif --}}
                     @if (Module::collections()->has('Brand') && userCan('brand.view'))
                         <x-admin.sidebar-list :linkActive="Route::is('module.brand.*') ? true : false" route="module.brand.index" icon="fas fa-award">
                             {{ __('brand') }}

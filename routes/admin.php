@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\AdTypesController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\OrderController;
@@ -205,6 +206,15 @@ Route::prefix('admin')->group(function () {
             Route::get('/edit/{slug}',[AdTypesController::class,'edit'])->name('adtypes.edit');
             Route::post('/update/{slug}',[AdTypesController::class,'update'])->name('adtypes.update');
             Route::delete('/delete/{id}',[AdTypesController::class,'delete'])->name('adtypes.delete');
+        });
+
+        Route::prefix('city')->group(function(){
+            Route::get('/',[CityController::class,'index'])->name('city.index');
+            Route::get('/create',[CityController::class,'create'])->name('city.create');
+            Route::post('/store',[CityController::class,'store'])->name('city.store');
+            Route::get('/edit/{slug}',[CityController::class,'edit'])->name('city.edit');
+            Route::post('/update/{slug}',[CityController::class,'update'])->name('city.update');
+            Route::get('/delete/{id}',[CityController::class,'delete'])->name('city.delete');
         });
 
     });
