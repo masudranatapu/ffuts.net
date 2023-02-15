@@ -17,16 +17,15 @@
                     </div>
                     <div class="row pt-3 pb-4">
                         <div class="col-md-6 offset-md-3">
-                            <form class="form-horizontal" action="{{ route('city.store') }}" method="POST"
-                                enctype="multipart/form-data">
+                            <form class="form-horizontal" action="{{ route('city.store',$city->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                
+
                                 <div class="form-group row">
                                     <x-forms.label name="City Name" required="true" class="col-sm-3 col-form-label" />
                                     <div class="col-sm-9">
                                         <input value="{{ old('name') }}" name="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror"
-                                            placeholder="{{ __('City Name') }}">
+                                            placeholder="{{ __('City Name') }}" value="{{ $city->name }}">
                                         @error('name')
                                             <span class="invalid-feedback"
                                                 role="alert"><strong>{{ $message }}</strong></span>

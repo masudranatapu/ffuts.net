@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Admin;
 use DB;
 use App\Models\City;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CityController extends Controller
 {
     public function index(){
-       
-        $cities = DB::table('city')->orderBy('name','asc')->paginate(8);
-        
+
+        $cities = City::orderBy('name','asc')->paginate(20);
         return view('admin.city.index',compact('cities'));
     }
 
@@ -53,8 +53,8 @@ class CityController extends Controller
     public function edit($slug)
     {
         $city = City::where('slug', $slug)->first();
-        $country = DB::table('country')->orderBy('name', 'asc')->get();
-        return view('admin.city.edit', compact('city', 'country'));
+        $countries = DB::table('country')->orderBy('name', 'asc')->get();
+        return view('admin.city.edit', compact('city', 'countries'));
     }
 
     public function update(Request $request, $slug)

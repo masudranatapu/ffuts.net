@@ -20,7 +20,7 @@ $user = auth()->user();
                                 <a href="{{ route('city.create') }}"
                                          class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
                                 class="fas fa-plus"></i>&nbsp; {{ __('City') }}</a>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -35,14 +35,14 @@ $user = auth()->user();
                                     <th>{{ __('Order No') }}</th>
                                     <th>{{ __('Status') }}</th>
                                     <th>{{ __('Action') }}</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody id="sortable">
-                                {{-- @foreach($cities as $key => $value) --}}
+                                @foreach($cities as $key => $value)
                                     <tr class="text-center">
                                         <td>{{  $cities->firstItem() + $key  }}</td>
-                                        <td>{{ $value->country_id }}</td>
+                                        <td>{{ $value->country->name ?? '' }}</td>
                                         <td>{{ $value->name }}</td>
                                         <td>{{ $value->slug }}</td>
                                         <td>{{ $value->order_id }}</td>
@@ -51,7 +51,7 @@ $user = auth()->user();
                                                 <span class="badge badge-success">Active</span>
                                             @else
                                                 <span class="badge badge-danger">Inactive</span>
-                                        </td>
+                                            @endif                                        </td>
                                         <td>
                                             <a href="{{ route('city.edit',$value->slug) }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
                                             <form action="{{ route('city.delete', $value->id) }}"
@@ -65,13 +65,13 @@ $user = auth()->user();
                                             </form>
                                         </td>
                                     </tr>
-                                {{-- @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                         <div class="card-footer ">
                             <div class="d-flex justify-content-center">
-                                {{-- {{ $cities->links() }} --}}
+                                {{ $cities->links() }}
                             </div>
                         </div>
                 </div>

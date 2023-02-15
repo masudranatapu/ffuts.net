@@ -211,16 +211,22 @@ function langDirection()
 
 function getCountryCode()
 {
+
     if(session()->get('local_country')){
         return session()->get('local_country');
     }else{
+
+        $local_country = 'bd';
         $country = DB::table('country')->where('is_default',1)->first();
+
         if($country){
             $local_country = strtolower($country->iso);
-        }else{
-            $local_country = 'bd';
+
         }
-        return session()->get($local_country);
+         session()->put('local_country',$local_country);
+
+         return session()->get('local_country');
+
     }
 
 }

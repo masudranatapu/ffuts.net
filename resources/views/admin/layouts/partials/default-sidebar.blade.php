@@ -54,10 +54,11 @@
                         <x-sidebar-list :linkActive="Route::is('adtypes.*') ? true : false" route="adtypes.index" icon="fa fa-bars">
                             {{ __('Ad Types') }}
                         </x-sidebar-list>
+
                         <x-sidebar-list :linkActive="Route::is('city.*') ? true : false" route="city.index" icon="fa fa-bars">
-                            {{ __('Ad Types') }}
+                            {{ __('City') }}
                         </x-sidebar-list>
-                  
+
                     @if (Module::collections()->has('Category') && (userCan('category.view') || userCan('subcategory.view')))
                         <x-admin.sidebar-list :linkActive="Route::is('module.category.*') || Route::is('module.subcategory.*') ? true : false" route="module.category.index" icon="fas fa-th">
                             {{ __('category') }}
