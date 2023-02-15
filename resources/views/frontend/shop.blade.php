@@ -1,7 +1,6 @@
 @extends('frontend.layouts.app', ['nav' => 'yes'])
 
-@section('meta')
-@endsection
+
 
 @push('style')
 @endpush

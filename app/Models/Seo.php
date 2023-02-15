@@ -24,6 +24,6 @@ class Seo extends Model
      */
     public function contents()
     {
-        return $this->hasMany(SeoPageContent::class, 'page_id', 'id');
+        return $this->hasOne(SeoPageContent::class, 'page_id', 'id');
     }
 }
