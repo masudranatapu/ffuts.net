@@ -17,7 +17,7 @@ class FrontendController extends Controller
 
 
         $countries =  DB::table('country')->orderBy('name', 'asc')->get();
-        $categories = Category::orderBy('name','asc')->get();
+        $categories = Category::orderBy('id','asc')->get();
         $coutry_iso = strtoupper(getCountryCode());
 
 
