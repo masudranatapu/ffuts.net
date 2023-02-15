@@ -11,7 +11,9 @@
         }
     </style>
 @endpush
-
+@section('title')
+{{ __('Sign In') }}
+@endsection 
 @section('breadcrumb')
     <ul>
         <li>Jerusalem > </li>

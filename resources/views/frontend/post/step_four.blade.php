@@ -2,7 +2,9 @@
 
 @push('style')
 @endpush
-
+@section('title')
+{{ __('Post') }}
+@endsection
 @section('breadcrumb')
     <ul>
         <li>Ffuts ></li>

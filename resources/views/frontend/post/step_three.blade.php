@@ -2,7 +2,9 @@
 
 @push('style')
 @endpush
-
+@section('title')
+{{ __('Sub Category') }}
+@endsection
 @section('breadcrumb')
     <ul>
         <li>{{ __('ffuts') }} ></li>

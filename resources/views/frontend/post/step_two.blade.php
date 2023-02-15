@@ -1,5 +1,7 @@
 @extends('frontend.layouts.app', ['nav' => 'yes'])
-
+@section('title')
+{{ __('Category') }}
+@endsection
 @push('style')
 @endpush
 

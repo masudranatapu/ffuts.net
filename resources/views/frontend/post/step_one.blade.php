@@ -1,5 +1,8 @@
 @extends('frontend.layouts.app', ['nav' => 'yes'])
 
+@section('title')
+{{ __('Post Type') }}
+@endsection
 @push('style')
 @endpush
 
