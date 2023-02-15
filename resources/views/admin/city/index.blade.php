@@ -53,7 +53,7 @@ $user = auth()->user();
                                                 <span class="badge badge-danger">Inactive</span>
                                             @endif                                        </td>
                                         <td>
-                                            <a href="{{ route('city.edit',$value->slug) }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                                            <a href="{{ route('city.edit',$value->id) }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
                                             <form action="{{ route('city.delete', $value->id) }}"
                                                     method="POST" class="d-inline">
                                                     @method('DELETE')

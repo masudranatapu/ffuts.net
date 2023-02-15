@@ -50,9 +50,9 @@ class CityController extends Controller
         return redirect()->route('city.index');
     }
 
-    public function edit($slug)
+    public function edit($id)
     {
-        $city = City::where('slug', $slug)->first();
+        $city = City::find($id);
         $countries = DB::table('country')->orderBy('name', 'asc')->get();
         return view('admin.city.edit', compact('city', 'countries'));
     }
