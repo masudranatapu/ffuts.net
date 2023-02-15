@@ -213,8 +213,8 @@ Route::prefix('admin')->group(function () {
             Route::get('/create',[CityController::class,'create'])->name('city.create');
             Route::post('/store',[CityController::class,'store'])->name('city.store');
             Route::get('/edit/{slug}',[CityController::class,'edit'])->name('city.edit');
-            Route::post('/update/{slug}',[CityController::class,'update'])->name('city.update');
-            Route::get('/delete/{id}',[CityController::class,'delete'])->name('city.delete');
+            Route::post('/update/{id}',[CityController::class,'update'])->name('city.update');
+            Route::delete('/delete/{id}',[CityController::class,'delete'])->name('city.delete');
         });
 
     });

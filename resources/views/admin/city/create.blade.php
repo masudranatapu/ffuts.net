@@ -1,4 +1,9 @@
 @extends('admin.layouts.app')
+@section('style')
+    <!-- Bootstrap-Iconpicker -->
+   
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+@endsection
 
 @section('title')
     {{ __('City Create') }}
@@ -36,7 +41,7 @@
                                 <div class="form-group row">
                                     <x-forms.label name="Country" required="true" class="col-sm-3 col-form-label" />
                                     <div class="col-sm-9">
-                                        <select name="country_id" id="country_id" class="form-control">
+                                        <select name="country_id" id="country_id" class="form-control select2">
                                             <option value="" disabled selected>Select One</option>
                                             @foreach ($countries as $country)
                                                 <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -89,55 +94,11 @@
     </div>
 @endsection
 
-@section('style')
-    <!-- Bootstrap-Iconpicker -->
-    <link rel="stylesheet"
-        href="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/css/bootstrap-iconpicker.min.css" />
-    <link rel="stylesheet" href="{{ asset('backend') }}/css/dropify.min.css" />
-@endsection
+
 
 @section('script')
-
-    <!-- Bootstrap-Iconpicker Bundle -->
-    <script type="text/javascript"
-        src="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/js/bootstrap-iconpicker.bundle.min.js"></script>
-    <script type="text/javascript"
-        src="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/js/bootstrap-iconpicker.min.js"></script>
-    <script src="{{ asset('backend') }}/js/dropify.min.js"></script>
-
-    <script>
-        $('#target').iconpicker({
-            align: 'left', // Only in div tag
-            arrowClass: 'btn-danger',
-            arrowPrevIconClass: 'fas fa-angle-left',
-            arrowNextIconClass: 'fas fa-angle-right',
-            cols: 15,
-            footer: true,
-            header: true,
-            icon: 'fas fa-bomb',
-            iconset: 'fontawesome5',
-            labelHeader: '{0} of {1} pages',
-            labelFooter: '{0} - {1} of {2} icons',
-            placement: 'bottom', // Only in button tag
-            rows: 5,
-            search: true,
-            searchText: 'Search',
-            selectedClass: 'btn-success',
-            unselectedClass: ''
-        });
-
-        $('#target').on('change', function(e) {
-            $('#icon').val(e.icon)
-        });
-
-        // dropify
-        var drEvent = $('.dropify').dropify();
-
-        drEvent.on('dropify.error.fileSize', function(event, element) {
-            alert('Filesize error message!');
-        });
-        drEvent.on('dropify.error.imageFormat', function(event, element) {
-            alert('Image format error message!');
-        });
-    </script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+$(document).ready(function() {
+    $(".select2").select2();
+});
 @endsection

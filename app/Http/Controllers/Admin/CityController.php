@@ -57,7 +57,7 @@ class CityController extends Controller
         return view('admin.city.edit', compact('city', 'countries'));
     }
 
-    public function update(Request $request, $slug)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'name'  => 'required',
@@ -67,7 +67,7 @@ class CityController extends Controller
         ]);
         DB::beginTransaction();
         try {
-            $city = City::where('slug', $slug)->first();
+            $city = City::find($id);
             $city->name = $request->name;
             $city->slug = Str::slug($request->name);
             $city->country_id = $request->country_id;

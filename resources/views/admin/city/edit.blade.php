@@ -10,20 +10,20 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title" style="line-height: 36px;">{{ __('City') }}</h3>
+                        <h3 class="card-title" style="line-height: 36px;">{{ __('City Edit') }}</h3>
                         <a href="{{ route('city.index') }}"
                             class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
                                 class="fas fa-arrow-left"></i>&nbsp; {{ __('back') }}</a>
                     </div>
                     <div class="row pt-3 pb-4">
                         <div class="col-md-6 offset-md-3">
-                            <form class="form-horizontal" action="{{ route('city.store',$city->id) }}" method="POST" enctype="multipart/form-data">
+                            <form class="form-horizontal" action="{{ route('city.update',$city->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-group row">
                                     <x-forms.label name="City Name" required="true" class="col-sm-3 col-form-label" />
                                     <div class="col-sm-9">
-                                        <input value="{{ old('name') }}" name="name" type="text"
+                                        <input value="{{ $city->name }}" name="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror"
                                             placeholder="{{ __('City Name') }}" value="{{ $city->name }}">
                                         @error('name')
@@ -38,7 +38,7 @@
                                         <select name="country_id" id="country_id" class="form-control">
                                             <option value="" disabled selected>Select One</option>
                                             @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                <option value="{{ $country->id }}" {{ $city->country_id == $country->id? "selected" : "" }}>{{ $country->name }}</option>
                                             @endforeach
                                         </select>
                                         @error('country_id')
@@ -50,7 +50,7 @@
                                 <div class="form-group row">
                                     <x-forms.label name="Order No" required="true" class="col-sm-3 col-form-label" />
                                     <div class="col-sm-9">
-                                        <input value="{{ old('order_id') }}" name="order_id" type="text"
+                                        <input value="{{ $city->order_id}}" name="order_id" type="text"
                                             class="form-control @error('order_id') is-invalid @enderror"
                                             placeholder="{{ __('Ordre No') }}">
                                         @error('order_id')
@@ -63,8 +63,8 @@
                                     <x-forms.label name="Status" required="true" class="col-sm-3 col-form-label" />
                                     <div class="col-sm-9">
                                         <select name="status" id="status" class="form-control">
-                                            <option value="1">Active</option>
-                                            <option value="0">Inactive</option>
+                                            <option value="1" {{  $city->status == 1? "selcted" : "" }}>Active</option>
+                                            <option value="0" {{  $city->Status == 0? "selcted" : "" }}>Inactive</option>
                                         </select>
                                         @error('status')
                                             <span class="invalid-feedback"
