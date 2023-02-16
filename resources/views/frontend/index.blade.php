@@ -117,18 +117,18 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="row">
-                                    @foreach($categories as $key => $category)
-                                        @if($category->slug != 'jobs')
+                                    @foreach($ad_types as $key => $ad_type)
+                                        @if($ad_type->slug != 'jobs')
                                             <div class="col-md-6">
                                                 <div class="category_heading text-center">
-                                                    <h5><a href="{{ route('search',['country'=>$country,'category' => $category->slug]) }}">{{ __($category->slug) }}</a></h5>
+                                                    <h5><a href="{{ route('search',['country'=>$ad_type,'ad_type' => $ad_type->slug]) }}">{{ __($ad_type->slug) }}</a></h5>
                                                 </div>
                                                 <div class="row g-1">
-                                                    @foreach ($category->subcategories as $item)
+                                                    @foreach ($ad_type->categories as $item)
                                                         <div class="col-md-6 col-lg-6">
                                                         <div class="mt-2">
                                                             <ul class="list-group category_list">
-                                                                <li><a href="{{ route('search',['country'=>$country,'category' => $category->slug, 'subcategory' => $item->slug]) }}">{{ __($item->slug) }}</a></li>
+                                                                <li><a href="{{ route('search',['country'=>$country,'ad_type' => $ad_type->slug, 'categories' => $item->slug]) }}">{{ __($item->slug) }}</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -140,18 +140,18 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                @foreach($categories as $key => $category)
-                                @if($category->slug == 'jobs')
+                                @foreach($ad_types as $key => $ad_type)
+                                @if($ad_type->slug == 'jobs')
                                     <div class="col-md-12">
                                         <div class="category_heading text-center">
-                                            <h5><a href="{{ route('search',['country'=>$country,'category' => $category->slug]) }}">{{ __($category->slug) }}</a></h5>
+                                            <h5><a href="{{ route('search',['country'=>$country,'ad_type' => $ad_type->slug]) }}">{{ __($ad_type->slug) }}</a></h5>
                                         </div>
                                         <div class="row g-1">
-                                            @foreach ($category->subcategories as $item)
+                                            @foreach ($ad_type->categories as $item)
                                                 <div class="col-md-12">
                                                 <div class="mt-2">
                                                     <ul class="list-group category_list">
-                                                        <li><a href="{{ route('search',['country'=>$country,'category' => $category->slug, 'subcategory' => $item->slug]) }}">{{ __($item->slug) }}</a></li>
+                                                        <li><a href="{{ route('search',['country'=>$country,'ad_type' => $ad_type->slug, 'categories' => $item->slug]) }}">{{ __($item->slug) }}</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -313,7 +313,7 @@
                             <div class="mt-2 list-syle-hover">
                                 <ul class="list-group ">
                                     @foreach ($cities as $key => $city )
-                                    <li><a href="{{ route('search',['country'=>$country,'category' => $category->slug, 'subcategory' => $item->slug]) }}?city={{ $city->slug }}">{{ $city->name }}</a></li>
+                                    <li><a href="{{ route('search',['country'=>$country,'ad_type' => $ad_type->slug, 'categories' => $item->slug]) }}?city={{ $city->slug }}">{{ $city->name }}</a></li>
                                     @endforeach
 
                                 </ul>
