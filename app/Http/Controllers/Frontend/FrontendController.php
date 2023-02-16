@@ -4,13 +4,16 @@ namespace App\Http\Controllers\Frontend;
 
 use DB;
 use App\Models\Seo;
+use App\Models\AdType;
+use function Sodium\compare;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Ad;
+use App\Models\AdGallery;
 use Modules\Category\Entities\Category;
+
 use Google\Service\Dfareporting\Country;
 use Modules\Category\Entities\SubCategory;
-
-use function Sodium\compare;
 
 class FrontendController extends Controller
 {
@@ -20,7 +23,7 @@ class FrontendController extends Controller
 
 
         $countries =  DB::table('country')->orderBy('name', 'asc')->get();
-        $categories = Category::orderBy('id', 'asc')->get();
+        $ad_types = AdType::orderBy('name', 'asc')->get();
         $coutry_iso = strtoupper(getCountryCode());
 
         $country = DB::table('country')->where('iso', $coutry_iso)->first();
@@ -31,8 +34,8 @@ class FrontendController extends Controller
         $meta_description = $seo->contents->description;
         $meta_keywords = $seo->contents->keywords;
         $meta_image = $seo->contents->image;
-        
-        return view('frontend.index', compact('categories', 'countries', 'cities', 'meta_title', 'meta_description', 'meta_image', 'meta_keywords'));
+
+        return view('frontend.index', compact('ad_types', 'countries', 'cities', 'meta_title', 'meta_description', 'meta_image', 'meta_keywords'));
     }
 
     public function setCountry(Request $request)
@@ -46,7 +49,10 @@ class FrontendController extends Controller
 
     public function search(Request $request)
     {
-        return view('frontend.shop');
+        $ad_type = AdType::where('slug', $request->ad_type)->first();
+        $category = Category::where('slug',$request->categories)->first();
+        $ads = Ad::where('ad_type_id', $ad_type->id)->where('category_id', $category->id)->get();
+        return view('frontend.shop',compact('ads', 'ad_type', 'category'));
     }
 
 
@@ -57,15 +63,17 @@ class FrontendController extends Controller
         return view('frontend.shop');
     }
 
-    public function details()
+    public function details($slug)
     {
+        $ad_details = Ad::where('slug',$slug)->first();
+        $ad_galleies = AdGallery::where('ad_id', $ad_details->id)->get();
         $seo = Seo::where('page_slug', 'home')->first();
         $meta_title = $seo->contents->title;
         $meta_description = $seo->contents->description;
         $meta_keywords = $seo->contents->keywords;
         $meta_image = $seo->contents->image;
 
-        return view('frontend.details', compact('meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
+        return view('frontend.details', compact('ad_details', 'ad_galleies','meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
     }
 
     public function about()

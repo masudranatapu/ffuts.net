@@ -18,9 +18,9 @@
 @endsection
 @section('breadcrumb')
     <ul>
-        <li><a href="#">Jerusalem ></a></li>
-        <li><a href="#">case ></a></li>
-        <li><a href="#">offices and activities trade</a></li>
+        <li><a href="#">{{ config('app.name') }} ></a></li>
+        <li><a href="#">{{ $ad_details->ad_type->slug }} ></a></li>
+        <li><a href="#">{{ $ad_details->category->slug }}</a></li>
     </ul>
 @endsection
 
@@ -44,26 +44,19 @@
                                     <input class="form-check-input" name="flag_mark" type="checkbox" id="flag_1">
                                     <label class="form-check-label" for="flag_1">mark with <br /> flags</label>
                                 </div>
-                                <span class="float-end">Posted 24 days ago</span>
+                                <span class="float-end">Posted {{ $ad_details->created_at->diffForHumans() }}</span>
                             </div>
-                            <h3>₪65 / 770m2 - For Rent - commercial Real Estate In jerusalem (Talpiot)</h3>
+                            <h3>{{ $ad_details->title }}</h3>
                         </div>
                         <!-- gallery -->
                         <div class="product-item__gallery mb-4">
                             <div class="swiper mySwiper2">
                                 <div class="swiper-wrapper single_item">
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('frontend/images/1.jpg') }}" alt="product-img" />
+                                    @foreach($ad_galleies as $key => $value)
+                                        <div class="swiper-slide">
+                                        <img src="{{ asset($value->image) }}" alt="{{ $value->name }}" />
                                     </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('frontend/images/2.jpg') }}" alt="product-img" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('frontend/images/3.jpg') }}" alt="product-img" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('frontend/images/4.jpg') }}" alt="product-img" />
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <div class="swiper-button-next"></div>
                                 <div class="swiper-button-prev"></div>
@@ -71,18 +64,11 @@
 
                             <div thumbsSlider="" class="swiper mySwiper">
                                 <div class="swiper-wrapper">
+                                    @foreach($ad_galleies as $key => $value)
                                     <div class="swiper-slide">
-                                        <img src="{{ asset('frontend/images/1.jpg') }}" alt="product-img" />
+                                        <img src="{{ asset($value->image) }}" alt="{{ $value->name }}" />
                                     </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('frontend/images/2.jpg') }}" alt="product-img" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('frontend/images/3.jpg') }}" alt="product-img" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('frontend/images/4.jpg') }}" alt="product-img" />
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -90,21 +76,13 @@
                         <!-- details -->
                         <div class="details">
                             <ul class="mb-4">
-                                <li>Price: <strong>$656</strong></li>
+                                <li>Price: <strong>${{ $ad_details->price }}</strong></li>
                                 <li>Rental Term: <strong>Monthly</strong></li>
                             </ul>
 
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                                piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard
-                                McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of
-                                the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through
-                                the cites of the word in classical literature, discovered the undoubtable source. Lorem
-                                Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
-                                Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the
-                                theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,
-                                "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                            <p>{{ $ad_details->description }}</p>
                         </div>
-
+                        
                     </div>
                 </div>
             </div>
@@ -114,17 +92,11 @@
             <div class="container">
                 <div class="p-2">
                     <ul>
-                        <li class="list-item text-white">
-                            © 2023 craigslist
-                        </li>
-                        <li> <a href="#">hjælp |</a></li>
-                        <li><a href="#">sikkerhed |</a></li>
-                        <li><a href="#">privatliv |</a></li>
-                        <li><a href="#"> feedback |</a></li>
-                        <li><a href="#">vilkår |</a></li>
-                        <li><a href="#">vedr |</a></li>
-                        <li><a href="#">vedr |</a></li>
-                        <li><a href="#">vedr |</a></li>
+                        <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
+                        <li><a href="{{ route('privacy.policy') }}">{{ __('privacy') }} |</a></li>
+                        <li><a href="{{ route('terms.condition') }}">{{ __('terms & conditions') }} |</a></li>
+                        <li><a href="{{ route('about') }}">{{ __('about') }} |</a></li>
+                        <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
                     </ul>
                 </div>
             </div>
