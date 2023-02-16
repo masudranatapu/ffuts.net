@@ -21,7 +21,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="designation[]"
+                    <input class="form-check-input" type="checkbox" name="services[]"
                         value="" id="service_1"
                         value="direct contact of personnel recruiters allowed">
                     <label class="form-check-label" for="service_1">
@@ -29,21 +29,21 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="designation[]"
+                    <input class="form-check-input" type="checkbox" name="services[]"
                         value="" id="service_2" value="internship">
                     <label class="form-check-label" for="service_2">
                         internship
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="designation[]"
+                    <input class="form-check-input" type="checkbox" name="services[]"
                         value="" id="service_3" value="nonprofit organization">
                     <label class="form-check-label" for="service_3">
                         nonprofit organization
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="designation[]"
+                    <input class="form-check-input" type="checkbox" name="services[]"
                         value="" id="service_4"
                         value="availability of relocation assistance">
                     <label class="form-check-label" for="service_4">
@@ -51,7 +51,7 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="designation[]"
+                    <input class="form-check-input" type="checkbox" name="services[]"
                         value="" id="service_5" value="possibility of teleworking">
                     <label class="form-check-label" for="service_5">
                         possibility of teleworking

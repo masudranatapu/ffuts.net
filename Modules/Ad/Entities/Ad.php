@@ -22,7 +22,7 @@ class Ad extends Model
 
     protected $guarded = [];
     protected $appends = ['image_url'];
-    protected $casts = ['wishlisted' => 'boolean', 'show_phone' => 'boolean', 'designation' => 'array', 'availability' => 'array'];
+    protected $casts = ['wishlisted' => 'boolean', 'show_phone' => 'boolean', 'services' => 'array', 'availability' => 'array'];
 
     protected static function newFactory()
     {

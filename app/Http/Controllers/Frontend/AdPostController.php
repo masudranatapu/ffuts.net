@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\AdType;
+use Illuminate\Support\Str;
 use Modules\Ad\Entities\Ad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -67,26 +68,28 @@ class AdPostController extends Controller
             ]);
         }
         // dd($request->all());
+        $slug = Str::slug($request->title);
+        $old_slug = Ad::where('slug', $slug)->first();
 
         $ad = new Ad();
         $ad->ad_type_id = $request->ad_type_id;
         $ad->category_id = $request->category_id;
         $ad->subcategory_id = $request->subcategory_id;
         $ad->title = $request->title;
-        $ad->slug = str_slug($request->title);
+        $ad->slug = $slug;
         $ad->user_id = Auth::user()->id ?? 0;
         $ad->city = $request->city;
         $ad->postcode = $request->postcode;
         $ad->description = $request->description;
         $ad->employment_type = $request->employment_type;
-        $ad->designation = $request->designation;
+        $ad->services = $request->services;
         $ad->job_title = $request->job_title;
         $ad->price = $request->price;
         $ad->company_name = $request->company_name;
         $ad->email_privacy = $request->email_privacy;
         $ad->show_phone = $request->show_phone ?? 0;
-        $ad->phone_call = $request->phone_call;
-        $ad->phone_text = $request->phone_text;
+        $ad->phone_call = $request->phone_call ?? 0;
+        $ad->phone_text = $request->phone_text ?? 0;
         $ad->phone = $request->phone;
         $ad->phone_2 = $request->phone_2;
         $ad->contact_name = $request->contact_name;
@@ -99,6 +102,29 @@ class AdPostController extends Controller
         $ad->license_info = $request->license_info;
         $ad->other_contact = $request->other_contact ?? 0;
         $ad->save();
+
+        if ($old_slug) {
+            $slug = $slug . '_' . $ad->id;
+            $ad->update(['slug' => $slug]);
+        }
+
+        $images = $request->file('images');
+        if ($images) {
+            foreach ($images as $key => $image) {
+                if ($key == 0 && $image && $image->isValid()) {
+
+                    $url = uploadResizedImage($image, 'addss_image', 850, 650, false);
+                    $ad->update(['thumbnail' => $url]);
+                }
+
+                if ($image && $image->isValid()) {
+
+                    $url = uploadResizedImage($image, 'adds_multiple', 850, 650, false);
+                    $ad->galleries()->create(['ad_id'=>$ad->id,'image' => $url]);
+                }
+            }
+        }
+
 
         dd($ad);
 
