@@ -10,16 +10,17 @@ use App\Http\Controllers\Frontend\LocalizationController;
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('shop/', [FrontendController::class, 'shop'])->name('shop');
 Route::get('details/{slug}', [FrontendController::class, 'details'])->name('details');
+Route::get('wishlist', [FrontendController::class, 'wishlistCreate'])->name('wishlist.create');
 Route::get('about', [FrontendController::class, 'about'])->name('about');
 Route::get('terms-conditons', [FrontendController::class, 'termsCondition'])->name('terms.condition');
 Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
 
 //Localization
-Route::post('lange',[LocalizationController::class, 'setLang'])->name('localization');
-Route::get('/country',[LocalizationController::class, 'country'])->name('country');
+Route::post('lange', [LocalizationController::class, 'setLang'])->name('localization');
+Route::get('/country', [LocalizationController::class, 'country'])->name('country');
 
 
-Route::post('country',[FrontendController::class, 'setCountry'])->name('setCountry');
+Route::post('country', [FrontendController::class, 'setCountry'])->name('setCountry');
 
 
 
@@ -37,7 +38,6 @@ Route::post('store-post', [AdPostController::class, 'store'])->name('post.store'
 Route::middleware(['auth:user', 'verified'])->group(function () {
 
     Route::get('user/profile', [UserDashboardController::class, 'profile'])->name('user.profile');
-
 });
 
 
