@@ -93,6 +93,9 @@ class RegisterController extends Controller
     {
         $user = User::where('id', $request->user_id)->first();
         if ($user) {
+            $user->update([
+                'email_verified_at' => now(),
+            ]);
 
             Auth::guard('user')->login($user);
 
@@ -125,8 +128,9 @@ class RegisterController extends Controller
         if ($user) {
             if ($request->password == $request->password_confirmation) {
 
-                User::where('id', $user->id)->update([
+                $user->update([
                     'password' => Hash::make($request->password),
+                    'email_verified_at' => now()
                 ]);
 
                 Auth::guard('user')->login($user);

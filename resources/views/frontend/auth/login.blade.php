@@ -12,8 +12,8 @@
     </style>
 @endpush
 @section('title')
-{{ __('Sign In') }}
-@endsection 
+    {{ __('Sign In') }}
+@endsection
 @section('breadcrumb')
     <ul>
         <li>Jerusalem > </li>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" id="password" class="form-control" required
+                            <input type="password" name="password" id="password" class="form-control"
                                 placeholder="Password">
                             <a class="forgotpassword" href="{{ route('user.forgot.password') }}">Forgot password ?</a>
                         </div>
@@ -78,6 +78,11 @@
                 "progressBar": true
             }
             toastr.success("{{ session('message') }}");
+        @endif
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}");
+            @endforeach
         @endif
 
         @if (Session::has('error'))
