@@ -1,11 +1,11 @@
 @extends('frontend.layouts.app', ['nav' => 'yes'])
 @section('meta')
-
 @endsection
 @push('style')
+    <link rel="stylesheet" href="{{ asset('image_uploader/dist/image-uploader.min.css') }}">
 @endpush
 @section('title')
-{{ __('Post') }}
+    {{ __('Post') }}
 @endsection
 @section('breadcrumb')
     <ul>
@@ -63,6 +63,12 @@
                                     required></textarea>
                             </div>
                         </div>
+                        <div class="input-field mb-3">
+                            <label class="active">{{ __('upload_photos') }}</label>
+                            <div id="multiple_image_upload" class="input-images-2" style="padding-top: .5rem;"></div>
+                        </div>
+
+
                     </div>
 
                     {{-- For Job --}}
@@ -100,6 +106,15 @@
 @endsection
 
 @push('script')
+    <script src="{{ asset('image_uploader/dist/image-uploader.min.js') }}"></script>
+    <script>
+        $('.input-images-2').imageUploader({
+            maxSize: 2 * 1024 * 1024,
+            maxFiles: 10,
+            multiple: true,
+        });
+    </script>
+
     <script>
         $('#show_phone').change(function() {
             if ($(this).is(':checked')) {

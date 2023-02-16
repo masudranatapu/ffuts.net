@@ -96,48 +96,45 @@
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name=""
-                            id="cats_ok">
+                        <input class="form-check-input" type="checkbox" name="services[]"
+                            id="cats_ok" value="cats ok">
                         <label class="form-check-label" for="cats_ok">cats ok</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name=""
-                            id="dogs_ok">
+                        <input class="form-check-input" type="checkbox" name="services[]"
+                            id="dogs_ok" value="dogs ok">
                         <label class="form-check-label" for="dogs_ok">dogs ok</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name=""
-                            id="furnished">
+                        <input class="form-check-input" type="checkbox" name="services[]"
+                            id="furnished" value="furnished">
                         <label class="form-check-label" for="furnished">furnished</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name=""
-                            id="no_smoking">
+                        <input class="form-check-input" type="checkbox" name="services[]"
+                            id="no_smoking" value="no smoking">
                         <label class="form-check-label" for="no_smoking">no smoking</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name=""
-                            id="wheelchair_accessible">
-                        <label class="form-check-label" for="wheelchair_accessible">wheelchair
-                            accessible</label>
+                        <input class="form-check-input" type="checkbox" name="services[]"
+                            id="wheelchair_accessible" value="wheelchair accessible">
+                        <label class="form-check-label" for="wheelchair_accessible">wheelchair accessible</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name=""
-                            id="air_conditioning">
-                        <label class="form-check-label" for="air_conditioning">air
-                            conditioning</label>
+                        <input class="form-check-input" type="checkbox" name="services[]"
+                            id="air_conditioning" value="air conditioning">
+                        <label class="form-check-label" for="air_conditioning">air conditioning</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name=""
-                            id="EV charging">
+                        <input class="form-check-input" type="checkbox" name="services[]"
+                            id="EV charging" value="EV charging">
                         <label class="form-check-label" for="EV charging">EV charging</label>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="mb-3">
                         <label for="available_on" class="form-label">available on</label>
-                        <input type="date" name="available_on" id="available_on"
-                            value="0" class="form-control">
+                        <input type="date" name="available_on" id="available_on" class="form-control">
                     </div>
                 </div>
             </div>
