@@ -9,7 +9,7 @@ use App\Http\Controllers\Frontend\LocalizationController;
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('shop/', [FrontendController::class, 'shop'])->name('shop');
-Route::get('details', [FrontendController::class, 'details'])->name('details');
+Route::get('details/{slug}', [FrontendController::class, 'details'])->name('details');
 Route::get('about', [FrontendController::class, 'about'])->name('about');
 Route::get('terms-conditons', [FrontendController::class, 'termsCondition'])->name('terms.condition');
 Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy.policy');

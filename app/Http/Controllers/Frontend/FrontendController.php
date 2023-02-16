@@ -9,6 +9,7 @@ use function Sodium\compare;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Ad;
+use App\Models\AdGallery;
 use Modules\Category\Entities\Category;
 
 use Google\Service\Dfareporting\Country;
@@ -51,7 +52,7 @@ class FrontendController extends Controller
         $ad_type = AdType::where('slug', $request->ad_type)->first();
         $category = Category::where('slug',$request->categories)->first();
         $ads = Ad::where('ad_type_id', $ad_type->id)->where('category_id', $category->id)->get();
-        return view('frontend.shop',compact('ads'));
+        return view('frontend.shop',compact('ads', 'ad_type', 'category'));
     }
 
 
@@ -62,15 +63,17 @@ class FrontendController extends Controller
         return view('frontend.shop');
     }
 
-    public function details()
+    public function details($slug)
     {
+        $ad_details = Ad::where('slug',$slug)->first();
+        $ad_galleies = AdGallery::where('ad_id', $ad_details->id)->get();
         $seo = Seo::where('page_slug', 'home')->first();
         $meta_title = $seo->contents->title;
         $meta_description = $seo->contents->description;
         $meta_keywords = $seo->contents->keywords;
         $meta_image = $seo->contents->image;
 
-        return view('frontend.details', compact('meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
+        return view('frontend.details', compact('ad_details', 'ad_galleies','meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
     }
 
     public function about()
