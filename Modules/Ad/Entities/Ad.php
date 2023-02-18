@@ -141,6 +141,8 @@ class Ad extends Model
         return $this->hasMany(AdGallery::class);
     }
 
+    
+
 
     /**
      *  BelongTo

@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Frontend;
 use DB;
 use App\Models\Seo;
 use App\Models\AdType;
+use App\Models\AdGallery;
+use Modules\Ad\Entities\Ad;
 use function Sodium\compare;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Ad;
-use App\Models\AdGallery;
-use Modules\Category\Entities\Category;
 
+use Modules\Category\Entities\Category;
 use Google\Service\Dfareporting\Country;
 use Modules\Category\Entities\SubCategory;
 
@@ -56,7 +56,7 @@ class FrontendController extends Controller
         } else {
             $ads = Ad::where('ad_type_id', $ad_type->id)->get();
         }
-        
+
         return view('frontend.shop', compact('ads', 'ad_type', 'category'));
     }
 
@@ -70,7 +70,8 @@ class FrontendController extends Controller
 
     public function details($slug)
     {
-        $ad_details = Ad::where('slug', $slug)->first();
+        $ad_details = Ad::with('ad_type')->where('slug', $slug)->first();
+        // dd($ad_details->ad_type->slug);
         $ad_galleies = AdGallery::where('ad_id', $ad_details->id)->get();
         $seo = Seo::where('page_slug', 'home')->first();
         $meta_title = $seo->contents->title;
@@ -83,11 +84,11 @@ class FrontendController extends Controller
 
     public function wishlistCreate(Request $request)
     {
-       dd($request->all());
+        dd($request->all());
         $id = $request->id;
         dd($id);
         $user = $request->user;
-        $isExist = Wishlist::where(['ad_id' => $id, 'user_id' => $user->id])->first();  
+        $isExist = Wishlist::where(['ad_id' => $id, 'user_id' => $user->id])->first();
         if (!$isExist) {
             $wishlist = new Wishlist();
             $wishlist->user_id = $user->id;
