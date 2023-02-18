@@ -84,17 +84,14 @@ class FrontendController extends Controller
 
     public function wishlistCreate(Request $request)
     {
-        dd($request->all());
         $id = $request->id;
-        dd($id);
         $user = $request->user;
-        $isExist = Wishlist::where(['ad_id' => $id, 'user_id' => $user->id])->first();
+        $isExist = Wishlist::where(['ad_id' => $id, 'user_id' => $user])->first();
         if (!$isExist) {
             $wishlist = new Wishlist();
-            $wishlist->user_id = $user->id;
+            $wishlist->user_id = $user;
             $wishlist->ad_id = $id;
             $wishlist->save();
-            dd('ok');
             if ($request->ajax()) {
                 return response()->json(['status' => 'success', 'message' => 'Wishlist added successfully']);
             }
@@ -103,8 +100,9 @@ class FrontendController extends Controller
             $notification = array('messege' => $notification, 'alert-type' => 'success');
             return redirect()->back()->with($notification);
         } else {
+            $isExist->delete();
             if ($request->ajax()) {
-                return response()->json(['status' => 'failed', 'message' => 'Item already exist']);
+                return response()->json(['status' => 'failed', 'message' => 'Wishlist removed successfully']);
             }
             $notification = trans('user_validation.Item already exist');
             $notification = array('messege' => $notification, 'alert-type' => 'error');
