@@ -100,9 +100,10 @@
                                             <li>Company Name: <strong>{{ $ad_details->company_name }}</strong></li>
                                         </ul>
                                     </div>
+
                                     <div class="col-md-4">
                                         <ul class="mb-4">
-                                            <li>Email: <strong>{{ $ad_details->email }}</strong></li>
+                                            <li>Email: <strong>{{ $ad_details->customer->email }}</strong></li>
                                             <li>Email Privacy: <strong>{{ $ad_details->email_privacy }}</strong></li>
                                             <li>Phone Call: <strong>{{ $ad_details->phone_call == 1? "Yes" : "No" }}</strong></li>
                                             <li>Phone Text: <strong>{{ $ad_details->phone_text == 1? "Yes" : "No" }}</strong></li>
@@ -134,7 +135,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <ul class="mb-4">
-                                            <li>Email: <strong>{{ $ad_details->email }}</strong></li>
+                                            <li>Email: <strong>{{ $ad_details->customer->email }}</strong></li>
                                             <li>Email Privacy: <strong>{{ $ad_details->email_privacy }}</strong></li>
                                             <li>Phone Call: <strong>{{ $ad_details->phone_call == 1? "Yes" : "No" }}</strong></li>
                                             <li>Phone Text: <strong>{{ $ad_details->phone_text == 1? "Yes" : "No" }}</strong></li>
@@ -149,7 +150,7 @@
                             <!-- engagement-offered-->
                             @if($ad_details->ad_type->slug == 'engagement-offered')
                                 <ul class="mb-4">
-                                    <li>Email: <strong>{{ $ad_details->email }}</strong></li>
+                                    <li>Email: <strong>{{ $ad_details->customer->email }}</strong></li>
                                     <li>Email Privacy: <strong>{{ $ad_details->email_privacy }}</strong></li>
                                     <li>Phone Call: <strong>{{ $ad_details->phone_call == 1? "Yes" : "No" }}</strong></li>
                                     <li>Phone Text: <strong>{{ $ad_details->phone_text == 1? "Yes" : "No" }}</strong></li>
@@ -184,7 +185,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <ul class="mb-4">
-                                        <li>Email: <strong>{{ $ad_details->email }}</strong></li>
+                                        <li>Email: <strong>{{ $ad_details->customer->email }}</strong></li>
                                         <li>Email Privacy: <strong>{{ $ad_details->email_privacy }}</strong></li>
                                         <li>Phone Call: <strong>{{  $ad_details->phone_call == 1? "Yes": "No" }}</strong></li>
                                         <li>Phone Text: <strong>{{ $ad_details->phone_text == 1? "Yes" : "No" }}</strong></li>
@@ -217,7 +218,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <ul class="mb-4">
-                                            <li>Email: <strong>{{ $ad_details->email }}</strong></li>
+                                            <li>Email: <strong>{{ $ad_details->customer->email }}</strong></li>
                                             <li>Email Privacy: <strong>{{ $ad_details->email_privacy }}</strong></li>
                                             <li>Phone Call: <strong>{{ $ad_details->phone_call == 1? "Yes" : "No" }}</strong></li>
                                             <li>Phone Text: <strong>{{ $ad_details->phone_text == 1? "Yes" : "No" }}</strong></li>
