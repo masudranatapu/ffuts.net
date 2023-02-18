@@ -68,14 +68,39 @@ class AdPostController extends Controller
                 'education' => 'required'
             ]);
         }
+        if (!Auth::check()) {
+            $random_token = Str::random(40);
+            User::insert([
+                'email' => $request->email,
+                'token' => $random_token,
+                'created_at' => Carbon::now(),
+            ]);
+
+            $details = [
+                'subject' => 'Welcome to ' . ' ' . config('app.name'),
+                'greeting' => 'Hi you just register on' . ' ' . config('app.name'),
+                'body' => 'Thanks for register ' . ' ' . config('app.name'),
+                'email' => 'Your email is : ' . $request->email,
+                'thanks' => 'Thank you and stay with ' . ' ' . config('app.name'),
+                'actionText' => 'Click Here to Verify',
+                'actionURL' => route('user.verify', $random_token),
+                'site_url' => route('index'),
+                'site_name' => config('app.name'),
+                'copyright' => ' © ' . ' ' . Carbon::now()->format('Y') . config('app.name') . ' ' . 'All rights reserved.',
+            ];
+
+            Mail::to($request->email)->send(new RegisterMail($details));
+        }
         // dd($request->all());
         $slug = Str::slug($request->title);
         $old_slug = Ad::where('slug', $slug)->first();
+        $country = strtoupper(getCountryCode());
 
         $ad = new Ad();
         $ad->ad_type_id = $request->ad_type_id;
         $ad->category_id = $request->category_id;
         $ad->subcategory_id = $request->subcategory_id;
+        $ad->country = $country;
         $ad->title = $request->title;
         $ad->slug = $slug;
         $ad->user_id = Auth::user()->id ?? 0;
@@ -142,6 +167,8 @@ class AdPostController extends Controller
                 }
             }
         }
+        flashSuccess('Post created successfully');
+        return redirect()->route('index');
 
 
         dd($ad);
