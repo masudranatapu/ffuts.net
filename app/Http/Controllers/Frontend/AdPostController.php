@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\AdType;
+use App\Mail\RegisterMail;
 use Illuminate\Support\Str;
 use Modules\Ad\Entities\Ad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Modules\Category\Entities\Category;
 use Modules\Category\Entities\SubCategory;
 
@@ -68,28 +72,34 @@ class AdPostController extends Controller
                 'education' => 'required'
             ]);
         }
+
+
         if (!Auth::check()) {
-            $random_token = Str::random(40);
-            User::insert([
-                'email' => $request->email,
-                'token' => $random_token,
-                'created_at' => Carbon::now(),
-            ]);
+            $user = User::where('email', $request->email)->first();
+            if (!$user) {
+                $status = 'pending';
+                $random_token = Str::random(40);
+                $user = User::create([
+                    'email' => $request->email,
+                    'token' => $random_token,
+                    'created_at' => Carbon::now(),
+                ]);
 
-            $details = [
-                'subject' => 'Welcome to ' . ' ' . config('app.name'),
-                'greeting' => 'Hi you just register on' . ' ' . config('app.name'),
-                'body' => 'Thanks for register ' . ' ' . config('app.name'),
-                'email' => 'Your email is : ' . $request->email,
-                'thanks' => 'Thank you and stay with ' . ' ' . config('app.name'),
-                'actionText' => 'Click Here to Verify',
-                'actionURL' => route('user.verify', $random_token),
-                'site_url' => route('index'),
-                'site_name' => config('app.name'),
-                'copyright' => ' © ' . ' ' . Carbon::now()->format('Y') . config('app.name') . ' ' . 'All rights reserved.',
-            ];
+                $details = [
+                    'subject' => 'Welcome to ' . ' ' . config('app.name'),
+                    'greeting' => 'Hi you just post on' . ' ' . config('app.name'),
+                    'body' => 'You have to verify your email to publish this post.',
+                    'email' => 'Your email is : ' . $request->email,
+                    'thanks' => 'Thank you and stay with ' . ' ' . config('app.name'),
+                    'actionText' => 'Click Here to Verify',
+                    'actionURL' => route('user.verify', $random_token),
+                    'site_url' => route('index'),
+                    'site_name' => config('app.name'),
+                    'copyright' => ' © ' . ' ' . Carbon::now()->format('Y') . config('app.name') . ' ' . 'All rights reserved.',
+                ];
 
-            Mail::to($request->email)->send(new RegisterMail($details));
+                Mail::to($request->email)->send(new RegisterMail($details));
+            }
         }
         // dd($request->all());
         $slug = Str::slug($request->title);
@@ -103,7 +113,8 @@ class AdPostController extends Controller
         $ad->country = $country;
         $ad->title = $request->title;
         $ad->slug = $slug;
-        $ad->user_id = Auth::user()->id ?? 0;
+        $ad->user_id = Auth::user()->id ?? $user->id;
+        $ad->status = $status ?? 'active';
         $ad->city = $request->city;
         $ad->postcode = $request->postcode;
         $ad->description = $request->description;
@@ -167,11 +178,15 @@ class AdPostController extends Controller
                 }
             }
         }
-        flashSuccess('Post created successfully');
-        return redirect()->route('index');
+        if ($ad->status == 'active') {
+            flashSuccess('Post created successfully');
+            return redirect()->route('index');
+        } else {
+            flashSuccess('Your Post is in drafted. Please verify email to publish this post.');
+            return redirect()->route('signin');
+        }
 
 
-        dd($ad);
 
     }
 

@@ -83,6 +83,9 @@ class RegisterController extends Controller
     {
         $user = User::where('token', $token)->first();
         if ($user) {
+            if (isset($user->email_verified_at)) {
+                return redirect()->route('signin')->with('success', 'You are already verified. Please login.');
+            }
             return view('frontend.auth.verify', compact('user'));
         } else {
             return redirect()->route('signin')->with('error', 'Someting went worng with your verify token. Please try again.');
