@@ -50,19 +50,20 @@ function setting($fields = null, $append = false)
  * @param integer $adId
  * @return boolean
  */
-function isWishlisted($adId)
+function userWishlist()
 {
-    if (auth()->guard('user')->check() && session()->has('wishlists') && in_array($adId, session('wishlists'))) {
-        return true;
+    if (auth()->guard('user')->check()) {
+        $data = Wishlist::where('user_id', Auth::user()->id)->count();
+        return $data;
     }
 
     return false;
 }
-function userWishlist()
+function isWishlisted($adId)
 {
-    if (auth()->guard('user')->check()) {
-        $data = Wishlist::where('user_id', Auth::user()->id)->pluck('id')->toArray();
-        return $data;
+    $data = Wishlist::where('user_id', Auth::user()->id)->pluck('ad_id')->toArray();
+    if (auth()->guard('user')->check() && count($data) > 0 && in_array($adId, $data)) {
+        return true;
     }
 
     return false;

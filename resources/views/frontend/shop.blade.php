@@ -151,8 +151,10 @@
                 <div class="prodouct_wrap">
                     <div class="favorite">
                         <div class="form-check">
-                            <input class="form-check-input" name="wishlist" type="checkbox" id="wishlist_1">
-                            <label class="form-check-label" for="wishlist_1"></label>
+                            <input class="form-check-input" name="wishlist" type="checkbox" id="wishlist_{{ $value->id }}"
+                            {{isWishlisted($value->id) ? 'checked':'' }}
+                            onchange="AddWishlist2({{ $value->id }}, {{ Auth::user()->id ?? '' }})">
+                            <label class="form-check-label" for="wishlist_{{ $value->id }}"></label>
                         </div>
                         <span>{{ date('d Y',strtotime($value->created_at)) }}</span>
                     </div>
@@ -164,8 +166,9 @@
                         <h5>{{ $value->price }}</h5>
                         <h4><a href="{{ route('frontend.details',$value->slug) }}">{{ $value->slug }}</a>
                         </h4>
-                        <p>({{ $value->country }}, {{ $value->city }}) <a href="javascript:void(0)"><i
-                                    class="la la-times"></i></a></p>
+                        <p>({{$value->city}} {{ isset($value->countries->name) ? ', ' .ucfirst(strtolower($value->countries->name)) : ''}})
+                            {{-- <a href="javascript:void(0)"><i
+                                    class="la la-times"></i></a></p> --}}
                     </div>
                 </div>
             </div>

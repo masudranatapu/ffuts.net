@@ -41,12 +41,12 @@
         </div>
         <div class="col-lg-3">
             <div class="header_end float-lg-end">
-                <ul>
-                    @if (auth()->guard('user')->check())
-                        <li id="wishlist_count"><a href="javascript:;" class="badge text-bg-warning">
-                                <i class="las la-star"></i> {{ count(userWishlist()) }} {{ count(userWishlist()) > 1 ? 'favourites':'favourite' }}</a>
-                        </li>
-                    @endif
+                <ul id="wishlist_count">
+                        @if (auth()->guard('user')->check() && userWishlist()> 0)
+                            <li ><a href="javascript:;" class="badge text-bg-warning">
+                                    <i class="las la-star"></i> {{ userWishlist() }} {{ userWishlist() > 1 ? 'favourites':'favourite' }}</a>
+                            </li>
+                        @endif
                     {{-- <li>
                         <a href="javascript:;" class="badge text-bg-danger">
                             <i class="las la-times-circle"></i> 2

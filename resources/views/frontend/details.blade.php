@@ -33,18 +33,19 @@
                             <div class="product_info mb-4">
                                 <div class="form-check">
                                     <input class="form-check-input" name="wishlist" type="checkbox"
-                                        id="wishlist2_{{ $ad_details->id }}"
+                                        id="wishlist_{{ $ad_details->id }}"
+                                        {{isWishlisted($ad_details->id) ? 'checked':'' }}
                                         onchange="AddWishlist2({{ $ad_details->id }}, {{ Auth::user()->id ?? '' }})">
-                                    <label class="form-check-label" for="wishlist2_{{ $ad_details->id }}">favorite</label>
+                                    <label class="form-check-label" for="wishlist_{{ $ad_details->id }}">favorite</label>
                                 </div>
-                                <div class="form-check hide_collection">
+                                {{-- <div class="form-check hide_collection">
                                     <input class="form-check-input" name="hide_collection" type="checkbox" id="hide_1">
                                     <label class="form-check-label" for="hide_1">hide</label>
                                 </div>
                                 <div class="form-check flag_mark">
                                     <input class="form-check-input" name="flag_mark" type="checkbox" id="flag_1">
                                     <label class="form-check-label" for="flag_1">mark with <br /> flags</label>
-                                </div>
+                                </div> --}}
                                 <span class="float-end">Posted {{ $ad_details->created_at->diffForHumans() }}</span>
                             </div>
                             <h3>{{ $ad_details->title }}</h3>

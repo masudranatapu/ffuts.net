@@ -38,7 +38,14 @@
                             user: user,
                         },
                         success: function(data) {
-                            // location.reload()
+                            if (data.status == 'failed') {
+                                toastr.error('Favorite removed successfully')
+                                $("#wishlist_count" ).load(location.href + " #wishlist_count>*", "");
+                            } else {
+                                toastr.success('Favorite added successfully')
+
+                            }
+                            $("#wishlist_count" ).load(location.href + " #wishlist_count>*", "");
                         }
                     });
                 } else {

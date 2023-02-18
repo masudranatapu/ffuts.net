@@ -122,15 +122,22 @@
                             options</span>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="email_privacy"
-                                id="privacy_1" checked>
+                                id="privacy_1" value="CL mail relay">
                             <label class="form-check-label" for="privacy_1">
                                 CL mail relay (recommended)
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="email_privacy"
-                                id="privacy_2">
+                                id="privacy_2" value="show my real email address">
                             <label class="form-check-label" for="privacy_2">
+                                show my real email address
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="email_privacy"
+                                id="privacy_3" value="no replies to this email">
+                            <label class="form-check-label" for="privacy_3">
                                 no replies to this email
                             </label>
                         </div>
