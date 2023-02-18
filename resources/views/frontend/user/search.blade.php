@@ -31,9 +31,9 @@
         <div class="user_dashboard mb-4">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="posting-tab" data-bs-toggle="tab"
-                        data-bs-target="#posting-tab-pane" type="button" role="tab" aria-controls="posting-tab-pane"
-                        aria-selected="true"><a href="{{ route('user.profile') }}">Posting</a></button>
+                    <button class="nav-link" id="posting-tab" data-bs-toggle="tab" data-bs-target="#posting-tab-pane"
+                        type="button" role="tab" aria-controls="posting-tab-pane" aria-selected="true"><a
+                            href="{{ route('user.profile') }}">Posting</a></button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="drafts-tab" data-bs-toggle="tab" data-bs-target="#drafts-tab-pane"
@@ -41,9 +41,9 @@
                             href="{{ route('user.drafts') }}">Drafts</a></button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="searches-tab" data-bs-toggle="tab" data-bs-target="#searches-tab-pane"
-                        type="button" role="tab" aria-controls="searches-tab-pane" aria-selected="false"><a
-                            href="{{ route('user.search') }}">Searches</a></button>
+                    <button class="nav-link active" id="searches-tab" data-bs-toggle="tab"
+                        data-bs-target="#searches-tab-pane" type="button" role="tab" aria-controls="searches-tab-pane"
+                        aria-selected="false"><a href="{{ route('user.search') }}">Searches</a></button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="setting-tab" data-bs-toggle="tab" data-bs-target="#setting-tab-pane"
@@ -57,55 +57,28 @@
                 <table class="table table-hover" style="min-width: 950px;">
                     <thead>
                         <tr>
-                            <th width="40%">Posting</th>
-                            <th width="10%">Category</th>
-                            <th width="10%">Area</th>
-                            <th width="10%">Date</th>
-                            <th width="10%">Status</th>
-                            <th width="20%">Action</th>
+                            <th width="40%">Name</th>
+                            <th width="10%">Search</th>
+                            <th width="10%">Hits</th>
+                            <th width="10%">Created</th>
+                            <th width="15%">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>
-                                <a href="#"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
                             </td>
                             <td>
-                                Electronics
+                                Search terms: <a href="#" target="_blank">Housing</a>
                             </td>
                             <td>
-                                Dhaka
+                                122
                             </td>
                             <td>
-                                01/02/023
+                                10 Minutes Ago
                             </td>
                             <td>
-                                <span class="badge bg-success">Published</span>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-success">View</a>
-                                <a href="#" class="btn btn-sm btn-secondary">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                            </td>
-                            <td>
-                                Electronics
-                            </td>
-                            <td>
-                                Dhaka
-                            </td>
-                            <td>
-                                01/02/023
-                            </td>
-                            <td>
-                                <span class="badge bg-danger">Unpublished</span>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-success">View</a>
                                 <a href="#" class="btn btn-sm btn-secondary">Edit</a>
                                 <a href="#" class="btn btn-sm btn-danger">Delete</a>
                             </td>
