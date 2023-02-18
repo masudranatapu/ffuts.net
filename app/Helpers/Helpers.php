@@ -10,6 +10,7 @@ use App\Models\ModuleSetting;
 use App\Models\PaymentSetting;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ViewErrorBag;
 use Illuminate\Support\Facades\Artisan;
@@ -53,6 +54,15 @@ function isWishlisted($adId)
 {
     if (auth()->guard('user')->check() && session()->has('wishlists') && in_array($adId, session('wishlists'))) {
         return true;
+    }
+
+    return false;
+}
+function userWishlist()
+{
+    if (auth()->guard('user')->check()) {
+        $data = Wishlist::where('user_id', Auth::user()->id)->pluck('id')->toArray();
+        return $data;
     }
 
     return false;

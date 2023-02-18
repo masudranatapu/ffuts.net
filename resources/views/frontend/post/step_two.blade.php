@@ -23,7 +23,7 @@
                     <h6><span>choose a category:</span> (see <a href="#">ban</a> list before posting.)
                     </h6>
                 </div>
-                <form action="{{ route('post.create') }}" method="get" id="create-post-frm">
+                <form action="{{ route('frontend.post.create') }}" method="get" id="create-post-frm">
                     <input type="hidden" value="{{ $ad_type->slug }}" name="ad_type" />
                     @foreach($category as $key => $value)
                     <div class="form-check">

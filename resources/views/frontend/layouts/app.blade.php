@@ -32,7 +32,7 @@
                 if (user) {
                     $.ajax({
                         type: "get",
-                        url: "{{ route('wishlist.create') }}",
+                        url: "{{ route('frontend.wishlist.create') }}",
                         data: {
                             id: item,
                             user: user,
@@ -47,6 +47,7 @@
                 }
             }
     </script>
+
     {{-- custom script --}}
     @stack('script')
 </body>

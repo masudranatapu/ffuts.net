@@ -18,41 +18,34 @@ use Modules\Category\Entities\SubCategory;
 class AdPostController extends Controller
 {
     //
-    public function create($post_type=null,$category=null,$subcategory=null)
+    public function create($post_type = null, $category = null, $subcategory = null)
     {
 
-        if($post_type == null){
+        if ($post_type == null) {
             $add_types = AdType::orderBy('id', 'asc')->get();
             return view('frontend.post.step_one', compact('add_types'));
-        }else{
+        } else {
 
-            if($category){
+            if ($category) {
 
-                if($subcategory){
+                if ($subcategory) {
                     $ad_type = AdType::where('slug', $post_type)->first();
                     $category = Category::where('slug', $category)->first();
                     $subCategory = SubCategory::where('slug', $subcategory)->first();
 
-                    return view('frontend.post.step_four',compact('ad_type','category','subCategory'));
-
-                }else{
+                    return view('frontend.post.step_four', compact('ad_type', 'category', 'subCategory'));
+                } else {
                     $ad_type = AdType::where('slug', $post_type)->first();
                     $category = Category::where('slug', $category)->first();
                     $subCategory = SubCategory::where('category_id', $category->id)->orderBy('id', 'desc')->get();
-                    return view('frontend.post.step_three', compact('subCategory','category','ad_type'));
-
+                    return view('frontend.post.step_three', compact('subCategory', 'category', 'ad_type'));
                 }
-
-            }else{
+            } else {
                 $ad_type = AdType::where('slug', $post_type)->first();
                 $category = Category::where('ad_type_id', $ad_type->id)->orderBy('id', 'desc')->get();
-                return view('frontend.post.step_two', compact('category','ad_type'));
+                return view('frontend.post.step_two', compact('category', 'ad_type'));
             }
-
-
         }
-
-
     }
 
     public function store(Request $request)
@@ -79,8 +72,11 @@ class AdPostController extends Controller
             if (!$user) {
                 $status = 'pending';
                 $random_token = Str::random(40);
+                $email = explode('@', $request->email);
+                $username = $email[0] . '_' . random_int(1111, 9999);
                 $user = User::create([
                     'email' => $request->email,
+                    'username' => $username,
                     'token' => $random_token,
                     'created_at' => Carbon::now(),
                 ]);
@@ -93,7 +89,7 @@ class AdPostController extends Controller
                     'thanks' => 'Thank you and stay with ' . ' ' . config('app.name'),
                     'actionText' => 'Click Here to Verify',
                     'actionURL' => route('user.verify', $random_token),
-                    'site_url' => route('index'),
+                    'site_url' => route('frontend.index'),
                     'site_name' => config('app.name'),
                     'copyright' => ' © ' . ' ' . Carbon::now()->format('Y') . config('app.name') . ' ' . 'All rights reserved.',
                 ];
@@ -174,21 +170,16 @@ class AdPostController extends Controller
                 if ($image && $image->isValid()) {
 
                     $url = uploadResizedImage($image, 'adds_multiple', 850, 650, false);
-                    $ad->galleries()->create(['ad_id'=>$ad->id,'image' => $url]);
+                    $ad->galleries()->create(['ad_id' => $ad->id, 'image' => $url]);
                 }
             }
         }
         if ($ad->status == 'active') {
             flashSuccess('Post created successfully');
-            return redirect()->route('index');
+            return redirect()->route('frontend.index');
         } else {
             flashSuccess('Your Post is in drafted. Please verify email to publish this post.');
             return redirect()->route('signin');
         }
-
-
-
     }
-
-
 }

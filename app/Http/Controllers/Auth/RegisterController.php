@@ -55,8 +55,11 @@ class RegisterController extends Controller
             return redirect()->back()->with('info', 'Your email has already an account. Plase login to your account');
         } else {
             $random_token = Str::random(40);
+            $email = explode('@', $request->email);
+            $username = $email[0]. '_' . random_int(1111,9999);
             User::insert([
                 'email' => $request->email,
+                'username' => $username,
                 'token' => $random_token,
                 'created_at' => Carbon::now(),
             ]);
@@ -69,7 +72,7 @@ class RegisterController extends Controller
                 'thanks' => 'Thank you and stay with ' . ' ' . config('app.name'),
                 'actionText' => 'Click Here to Verify',
                 'actionURL' => route('user.verify', $random_token),
-                'site_url' => route('index'),
+                'site_url' => route('frontend.index'),
                 'site_name' => config('app.name'),
                 'copyright' => ' © ' . ' ' . Carbon::now()->format('Y') . config('app.name') . ' ' . 'All rights reserved.',
             ];
@@ -110,14 +113,14 @@ class RegisterController extends Controller
                 'password' => 'Your password is : N/L ',
                 'thanks' => 'Thank you and stay with ' . ' ' . config('app.name'),
                 'actionText' => 'Visit Website',
-                'site_url' => route('index'),
+                'site_url' => route('frontend.index'),
                 'site_name' => config('app.name'),
                 'copyright' => ' © ' . ' ' . Carbon::now()->format('Y') . config('app.name') . ' ' . 'All rights reserved.',
             ];
 
             Mail::to($user->email)->send(new UserLoginMail($details));
 
-            return redirect()->route('index')->with('success', 'You are sucessfully login without you password');
+            return redirect()->route('frontend.index')->with('success', 'You are sucessfully login without you password');
         } else {
             return redirect()->route('signin')->with('error', 'Someting went worng with your account. Please try again.');
         }
@@ -146,14 +149,14 @@ class RegisterController extends Controller
                     'password' => 'Your password is : ' . $request->password,
                     'thanks' => 'Thank you and stay with ' . ' ' . config('app.name'),
                     'actionText' => 'Visit Website',
-                    'site_url' => route('index'),
+                    'site_url' => route('frontend.index'),
                     'site_name' => config('app.name'),
                     'copyright' => ' © ' . ' ' . Carbon::now()->format('Y') . config('app.name') . ' ' . 'All rights reserved.',
                 ];
 
                 Mail::to($user->email)->send(new UserLoginMail($details));
 
-                return redirect()->route('index')->with('success', 'You are sucessfully login with password');
+                return redirect()->route('frontend.index')->with('success', 'You are sucessfully login with password');
 
             } else {
                 return redirect()->back()->with('error', 'Password do not match. Please confirm you password');

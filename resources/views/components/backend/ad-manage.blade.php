@@ -41,8 +41,8 @@
                 @endif
                 @if ($showCity)
                     <td class="text-center">
-                        <a href="{{ route('module.ad.index', ['country' => $ad->country]) }}">
-                            {{ $ad->country }}
+                        <a href="javascript:void(0)">
+                            {{ $ad->countries->name ?? '-' }}
                         </a>
                     </td>
                 @endif
@@ -97,7 +97,7 @@
                         <li><a class="dropdown-item" href="{{ route('module.ad.show', $ad->slug) }}">
                                 <i class="fas fa-eye text-info"></i> {{ __('view_details') }}
                             </a></li>
-                        <li><a class="dropdown-item" href="{{ route('frontend.addetails', $ad->slug) }}">
+                        <li><a class="dropdown-item" href="{{ route('frontend.details', $ad->slug) }}">
                                 <i class="fas fa-link text-secondary"></i> {{ __('website_link') }}
                             </a>
                         </li>

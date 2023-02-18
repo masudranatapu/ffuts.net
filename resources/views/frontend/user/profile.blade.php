@@ -40,11 +40,11 @@
                         type="button" role="tab" aria-controls="drafts-tab-pane" aria-selected="false"><a
                             href="{{ route('user.drafts') }}">Drafts</a></button>
                 </li>
-                <li class="nav-item" role="presentation">
+                {{-- <li class="nav-item" role="presentation">
                     <button class="nav-link" id="searches-tab" data-bs-toggle="tab" data-bs-target="#searches-tab-pane"
                         type="button" role="tab" aria-controls="searches-tab-pane" aria-selected="false"><a
                             href="{{ route('user.search') }}">Searches</a></button>
-                </li>
+                </li> --}}
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="setting-tab" data-bs-toggle="tab" data-bs-target="#setting-tab-pane"
                         type="button" role="tab" aria-controls="setting-tab-pane" aria-selected="false"><a
@@ -66,50 +66,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <a href="#"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                            </td>
-                            <td>
-                                Electronics
-                            </td>
-                            <td>
-                                Dhaka
-                            </td>
-                            <td>
-                                01/02/023
-                            </td>
-                            <td>
-                                <span class="badge bg-success">Published</span>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-success">View</a>
-                                <a href="#" class="btn btn-sm btn-secondary">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                            </td>
-                            <td>
-                                Electronics
-                            </td>
-                            <td>
-                                Dhaka
-                            </td>
-                            <td>
-                                01/02/023
-                            </td>
-                            <td>
-                                <span class="badge bg-danger">Unpublished</span>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-success">View</a>
-                                <a href="#" class="btn btn-sm btn-secondary">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                            </td>
-                        </tr>
+                        @foreach($ads as $ad)
+                            <tr>
+                                <td>
+                                    <a href="{{route('frontend.details', $ad->slug)}}"> {{$ad->title}}</a>
+                                </td>
+                                <td>
+                                    {{$ad->category->name}}
+                                </td>
+                                <td>
+                                    {{$ad->city}} {{ isset($ad->countries->name) ? ', ' .ucfirst(strtolower($ad->countries->name)) : ''}}
+                                </td>
+                                <td>
+                                    {{date('d M, Y')}}
+                                </td>
+                                <td>
+                                    <a href="{{ route('user.post.statusUpdate', [$ad->id, 'pending']) }}" onclick="return confirm('Are you sure to unpubliushed?')" class="btn btn-sm btn-success">Unpublished</a>
+                                </td>
+                                <td>
+                                   <a href="{{route('frontend.details', $ad->slug)}}" class="btn btn-sm btn-success">View</a>
+                                    <a href="#" onclick="alert('Comming soon..')" class="btn btn-sm btn-secondary">Edit</a>
+                                    <a href="{{ route('user.post.delete', $ad->id) }}" onclick="return confirm('Are you sure to delete?')" class="btn btn-sm btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -118,40 +98,3 @@
 </div>
 @endsection
 
-@push('script')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script>
-    @if (Session::has('message'))
-            toastr.options = {
-                "closeButton": true,
-                "progressBar": true
-            }
-            toastr.success("{{ session('message') }}");
-        @endif
-
-        @if (Session::has('error'))
-            toastr.options = {
-                "closeButton": true,
-                "progressBar": true
-            }
-            toastr.error("{{ session('error') }}");
-        @endif
-
-        @if (Session::has('info'))
-            toastr.options = {
-                "closeButton": true,
-                "progressBar": true
-            }
-            toastr.info("{{ session('info') }}");
-        @endif
-
-        @if (Session::has('warning'))
-            toastr.options = {
-                "closeButton": true,
-                "progressBar": true
-            }
-            toastr.warning("{{ session('warning') }}");
-        @endif
-</script>
-@endpush

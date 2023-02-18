@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Modules\Category\Entities\Category;
+use Modules\Wishlist\Entities\Wishlist;
 use Google\Service\Dfareporting\Country;
 use Modules\Category\Entities\SubCategory;
 

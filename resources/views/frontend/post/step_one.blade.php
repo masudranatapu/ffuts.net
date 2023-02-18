@@ -23,7 +23,7 @@
                     <h6><span>what type of posting is this:</span> (see <a href="#">ban</a> list before posting.)
                     </h6>
                 </div>
-                <form action="{{ route('post.create') }}" method="get" id="create-post-frm">
+                <form action="{{ route('frontend.post.create') }}" method="get" id="create-post-frm">
                         @foreach($add_types as $key => $value)
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" value="{{ $value ->slug}}" name="ad_type" id="category_{{ $value->id }}"

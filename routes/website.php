@@ -6,45 +6,48 @@ use App\Http\Controllers\Frontend\AdPostController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\LocalizationController;
 
+Route::group(['as' => 'frontend.'], function () {
+    Route::get('/', [FrontendController::class, 'index'])->name('index');
+    Route::get('shop/', [FrontendController::class, 'shop'])->name('shop');
+    Route::get('details/{slug}', [FrontendController::class, 'details'])->name('details');
+    Route::get('wishlist', [FrontendController::class, 'wishlistCreate'])->name('wishlist.create');
+    Route::get('about', [FrontendController::class, 'about'])->name('about');
+    Route::get('terms-conditons', [FrontendController::class, 'termsCondition'])->name('terms.condition');
+    Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
 
-Route::get('/', [FrontendController::class, 'index'])->name('index');
-Route::get('shop/', [FrontendController::class, 'shop'])->name('shop');
-Route::get('details/{slug}', [FrontendController::class, 'details'])->name('details');
-Route::get('wishlist', [FrontendController::class, 'wishlistCreate'])->name('wishlist.create');
-Route::get('about', [FrontendController::class, 'about'])->name('about');
-Route::get('terms-conditons', [FrontendController::class, 'termsCondition'])->name('terms.condition');
-Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
-
-//Localization
-Route::post('lange', [LocalizationController::class, 'setLang'])->name('localization');
-Route::get('/country', [LocalizationController::class, 'country'])->name('country');
-
-
-Route::post('country', [FrontendController::class, 'setCountry'])->name('setCountry');
+    //Localization
+    Route::post('lange', [LocalizationController::class, 'setLang'])->name('localization');
+    Route::get('/country', [LocalizationController::class, 'country'])->name('country');
 
 
-
-
-// Route::get('create-post/post-type', [AdPostController::class, 'postType'])->name('create-post.step_one');
-// Route::get('create-post/post-type/category', [AdPostController::class, 'postStepTwo'])->name('create-post.step_two');
-// Route::get('create-post/post-type/sub-category', [AdPostController::class, 'postSubCategory'])->name('create-post.step_three');
-
-
-Route::get('create-post/{type?}/{category?}/{subcategory?}', [AdPostController::class, 'create'])->name('post.create');
-Route::post('store-post', [AdPostController::class, 'store'])->name('post.store');
+    Route::post('country', [FrontendController::class, 'setCountry'])->name('setCountry');
 
 
 
-Route::middleware(['auth:user', 'verified'])->group(function () {
 
-    Route::get('user/profile', [UserDashboardController::class, 'profile'])->name('user.profile');
-    Route::get('user/drafts', [UserDashboardController::class, 'drafts'])->name('user.drafts');
-    Route::get('user/search', [UserDashboardController::class, 'search'])->name('user.search');
-    Route::get('user/setting', [UserDashboardController::class, 'setting'])->name('user.setting');
+    // Route::get('create-post/post-type', [AdPostController::class, 'postType'])->name('create-post.step_one');
+    // Route::get('create-post/post-type/category', [AdPostController::class, 'postStepTwo'])->name('create-post.step_two');
+    // Route::get('create-post/post-type/sub-category', [AdPostController::class, 'postSubCategory'])->name('create-post.step_three');
+
+
+    Route::get('create-post/{type?}/{category?}/{subcategory?}', [AdPostController::class, 'create'])->name('post.create');
+    Route::post('store-post', [AdPostController::class, 'store'])->name('post.store');
+});
+
+Route::group(['as' => 'user.'], function () {
+    Route::middleware(['auth:user', 'verified'])->group(function () {
+        Route::get('user/post', [UserDashboardController::class, 'profile'])->name('profile');
+        Route::get('user/post/delete/{id}', [UserDashboardController::class, 'deletePost'])->name('post.delete');
+        Route::get('user/post/statusUpdate/{id}/{status}', [UserDashboardController::class, 'statusUpdate'])->name('post.statusUpdate');
+        Route::get('user/drafts', [UserDashboardController::class, 'drafts'])->name('drafts');
+        Route::get('user/search', [UserDashboardController::class, 'search'])->name('search');
+        Route::get('user/setting', [UserDashboardController::class, 'setting'])->name('setting');
+        Route::get('user/passwordReset', [UserDashboardController::class, 'passwordReset'])->name('password.reset');
+        Route::post('user-logout', [UserDashboardController::class, 'userLogOut'])->name('logout');
+    });
 });
 
 
-Route::post('user-logout', [UserDashboardController::class, 'userLogOut'])->name('user.logout');
 
 
 

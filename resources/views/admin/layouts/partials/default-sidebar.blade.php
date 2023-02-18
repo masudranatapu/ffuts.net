@@ -17,8 +17,8 @@
                             {{ __('dashboard') }}
                         </x-admin.sidebar-list>
                     @endif
-                    <li class="nav-header">{{ __('order') }}</li>
-                    @if (userCan('order.view'))
+                    <li class="nav-header">{{ __('customer') }}</li>
+                    {{-- @if (userCan('order.view'))
                         <li class="nav-item">
                             <a href="{{ route('order.index') }}"
                                 class="nav-link {{ Route::is('order.*') ? ' active' : '' }}">
@@ -26,7 +26,7 @@
                                 <p>{{ __('order') }}</p>
                             </a>
                         </li>
-                    @endif
+                    @endif --}}
                     @if (Module::collections()->has('Customer') && userCan('customer.view'))
                         <li class="nav-item">
                             <a href="{{ route('module.customer.index') }}"
@@ -64,11 +64,11 @@
                             {{ __('category') }}
                         </x-admin.sidebar-list>
                     @endif
-                    @if (Module::collections()->has('CustomField') && userCan('custom-field.view'))
+                    {{-- @if (Module::collections()->has('CustomField') && userCan('custom-field.view'))
                         <x-admin.sidebar-list :linkActive="Route::is('module.custom.field.*') ? true : false" route="module.custom.field.index" icon="fas fa-edit">
                             {{ __('custom_field') }}
                         </x-admin.sidebar-list>
-                    @endif
+                    @endif --}}
                     {{-- @if (Module::collections()->has('Location'))
                         @if (userCan('city.view') || userCan('town.view'))
                             <x-sidebar-dropdown :linkActive="Route::is('module.city.*') || Route::is('module.town.*') ? true : false" :subLinkActive="Route::is('module.city.*') || Route::is('module.town.*') ? true : false" icon="fas fa-location-arrow">
@@ -96,11 +96,11 @@
                             </x-sidebar-dropdown>
                         @endif
                     @endif --}}
-                    @if (Module::collections()->has('Brand') && userCan('brand.view'))
+                    {{-- @if (Module::collections()->has('Brand') && userCan('brand.view'))
                         <x-admin.sidebar-list :linkActive="Route::is('module.brand.*') ? true : false" route="module.brand.index" icon="fas fa-award">
                             {{ __('brand') }}
                         </x-admin.sidebar-list>
-                    @endif
+                    @endif --}}
 
                     {{-- @if (Module::collections()->has('Map') && userCan('map.view'))
                         <x-admin.sidebar-list :linkActive="Route::is('module.map.*') ? true : false" route="module.map.index" icon="fas fa-map-marker-alt">

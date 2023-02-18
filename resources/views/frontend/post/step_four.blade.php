@@ -29,7 +29,7 @@
                 </div>
             @endif
             <div class="ad_post_form">
-                <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('frontend.post.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="ad_type_slug" value="{{ $ad_type->slug }}">
                     <input type="hidden" name="ad_type_id" value="{{ $ad_type->id }}">

@@ -6,7 +6,6 @@ use App\Models\AdType;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Brian2694\Toastr\Facades\Toastr;
 
 
 class AdTypesController extends Controller
@@ -23,7 +22,7 @@ class AdTypesController extends Controller
 
     public function store(Request $request)
     {
-    
+
         $this->validate($request, [
             'name'  => 'required|unique:ad_types,name',
         ]);
@@ -78,7 +77,7 @@ class AdTypesController extends Controller
         try {
             $ad_type = AdType::find($id);
             $ad_type->delete();
-        
+
         } catch (\Exception $e) {
             DB::rollback();
             flashSuccess('Data not Deleted');
@@ -86,7 +85,7 @@ class AdTypesController extends Controller
         }
         DB::commit();
         flashSuccess('Data Deleted Successfully');
-        return redirect()->route('adtypes.index');    
+        return redirect()->route('adtypes.index');
     }
 
 }

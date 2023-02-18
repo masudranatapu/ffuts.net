@@ -94,7 +94,7 @@
                                 <li>Job For Disabilities: <strong>{{ $ad_details->job_for_disabilities }}</strong></li>
                                 <li>Phone Text: <strong>{{ $ad_details->phone_text }}</strong></li>
                             </ul>
-                            
+
                             <ul class="mb-4">
                                 <li>Employment Type: <strong>{{ $ad_details->employment_type }}</strong></li>
                                 <li>Email Privacy: <strong>{{ $ad_details->email_privacy }}</strong></li>
@@ -114,7 +114,7 @@
                             <ul class="mb-4">
                                 <li>City: <strong>{{ $ad_details->city }}</strong></li>
                                 {{-- @dd($ad_details->services) --}}
-                                <li>Services: 
+                                <li>Services:
                                     @foreach ($ad_details->services as $value)
                                      <span class="badge rounded-pill bg-success">{{ $value }}</span>
                                     @endforeach
@@ -145,9 +145,9 @@
                 <div class="p-2">
                     <ul>
                         <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
-                        <li><a href="{{ route('privacy.policy') }}">{{ __('privacy') }} |</a></li>
-                        <li><a href="{{ route('terms.condition') }}">{{ __('terms & conditions') }} |</a></li>
-                        <li><a href="{{ route('about') }}">{{ __('about') }} |</a></li>
+                        <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
+                        <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a></li>
+                        <li><a href="{{ route('frontend.about') }}">{{ __('about') }} |</a></li>
                         <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
                     </ul>
                 </div>

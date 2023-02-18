@@ -61,6 +61,10 @@ class Ad extends Model
     {
         return $query->where('status', 'active');
     }
+    public function scopePending($query)
+    {
+        return $query->where('status', 'pending');
+    }
 
     /**
      *  Active Category scope
@@ -108,7 +112,7 @@ class Ad extends Model
      *  BelongTo
      * @return BelongsTo|Collection|Country[]
      */
-    function country(): BelongsTo
+    function countries(): BelongsTo
     {
         return $this->belongsTo(Country::class, 'country', 'iso');
     }
@@ -150,7 +154,7 @@ class Ad extends Model
         return $this->hasMany(AdGallery::class);
     }
 
-    
+
 
 
     /**

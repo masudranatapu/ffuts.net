@@ -30,12 +30,12 @@ $country = getCountryCode();
             <div class="col-md-3">
                 <div class="sidebar_left overflow-hidden">
                     <div class="heading1 text-center p-3">
-                        <h5><a href="{{ route('index') }}"><img src="{{ asset('frontend/images/logo.png') }}"
+                        <h5><a href="{{ route('frontend.index') }}"><img src="{{ asset('frontend/images/logo.png') }}"
                                     width="124" alt="logo"></a>
                         </h5>
                         <ul class="list-group pt-3">
                             <li class="custom-list-style mb-2">
-                                <a href="{{ route('post.create') }}">Create a posting</a>
+                                <a href="{{ route('frontend.post.create') }}">Create a posting</a>
                             </li>
                             @if(auth('user')->check())
                             <li class="mt-1 mb-3">
@@ -65,44 +65,44 @@ $country = getCountryCode();
                         <div class="mt-5 list-style1 mb-3">
                             <ul class="list-group">
                                 <li class="list-item custom-list-style1">
-                                    <a href="{{ route('shop') }}">hjælp. faq, misbrug, juridisk</a>
+                                    <a href="{{ route('frontend.shop') }}">hjælp. faq, misbrug, juridisk</a>
                                 </li>
                                 <li class="custom-list-style1">
-                                    <a href="{{ route('shop') }}">undgå svindel og bedrag </a>
+                                    <a href="{{ route('frontend.shop') }}">undgå svindel og bedrag </a>
                                 </li>
                                 <li class="custom-list-style1">
-                                    <a href="{{ route('shop') }}">personlige sikkerhedsråd </a>
+                                    <a href="{{ route('frontend.shop') }}">personlige sikkerhedsråd </a>
                                 </li>
                                 <li class="custom-list-style1">
-                                    <a href="{{ route('shop') }}">anvendelsesvilkår </a>
+                                    <a href="{{ route('frontend.shop') }}">anvendelsesvilkår </a>
                                 </li>
                                 <li class="custom-list-style1">
-                                    <a href="{{ route('shop') }}">datapolitik</a>
+                                    <a href="{{ route('frontend.shop') }}">datapolitik</a>
                                 </li>
                                 <li class="custom-list-style1">
-                                    <a href="{{ route('shop') }}">systemstatus </a>
+                                    <a href="{{ route('frontend.shop') }}">systemstatus </a>
                                 </li>
                             </ul>
                         </div>
                         <div class="list-style1">
                             <ul class="list-group ">
                                 <li class="list-item custom-list-style1">
-                                    <a href="{{ route('shop') }}">om craigslist </a>
+                                    <a href="{{ route('frontend.shop') }}">om craigslist </a>
                                 </li>
                                 <li class="custom-list-style1">
-                                    <a href="{{ route('shop') }}">craigslist åben kilde </a>
+                                    <a href="{{ route('frontend.shop') }}">craigslist åben kilde </a>
                                 </li>
                                 <li class="custom-list-style1">
-                                    <a href="{{ route('shop') }}">craigslist blog </a>
+                                    <a href="{{ route('frontend.shop') }}">craigslist blog </a>
                                 </li>
                                 <li class="custom-list-style1">
-                                    <a href="{{ route('shop') }}">bedste-fra-craigslist </a>
+                                    <a href="{{ route('frontend.shop') }}">bedste-fra-craigslist </a>
                                 </li>
                                 <li class="custom-list-style1">
-                                    <a href="{{ route('shop') }}">"craigslist joe" </a>
+                                    <a href="{{ route('frontend.shop') }}">"craigslist joe" </a>
                                 </li>
                                 <li class="custom-list-style1">
-                                    <a href="{{ route('shop') }}">craig newmark philanthropies </a>
+                                    <a href="{{ route('frontend.shop') }}">craig newmark philanthropies </a>
                                 </li>
                             </ul>
                         </div>
@@ -112,7 +112,7 @@ $country = getCountryCode();
 
             <div class="col-md-7">
                 <div class="heading2 text-center py-3">
-                    <h5><a href="{{ route('index') }}">Ffuts.net</a></h5>
+                    <h5><a href="{{ route('frontend.index') }}">Ffuts.net</a></h5>
                 </div>
                 <div class="main_body">
                     <div class="row">
@@ -177,7 +177,7 @@ $country = getCountryCode();
             <div class="col-md-2">
                 <div class="sidebar_right">
                     <div class="heading3 text-center">
-                        <form action="{{ route('localization') }}" method="post">
+                        <form action="{{ route('frontend.localization') }}" method="post">
                             @csrf
                             <select name="language" id="language"
                                 class="form-control form-select language_dropdown mb-3" onchange="this.form.submit()">
@@ -187,7 +187,7 @@ $country = getCountryCode();
                         </form>
 
                         <hr>
-                        <form action="{{ route('setCountry') }}" method="post">
+                        <form action="{{ route('frontend.setCountry') }}" method="post">
                             @csrf
                             <select name="country" id="country"
                                 class="form-control form-select language_dropdown mb-3 select2"
@@ -202,7 +202,7 @@ $country = getCountryCode();
                             </select>
                         </form>
 
-                        @if(isset($cities) && count($cities)>0)
+                        {{-- @if(isset($cities) && count($cities)>0)
                         <div class="mt-2 list-syle-hover">
                             <ul class="list-group ">
                                 @foreach ($cities as $key => $city )
@@ -213,7 +213,7 @@ $country = getCountryCode();
 
                             </ul>
                         </div>
-                        @endif
+                        @endif --}}
 
                     </div>
                 </div>
@@ -224,9 +224,9 @@ $country = getCountryCode();
                 <div class="p-3">
                     <ul>
                         <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
-                        <li><a href="{{ route('privacy.policy') }}">{{ __('privacy') }} |</a></li>
-                        <li><a href="{{ route('terms.condition') }}">{{ __('terms & conditions') }} |</a></li>
-                        <li><a href="{{ route('about') }}">{{ __('about') }} |</a></li>
+                        <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
+                        <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a></li>
+                        <li><a href="{{ route('frontend.about') }}">{{ __('about') }} |</a></li>
                         <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
                     </ul>
                 </div>
@@ -252,8 +252,8 @@ $country = getCountryCode();
                 <div class="col-7">
                     <div class="mobile_heade_right float-end">
                         <ul>
-                            <li><a href="{{ route('shop') }}">Post</a></li>
-                            <li><a href="{{ route('shop') }}">Account</a></li>
+                            <li><a href="{{ route('frontend.shop') }}">Post</a></li>
+                            <li><a href="{{ route('frontend.shop') }}">Account</a></li>
                         </ul>
                     </div>
                 </div>
@@ -281,20 +281,20 @@ $country = getCountryCode();
                             data-bs-parent="#accordionExample">
                             <div class="accordion_body">
                                 <ul>
-                                    <li><a href="{{ route('shop') }}">all for sale</a></li>
-                                    <li><a href="{{ route('shop') }}">antiques</a></li>
-                                    <li><a href="{{ route('shop') }}">appliances</a></li>
-                                    <li><a href="{{ route('shop') }}">arts+crafts</a></li>
-                                    <li><a href="{{ route('shop') }}">atv/utv/sno</a></li>
-                                    <li><a href="{{ route('shop') }}">aviation</a></li>
-                                    <li><a href="{{ route('shop') }}">barter</a></li>
-                                    <li><a href="{{ route('shop') }}">beauty</a></li>
-                                    <li><a href="{{ route('shop') }}">bikes</a></li>
-                                    <li><a href="{{ route('shop') }}">boat parts</a></li>
-                                    <li><a href="{{ route('shop') }}">books</a></li>
-                                    <li><a href="{{ route('shop') }}">business</a></li>
-                                    <li><a href="{{ route('shop') }}">computer</a></li>
-                                    <li><a href="{{ route('shop') }}">collectibles</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">all for sale</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">antiques</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">appliances</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">arts+crafts</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">atv/utv/sno</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">aviation</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">barter</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">beauty</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">bikes</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">boat parts</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">books</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">business</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">computer</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">collectibles</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -310,20 +310,20 @@ $country = getCountryCode();
                             data-bs-parent="#accordionExample">
                             <div class="accordion_body">
                                 <ul>
-                                    <li><a href="{{ route('shop') }}">all for sale</a></li>
-                                    <li><a href="{{ route('shop') }}">antiques</a></li>
-                                    <li><a href="{{ route('shop') }}">appliances</a></li>
-                                    <li><a href="{{ route('shop') }}">arts+crafts</a></li>
-                                    <li><a href="{{ route('shop') }}">atv/utv/sno</a></li>
-                                    <li><a href="{{ route('shop') }}">aviation</a></li>
-                                    <li><a href="{{ route('shop') }}">barter</a></li>
-                                    <li><a href="{{ route('shop') }}">beauty</a></li>
-                                    <li><a href="{{ route('shop') }}">bikes</a></li>
-                                    <li><a href="{{ route('shop') }}">boat parts</a></li>
-                                    <li><a href="{{ route('shop') }}">books</a></li>
-                                    <li><a href="{{ route('shop') }}">business</a></li>
-                                    <li><a href="{{ route('shop') }}">computer</a></li>
-                                    <li><a href="{{ route('shop') }}">collectibles</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">all for sale</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">antiques</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">appliances</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">arts+crafts</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">atv/utv/sno</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">aviation</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">barter</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">beauty</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">bikes</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">boat parts</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">books</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">business</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">computer</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">collectibles</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -339,20 +339,20 @@ $country = getCountryCode();
                             data-bs-parent="#accordionExample">
                             <div class="accordion_body">
                                 <ul>
-                                    <li><a href="{{ route('shop') }}">all for sale</a></li>
-                                    <li><a href="{{ route('shop') }}">antiques</a></li>
-                                    <li><a href="{{ route('shop') }}">appliances</a></li>
-                                    <li><a href="{{ route('shop') }}">arts+crafts</a></li>
-                                    <li><a href="{{ route('shop') }}">atv/utv/sno</a></li>
-                                    <li><a href="{{ route('shop') }}">aviation</a></li>
-                                    <li><a href="{{ route('shop') }}">barter</a></li>
-                                    <li><a href="{{ route('shop') }}">beauty</a></li>
-                                    <li><a href="{{ route('shop') }}">bikes</a></li>
-                                    <li><a href="{{ route('shop') }}">boat parts</a></li>
-                                    <li><a href="{{ route('shop') }}">books</a></li>
-                                    <li><a href="{{ route('shop') }}">business</a></li>
-                                    <li><a href="{{ route('shop') }}">computer</a></li>
-                                    <li><a href="{{ route('shop') }}">collectibles</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">all for sale</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">antiques</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">appliances</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">arts+crafts</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">atv/utv/sno</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">aviation</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">barter</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">beauty</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">bikes</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">boat parts</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">books</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">business</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">computer</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">collectibles</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -368,20 +368,20 @@ $country = getCountryCode();
                             data-bs-parent="#accordionExample">
                             <div class="accordion_body">
                                 <ul>
-                                    <li><a href="{{ route('shop') }}">all for sale</a></li>
-                                    <li><a href="{{ route('shop') }}">antiques</a></li>
-                                    <li><a href="{{ route('shop') }}">appliances</a></li>
-                                    <li><a href="{{ route('shop') }}">arts+crafts</a></li>
-                                    <li><a href="{{ route('shop') }}">atv/utv/sno</a></li>
-                                    <li><a href="{{ route('shop') }}">aviation</a></li>
-                                    <li><a href="{{ route('shop') }}">barter</a></li>
-                                    <li><a href="{{ route('shop') }}">beauty</a></li>
-                                    <li><a href="{{ route('shop') }}">bikes</a></li>
-                                    <li><a href="{{ route('shop') }}">boat parts</a></li>
-                                    <li><a href="{{ route('shop') }}">books</a></li>
-                                    <li><a href="{{ route('shop') }}">business</a></li>
-                                    <li><a href="{{ route('shop') }}">computer</a></li>
-                                    <li><a href="{{ route('shop') }}">collectibles</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">all for sale</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">antiques</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">appliances</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">arts+crafts</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">atv/utv/sno</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">aviation</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">barter</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">beauty</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">bikes</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">boat parts</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">books</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">business</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">computer</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">collectibles</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -397,20 +397,20 @@ $country = getCountryCode();
                             data-bs-parent="#accordionExample">
                             <div class="accordion_body">
                                 <ul>
-                                    <li><a href="{{ route('shop') }}">all for sale</a></li>
-                                    <li><a href="{{ route('shop') }}">antiques</a></li>
-                                    <li><a href="{{ route('shop') }}">appliances</a></li>
-                                    <li><a href="{{ route('shop') }}">arts+crafts</a></li>
-                                    <li><a href="{{ route('shop') }}">atv/utv/sno</a></li>
-                                    <li><a href="{{ route('shop') }}">aviation</a></li>
-                                    <li><a href="{{ route('shop') }}">barter</a></li>
-                                    <li><a href="{{ route('shop') }}">beauty</a></li>
-                                    <li><a href="{{ route('shop') }}">bikes</a></li>
-                                    <li><a href="{{ route('shop') }}">boat parts</a></li>
-                                    <li><a href="{{ route('shop') }}">books</a></li>
-                                    <li><a href="{{ route('shop') }}">business</a></li>
-                                    <li><a href="{{ route('shop') }}">computer</a></li>
-                                    <li><a href="{{ route('shop') }}">collectibles</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">all for sale</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">antiques</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">appliances</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">arts+crafts</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">atv/utv/sno</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">aviation</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">barter</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">beauty</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">bikes</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">boat parts</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">books</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">business</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">computer</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">collectibles</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -424,9 +424,9 @@ $country = getCountryCode();
             <div class="p-2">
                 <ul>
                     <li class="list-item text-white">© {{ date('Y') }} ffuts |</li>
-                    <li> <a href="{{ route('privacy.policy') }}">{{__('privacy')}} |</a></li>
-                    <li><a href="{{ route('terms.condition') }}">{{ __('terms & conditions') }} |</a></li>
-                    <li><a href="{{ route('about') }}">{{ __('about') }} |</a></li>
+                    <li> <a href="{{ route('frontend.privacy.policy') }}">{{__('privacy')}} |</a></li>
+                    <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a></li>
+                    <li><a href="{{ route('frontend.about') }}">{{ __('about') }} |</a></li>
                     <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
                 </ul>
             </div>

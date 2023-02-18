@@ -157,12 +157,12 @@
                         <span>{{ date('d Y',strtotime($value->created_at)) }}</span>
                     </div>
                     <div class="product_img">
-                        <a href="{{ route('details',$value->slug) }}"><img src="{{ asset($value->thumbnail) }}"
+                        <a href="{{ route('frontend.details',$value->slug) }}"><img src="{{ asset($value->thumbnail) }}"
                                 class="w-100" alt="image"></a>
                     </div>
                     <div class="product_content">
                         <h5>{{ $value->price }}</h5>
-                        <h4><a href="{{ route('details',$value->slug) }}">{{ $value->slug }}</a>
+                        <h4><a href="{{ route('frontend.details',$value->slug) }}">{{ $value->slug }}</a>
                         </h4>
                         <p>({{ $value->country }}, {{ $value->city }}) <a href="javascript:void(0)"><i
                                     class="la la-times"></i></a></p>
@@ -178,9 +178,9 @@
             <div class="p-2">
                 <ul>
                     <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
-                    <li><a href="{{ route('privacy.policy') }}">{{ __('privacy') }} |</a></li>
-                    <li><a href="{{ route('terms.condition') }}">{{ __('terms & conditions') }} |</a></li>
-                    <li><a href="{{ route('about') }}">{{ __('about') }} |</a></li>
+                    <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
+                    <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a></li>
+                    <li><a href="{{ route('frontend.about') }}">{{ __('about') }} |</a></li>
                     <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
                 </ul>
             </div>
