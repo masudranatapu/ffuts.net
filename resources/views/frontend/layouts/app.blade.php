@@ -24,6 +24,27 @@
         @yield('content')
         {{-- footer script --}}
         @include('frontend.layouts.footer_script')
+        <script>
+            function AddWishlist2(item, user) {
+
+                if (user) {
+                    $.ajax({
+                        type: "get",
+                        url: "{{ route('wishlist.create') }}",
+                        data: {
+                            id: item,
+                            user: user,
+                        },
+                        success: function(data) {
+                            // location.reload()
+                        }
+                    });
+                } else {
+                    // $(id).prop('checked', false)
+                    toastr.error('Please login first');
+                }
+            }
+        </script>
         {{-- custom script --}}
         @stack('script')
     </body>

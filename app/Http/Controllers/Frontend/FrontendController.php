@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Frontend;
 
 use DB;
+use App\Models\Ad;
 use App\Models\Seo;
 use App\Models\AdType;
+use App\Models\AdGallery;
 use function Sodium\compare;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Ad;
-use App\Models\AdGallery;
 use Modules\Category\Entities\Category;
 
+use Modules\Wishlist\Entities\Wishlist;
 use Google\Service\Dfareporting\Country;
 use Modules\Category\Entities\SubCategory;
 
@@ -56,7 +57,7 @@ class FrontendController extends Controller
         } else {
             $ads = Ad::where('ad_type_id', $ad_type->id)->get();
         }
-        
+
         return view('frontend.shop', compact('ads', 'ad_type', 'category'));
     }
 
@@ -83,17 +84,14 @@ class FrontendController extends Controller
 
     public function wishlistCreate(Request $request)
     {
-       dd($request->all());
         $id = $request->id;
-        dd($id);
         $user = $request->user;
-        $isExist = Wishlist::where(['ad_id' => $id, 'user_id' => $user->id])->first();  
+        $isExist = Wishlist::where(['ad_id' => $id, 'user_id' => $user])->first();
         if (!$isExist) {
             $wishlist = new Wishlist();
-            $wishlist->user_id = $user->id;
+            $wishlist->user_id = $user;
             $wishlist->ad_id = $id;
             $wishlist->save();
-            dd('ok');
             if ($request->ajax()) {
                 return response()->json(['status' => 'success', 'message' => 'Wishlist added successfully']);
             }
@@ -102,8 +100,9 @@ class FrontendController extends Controller
             $notification = array('messege' => $notification, 'alert-type' => 'success');
             return redirect()->back()->with($notification);
         } else {
+            $isExist->delete();
             if ($request->ajax()) {
-                return response()->json(['status' => 'failed', 'message' => 'Item already exist']);
+                return response()->json(['status' => 'failed', 'message' => 'Wishlist removed successfully']);
             }
             $notification = trans('user_validation.Item already exist');
             $notification = array('messege' => $notification, 'alert-type' => 'error');
