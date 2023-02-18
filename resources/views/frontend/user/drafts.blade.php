@@ -31,14 +31,14 @@
         <div class="user_dashboard mb-4">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="posting-tab" data-bs-toggle="tab"
-                        data-bs-target="#posting-tab-pane" type="button" role="tab" aria-controls="posting-tab-pane"
-                        aria-selected="true"><a href="{{ route('user.profile') }}">Posting</a></button>
+                    <button class="nav-link" id="posting-tab" data-bs-toggle="tab" data-bs-target="#posting-tab-pane"
+                        type="button" role="tab" aria-controls="posting-tab-pane" aria-selected="true"><a
+                            href="{{ route('user.profile') }}">Posting</a></button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="drafts-tab" data-bs-toggle="tab" data-bs-target="#drafts-tab-pane"
-                        type="button" role="tab" aria-controls="drafts-tab-pane" aria-selected="false"><a
-                            href="{{ route('user.drafts') }}">Drafts</a></button>
+                    <button class="nav-link active" id="drafts-tab" data-bs-toggle="tab"
+                        data-bs-target="#drafts-tab-pane" type="button" role="tab" aria-controls="drafts-tab-pane"
+                        aria-selected="false"><a href="{{ route('user.drafts') }}">Drafts</a></button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="searches-tab" data-bs-toggle="tab" data-bs-target="#searches-tab-pane"
@@ -83,7 +83,6 @@
                                 <span class="badge bg-success">Published</span>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-success">View</a>
                                 <a href="#" class="btn btn-sm btn-secondary">Edit</a>
                                 <a href="#" class="btn btn-sm btn-danger">Delete</a>
                             </td>
@@ -105,7 +104,6 @@
                                 <span class="badge bg-danger">Unpublished</span>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-success">View</a>
                                 <a href="#" class="btn btn-sm btn-secondary">Edit</a>
                                 <a href="#" class="btn btn-sm btn-danger">Delete</a>
                             </td>

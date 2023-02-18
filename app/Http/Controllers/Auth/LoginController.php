@@ -49,27 +49,32 @@ class LoginController extends Controller
         $this->validate($request, [
             'email' => 'required',
         ]);
-
-        $user_pass_less = User::where('email', $request->email)->whereNull('password')->first();
-        if ($user_pass_less) {
-            Auth::guard('user')->login($user_pass_less);
-            return redirect()->route('index')->with('success', 'You are sucessfully login');
-        } else {
-            $this->validate($request, [
-                'password' => 'required',
-            ]);
-            $user = User::where('email', $request->email)->whereNull('password')->first();
-            if($user) {
-                if(Hash::check($request->password, $user->password)) {
-                    Auth::guard('user')->login($user);
-                    return redirect()->route('index')->with('success', 'You are sucessfully login');
+        $verified = User::where('email', $request->email)->first();
+        if (isset($verified) && isset($verified->email_verified_at)) {
+            $user_pass_less = User::where('email', $request->email)->whereNull('password')->first();
+            if ($user_pass_less) {
+                Auth::guard('user')->login($user_pass_less);
+                return redirect()->route('index')->with('success', 'You are sucessfully login');
+            } else {
+                $this->validate($request, [
+                    'password' => 'required',
+                ]);
+                $user = User::where('email', $request->email)->first();
+                if($user) {
+                    if(Hash::check($request->password, $user->password)) {
+                        Auth::guard('user')->login($user);
+                        return redirect()->route('index')->with('success', 'You are sucessfully login');
+                    }else {
+                        return redirect()->back()->with('info', 'Password do not match');
+                    }
                 }else {
-                    return redirect()->back()->with('info', 'Password do not match');
+                    return redirect()->back()->with('error', 'User not found');
                 }
-            }else {
-                return redirect()->back()->with('error', 'User not found');
             }
+        } elseif($verified) {
+            return redirect()->back()->with('error', 'Please verify your email');
         }
+
 
 
 
