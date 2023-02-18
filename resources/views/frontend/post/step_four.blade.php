@@ -28,6 +28,7 @@
                     </ul>
                 </div>
             @endif
+           
             <div class="ad_post_form">
                 <form action="{{ route('frontend.post.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -36,20 +37,45 @@
                     <input type="hidden" name="category_id" value="{{ $category->id }}">
                     <input type="hidden" name="subcategory_id" value="{{ $subCategory->id }}">
                     <h4 class="text-center mb-4 mt-4 bg-light">{{ $subCategory->name }}</h4>
+                    @if($ad_type->slug == 'service-offered')
+                        <h5 class="mb-4"><strong>Please be certain your ad is legal, local, and conforms with our Terms of Use</strong><a class="text-success" href="#">[?]</a></h5>
+                        <h6 class="mb-5">No URLs, links, or web addresses in your text or image please.</h6>
+                    @endif
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="
+                            @if($ad_type->slug == 'service-offered' || $ad_type->slug == 'housing-wanted' || $ad_type->slug == 'housing-offered' || $ad_type->slug == 'engagement-offered' || $ad_type->slug == 'community' || $ad_type->slug == 'job-offered' || $ad_type->slug == 'job-wanted')
+                                col-md-5
+                            @else
+                               col-md-4
+                            @endif
+                        
+                        ">
                             <div class="mb-3">
                                 <label for="title" class="form-label text-success">posting title</label>
                                 <input type="text" name="title" id="title" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        @if($ad_type->slug == 'for-sale-by-owner' || $ad_type->slug == 'for-sale-by-dealer' || $ad_type->slug == 'wanted-by-owner' || $ad_type->slug == 'wanted-by-dealer' || $ad_type->slug == 'event-class')
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label for="price" class="form-label text-success">Price <small class="text-dark">€</small> </label>
+                                    <input type="number" name="price" id="price" class="form-control" required>
+                                </div>
+                            </div>
+                        @endif
+                        <div class="
+                                @if($ad_type->slug == 'service-offered'|| $ad_type->slug == 'housing-wanted' || $ad_type->slug == 'housing-offered' || $ad_type->slug == 'engagement-offered' || $ad_type->slug == 'job-wanted' || $ad_type->slug == 'community' || $ad_type->slug == 'job-offered')
+                                  col-md-5
+                                @else
+                                    col-md-4   
+                                @endif
+                            ">
                             <div class="mb-3">
                                 <label for="city" class="form-label">city ​​or neighborhood</label>
                                 <input type="text" name="city" id="city" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <div class="mb-3">
                                 <label for="postcode" class="form-label">Postal code</label>
                                 <input type="number" name="postcode" id="postcode" class="form-control" required>
@@ -67,8 +93,6 @@
                             <label class="active">{{ __('upload_photos') }}</label>
                             <div id="multiple_image_upload" class="input-images-2" style="padding-top: .5rem;"></div>
                         </div>
-
-
                     </div>
 
                     {{-- For Job --}}
@@ -94,7 +118,27 @@
                     @if ($ad_type->slug == 'housing-wanted')
                         @include('frontend.post.pages.housing-wanted')
                     @endif
-
+                    @if ($ad_type->slug == 'for-sale-by-owner')
+                        @include('frontend.post.pages.for-sale-by-owner')
+                    @endif
+                    @if ($ad_type->slug == 'for-sale-by-dealer')
+                        @include('frontend.post.pages.for-sale-by-dealer')
+                    @endif
+                    @if ($ad_type->slug == 'wanted-by-owner')
+                        @include('frontend.post.pages.wanted-by-owner')
+                    @endif
+                    @if ($ad_type->slug == 'wanted-by-dealer')
+                        @include('frontend.post.pages.wanted-by-dealer')
+                    @endif
+                    @if ($ad_type->slug == 'service-offered')
+                        @include('frontend.post.pages.service-offered')
+                    @endif
+                    @if ($ad_type->slug == 'community')
+                        @include('frontend.post.pages.community')
+                    @endif
+                    @if ($ad_type->slug == 'event-class')
+                        @include('frontend.post.pages.event-class')
+                    @endif
 
                     <div class="mt-5 text-center">
                         <button type="submit" class="btn btn-light">Ad Post</button>
