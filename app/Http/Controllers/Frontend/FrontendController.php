@@ -50,9 +50,14 @@ class FrontendController extends Controller
     public function search(Request $request)
     {
         $ad_type = AdType::where('slug', $request->ad_type)->first();
-        $category = Category::where('slug',$request->categories)->first();
-        $ads = Ad::where('ad_type_id', $ad_type->id)->where('category_id', $category->id)->get();
-        return view('frontend.shop',compact('ads', 'ad_type', 'category'));
+        $category = Category::where('slug', $request->categories)->first();
+        if ($category) {
+            $ads = Ad::where('ad_type_id', $ad_type->id)->where('category_id', $category->id)->get();
+        } else {
+            $ads = Ad::where('ad_type_id', $ad_type->id)->get();
+        }
+        
+        return view('frontend.shop', compact('ads', 'ad_type', 'category'));
     }
 
 
@@ -65,7 +70,7 @@ class FrontendController extends Controller
 
     public function details($slug)
     {
-        $ad_details = Ad::where('slug',$slug)->first();
+        $ad_details = Ad::where('slug', $slug)->first();
         $ad_galleies = AdGallery::where('ad_id', $ad_details->id)->get();
         $seo = Seo::where('page_slug', 'home')->first();
         $meta_title = $seo->contents->title;
@@ -73,9 +78,38 @@ class FrontendController extends Controller
         $meta_keywords = $seo->contents->keywords;
         $meta_image = $seo->contents->image;
 
-        return view('frontend.details', compact('ad_details', 'ad_galleies','meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
+        return view('frontend.details', compact('ad_details', 'ad_galleies', 'meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
     }
 
+    public function wishlistCreate(Request $request)
+    {
+       dd($request->all());
+        $id = $request->id;
+        dd($id);
+        $user = $request->user;
+        $isExist = Wishlist::where(['ad_id' => $id, 'user_id' => $user->id])->first();  
+        if (!$isExist) {
+            $wishlist = new Wishlist();
+            $wishlist->user_id = $user->id;
+            $wishlist->ad_id = $id;
+            $wishlist->save();
+            dd('ok');
+            if ($request->ajax()) {
+                return response()->json(['status' => 'success', 'message' => 'Wishlist added successfully']);
+            }
+
+            $notification = trans('user_validation.Wishlist added successfully');
+            $notification = array('messege' => $notification, 'alert-type' => 'success');
+            return redirect()->back()->with($notification);
+        } else {
+            if ($request->ajax()) {
+                return response()->json(['status' => 'failed', 'message' => 'Item already exist']);
+            }
+            $notification = trans('user_validation.Item already exist');
+            $notification = array('messege' => $notification, 'alert-type' => 'error');
+            return redirect()->back()->with($notification);
+        }
+    }
     public function about()
     {
         $seo = Seo::where('page_slug', 'home')->first();
