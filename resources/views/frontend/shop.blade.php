@@ -142,7 +142,7 @@
                         </div>
                         <div class="product_content">
                             <h5>{{ $value->price }}</h5>
-                            <h4><a href="{{ route('details',$value->slug) }}">{{ $value->slug }}</a>
+                            <h4><a href="{{ route('details',$value->slug) }}">{{ $value->title }}</a>
                             </h4>
                             <p>({{ $value->country }}, {{ $value->city }}) <a href="javascript:void(0)"><i class="la la-times"></i></a></p>
                         </div>
