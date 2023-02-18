@@ -3,16 +3,15 @@
 namespace App\Http\Controllers\Frontend;
 
 use DB;
-use App\Models\Ad;
 use App\Models\Seo;
 use App\Models\AdType;
 use App\Models\AdGallery;
+use Modules\Ad\Entities\Ad;
 use function Sodium\compare;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Modules\Category\Entities\Category;
 
-use Modules\Wishlist\Entities\Wishlist;
+use Modules\Category\Entities\Category;
 use Google\Service\Dfareporting\Country;
 use Modules\Category\Entities\SubCategory;
 
@@ -71,7 +70,8 @@ class FrontendController extends Controller
 
     public function details($slug)
     {
-        $ad_details = Ad::where('slug', $slug)->first();
+        $ad_details = Ad::with('ad_type')->where('slug', $slug)->first();
+        // dd($ad_details->ad_type->slug);
         $ad_galleies = AdGallery::where('ad_id', $ad_details->id)->get();
         $seo = Seo::where('page_slug', 'home')->first();
         $meta_title = $seo->contents->title;

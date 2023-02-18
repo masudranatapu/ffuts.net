@@ -76,22 +76,25 @@
 
                         <!-- details -->
                         <div class="details">
-                            <ul class="mb-4">
-                                <li>Price: <strong>${{ $ad_details->price }}</strong></li>
-                                <li>Rental Term: <strong>Monthly</strong></li>
-                            </ul>
+                            @if($ad_details->ad_type->slug == 'job-offered')
+                                <ul class="mb-4">
+                                    <li>Price: <strong>${{ $ad_details->price }}</strong></li>
+                                    <li>Rental Term: <strong>Monthly</strong></li>
+                                </ul>
+                                <ul class="mb-4">
+                                    <li>Contact Name: <strong>{{ $ad_details->contact_name }}</strong></li>
+                                    <li>Company Name: <strong>{{ $ad_details->company_name }}</strong></li>
+                                </ul>
+                                <ul class="mb-4">
+                                    <li>Salary: <strong>{{ $ad_details->salary }}</strong></li>
+                                    <li>Job Title: <strong>{{ $ad_details->job_title }}</strong></li>
+                                </ul>
+                             @endif
                             <ul class="mb-4">
                                 <li>Job For Disabilities: <strong>{{ $ad_details->job_for_disabilities }}</strong></li>
                                 <li>Phone Text: <strong>{{ $ad_details->phone_text }}</strong></li>
                             </ul>
-                            <ul class="mb-4">
-                                <li>Contact Name: <strong>{{ $ad_details->contact_name }}</strong></li>
-                                <li>Company Name: <strong>{{ $ad_details->company_name }}</strong></li>
-                            </ul>
-                            <ul class="mb-4">
-                                <li>Salary: <strong>{{ $ad_details->salary }}</strong></li>
-                                <li>Job Title: <strong>{{ $ad_details->job_title }}</strong></li>
-                            </ul>
+                            
                             <ul class="mb-4">
                                 <li>Employment Type: <strong>{{ $ad_details->employment_type }}</strong></li>
                                 <li>Email Privacy: <strong>{{ $ad_details->email_privacy }}</strong></li>
@@ -110,7 +113,12 @@
                             </ul>
                             <ul class="mb-4">
                                 <li>City: <strong>{{ $ad_details->city }}</strong></li>
-                                <li>Services: <strong>{{ $ad_details->services }}</strong></li>
+                                {{-- @dd($ad_details->services) --}}
+                                <li>Services: 
+                                    @foreach ($ad_details->services as $value)
+                                     <span class="badge rounded-pill bg-success">{{ $value }}</span>
+                                    @endforeach
+                                </li>
                             </ul>
                             <ul class="mb-4">
                                 <li>Sqft: <strong>{{ $ad_details->sqft }}</strong></li>
@@ -127,7 +135,6 @@
                             </ul>
                             <p>{{ $ad_details->description }}</p>
                         </div>
-
                     </div>
                 </div>
             </div>
