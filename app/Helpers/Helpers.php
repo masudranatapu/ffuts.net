@@ -2,8 +2,9 @@
 
 
 
-use App\Models\Setting;
 use App\Models\User;
+use App\Models\Country;
+use App\Models\Setting;
 use App\Models\UserPlan;
 use App\Models\ModuleSetting;
 use App\Models\PaymentSetting;
@@ -217,7 +218,7 @@ function getCountryCode()
     }else{
 
         $local_country = 'bd';
-        $country = DB::table('country')->where('is_default',1)->first();
+        $country = Country::where('is_default',1)->first();
 
         if($country){
             $local_country = strtolower($country->iso);

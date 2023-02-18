@@ -4,6 +4,7 @@ namespace Modules\Ad\Entities;
 
 use App\Models\User;
 use App\Models\AdType;
+use App\Models\Country;
 use Modules\Brand\Entities\Brand;
 use Modules\Ad\Entities\AdFeature;
 use Illuminate\Database\Eloquent\Model;
@@ -102,6 +103,14 @@ class Ad extends Model
     function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+    /**
+     *  BelongTo
+     * @return BelongsTo|Collection|Country[]
+     */
+    function country(): BelongsTo
+    {
+        return $this->belongsTo(Country::class, 'country', 'iso');
     }
 
     /**

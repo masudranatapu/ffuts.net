@@ -19,6 +19,7 @@
 @endsection
 @php
     $country = getCountryCode();
+    // dd($country);
 
 @endphp
 
@@ -121,7 +122,7 @@
                                         @if($ad_type->slug != 'jobs')
                                             <div class="col-md-6">
                                                 <div class="category_heading text-center">
-                                                    <h5><a href="{{ route('search',['country'=>$ad_type,'ad_type' => $ad_type->slug]) }}">{{ __($ad_type->slug) }}</a></h5>
+                                                    <h5><a href="{{ route('search',['country'=>$country,'ad_type' => $ad_type->slug]) }}">{{ __($ad_type->slug) }}</a></h5>
                                                 </div>
                                                 <div class="row g-1">
                                                     @foreach ($ad_type->categories as $item)
