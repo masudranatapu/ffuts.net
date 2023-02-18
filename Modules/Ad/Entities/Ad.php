@@ -3,6 +3,7 @@
 namespace Modules\Ad\Entities;
 
 use App\Models\User;
+use App\Models\AdType;
 use Modules\Brand\Entities\Brand;
 use Modules\Ad\Entities\AdFeature;
 use Illuminate\Database\Eloquent\Model;
@@ -12,9 +13,9 @@ use Modules\Category\Entities\SubCategory;
 use Modules\Ad\Database\factories\AdFactory;
 use Modules\CustomField\Entities\CustomField;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\CustomField\Entities\ProductCustomField;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\CustomField\Entities\ProductCustomField;
 
 class Ad extends Model
 {
@@ -110,6 +111,16 @@ class Ad extends Model
     function subcategory(): BelongsTo
     {
         return $this->belongsTo(SubCategory::class);
+    }
+
+    /**
+     * ad_type
+     *
+     * @return void
+     */
+    public function ad_type(): BelongsTo
+    {
+        return $this->belongsTo(AdType::class, 'ad_type_id');
     }
 
     /**

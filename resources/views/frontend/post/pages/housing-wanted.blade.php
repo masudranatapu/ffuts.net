@@ -5,16 +5,16 @@
                 <h6>posting details</h6>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="" id="">
-                <label class="form-check-label" for="">cats ok</label>
+                <input class="form-check-input" type="checkbox" name="services[]" value="cats ok" id="cats_ok">
+                <label class="form-check-label" for="cats_ok">cats ok</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="" id="">
-                <label class="form-check-label" for="">dogs ok</label>
+                <input class="form-check-input" type="checkbox" name="services[]" value="dogs ok" id="dogs_ok">
+                <label class="form-check-label" for="dogs_ok">dogs ok</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="" id="">
-                <label class="form-check-label" for="">air conditioning</label>
+                <input class="form-check-input" type="checkbox" name="services[]" value="air conditioning" id="air_conditioning">
+                <label class="form-check-label" for="air_conditioning">air conditioning</label>
             </div>
         </div>
     </div>
@@ -24,32 +24,32 @@
             <div class="title mb-3">
                 <h6>fees and licensure</h6>
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-lg-6">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="broker_fee"
-                            id="broker_1">
+                            id="broker_1" value="1">
                         <label class="form-check-label" for="broker_1">broker fee</label>
                     </div>
                     <div class="mb-1">
                         <label for="fee_detailed" class="form-label">detailed fee description
                             please</label>
-                        <input type="text" name="fee_detailed" id="fee_detailed"
-                            class="form-control" readonly>
-                    </div>
-                    <div class="mb-1">
-                        <label for="fee_detailed" class="form-label">detailed fee description
-                            please</label>
-                        <input type="text" name="fee_detailed" id="fee_detailed"
-                            class="form-control" readonly>
+                        <input type="text" name="fee_detailed" id="broker_fee_detailed"
+                            class="form-control" disabled>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="application_fee"
-                            id="application_1">
+                            id="application_1" value="1">
                         <label class="form-check-label" for="application_1">application
                             fee</label>
+                    </div>
+                    <div class="mb-1">
+                        <label for="fee_detailed" class="form-label">detailed fee description
+                            please</label>
+                        <input type="text" name="fee_detailed" id="application_fee_detailed"
+                            class="form-control" disabled>
                     </div>
                 </div>
             </div>

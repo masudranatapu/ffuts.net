@@ -133,5 +133,22 @@
                 $('#license_info').attr('disabled', true);
             }
         });
+        $('#broker_1').change(function() {
+            if ($(this).is(':checked')) {
+                console.log(1);
+                $('#broker_fee_detailed').removeAttr('disabled');
+            }else{
+                $('#broker_fee_detailed').attr('disabled', true);
+
+            }
+        });
+        $('#application_1').change(function() {
+            if ($(this).is(':checked')) {
+                $('#application_fee_detailed').removeAttr('disabled');
+            }else{
+                $('#application_fee_detailed').attr('disabled', true);
+
+            }
+        });
     </script>
 @endpush

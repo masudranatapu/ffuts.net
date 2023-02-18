@@ -59,6 +59,7 @@ class AdPostController extends Controller
             'postcode' => 'required|integer',
             'description' => 'required',
             'email' => 'required',
+            'images' => 'required',
         ]);
 
         if ($request->ad_type_slug == 'job-wanted') {
@@ -101,6 +102,23 @@ class AdPostController extends Controller
         $ad->is_license = $request->is_license ?? 0;
         $ad->license_info = $request->license_info;
         $ad->other_contact = $request->other_contact ?? 0;
+
+        // House offered
+        $ad->sqft = $request->sqft;
+        $ad->houssing_type = $request->houssing_type;
+        $ad->laundry = $request->laundry;
+        $ad->parking = $request->parking;
+        $ad->bedrooms = $request->bedrooms;
+        $ad->bathrooms = $request->bathrooms;
+        $ad->available_on = $request->available_on;
+
+        // House wanted
+        $ad->broker_fee = $request->broker_fee ?? 0;
+        $ad->broker_fee_detailed = $request->broker_fee_detailed;
+        $ad->application_fee = $request->application_fee ?? 0;
+        $ad->application_fee_detailed = $request->application_fee_detailed;
+
+
         $ad->save();
 
         if ($old_slug) {
