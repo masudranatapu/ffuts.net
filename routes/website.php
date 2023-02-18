@@ -38,6 +38,9 @@ Route::post('store-post', [AdPostController::class, 'store'])->name('post.store'
 Route::middleware(['auth:user', 'verified'])->group(function () {
 
     Route::get('user/profile', [UserDashboardController::class, 'profile'])->name('user.profile');
+    Route::get('user/drafts', [UserDashboardController::class, 'drafts'])->name('user.drafts');
+    Route::get('user/search', [UserDashboardController::class, 'search'])->name('user.search');
+    Route::get('user/setting', [UserDashboardController::class, 'setting'])->name('user.setting');
 });
 
 
