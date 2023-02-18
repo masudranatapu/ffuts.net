@@ -1179,26 +1179,25 @@ body {
     opacity: .7;
 }
 
+.user_dashboard ul li a {
+    padding: 8px 28px;
+    display: inline-block;
+    font-size: 14px;
+    color: #212121;
+}
 
+.user_dashboard ul li button {
+    padding: 0px;
+}
 
+.user_dashboard .nav-tabs {
+    border-color: #e2e2e2;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.user_dashboard .nav-tabs .nav-item.show .nav-link,
+.user_dashboard .nav-tabs .nav-link.active a {
+    background: #ebebeb;
+}
 
 
 
