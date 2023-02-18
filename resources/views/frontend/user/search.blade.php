@@ -28,8 +28,8 @@
     <div class="container-fluid">
 
 
-        <div class="user_dashboard">
-            <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <div class="user_dashboard mb-4">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="posting-tab" data-bs-toggle="tab" data-bs-target="#posting-tab-pane"
                         type="button" role="tab" aria-controls="posting-tab-pane" aria-selected="true"><a
@@ -51,38 +51,40 @@
                             href="{{ route('user.setting') }}">Settings</a></button>
                 </li>
             </ul>
-
-
-            <div class="user_dashboard_wrap">
-                <div class="table-responsive">
-                    <table class="table table-hover" style="min-width: 950px;">
-                        <thead>
-                            <tr>
-                                <th width="40%">Name</th>
-                                <th width="10%">Search</th>
-                                <th width="10%">Hits</th>
-                                <th width="10%">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                </td>
-                                <td>
-                                    Search terms: <a href="#" target="_blank">Housing</a>
-                                </td>
-                                <td>
-                                    122
-                                </td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-secondary">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        </div>
+        <div class="user_dashboard_wrap">
+            <div class="table-responsive">
+                <table class="table table-hover" style="min-width: 950px;">
+                    <thead>
+                        <tr>
+                            <th width="40%">Name</th>
+                            <th width="10%">Search</th>
+                            <th width="10%">Hits</th>
+                            <th width="10%">Created</th>
+                            <th width="15%">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            </td>
+                            <td>
+                                Search terms: <a href="#" target="_blank">Housing</a>
+                            </td>
+                            <td>
+                                122
+                            </td>
+                            <td>
+                                10 Minutes Ago
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-sm btn-secondary">Edit</a>
+                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

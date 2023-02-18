@@ -28,8 +28,8 @@
     <div class="container-fluid">
 
 
-        <div class="user_dashboard">
-            <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <div class="user_dashboard mb-4">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="posting-tab" data-bs-toggle="tab" data-bs-target="#posting-tab-pane"
                         type="button" role="tab" aria-controls="posting-tab-pane" aria-selected="true"><a
@@ -51,67 +51,65 @@
                             href="{{ route('user.setting') }}">Settings</a></button>
                 </li>
             </ul>
-
-
-            <div class="user_dashboard_wrap">
-                <div class="table-responsive">
-                    <table class="table table-hover" style="min-width: 950px;">
-                        <thead>
-                            <tr>
-                                <th width="40%">Posting</th>
-                                <th width="10%">Category</th>
-                                <th width="10%">Area</th>
-                                <th width="10%">Date</th>
-                                <th width="10%">Status</th>
-                                <th width="20%">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <a href="#"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                                </td>
-                                <td>
-                                    Electronics
-                                </td>
-                                <td>
-                                    Dhaka
-                                </td>
-                                <td>
-                                    01/02/023
-                                </td>
-                                <td>
-                                    <span class="badge bg-success">Published</span>
-                                </td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-secondary">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="#"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
-                                </td>
-                                <td>
-                                    Electronics
-                                </td>
-                                <td>
-                                    Dhaka
-                                </td>
-                                <td>
-                                    01/02/023
-                                </td>
-                                <td>
-                                    <span class="badge bg-danger">Unpublished</span>
-                                </td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-secondary">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        </div>
+        <div class="user_dashboard_wrap">
+            <div class="table-responsive">
+                <table class="table table-hover" style="min-width: 950px;">
+                    <thead>
+                        <tr>
+                            <th width="40%">Posting</th>
+                            <th width="10%">Category</th>
+                            <th width="10%">Area</th>
+                            <th width="10%">Date</th>
+                            <th width="10%">Status</th>
+                            <th width="20%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="#"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
+                            </td>
+                            <td>
+                                Electronics
+                            </td>
+                            <td>
+                                Dhaka
+                            </td>
+                            <td>
+                                01/02/023
+                            </td>
+                            <td>
+                                <span class="badge bg-success">Published</span>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-sm btn-secondary">Edit</a>
+                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</a>
+                            </td>
+                            <td>
+                                Electronics
+                            </td>
+                            <td>
+                                Dhaka
+                            </td>
+                            <td>
+                                01/02/023
+                            </td>
+                            <td>
+                                <span class="badge bg-danger">Unpublished</span>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-sm btn-secondary">Edit</a>
+                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
