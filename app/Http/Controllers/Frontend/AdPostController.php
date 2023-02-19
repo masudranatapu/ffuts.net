@@ -51,7 +51,7 @@ class AdPostController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        dd($request->all());
+        // dd($request->all());
 
         $request->validate([
             'title' => 'required|max:255',

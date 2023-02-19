@@ -164,7 +164,7 @@
                     </div>
                     <div class="product_content">
                         <h5>{{ $value->price }}</h5>
-                        <h4><a href="{{ route('frontend.details',$value->slug) }}">{{ $value->slug }}</a>
+                        <h4><a href="{{ route('frontend.details',$value->slug) }}">{{ Str::limit($value->title, 35, '...') }}</a>
                         </h4>
                         <p>({{$value->city}} {{ isset($value->countries->name) ? ', ' .ucfirst(strtolower($value->countries->name)) : ''}})
                             {{-- <a href="javascript:void(0)"><i
