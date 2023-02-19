@@ -40,11 +40,11 @@
                         data-bs-target="#drafts-tab-pane" type="button" role="tab" aria-controls="drafts-tab-pane"
                         aria-selected="false"><a href="{{ route('user.drafts') }}">Drafts</a></button>
                 </li>
-                {{-- <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation">
                     <button class="nav-link" id="searches-tab" data-bs-toggle="tab" data-bs-target="#searches-tab-pane"
                         type="button" role="tab" aria-controls="searches-tab-pane" aria-selected="false"><a
-                            href="{{ route('user.search') }}">Searches</a></button>
-                </li> --}}
+                            href="{{ route('user.favourite') }}">Favourites</a></button>
+                </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="setting-tab" data-bs-toggle="tab" data-bs-target="#setting-tab-pane"
                         type="button" role="tab" aria-controls="setting-tab-pane" aria-selected="false"><a
@@ -62,13 +62,12 @@
                             <th width="10%">Category</th>
                             <th width="10%">Sub Category</th>
                             <th width="10%">Area</th>
-                            <th width="10%">Date</th>
                             <th width="10%">Status</th>
-                            <th width="10%">Action</th>
+                            <th width="15%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($ads as $ad)
+                        @forelse($ads as $ad)
                             <tr>
                                 <td>
                                     <a href="{{route('frontend.details', $ad->slug)}}"> {{$ad->title}}</a>
@@ -86,9 +85,6 @@
                                     {{$ad->city}} {{ isset($ad->countries->name) ? ', ' .ucfirst(strtolower($ad->countries->name)) : ''}}
                                 </td>
                                 <td>
-                                    {{date('d M, Y')}}
-                                </td>
-                                <td>
                                     <a href="{{ route('user.post.statusUpdate', [$ad->id, 'active']) }}"  class="btn btn-sm btn-danger">Unpublished</a>
                                 </td>
                                 <td>
@@ -97,7 +93,12 @@
                                     <a href="{{ route('user.post.delete', $ad->id) }}" onclick="return confirm('Are you sure to delete?')" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>
-                        @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="7" class="text-center">Not Found</td>
+                            </tr>
+
+                            @endforelse
                     </tbody>
                 </table>
             </div>

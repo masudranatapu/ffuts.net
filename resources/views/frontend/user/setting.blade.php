@@ -39,11 +39,11 @@
                         type="button" role="tab" aria-controls="drafts-tab-pane" aria-selected="false"><a
                             href="{{ route('user.drafts') }}">Drafts</a></button>
                 </li>
-                {{-- <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation">
                     <button class="nav-link" id="searches-tab" data-bs-toggle="tab" data-bs-target="#searches-tab-pane"
                         type="button" role="tab" aria-controls="searches-tab-pane" aria-selected="false"><a
-                            href="{{ route('user.search') }}">Searches</a></button>
-                </li> --}}
+                            href="{{ route('user.favourite') }}">Favourites</a></button>
+                </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="setting-tab" data-bs-toggle="tab"
                         data-bs-target="#setting-tab-pane" type="button" role="tab" aria-controls="setting-tab-pane"

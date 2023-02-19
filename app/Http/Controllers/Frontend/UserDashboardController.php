@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Modules\Wishlist\Entities\Wishlist;
 
 class UserDashboardController extends Controller
 {
@@ -31,10 +32,17 @@ class UserDashboardController extends Controller
         return view('frontend.user.drafts', compact('user', 'ads'));
     }
 
-    public function search()
+    public function favourite()
     {
         $user = Auth::user();
-        return view('frontend.user.search', compact('user'));
+        $wishlist = Wishlist::where('user_id', Auth::user()->id)->get();
+        return view('frontend.user.search', compact('user', 'wishlist'));
+    }
+    public function favouriteDelete($id)
+    {
+        $wishlist = Wishlist::find($id);
+        $wishlist->delete();
+        return back()->with('message', 'Item successfully removed from favourite.');
     }
 
     public function setting()

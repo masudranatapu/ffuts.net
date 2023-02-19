@@ -52,11 +52,14 @@ class FrontendController extends Controller
     {
         $ad_type = AdType::where('slug', $request->ad_type)->first();
         $category = Category::where('slug', $request->categories)->first();
-        if ($category) {
-            $ads = Ad::where('ad_type_id', $ad_type->id)->where('category_id', $category->id)->get();
-        } else {
-            $ads = Ad::where('ad_type_id', $ad_type->id)->get();
+        $query = Ad::active();
+        if($ad_type) {
+            $query->where('ad_type_id', $ad_type->id);
         }
+        if ($category) {
+            $query->where('category_id', $category->id);
+        }
+        $query->get();
 
         return view('frontend.shop', compact('ads', 'ad_type', 'category'));
     }
@@ -66,7 +69,8 @@ class FrontendController extends Controller
 
     public function shop()
     {
-        return view('frontend.shop');
+        $ads = Ad::active()->get();
+        return view('frontend.shop', compact('ads'));
     }
 
     public function details($slug)

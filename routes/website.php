@@ -45,7 +45,8 @@ Route::group(['as' => 'user.'], function () {
         Route::get('user/post/delete/{id}', [UserDashboardController::class, 'deletePost'])->name('post.delete');
         Route::get('user/post/statusUpdate/{id}/{status}', [UserDashboardController::class, 'statusUpdate'])->name('post.statusUpdate');
         Route::get('user/drafts', [UserDashboardController::class, 'drafts'])->name('drafts');
-        Route::get('user/search', [UserDashboardController::class, 'search'])->name('search');
+        Route::get('user/favourite', [UserDashboardController::class, 'favourite'])->name('favourite');
+        Route::get('user/favouriteDelete/{id}', [UserDashboardController::class, 'favouriteDelete'])->name('favourite.delete');
         Route::get('user/setting', [UserDashboardController::class, 'setting'])->name('setting');
         Route::get('user/passwordReset', [UserDashboardController::class, 'passwordReset'])->name('password.reset');
         Route::post('user-logout', [UserDashboardController::class, 'userLogOut'])->name('logout');

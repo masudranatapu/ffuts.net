@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="mb-3 col-md-6">
                             <label for="datepicker" class="form-label">event start date</label>
-                            <input type="text" name="event_strat_date" id="datepicker" class="form-control" required readonly>
+                            <input type="text" name="event_start_date" id="datepicker" class="form-control" required readonly>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="event_duration" class="form-label">event duration</label>

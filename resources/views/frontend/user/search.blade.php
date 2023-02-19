@@ -43,7 +43,7 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="searches-tab" data-bs-toggle="tab"
                         data-bs-target="#searches-tab-pane" type="button" role="tab" aria-controls="searches-tab-pane"
-                        aria-selected="false"><a href="{{ route('user.search') }}">Searches</a></button>
+                        aria-selected="false"><a href="{{ route('user.favourite') }}">Favourites</a></button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="setting-tab" data-bs-toggle="tab" data-bs-target="#setting-tab-pane"
@@ -57,32 +57,44 @@
                 <table class="table table-hover" style="min-width: 950px;">
                     <thead>
                         <tr>
-                            <th width="40%">Name</th>
-                            <th width="10%">Search</th>
-                            <th width="10%">Hits</th>
-                            <th width="10%">Created</th>
-                            <th width="15%">Actions</th>
+                            <th width="30%">Posting</th>
+                            <th width="10%">Ad Type</th>
+                            <th width="10%">Category</th>
+                            <th width="10%">Sub Category</th>
+                            <th width="10%">Date</th>
+                            <th width="10%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @forelse ($wishlist as $item)
+
                         <tr>
                             <td>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                <a href="{{route('frontend.details', $item->ad->slug)}}"> {{$item->ad->title}}</a>
                             </td>
                             <td>
-                                Search terms: <a href="#" target="_blank">Housing</a>
+                               {{ $item->ad->ad_type->name }}
                             </td>
                             <td>
-                                122
+                               {{ $item->ad->category->name }}
                             </td>
                             <td>
-                                10 Minutes Ago
+                               {{ $item->ad->subcategory->name }}
                             </td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-secondary">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                {{ $item->created_at->diffForHumans() }}
+                            </td>
+                            <td>
+                                <a href="{{route('frontend.details', $item->ad->slug)}}" class="btn btn-sm btn-secondary">View</a>
+                                <a href="{{ route('user.favourite.delete', $item->id) }}" onclick="return confirm('Are you sure to remove from favourite?')" class="btn btn-sm btn-danger">Remove</a>
                             </td>
                         </tr>
+                        @empty
+                        <tr>
+                            <td colspan="6" class="text-center">Not Found</td>
+                        </tr>
+
+                        @endforelse
                     </tbody>
                 </table>
             </div>

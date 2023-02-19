@@ -120,7 +120,7 @@ class RegisterController extends Controller
 
             Mail::to($user->email)->send(new UserLoginMail($details));
 
-            return redirect()->route('frontend.index')->with('success', 'You are sucessfully login without you password');
+            return redirect()->route('user.profile')->with('success', 'You are sucessfully login without you password');
         } else {
             return redirect()->route('signin')->with('error', 'Someting went worng with your account. Please try again.');
         }
@@ -156,7 +156,7 @@ class RegisterController extends Controller
 
                 Mail::to($user->email)->send(new UserLoginMail($details));
 
-                return redirect()->route('frontend.index')->with('success', 'You are sucessfully login with password');
+                return redirect()->route('user.profile')->with('success', 'You are sucessfully login with password');
 
             } else {
                 return redirect()->back()->with('error', 'Password do not match. Please confirm you password');
