@@ -48,8 +48,8 @@
                                         </tr>
                                     @endif
                                     <tr class="mb-5">
-                                        <th width="20%">{{ __('brand') }}</th>
-                                        <td width="80%">{{ $ad->brand->name }}</td>
+                                        <th width="20%">{{ __('Adtype') }}</th>
+                                        <td width="80%">{{ $ad->ad_type->name }}</td>
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="20%">{{ __('location') }}</th>

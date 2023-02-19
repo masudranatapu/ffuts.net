@@ -181,9 +181,14 @@
             <div class="p-2">
                 <ul>
                     <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
+                    <li><a href="{{ route('frontend.faq') }}">{{ __('faq') }} |</a></li>
+                    <li><a href="{{ route('frontend.price.plan') }}">{{ __('price plan') }} |</a></li>
+                    <li><a href="{{ route('frontend.shop') }}">{{ __('shop') }} |</a></li>
                     <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
-                    <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a></li>
+                    <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a>
+                    </li>
                     <li><a href="{{ route('frontend.about') }}">{{ __('about') }} |</a></li>
+                    <li><a href="{{ route('frontend.contact') }}">{{ __('contact') }} |</a></li>
                     <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
                 </ul>
             </div>

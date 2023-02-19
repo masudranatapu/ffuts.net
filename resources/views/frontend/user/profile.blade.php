@@ -57,12 +57,14 @@
                 <table class="table table-hover" style="min-width: 950px;">
                     <thead>
                         <tr>
-                            <th width="40%">Posting</th>
+                            <th width="30%">Posting</th>
+                            <th width="10%">Ad Type</th>
                             <th width="10%">Category</th>
+                            <th width="10%">Sub Category</th>
                             <th width="10%">Area</th>
                             <th width="10%">Date</th>
                             <th width="10%">Status</th>
-                            <th width="20%">Action</th>
+                            <th width="10%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,7 +74,13 @@
                                     <a href="{{route('frontend.details', $ad->slug)}}"> {{$ad->title}}</a>
                                 </td>
                                 <td>
+                                    {{$ad->ad_type->name}}
+                                </td>
+                                <td>
                                     {{$ad->category->name}}
+                                </td>
+                                <td>
+                                    {{$ad->subCategory->name}}
                                 </td>
                                 <td>
                                     {{$ad->city}} {{ isset($ad->countries->name) ? ', ' .ucfirst(strtolower($ad->countries->name)) : ''}}
@@ -81,7 +89,7 @@
                                     {{date('d M, Y')}}
                                 </td>
                                 <td>
-                                    <a href="{{ route('user.post.statusUpdate', [$ad->id, 'pending']) }}" onclick="return confirm('Are you sure to unpubliushed?')" class="btn btn-sm btn-success">Unpublished</a>
+                                    <a href="{{ route('user.post.statusUpdate', [$ad->id, 'pending']) }}" onclick="return confirm('Are you sure to unpubliushed?')" class="btn btn-sm btn-success">Published</a>
                                 </td>
                                 <td>
                                    <a href="{{route('frontend.details', $ad->slug)}}" class="btn btn-sm btn-success">View</a>
