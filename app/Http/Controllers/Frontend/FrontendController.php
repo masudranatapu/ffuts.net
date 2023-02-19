@@ -10,7 +10,7 @@ use Modules\Ad\Entities\Ad;
 use function Sodium\compare;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\Faq;
 use Modules\Category\Entities\Category;
 use Modules\Wishlist\Entities\Wishlist;
 use Google\Service\Dfareporting\Country;
@@ -22,9 +22,9 @@ class FrontendController extends Controller
     public function index()
     {
 
-
+        $ads = Ad::orderBy('id','desc')->take(10)->get();
         $countries =  DB::table('country')->orderBy('name', 'asc')->get();
-        $ad_types = AdType::orderBy('name', 'asc')->get();
+        $ad_types = AdType::orderBy('id', 'asc')->get();
         $coutry_iso = strtoupper(getCountryCode());
 
         $country = DB::table('country')->where('iso', $coutry_iso)->first();
@@ -36,7 +36,7 @@ class FrontendController extends Controller
         $meta_keywords = $seo->contents->keywords;
         $meta_image = $seo->contents->image;
 
-        return view('frontend.index', compact('ad_types', 'countries', 'cities', 'meta_title', 'meta_description', 'meta_image', 'meta_keywords'));
+        return view('frontend.index', compact('ads','ad_types', 'countries', 'cities', 'meta_title', 'meta_description', 'meta_image', 'meta_keywords'));
     }
 
     public function setCountry(Request $request)
@@ -138,5 +138,23 @@ class FrontendController extends Controller
         $meta_keywords = $seo->contents->keywords;
         $meta_image = $seo->contents->image;
         return view('frontend.privacy_policy', compact('meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
+    }
+
+    public function faq(){
+
+        $faqs = Faq::orderBy('id','asc')->get();
+        $seo = Seo::where('page_slug', 'home')->first();
+        $meta_title = $seo->contents->title;
+        $meta_description = $seo->contents->description;
+        $meta_keywords = $seo->contents->keywords;
+        $meta_image = $seo->contents->image;
+        return view('frontend.faq', compact('faqs','meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
+    }
+
+    public function pricePlan(){
+        return view('frontend.price_plan');
+    }
+    public function contact(){
+        return view('frontend.contact');
     }
 }

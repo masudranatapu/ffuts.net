@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\CmsSettingController;
 use App\Http\Controllers\Admin\ManualPaymentController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\Setting\GeneralSettingController;
 
 Route::prefix('admin')->group(function () {
@@ -215,6 +216,16 @@ Route::prefix('admin')->group(function () {
             Route::get('/edit/{id}',[CityController::class,'edit'])->name('city.edit');
             Route::post('/update/{id}',[CityController::class,'update'])->name('city.update');
             Route::delete('/delete/{id}',[CityController::class,'delete'])->name('city.delete');
+        });
+
+        //FAQ 
+        Route::prefix('faq')->group(function(){
+            Route::get('/', [FaqController::class, 'index'])->name('faq.index');
+            Route::get('/create', [FaqController::class, 'create'])->name('faq.create');
+            Route::post('/store', [FaqController::class, 'store'])->name('faq.store');
+            Route::get('/edit/{id}', [FaqController::class, 'edit'])->name('faq.edit');
+            Route::post('/update/{id}', [FaqController::class, 'update'])->name('faq.update');
+            Route::delete('/delete/{id}', [FaqController::class, 'delete'])->name('faq.delete');
         });
 
     });

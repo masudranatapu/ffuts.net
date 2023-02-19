@@ -14,6 +14,11 @@ Route::group(['as' => 'frontend.'], function () {
     Route::get('about', [FrontendController::class, 'about'])->name('about');
     Route::get('terms-conditons', [FrontendController::class, 'termsCondition'])->name('terms.condition');
     Route::get('privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
+    Route::get('faq', [FrontendController::class, 'faq'])->name('faq');
+    Route::get('price-plan', [FrontendController::class, 'pricePlan'])->name('price.plan');
+    Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
+
+
 
     //Localization
     Route::post('lange', [LocalizationController::class, 'setLang'])->name('localization');

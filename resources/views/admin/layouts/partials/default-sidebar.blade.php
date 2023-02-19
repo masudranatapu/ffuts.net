@@ -55,9 +55,9 @@
                             {{ __('Ad Types') }}
                         </x-sidebar-list>
 
-                        <x-sidebar-list :linkActive="Route::is('city.*') ? true : false" route="city.index" icon="fa fa-plus-square">
+                        {{-- <x-sidebar-list :linkActive="Route::is('city.*') ? true : false" route="city.index" icon="fa fa-plus-square">
                             {{ __('City') }}
-                        </x-sidebar-list>
+                        </x-sidebar-list> --}}
 
                     @if (Module::collections()->has('Category') && (userCan('category.view') || userCan('subcategory.view')))
                         <x-admin.sidebar-list :linkActive="Route::is('module.category.*') || Route::is('module.subcategory.*') ? true : false" route="module.category.index" icon="fas fa-th">
@@ -144,23 +144,21 @@
                     @endif
 
                     <!-- Blog and Tag -->
-                    @if (Module::collections()->has('Blog') && userCan('post.view') && $blog_enable)
+                    {{-- @if (Module::collections()->has('Blog') && userCan('post.view') && $blog_enable)
                         <x-admin.sidebar-list :linkActive="Route::is('module.post.*') || Route::is('module.postcategory.*')  ? true : false" route="module.post.index" icon="fas fa-blog">
                             {{ __('blog') }}
                         </x-admin.sidebar-list>
-                    @endif
+                    @endif --}}
                     <!-- Blog and Tag End -->
 
-                    @if (Module::collections()->has('Testimonial') && userCan('testimonial.view') && $testimonial_enable)
+                    {{-- @if (Module::collections()->has('Testimonial') && userCan('testimonial.view') && $testimonial_enable)
                         <x-admin.sidebar-list :linkActive="Route::is('module.testimonial.*') ? true : false" route="module.testimonial.index" icon="fas fa-comment">
                             {{ __('testimonial') }}
                         </x-admin.sidebar-list>
-                    @endif
-                    @if (userCan('faq.view') && $faq_enable)
-                        <x-admin.sidebar-list :linkActive="Route::is('module.faq.*') ? true : false" route="module.faq.index" icon="fas fa-question">
+                    @endif --}}
+                        <x-admin.sidebar-list :linkActive="Route::is('faq.*') ? true : false" route="faq.index" icon="fas fa-question">
                             {{ __('faq') }}
                         </x-admin.sidebar-list>
-                    @endif
                     @if ($settings->ads_admin_approval)
                         <form action="{{ route('module.ad.index') }}" method="GET" id="pending_ads_form">
                             <input name="filter_by" type="text" value="pending" hidden>
