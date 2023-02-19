@@ -98,7 +98,7 @@
                                                             <div class="mt-2">
                                                                 <ul class="list-group category_list">
                                                                     <li><a
-                                                                            href="{{ route('search', ['country' => $country, 'ad_type' => $ad_type->slug, 'categories' => $item->slug]) }}">{{ __($item->slug) }}</a>
+                                                                            href="{{ route('search', ['country' => $country, 'ad_type' => $ad_type->slug, 'categories' => $item->slug]) }}">{{ __($item->name) }}</a>
                                                                     </li>
                                                                 </ul>
                                                             </div>

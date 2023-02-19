@@ -59,7 +59,7 @@ class FrontendController extends Controller
         if ($category) {
             $query->where('category_id', $category->id);
         }
-        $query->get();
+        $ads = $query->get();
 
         return view('frontend.shop', compact('ads', 'ad_type', 'category'));
     }
