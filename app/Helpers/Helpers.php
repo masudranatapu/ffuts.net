@@ -61,9 +61,11 @@ function userWishlist()
 }
 function isWishlisted($adId)
 {
-    $data = Wishlist::where('user_id', Auth::user()->id)->pluck('ad_id')->toArray();
-    if (auth()->guard('user')->check() && count($data) > 0 && in_array($adId, $data)) {
-        return true;
+    if (auth()->guard('user')->check()) {
+        $data = Wishlist::where('user_id', Auth::user()->id)->pluck('ad_id')->toArray();
+        if (count($data) > 0 && in_array($adId, $data)) {
+            return true;
+        }
     }
 
     return false;
@@ -224,23 +226,20 @@ function langDirection()
 function getCountryCode()
 {
 
-    if(session()->get('local_country')){
+    if (session()->get('local_country')) {
         return session()->get('local_country');
-    }else{
+    } else {
 
         $local_country = 'bd';
-        $country = Country::where('is_default',1)->first();
+        $country = Country::where('is_default', 1)->first();
 
-        if($country){
+        if ($country) {
             $local_country = strtolower($country->iso);
-
         }
-         session()->put('local_country',$local_country);
+        session()->put('local_country', $local_country);
 
-         return session()->get('local_country');
-
+        return session()->get('local_country');
     }
-
 }
 
 
