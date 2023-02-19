@@ -16,7 +16,7 @@
                     </div>
                     <div class="mb-1">
                         <label for="dimension" class="form-label">size / dimensions</label>
-                        <input type="text" name="dimension" value="{{ $ad->dimension ?? old('dimension') }}" id="dimension" class="form-control">
+                        <input type="text" name="dimension" value="{{ $ad->dimension ?? old('dimension') }}" id="dimension" value="{{ $ad->dimension ?? old('dimension') }}" placeholder="length x width x height" class="form-control">
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -26,7 +26,7 @@
                             <select name="condition" id="condition" class="form-control">
                                 <option value="" selected disabled>Choose One</option>
                                 <option value="new">new</option>
-                                <option value="like_new">like new</option>
+                                <option value="like new ">like new</option>
                                 <option value="excellent">excellent</option>
                                 <option value="good">good</option>
                                 <option value="fair">fair</option>

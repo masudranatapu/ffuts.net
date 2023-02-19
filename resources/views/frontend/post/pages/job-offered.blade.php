@@ -91,7 +91,7 @@
             <div class="col-md-4">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" name="email" id="email" value="{{ $ad->email ?? old('email') }}" class="form-control"
+                    <input type="text" name="email" id="email" value="{{ Auth::user()->email ?? old('email') }}" class="form-control"
                         placeholder="Your email address" required>
                 </div>
                 <div class="mb-3">

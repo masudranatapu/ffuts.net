@@ -51,6 +51,8 @@ class AdPostController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        dd($request->all());
+
         $request->validate([
             'title' => 'required|max:255',
             'city' => 'required|max:255',
@@ -60,15 +62,25 @@ class AdPostController extends Controller
             'phone' => 'required_if:show_phone,1',
             'images' => 'required',
             'images.*' => 'mimes:jpg,png,bmp,gif',
-            'price' => 'required_if:ad_type,for-sale-by-owner',
-            'manufacturer' => 'required_if:ad_type,for-sale-by-owner',
-            'model_name' => 'required_if:ad_type,for-sale-by-owner',
-            'condition' => 'required_if:ad_type,for-sale-by-owner',
+            'price' => 'required_if:ad_type,for-sale-by-owner,for-sale-by-dealer',
+            'manufacturer' => 'required_if:ad_type,for-sale-by-owner,for-sale-by-dealer',
+            'model_name' => 'required_if:ad_type,for-sale-by-owner,for-sale-by-dealer',
+            'dimension' => 'required_if:ad_type,for-sale-by-owner,for-sale-by-dealer,wanted-by-owner,wanted-by-dealer',
+            'condition' => 'required_if:ad_type,for-sale-by-owner,for-sale-by-dealer,wanted-by-owner,wanted-by-dealer',
             'availability' => 'required_if:ad_type,job-wanted',
-            'education' => 'required_if:ad_type,job-wanted'
+            'education' => 'required_if:ad_type,job-wanted',
+            'venue' => 'required_if:ad_type,event-class',
+            'event_start_date' => 'required_if:ad_type,event-class',
+            'event_duration' => 'required_if:ad_type,event-class',
+            'services' => 'required_if:ad_type,event-class',
         ],[
             'phone.required_if' => 'The phone number field is required if you want to show your phone.'
         ]);
+
+        if ($request->event_start_date) {
+            $event_start_date = Carbon::parse($request->event_start_date);
+            $event_end_date = Carbon::parse($request->event_start_date)->addDays($request->event_duration);
+        }
 
 
         if (!Auth::check()) {
@@ -107,50 +119,55 @@ class AdPostController extends Controller
         $country = strtoupper(getCountryCode());
 
         $ad = new Ad();
-        $ad->ad_type_id     = $request->ad_type_id;
-        $ad->category_id    = $request->category_id;
-        $ad->subcategory_id = $request->subcategory_id;
-        $ad->country        = $country;
-        $ad->title          = $request->title;
-        $ad->slug           = $slug;
-        $ad->user_id        = Auth::user()->id ?? $user->id;
-        $ad->status         = $status ?? 'active';
-        $ad->city           = $request->city;
-        $ad->postcode       = $request->postcode;
-        $ad->description    = $request->description;
-        $ad->employment_type= $request->employment_type;
-        $ad->services       = $request->services;
-        $ad->job_title      = $request->job_title;
-        $ad->price          = $request->price;
-        $ad->company_name   = $request->company_name;
-        $ad->email          = $request->email;
-        $ad->email_privacy  = $request->email_privacy;
-        $ad->show_phone     = $request->show_phone ?? 0;
-        $ad->phone_call     = $request->phone_call ?? 0;
-        $ad->phone_text     = $request->phone_text ?? 0;
-        $ad->phone          = $request->phone;
-        $ad->phone_2        = $request->phone_2;
-        $ad->contact_name   = $request->contact_name;
+        $ad->ad_type_id         = $request->ad_type_id;
+        $ad->category_id        = $request->category_id;
+        $ad->subcategory_id     = $request->subcategory_id;
+        $ad->country            = $country;
+        $ad->title              = $request->title;
+        $ad->slug               = $slug;
+        $ad->user_id            = Auth::user()->id ?? $user->id;
+        $ad->status             = $status ?? 'active';
+        $ad->city               = $request->city;
+        $ad->postcode           = $request->postcode;
+        $ad->description        = $request->description;
+        $ad->employment_type    = $request->employment_type;
+        $ad->services           = $request->services;
+        $ad->job_title          = $request->job_title;
+        $ad->price              = $request->price;
+        $ad->company_name       = $request->company_name;
+        $ad->email              = $request->email;
+        $ad->email_privacy      = $request->email_privacy;
+        $ad->show_phone         = $request->show_phone ?? 0;
+        $ad->phone_call         = $request->phone_call ?? 0;
+        $ad->phone_text         = $request->phone_text ?? 0;
+        $ad->phone              = $request->phone;
+        $ad->phone_2            = $request->phone_2;
+        $ad->contact_name       = $request->contact_name;
         // job wanted
-        $ad->availability   = $request->availability;
-        $ad->education      = $request->education;
-        $ad->is_license     = $request->is_license ?? 0;
-        $ad->license_info   = $request->license_info;
-        $ad->other_contact  = $request->other_contact ?? 0;
+        $ad->availability       = $request->availability;
+        $ad->education          = $request->education;
+        $ad->is_license         = $request->is_license ?? 0;
+        $ad->license_info       = $request->license_info;
+        $ad->other_contact      = $request->other_contact ?? 0;
         // House offered
-        $ad->sqft           = $request->sqft;
-        $ad->houssing_type  = $request->houssing_type;
-        $ad->laundry        = $request->laundry;
-        $ad->parking        = $request->parking;
-        $ad->bedrooms       = $request->bedrooms;
-        $ad->bathrooms      = $request->bathrooms;
-        $ad->available_on   = $request->available_on;
+        $ad->sqft               = $request->sqft;
+        $ad->houssing_type      = $request->houssing_type;
+        $ad->laundry            = $request->laundry;
+        $ad->parking            = $request->parking;
+        $ad->bedrooms           = $request->bedrooms;
+        $ad->bathrooms          = $request->bathrooms;
+        $ad->available_on       = $request->available_on;
         // for-sale-by-owner
-        $ad->conditions     = $request->condition;
-        $ad->model_name     = $request->model_name;
-        $ad->manufacturer   = $request->manufacturer;
-        $ad->dimension      = $request->dimension;
-        $ad->language       = $request->language;
+        $ad->conditions         = $request->condition;
+        $ad->model_name         = $request->model_name;
+        $ad->manufacturer       = $request->manufacturer;
+        $ad->dimension          = $request->dimension;
+        $ad->language           = $request->language;
+        // event class
+        $ad->event_start_date   = $event_start_date ?? null;
+        $ad->event_end_date     = $event_end_date ?? null;
+        $ad->event_duration     = $request->event_duration.' days';
+        $ad->venue              = $request->venue;
         // House wanted
         $ad->broker_fee                 = $request->broker_fee ?? 0;
         $ad->broker_fee_detailed        = $request->broker_fee_detailed;

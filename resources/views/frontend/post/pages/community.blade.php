@@ -1,32 +1,34 @@
 <div class="row">
     <div class="col-12 mb-4">
+        <!-- Contact Form -->
         <div class="form_wrapper">
             <div class="title mb-3">
-                <h6 class="text-success">contact info</h6>
+                <h6>Contact Info</h6>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" name="email" id="email" class="form-control"
+                        <input type="text" name="email" id="email" value="{{ Auth::user()->email ?? old('email') }}" class="form-control"
                             placeholder="Your email address" required>
                     </div>
                     <div class="mb-3">
-                        <span class="text-dark" style="font-weight:600;">replies use CL mail relay <a href="#" class="text-success">[?]</a></span><br>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="email_privacy"
-                            id="privacy_1" checked>
-                        <label class="form-check-label" for="privacy_1">
-                            CL mail relay (recommended)
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="email_privacy"
-                            id="privacy_1" checked>
-                        <label class="form-check-label" for="privacy_1">
-                           no replies to this email
-                        </label>
+                        <span class="text-dark" style="font-weight:600;">email privacy
+                            options</span>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="email_privacy"
+                                id="privacy_1" value="CL mail relay" checked>
+                            <label class="form-check-label" for="privacy_1">
+                                CL mail relay (recommended)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="email_privacy"
+                                id="privacy_3" value="no replies to this email">
+                            <label class="form-check-label" for="privacy_3">
+                                no replies to this email
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-8 inline_checkbox disabled_checked">
@@ -59,9 +61,9 @@
                                     class="form-control" disabled>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="mb-1">
-                                <label for="phone_2" class="form-label">extention</label>
+                                <label for="phone_2" class="form-label">Local number</label>
                                 <input type="number" name="phone_2" id="phone_2"
                                     class="form-control" disabled>
                             </div>
@@ -88,3 +90,4 @@
         </div>
     </div>
 </div>
+
