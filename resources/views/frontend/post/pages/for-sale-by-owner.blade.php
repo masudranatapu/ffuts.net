@@ -7,16 +7,16 @@
             <div class="row mb-3">
                 <div class="col-lg-4">
                     <div class="mb-1">
-                        <label for="phone" class="form-label">make / manufacturer</label>
-                        <input type="text" name="phone" id="phone"class="form-control">
+                        <label for="manufacturer" class="form-label">make / manufacturer</label>
+                        <input type="text" name="manufacturer" value="{{ $ad->manufacturer ?? old('manufacturer') }}" id="manufacturer" class="form-control">
                     </div>
                     <div class="mb-1">
-                        <label for="phone" class="form-label">model name / number</label>
-                        <input type="text" name="phone" id="phone"class="form-control">
+                        <label for="model_name" class="form-label">model name / number</label>
+                        <input type="text" name="model_name" value="{{ $ad->model_name ?? old('model_name') }}" id="model_name" class="form-control">
                     </div>
                     <div class="mb-1">
-                        <label for="phone" class="form-label">size / dimensions</label>
-                        <input type="text" name="phone" id="phone"class="form-control">
+                        <label for="dimension" class="form-label">size / dimensions</label>
+                        <input type="text" name="dimension" value="{{ $ad->dimension ?? old('dimension') }}" id="dimension" class="form-control">
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -24,7 +24,7 @@
                         <div class="mb-1">
                             <label for="phone" class="form-label">condition</label>
                             <select name="condition" id="condition" class="form-control">
-                                <option value="" selected disabled>-</option>
+                                <option value="" selected disabled>Choose One</option>
                                 <option value="new">new</option>
                                 <option value="like_new">like new</option>
                                 <option value="excellent">excellent</option>
@@ -37,7 +37,6 @@
                     <div class="mb-1">
                         <label for="phone" class="form-label"><small class="text-success">language of posting</small></label>
                         <select name="language" id="language" class="form-control">
-                                <option value="" selected disabled>-</option>
                                 <option value="english">english</option>
                                 <option value="dansk">dansk</option>
                                 <option value="espanol">espanol</option>
@@ -54,14 +53,14 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="services[]" value="cats ok" id="cats_ok">
-                        <label class="form-check-label" for="cats_ok">
+                        <input class="form-check-input" type="checkbox" name="services[]" value="delivery available" id="delivery_available">
+                        <label class="form-check-label" for="delivery_available">
                             delivery available
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="services[]" value="cats ok" id="cats_ok">
-                        <label class="form-check-label" for="cats_ok">
+                        <input class="form-check-input" type="checkbox" name="services[]" value="include more ads by this user link" id="include_more">
+                        <label class="form-check-label" for="include_more">
                             include "more ads by this user" link
                         </label>
                     </div>
@@ -79,7 +78,7 @@
                 <div class="col-md-4">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" name="email" id="email" class="form-control"
+                        <input type="text" name="email" id="email" value="{{ $ad->email ?? old('email') }}" class="form-control"
                             placeholder="Your email address" required>
                     </div>
                     <div class="mb-3">
@@ -119,7 +118,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="mb-1">
-                                <label for="phone_2" class="form-label">extention</label>
+                                <label for="phone_2" class="form-label">extension</label>
                                 <input type="number" name="phone_2" id="phone_2"
                                     class="form-control" disabled>
                             </div>

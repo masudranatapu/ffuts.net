@@ -28,11 +28,11 @@
                     </ul>
                 </div>
             @endif
-           
+
             <div class="ad_post_form">
                 <form action="{{ route('frontend.post.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="ad_type_slug" value="{{ $ad_type->slug }}">
+                    <input type="hidden" name="ad_type" value="{{ $ad_type->slug }}">
                     <input type="hidden" name="ad_type_id" value="{{ $ad_type->id }}">
                     <input type="hidden" name="category_id" value="{{ $category->id }}">
                     <input type="hidden" name="subcategory_id" value="{{ $subCategory->id }}">
@@ -48,18 +48,18 @@
                             @else
                                col-md-4
                             @endif
-                        
+
                         ">
                             <div class="mb-3">
                                 <label for="title" class="form-label text-success">posting title</label>
-                                <input type="text" name="title" id="title" class="form-control" required>
+                                <input type="text" name="title" id="title" value="{{ old('title') }}" class="form-control" required>
                             </div>
                         </div>
                         @if($ad_type->slug == 'for-sale-by-owner' || $ad_type->slug == 'for-sale-by-dealer' || $ad_type->slug == 'wanted-by-owner' || $ad_type->slug == 'wanted-by-dealer' || $ad_type->slug == 'event-class')
                             <div class="col-md-2">
                                 <div class="mb-3">
                                     <label for="price" class="form-label text-success">Price <small class="text-dark">€</small> </label>
-                                    <input type="number" name="price" id="price" class="form-control" required>
+                                    <input type="number" name="price" id="price" value="{{ old('price') }}" class="form-control" required>
                                 </div>
                             </div>
                         @endif
@@ -67,18 +67,18 @@
                                 @if($ad_type->slug == 'service-offered'|| $ad_type->slug == 'housing-wanted' || $ad_type->slug == 'housing-offered' || $ad_type->slug == 'engagement-offered' || $ad_type->slug == 'job-wanted' || $ad_type->slug == 'community' || $ad_type->slug == 'job-offered')
                                   col-md-5
                                 @else
-                                    col-md-4   
+                                    col-md-4
                                 @endif
                             ">
                             <div class="mb-3">
                                 <label for="city" class="form-label">city ​​or neighborhood</label>
-                                <input type="text" name="city" id="city" class="form-control" required>
+                                <input type="text" name="city" id="city" value="{{ old('city') }}" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="mb-3">
                                 <label for="postcode" class="form-label">Postal code</label>
-                                <input type="number" name="postcode" id="postcode" class="form-control" required>
+                                <input type="number" name="postcode" id="postcode" value="{{ old('postcode') }}" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-12">
@@ -86,7 +86,7 @@
                                 <span class="text-dark">Only one description per posting.</span><br />
                                 <label for="description" class="form-label text-success">description</label>
                                 <textarea name="description" id="description" cols="30" rows="5" class="form-control" style="height: 150px;"
-                                    required></textarea>
+                                    required>{{ old('description') }}</textarea>
                             </div>
                         </div>
                         <div class="input-field mb-3">
@@ -118,9 +118,13 @@
                     @if ($ad_type->slug == 'housing-wanted')
                         @include('frontend.post.pages.housing-wanted')
                     @endif
+                    <!-- for-sale-by-owner -->
                     @if ($ad_type->slug == 'for-sale-by-owner')
                         @include('frontend.post.pages.for-sale-by-owner')
                     @endif
+
+                    {{-- for-sale-by-dealer --}}
+
                     @if ($ad_type->slug == 'for-sale-by-dealer')
                         @include('frontend.post.pages.for-sale-by-dealer')
                     @endif
@@ -160,13 +164,19 @@
     </script>
 
     <script>
-        $('#show_phone').change(function() {
-            if ($(this).is(':checked')) {
-                $('.disabled_checked input').not(this).removeAttr('disabled');
+        function show_phone(id) {
+            if ($(id).is(':checked')) {
+                $('.disabled_checked input').not(id).removeAttr('disabled');
             } else {
-                $('.disabled_checked input').not(this).attr('disabled', true);
+                $('.disabled_checked input').not(id).attr('disabled', true);
             }
+         }
+         show_phone('#show_phone');
+
+        $('#show_phone').change(function() {
+            show_phone(this);
         });
+
         $('#licensed').change(function() {
             if ($(this).is(':checked')) {
                 $('#license_info').removeAttr('disabled');
