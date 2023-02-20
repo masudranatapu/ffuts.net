@@ -9,6 +9,7 @@ use App\Models\AdGallery;
 use Modules\Ad\Entities\Ad;
 use function Sodium\compare;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Modules\Category\Entities\Category;
@@ -48,21 +49,28 @@ class FrontendController extends Controller
 
 
 
-    public function search(Request $request,$country = null,$ad_type = null,$category = null)
+    public function search(Request $request)
     {
         $query = Ad::active();
         $country = getCountryCode();
-        // if($country) {
-        //     $query->whereHas('countries', function ($q) use ($country) {
-        //         $q->where('iso', $country);
-        //     });
-        // }
-        if($ad_type) {
+        $subcategories = '';
+        if($request->country) {
+            $country = $request->country;
+            $query->whereHas('countries', function ($q) use ($country) {
+                $q->where('iso', $country);
+            });
+        }
+        if($request->ad_type) {
+            $ad_type = $request->ad_type;
             $query->whereHas('ad_type', function ($q) use ($ad_type) {
                 $q->where('slug', $ad_type);
             });
         }
-        if ($category) {
+        if ($request->category) {
+            $category = $request->category;
+            $subcategories = SubCategory::whereHas('category', function ($q) use ($category) {
+                $q->where('slug', $category);
+            })->get();
             $query->whereHas('category', function ($q) use ($category) {
                 $q->where('slug', $category);
             });
@@ -70,12 +78,54 @@ class FrontendController extends Controller
         if ($request->subcategory) {
             $subcategory =$request->subcategory;
             $query->whereHas('subcategory', function ($q) use ($subcategory) {
-                $q->where('slug', $subcategory);
+                $q->whereIn('slug', $subcategory);
             });
         }
+        if ($request->search && $request->search != '') {
+            $query->where('title', 'like', '%'.$request->search.'%');
+        }
+        if ($request->post && $request->post != '') {
+            $post = $request->post;
+            if (in_array('title', $post)) {
+                $query->whereNotNull('title');
+            }
+            if (in_array('image', $post)) {
+                $query->whereNotNull('thumbnail');
+            }
+            if (in_array('today', $post)) {
+                $today = Carbon::today();
+                $query->whereDate('created_at', $today);
+            }
+        }
+        if ($request->sort && $request->sort != '') {
+            $sort = $request->sort;
+            if ($sort == 'latest') {
+                $query->latest();
+            }
+            if ($sort == 'oldest') {
+                $query->oldest();
+            }
+            if ($sort == 'asc') {
+                $query->orderBy('title', 'asc');
+            }
+            if ($sort == 'desc') {
+                $query->orderBy('title', 'desc');
+            }
+        }
+        if ($request->min_price && $request->min_price != '') {
+            $query->whereNotNull('price')->where('price', '>', $request->min_price);
+        }
+        if ($request->max_price && $request->max_price != '') {
+            $query->whereNotNull('price')->where('price', '<', $request->max_price);
+        }
+        if ($request->date && $request->date != '') {
+            $date = Carbon::parse($request->date);
+            $query->whereDate('event_start_date', $date);
+        }
+
         $ads = $query->get();
 
-        return view('frontend.shop', compact('ads', 'ad_type', 'category'));
+        return view('frontend.shop', compact('ads', 'subcategories'));
     }
 
 

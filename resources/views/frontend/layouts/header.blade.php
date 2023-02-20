@@ -2,36 +2,51 @@
     <div class="row g-1">
         <div class="col-lg-9">
             @if (Route::is('frontend.search'))
-                <form action="{{ route('frontend.search') }}" method="get">
-                    <a class="header_logo" name="logoLink" href="{{ route('frontend.index') }}">CL</a>
+                @php
+                    $ad_type = DB::table('ad_types')
+                        ->where('slug', request()->ad_type)
+                        ->first();
+                        if (isset($ad_type)) {
+                            $old_cats = $categories->where('ad_type_id', $ad_type->id);
+                        }
+                @endphp
+                <form action="{{ route('frontend.search') }}" method="get" id="searchForm">
+                    <a class="header_logo" name="logoLink" href="{{ route('frontend.index') }}">ffutS</a>
                     <div class="d-inline">
-                        <select name="country" id="country" class="select2">
+                        <select name="country" id="country" class="select2" onchange="serachSubmit()">
+                            <option value="" disabled selected>Country</option>
                             @foreach ($countries as $country)
-                                <option value="{{ strtolower($country->iso) }}">
+                                <option value="{{ strtolower($country->iso) }}"
+                                    {{ request()->country ==  strtolower($country->iso) ? 'selected':'' }} >
                                     {{ ucfirst(strtolower($country->name)) }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="d-inline">
-                        <select name="ad_type" id="ad_type" class="select2">
+                        <select name="ad_type" id="ad_type" class="select2" onchange="serachSubmit()">
+                            <option value="" disabled selected>Ad Type</option>
                             @foreach ($ad_types as $ad_type)
-                            <option value="{{ $ad_type->slug }}">{{ $ad_type->name }}</option>
+                                <option value="{{ $ad_type->slug }}" {{ request()->ad_type ==  $ad_type->slug ? 'selected':'' }}>{{ $ad_type->name }}</option>
                             @endforeach
                         </select>
                     </div>
-                    {{-- @dd(request()->ad_type) --}}
                     <div class="d-inline">
-                        <select name="category" id="category" class="select2">
-                            <option value="">Bangladesh</option>
-                            <option value="">India</option>
-                            <option value="">Pakistan</option>
-                            <option value="">China</option>
-                            <option value="">Jerusalem</option>
+                        <select name="category" id="category" class="select2" onchange="serachSubmit()">
+                            <option value="" disabled selected>Category</option>
+                            @if (isset($old_cats) && $old_cats->count() > 0)
+                                @foreach ($old_cats as $cat)
+                                    <option value="{{ $cat->slug }}" {{ request()->category ==  $cat->slug ? 'selected':'' }}>{{ $cat->name }}</option>
+                                @endforeach
+                            @else
+                                @foreach ($categories as $cat)
+                                    <option value="{{ $cat->slug }}" {{ request()->category ==  $cat->slug ? 'selected':'' }}>{{ $cat->name }}</option>
+                                @endforeach
+                            @endif
                         </select>
                     </div>
                 </form>
             @else
-                <a class="header_logo" name="logoLink" href="{{ route('frontend.index') }}">CL</a>
+                <a class="header_logo" name="logoLink" href="{{ route('frontend.index') }}">ffutS</a>
                 <div class="breadcrumb">
                     @yield('breadcrumb')
                 </div>
