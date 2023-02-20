@@ -183,7 +183,7 @@
                     <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
                     <li><a href="{{ route('frontend.faq') }}">{{ __('faq') }} |</a></li>
                     <li><a href="{{ route('frontend.price.plan') }}">{{ __('price plan') }} |</a></li>
-                    <li><a href="{{ route('frontend.shop') }}">{{ __('shop') }} |</a></li>
+                    <li><a href="{{ route('frontend.search') }}">{{ __('shop') }} |</a></li>
                     <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
                     <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a>
                     </li>

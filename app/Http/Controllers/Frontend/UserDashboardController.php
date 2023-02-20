@@ -51,6 +51,11 @@ class UserDashboardController extends Controller
         return view('frontend.user.setting', compact('user'));
     }
 
+    public function editPost($slug)
+    {
+        $ad = Ad::where('slug', $slug)->first();
+        dd($ad);
+    }
     public function deletePost($id)
     {
         $ad = Ad::find($id);

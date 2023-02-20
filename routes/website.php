@@ -8,7 +8,8 @@ use App\Http\Controllers\Frontend\LocalizationController;
 
 Route::group(['as' => 'frontend.'], function () {
     Route::get('/', [FrontendController::class, 'index'])->name('index');
-    Route::get('shop/', [FrontendController::class, 'shop'])->name('shop');
+    // Route::get('shop/', [FrontendController::class, 'shop'])->name('shop');
+    Route::get('shop/{country?}/{ad_type?}/{category?}', [FrontendController::class, 'search'])->name('search');
     Route::get('details/{slug}', [FrontendController::class, 'details'])->name('details');
     Route::get('wishlist', [FrontendController::class, 'wishlistCreate'])->name('wishlist.create');
     Route::get('about', [FrontendController::class, 'about'])->name('about');
@@ -43,6 +44,7 @@ Route::group(['as' => 'user.'], function () {
     Route::middleware(['auth:user', 'verified'])->group(function () {
         Route::get('user/post', [UserDashboardController::class, 'profile'])->name('profile');
         Route::get('user/post/delete/{id}', [UserDashboardController::class, 'deletePost'])->name('post.delete');
+        Route::get('user/post/edit/{slug}', [UserDashboardController::class, 'editPost'])->name('post.edit');
         Route::get('user/post/statusUpdate/{id}/{status}', [UserDashboardController::class, 'statusUpdate'])->name('post.statusUpdate');
         Route::get('user/drafts', [UserDashboardController::class, 'drafts'])->name('drafts');
         Route::get('user/favourite', [UserDashboardController::class, 'favourite'])->name('favourite');
@@ -57,4 +59,3 @@ Route::group(['as' => 'user.'], function () {
 
 
 
-Route::get('ad/{country?}/{category?}/{subcategory?}', [FrontendController::class, 'search'])->name('search');

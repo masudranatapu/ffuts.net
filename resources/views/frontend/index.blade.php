@@ -89,7 +89,7 @@
                                             <div class="col-md-6">
                                                 <div class="category_heading text-center">
                                                     <h5><a
-                                                            href="{{ route('search', ['country' => $country, 'ad_type' => $ad_type->slug]) }}">{{ __($ad_type->slug) }}</a>
+                                                            href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $ad_type->slug]) }}">{{ __($ad_type->slug) }}</a>
                                                     </h5>
                                                 </div>
                                                 <div class="row g-1">
@@ -98,7 +98,7 @@
                                                             <div class="mt-2">
                                                                 <ul class="list-group category_list">
                                                                     <li><a
-                                                                            href="{{ route('search', ['country' => $country, 'ad_type' => $ad_type->slug, 'categories' => $item->slug]) }}">{{ __($item->name) }}</a>
+                                                                            href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $ad_type->slug, 'category' => $item->slug]) }}">{{ __($item->name) }}</a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -116,7 +116,7 @@
                                         <div class="col-md-12">
                                             <div class="category_heading text-center">
                                                 <h5><a
-                                                        href="{{ route('search', ['country' => $country, 'ad_type' => $ad_type->slug]) }}">{{ __($ad_type->slug) }}</a>
+                                                        href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $ad_type->slug]) }}">{{ __($ad_type->slug) }}</a>
                                                 </h5>
                                             </div>
                                             <div class="row g-1">
@@ -125,7 +125,7 @@
                                                         <div class="mt-2">
                                                             <ul class="list-group category_list">
                                                                 <li><a
-                                                                        href="{{ route('search', ['country' => $country, 'ad_type' => $ad_type->slug, 'categories' => $item->slug]) }}">{{ __($item->slug) }}</a>
+                                                                        href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $ad_type->slug, 'category' => $item->slug]) }}">{{ __($item->slug) }}</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -175,7 +175,7 @@
                             <ul class="list-group ">
                                 @foreach ($cities as $key => $city)
                                 <li><a
-                                        href="{{ route('search',['country'=>$country,'ad_type' => $ad_type->slug, 'categories' => $item->slug]) }}?city={{ $city->slug }}">{{
+                                        href="{{ route('frontend.search',['country'=>$country,'ad_type' => $ad_type->slug, 'category' => $item->slug]) }}?city={{ $city->slug }}">{{
                                         $city->name }}</a></li>
                                 @endforeach
 
@@ -194,7 +194,7 @@
                             <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
                             <li><a href="{{ route('frontend.faq') }}">{{ __('faq') }} |</a></li>
                             <li><a href="{{ route('frontend.price.plan') }}">{{ __('price plan') }} |</a></li>
-                            <li><a href="{{ route('frontend.shop') }}">{{ __('shop') }} |</a></li>
+                            <li><a href="{{ route('frontend.search') }}">{{ __('shop') }} |</a></li>
                             <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
                             <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a>
                             </li>
@@ -225,8 +225,8 @@
                     <div class="col-7">
                         <div class="mobile_heade_right float-end">
                             <ul>
-                                <li><a href="{{ route('frontend.shop') }}">Post</a></li>
-                                <li><a href="{{ route('frontend.shop') }}">Account</a></li>
+                                <li><a href="{{ route('frontend.search') }}">Post</a></li>
+                                <li><a href="{{ route('frontend.search') }}">Account</a></li>
                             </ul>
                         </div>
                     </div>
@@ -255,20 +255,20 @@
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion_body">
                                     <ul>
-                                        <li><a href="{{ route('frontend.shop') }}">all for sale</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">antiques</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">appliances</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">arts+crafts</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">atv/utv/sno</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">aviation</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">barter</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">beauty</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">bikes</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">boat parts</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">books</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">business</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">computer</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">collectibles</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">all for sale</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">antiques</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">appliances</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">arts+crafts</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">atv/utv/sno</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">aviation</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">barter</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">beauty</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">bikes</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">boat parts</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">books</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">business</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">computer</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">collectibles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -284,20 +284,20 @@
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion_body">
                                     <ul>
-                                        <li><a href="{{ route('frontend.shop') }}">all for sale</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">antiques</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">appliances</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">arts+crafts</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">atv/utv/sno</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">aviation</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">barter</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">beauty</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">bikes</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">boat parts</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">books</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">business</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">computer</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">collectibles</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">all for sale</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">antiques</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">appliances</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">arts+crafts</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">atv/utv/sno</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">aviation</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">barter</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">beauty</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">bikes</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">boat parts</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">books</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">business</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">computer</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">collectibles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -313,20 +313,20 @@
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion_body">
                                     <ul>
-                                        <li><a href="{{ route('frontend.shop') }}">all for sale</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">antiques</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">appliances</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">arts+crafts</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">atv/utv/sno</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">aviation</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">barter</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">beauty</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">bikes</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">boat parts</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">books</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">business</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">computer</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">collectibles</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">all for sale</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">antiques</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">appliances</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">arts+crafts</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">atv/utv/sno</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">aviation</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">barter</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">beauty</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">bikes</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">boat parts</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">books</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">business</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">computer</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">collectibles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -342,20 +342,20 @@
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion_body">
                                     <ul>
-                                        <li><a href="{{ route('frontend.shop') }}">all for sale</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">antiques</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">appliances</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">arts+crafts</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">atv/utv/sno</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">aviation</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">barter</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">beauty</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">bikes</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">boat parts</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">books</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">business</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">computer</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">collectibles</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">all for sale</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">antiques</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">appliances</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">arts+crafts</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">atv/utv/sno</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">aviation</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">barter</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">beauty</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">bikes</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">boat parts</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">books</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">business</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">computer</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">collectibles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -371,20 +371,20 @@
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion_body">
                                     <ul>
-                                        <li><a href="{{ route('frontend.shop') }}">all for sale</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">antiques</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">appliances</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">arts+crafts</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">atv/utv/sno</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">aviation</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">barter</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">beauty</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">bikes</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">boat parts</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">books</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">business</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">computer</a></li>
-                                        <li><a href="{{ route('frontend.shop') }}">collectibles</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">all for sale</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">antiques</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">appliances</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">arts+crafts</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">atv/utv/sno</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">aviation</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">barter</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">beauty</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">bikes</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">boat parts</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">books</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">business</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">computer</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">collectibles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -400,7 +400,7 @@
                         <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
                         <li><a href="{{ route('frontend.faq') }}">{{ __('faq') }} |</a></li>
                         <li><a href="{{ route('frontend.price.plan') }}">{{ __('price plan') }} |</a></li>
-                        <li><a href="{{ route('frontend.shop') }}">{{ __('shop') }} |</a></li>
+                        <li><a href="{{ route('frontend.search') }}">{{ __('shop') }} |</a></li>
                         <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
                         <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a>
                         </li>

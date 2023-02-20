@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use DB;
+use App\Models\Faq;
 use App\Models\Seo;
 use App\Models\AdType;
 use App\Models\AdGallery;
 use Modules\Ad\Entities\Ad;
 use function Sodium\compare;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Faq;
 use Modules\Category\Entities\Category;
 use Modules\Wishlist\Entities\Wishlist;
 use Google\Service\Dfareporting\Country;
@@ -48,16 +48,30 @@ class FrontendController extends Controller
 
 
 
-    public function search(Request $request)
+    public function search(Request $request,$country = null,$ad_type = null,$category = null)
     {
-        $ad_type = AdType::where('slug', $request->ad_type)->first();
-        $category = Category::where('slug', $request->categories)->first();
         $query = Ad::active();
+        $country = getCountryCode();
+        // if($country) {
+        //     $query->whereHas('countries', function ($q) use ($country) {
+        //         $q->where('iso', $country);
+        //     });
+        // }
         if($ad_type) {
-            $query->where('ad_type_id', $ad_type->id);
+            $query->whereHas('ad_type', function ($q) use ($ad_type) {
+                $q->where('slug', $ad_type);
+            });
         }
         if ($category) {
-            $query->where('category_id', $category->id);
+            $query->whereHas('category', function ($q) use ($category) {
+                $q->where('slug', $category);
+            });
+        }
+        if ($request->subcategory) {
+            $subcategory =$request->subcategory;
+            $query->whereHas('subcategory', function ($q) use ($subcategory) {
+                $q->where('slug', $subcategory);
+            });
         }
         $ads = $query->get();
 
