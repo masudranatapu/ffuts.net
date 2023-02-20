@@ -64,7 +64,7 @@
 <div class="col-md-4">
     <div class="mb-3">
         <label for="job_title" class="form-label text-success">job title</label>
-        <input type="text" name="job_title" id="job_title" class="form-control" required>
+        <input type="text" name="job_title" value="{{ $ad->job_title ?? old('job_title')}}" id="job_title" class="form-control" required>
     </div>
 </div>
 <div class="col-md-4">
