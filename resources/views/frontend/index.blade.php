@@ -170,7 +170,7 @@
                                 </select>
                             </form>
 
-                            {{-- @if (isset($cities) && count($cities) > 0)
+                            @if (isset($cities) && count($cities) > 0)
                         <div class="mt-2 list-syle-hover">
                             <ul class="list-group ">
                                 @foreach ($cities as $key => $city)
@@ -181,7 +181,7 @@
 
                             </ul>
                         </div>
-                        @endif --}}
+                        @endif
 
                         </div>
                     </div>
