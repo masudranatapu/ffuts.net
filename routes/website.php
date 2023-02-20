@@ -45,6 +45,7 @@ Route::group(['as' => 'user.'], function () {
         Route::get('user/post', [UserDashboardController::class, 'profile'])->name('profile');
         Route::get('user/post/delete/{id}', [UserDashboardController::class, 'deletePost'])->name('post.delete');
         Route::get('user/post/edit/{slug}', [UserDashboardController::class, 'editPost'])->name('post.edit');
+        Route::post('user/post/update/{slug}',[UserDashboardController::class,'updatePost'])->name('post.update');
         Route::get('user/post/statusUpdate/{id}/{status}', [UserDashboardController::class, 'statusUpdate'])->name('post.statusUpdate');
         Route::get('user/drafts', [UserDashboardController::class, 'drafts'])->name('drafts');
         Route::get('user/favourite', [UserDashboardController::class, 'favourite'])->name('favourite');

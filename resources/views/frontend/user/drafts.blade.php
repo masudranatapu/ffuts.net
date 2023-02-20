@@ -89,7 +89,7 @@
                                 </td>
                                 <td>
                                    <a href="{{route('frontend.details', $ad->slug)}}" class="btn btn-sm btn-success">View</a>
-                                    <a href="#" onclick="alert('Comming soon..')" class="btn btn-sm btn-secondary">Edit</a>
+                                    <a href="{{ route('user.post.edit',$ad->slug) }}"  class="btn btn-sm btn-secondary">Edit</a>
                                     <a href="{{ route('user.post.delete', $ad->id) }}" onclick="return confirm('Are you sure to delete?')" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>
