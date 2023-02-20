@@ -47,12 +47,12 @@
                                 @endif
                             </ul>
                             <div class="search-style mb-4">
-                                <form action="#" method="post">
+                                <form action="{{ route('frontend.search') }}" method="get">
                                     <div class="input-group">
                                         <input type="text" name="search" id="search" class="form-control"
                                             placeholder="Search..." required>
                                         <button type="submit" class="text-input-group"><i
-                                                class="fa fa-search"></i></button>
+                                                class="la la-search"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -412,6 +412,12 @@
             </div>
         </footer>
     </div>
+    <div class="d-none">
+        <form action="{{ route('frontend.search') }}" method="get" id="eventForm">
+            <input type="hidden" name="ad_type" value="event-class">
+            <input type="hidden" name="date" id="date_select">
+        </form>
+    </div>
 @endsection
 
 @push('script')
@@ -420,7 +426,15 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(function() {
-            $("#datepicker").datepicker();
+            $("#datepicker").datepicker({
+                onSelect: function (date, datepicker) {
+                    if (date != "") {
+                        alert("Selected Date: " + date);
+                        $('#date_select').val(date);
+                        $('#eventForm').submit();
+                    }
+                }
+            });
         });
         $(document).ready(function() {
             $(".select2").select2();
