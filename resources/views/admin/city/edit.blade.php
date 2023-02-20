@@ -1,5 +1,25 @@
 @extends('admin.layouts.app')
+@section('style')
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <style>
+        .select2-results__option[aria-selected=true] {
+            display: none;
+        }
 
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
+            color: #fff;
+            border: 1px solid #fff;
+            background: #007bff;
+            border-radius: 30px;
+        }
+
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
+            color: #fff;
+        }
+
+    </style>
+@endsection
 @section('title')
     {{ __('City Edit') }}
 @endsection
@@ -32,14 +52,16 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <x-forms.label name="Country" required="true" class="col-sm-3 col-form-label" />
+                                <div class="form-group row mb-15">
+                                    <x-forms.label name="Country" required="true" class="col-sm-3" />
                                     <div class="col-sm-9">
-                                        <select name="country_id" id="country_id" class="form-control">
-                                            <option value="" disabled selected>Select One</option>
-                                            @foreach ($countries as $country)
+                                        <select name="country_id"
+                                            class="select2bs4 @error('country_id') is-invalid @enderror"
+                                            style="width: 100%;">
+                                            <option value="">{{ __('Select Country') }}</option>
+                                             @foreach ($countries as $country)
                                                 <option value="{{ $country->id }}" {{ $city->country_id == $country->id? "selected" : "" }}>{{ $country->name }}</option>
-                                            @endforeach
+                                             @endforeach
                                         </select>
                                         @error('country_id')
                                             <span class="invalid-feedback"
@@ -88,55 +110,14 @@
     </div>
 @endsection
 
-@section('style')
-    <!-- Bootstrap-Iconpicker -->
-    <link rel="stylesheet"
-        href="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/css/bootstrap-iconpicker.min.css" />
-    <link rel="stylesheet" href="{{ asset('backend') }}/css/dropify.min.css" />
-@endsection
-
 @section('script')
-
-    <!-- Bootstrap-Iconpicker Bundle -->
-    <script type="text/javascript"
-        src="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/js/bootstrap-iconpicker.bundle.min.js"></script>
-    <script type="text/javascript"
-        src="{{ asset('backend') }}/plugins/bootstrap-iconpicker/dist/js/bootstrap-iconpicker.min.js"></script>
-    <script src="{{ asset('backend') }}/js/dropify.min.js"></script>
-
+<script src="{{ asset('backend') }}/plugins/select2/js/select2.full.min.js"></script>
     <script>
-        $('#target').iconpicker({
-            align: 'left', // Only in div tag
-            arrowClass: 'btn-danger',
-            arrowPrevIconClass: 'fas fa-angle-left',
-            arrowNextIconClass: 'fas fa-angle-right',
-            cols: 15,
-            footer: true,
-            header: true,
-            icon: 'fas fa-bomb',
-            iconset: 'fontawesome5',
-            labelHeader: '{0} of {1} pages',
-            labelFooter: '{0} - {1} of {2} icons',
-            placement: 'bottom', // Only in button tag
-            rows: 5,
-            search: true,
-            searchText: 'Search',
-            selectedClass: 'btn-success',
-            unselectedClass: ''
-        });
-
-        $('#target').on('change', function(e) {
-            $('#icon').val(e.icon)
-        });
-
-        // dropify
-        var drEvent = $('.dropify').dropify();
-
-        drEvent.on('dropify.error.fileSize', function(event, element) {
-            alert('Filesize error message!');
-        });
-        drEvent.on('dropify.error.imageFormat', function(event, element) {
-            alert('Image format error message!');
-        });
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
     </script>
 @endsection
+
+

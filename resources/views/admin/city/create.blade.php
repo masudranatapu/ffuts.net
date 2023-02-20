@@ -1,8 +1,24 @@
 @extends('admin.layouts.app')
 @section('style')
-    <!-- Bootstrap-Iconpicker -->
-   
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <style>
+        .select2-results__option[aria-selected=true] {
+            display: none;
+        }
+
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
+            color: #fff;
+            border: 1px solid #fff;
+            background: #007bff;
+            border-radius: 30px;
+        }
+
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
+            color: #fff;
+        }
+
+    </style>
 @endsection
 
 @section('title')
@@ -38,14 +54,16 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <x-forms.label name="Country" required="true" class="col-sm-3 col-form-label" />
+                                <div class="form-group row mb-15">
+                                    <x-forms.label name="Country" required="true" class="col-sm-3" />
                                     <div class="col-sm-9">
-                                        <select name="country_id" id="country_id" class="form-control select2">
-                                            <option value="" disabled selected>Select One</option>
-                                            @foreach ($countries as $country)
+                                        <select name="country_id"
+                                            class="select2bs4 @error('country_id') is-invalid @enderror"
+                                            style="width: 100%;">
+                                            <option value="">{{ __('Select Country') }}</option>
+                                             @foreach ($countries as $country)
                                                 <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                            @endforeach
+                                             @endforeach
                                         </select>
                                         @error('country_id')
                                             <span class="invalid-feedback"
@@ -97,8 +115,11 @@
 
 
 @section('script')
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-$(document).ready(function() {
-    $(".select2").select2();
-});
+<script src="{{ asset('backend') }}/plugins/select2/js/select2.full.min.js"></script>
+    <script>
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+    </script>
 @endsection
