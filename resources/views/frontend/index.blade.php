@@ -127,7 +127,7 @@
                                                         <div class="col-md-12">
                                                             <div class="mt-2">
                                                                 <ul class="list-group category_list">
-                                                                    <li><a href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $scat->slug, 'category' => $scat->slug]) }}">{{ __($scat->name) }}</a>
+                                                                    <li><a href="{{ route('frontend.search', ['country' => $country, 'category' => $item->slug,'subcategory' => $scat->slug,]) }}">{{ __($scat->name) }}</a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
