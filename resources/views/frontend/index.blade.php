@@ -118,7 +118,7 @@
                                             <div class="col-md-12 mb-2">
                                                 <div class="category_heading text-center">
                                                     <h5>
-                                                        <a href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $item->slug]) }}">
+                                                        <a href="{{ route('frontend.search', ['country' => $country, 'category' => $item->slug]) }}">
                                                         {{ __($item->slug) }}</a>
                                                     </h5>
                                                 </div>
