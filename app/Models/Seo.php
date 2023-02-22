@@ -20,7 +20,7 @@ class Seo extends Model
 
     /**
      * One to Many relationship with page content model to get page contents
-     * 
+     *
      */
     public function contents()
     {
