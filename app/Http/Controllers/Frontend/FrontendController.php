@@ -63,6 +63,7 @@ class FrontendController extends Controller
     {
         $query = Ad::active();
         $country = getCountryCode();
+        $categories = Category::orderBy('id','asc')->get();
         $subcategories = '';
         if($request->country) {
             $country = $request->country;
@@ -70,21 +71,26 @@ class FrontendController extends Controller
                 $q->where('iso', $country);
             });
         }
-        if($request->ad_type) {
-            $ad_type = $request->ad_type;
-            $query->whereHas('ad_type', function ($q) use ($ad_type) {
-                $q->where('slug', $ad_type);
-            });
-        }
+        // if($request->ad_type) {
+        //     $ad_type = $request->ad_type;
+        //     $query->whereHas('ad_type', function ($q) use ($ad_type) {
+        //         $q->where('slug', $ad_type);
+        //     });
+        // }
+
         if ($request->category) {
-            $category = $request->category;
-            $subcategories = SubCategory::whereHas('category', function ($q) use ($category) {
-                $q->where('slug', $category);
+            $category_slug = $request->category;
+            $subcategories = SubCategory::whereHas('category', function ($q) use ($category_slug) {
+                $q->where('slug', $category_slug);
             })->get();
-            $query->whereHas('category', function ($q) use ($category) {
-                $q->where('slug', $category);
+            $query->whereHas('category', function ($q) use ($category_slug) {
+                $q->where('slug', $category_slug);
             });
+
         }
+
+
+
         if ($request->subcategory) {
             $subcategory =$request->subcategory;
             $query->whereHas('subcategory', function ($q) use ($subcategory) {
@@ -135,7 +141,10 @@ class FrontendController extends Controller
 
         $ads = $query->get();
 
-        return view('frontend.shop', compact('ads', 'subcategories'));
+
+
+        return view('frontend.shop', compact('ads', 'subcategories', 'categories'));
+
     }
 
 

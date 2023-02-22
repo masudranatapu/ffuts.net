@@ -89,7 +89,7 @@
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="category_heading text-center">
                                                     <h5>
-                                                        <a href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $item->slug]) }}">
+                                                        <a href="{{ route('frontend.search', ['country' => $country, 'category' => $item->slug]) }}">
                                                         {{ __($item->slug) }}</a>
                                                     </h5>
                                                 </div>
@@ -98,7 +98,7 @@
                                                         <div class="@if($item->id == 8 ) col-md-6 @elseif($item->id == 9) col-md-12  @elseif($item->id == 11) col-md-6  @elseif($item->id == 12) col-md-6  @elseif($item->id == 13) col-md-4 @else col-md-12 @endif  ">
                                                             <div class="mt-1">
                                                                 <ul class="list-group category_list">
-                                                                    <li><a href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $scat->slug, 'category' => $scat->slug]) }}">{{ __($scat->name) }}</a>
+                                                                    <li><a href="{{ route('frontend.search', ['country' => $country, 'category' => $item->slug,'subcategory' => $scat->slug]) }}">{{ __($scat->name) }}</a>
                                                                     </li>
                                                                 </ul>
                                                             </div>

@@ -27,9 +27,7 @@
                     @if (request()->has('country'))
                         <input type="hidden" name="country" value="{{ request()->country }}">
                     @endif
-                    @if (request()->has('ad_type'))
-                        <input type="hidden" name="ad_type" value="{{ request()->ad_type }}">
-                    @endif
+
                     @if (request()->has('category'))
                         <input type="hidden" name="category" value="{{ request()->category }}">
                     @endif
