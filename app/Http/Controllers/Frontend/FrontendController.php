@@ -102,10 +102,7 @@ class FrontendController extends Controller
 
 
         if ($request->city) {
-            $city =$request->city;
-            $query->whereHas('city', function ($q) use ($city) {
-                $q->where('slug', $city);
-            });
+            $query->where('city', $request->city);
         }
 
 

@@ -62,4 +62,5 @@ class SubCategory extends Model
     {
         return $this->hasMany(Ad::class, 'subcategory_id');
     }
+
 }
