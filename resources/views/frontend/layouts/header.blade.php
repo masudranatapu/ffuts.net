@@ -4,7 +4,7 @@
             @if (Route::is('frontend.search'))
                 @php
                     $ad_type = DB::table('ad_types')
-                        ->where('slug', request()->ad_type)
+                        ->where('slug', request()->category)
                         ->first();
                         if (isset($ad_type)) {
                             $old_cats = $categories->where('ad_type_id', $ad_type->id);
@@ -24,24 +24,22 @@
                     </div>
                     <div class="d-inline">
                         <select name="ad_type" id="ad_type" class="select2" onchange="serachSubmit()">
-                            <option value="" disabled selected>Ad Type</option>
-                            @foreach ($ad_types as $ad_type)
-                                <option value="{{ $ad_type->slug }}" {{ request()->ad_type ==  $ad_type->slug ? 'selected':'' }}>{{ $ad_type->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="d-inline">
-                        <select name="category" id="category" class="select2" onchange="serachSubmit()">
-                            <option value="" disabled selected>Category</option>
-                            @if (isset($old_cats) && $old_cats->count() > 0)
-                                @foreach ($old_cats as $cat)
-                                    <option value="{{ $cat->slug }}" {{ request()->category ==  $cat->slug ? 'selected':'' }}>{{ $cat->name }}</option>
-                                @endforeach
-                            @else
+                            <option value="">All</option>
+                            @if(isset($categories) && count($categories)>0)
                                 @foreach ($categories as $cat)
                                     <option value="{{ $cat->slug }}" {{ request()->category ==  $cat->slug ? 'selected':'' }}>{{ $cat->name }}</option>
                                 @endforeach
                             @endif
+                        </select>
+                    </div>
+                    <div class="d-inline">
+                        <select name="category" id="category" class="select2" onchange="serachSubmit()">
+                            <option value="" >All</option>
+
+                                @foreach ($subcategories as $scat)
+                                    <option value="{{ $scat->slug }}" {{ request()->subcategory ==  $scat->slug ? 'selected':'' }}>{{ $scat->name }}</option>
+                                @endforeach
+
                         </select>
                     </div>
                 </form>
