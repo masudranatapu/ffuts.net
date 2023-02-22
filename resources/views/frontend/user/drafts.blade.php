@@ -17,7 +17,6 @@
 
 @section('breadcrumb')
 <ul>
-    <li>Jerusalem > </li>
     <li>User Profile > </li>
     <li>{{ $user->name }}</li>
 </ul>
