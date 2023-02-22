@@ -23,10 +23,10 @@
     <div class="main_template">
         <div id="mySidenav" class="container-fluid sidenav sidebar_menu">
             <div class="shop_filter">
-                <form action="{{ route('frontend.search') }}" method="get">
-                    @if (request()->has('country'))
-                        <input type="hidden" name="country" value="{{ request()->country }}">
-                    @endif
+                <form action="{{ route('frontend.search') }}" method="get" id="searchFrm">
+
+                    <input type="hidden" name="country" value="{{ getCountryCode() }}" id="country">
+
 
                     @if (request()->has('category'))
                         <input type="hidden" name="category" value="{{ request()->category }}">

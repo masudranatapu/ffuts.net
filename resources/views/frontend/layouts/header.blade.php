@@ -34,7 +34,7 @@
                         </select>
                     </div>
                     <div class="d-inline">
-                        <select name="sbucategory" id="sbucategory" class="select2" onchange="serachSubmit()">
+                        <select name="subcategory" id="subcategory" class="select2" onchange="serachSubmit()">
                             <option value="">All</option>
                                 @if(isset($subcategories) && count($subcategories)>0)
                                 @foreach ($subcategories as $scat)

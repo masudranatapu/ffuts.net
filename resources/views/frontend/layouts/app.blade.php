@@ -60,7 +60,31 @@
             $(".select2").select2();
         });
         function serachSubmit() {
-            $('#searchForm').submit();
+
+            var city = $('#city').val();
+            var category = $('#category').val();
+            var subcategory = $('#subcategory').val();
+
+            var base_url = $('#base_url').val();
+            var country = $('#country').val();
+            var full_url = base_url+'/shop/'+country
+            if(category != ''){
+                full_url += '/'+category;
+            }
+            if(subcategory != ''){
+                full_url += '/'+subcategory;
+            }
+
+            if(city != ''){
+                full_url += '?city='+city;
+            }
+
+            window.location.replace(full_url);
+
+
+
+            // $('#searchForm').submit();
+
          }
     </script>
 
