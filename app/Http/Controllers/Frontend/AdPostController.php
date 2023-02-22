@@ -20,7 +20,7 @@ use Modules\Category\Entities\SubCategory;
 class AdPostController extends Controller
 {
     //
-    public function create($post_type = null, $category = null, $subcategory = null)
+    public function create($post_type = null, $subcategory = null)
     {
 
         if ($post_type == null) {
@@ -28,7 +28,7 @@ class AdPostController extends Controller
             return view('frontend.post.step_one', compact('add_types'));
         } else {
 
-            if ($category) {
+            if ($subcategory) {
 
                 if ($subcategory) {
                     $ad_type = AdType::where('slug', $post_type)->first();
@@ -45,8 +45,8 @@ class AdPostController extends Controller
                 }
             } else {
                 $ad_type = AdType::where('slug', $post_type)->first();
-                $category = Category::where('ad_type_id', $ad_type->id)->orderBy('id', 'desc')->get();
-                return view('frontend.post.step_two', compact('category', 'ad_type'));
+                $subCategory = SubCategory::where('ad_type_id', $ad_type->id)->orderBy('id', 'desc')->get();
+                return view('frontend.post.step_two', compact('subCategory', 'ad_type'));
             }
         }
     }

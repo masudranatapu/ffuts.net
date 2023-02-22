@@ -12,7 +12,17 @@ class AdTypesController extends Controller
 {
     public function index(){
 
-        $ad_types = AdType::orderBy('id','desc')->paginate(8);
+        // $data = DB::table('sub_categories')->get();
+        // foreach ($data as $key => $value) {
+
+        //     $ss = DB::table('categories')->where('id',$value->category_id)->first();
+
+        //     DB::table('sub_categories')->where('id',$value->id)->update(['ad_type_id' => $ss->ad_type_id]);
+
+        // }
+        // dd($data);
+
+        $ad_types = AdType::orderBy('id','desc')->paginate(20);
         return view('admin.ad-types.index', compact('ad_types'));
     }
 

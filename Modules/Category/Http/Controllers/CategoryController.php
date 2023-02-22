@@ -50,8 +50,8 @@ class CategoryController extends Controller
         if (!userCan('category.create')) {
             return abort(403);
         }
-        $ad_types = DB::table('ad_types')->orderBy('id','desc')->get();
-        return view('category::category.create',compact('ad_types'));
+
+        return view('category::category.create');
     }
 
     /**
@@ -87,9 +87,8 @@ class CategoryController extends Controller
         if (!userCan('category.update')) {
             return abort(403);
         }
-        $ad_type = DB::table('ad_types')->orderBy('id', 'desc')->get();
 
-        return view('category::category.edit', compact('category', 'ad_type'));
+        return view('category::category.edit', compact('category'));
     }
 
     /**
