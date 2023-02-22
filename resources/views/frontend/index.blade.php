@@ -59,10 +59,11 @@
                             <div class="custom-calender mb-3">
                                 <h5><a href="javascript:;">Event Calendar</a></h5>
                             </div>
-                            <div class="calender-style">
+                            <div class="calender-style mb-4">
                                 <div id="datepicker"></div>
                             </div>
-                            <div class="mt-5 list-style1 mb-3">
+                            <div class="list-style1 mb-4">
+                                <h5 class="mb-3" ><a href="javascript:;" style="font-size: 14px;text-align: center;margin-top: 5px;color: #0000EE;font-weight: 600;">Latest Post</a></h5>
                                 <ul class="list-group">
                                     @foreach($ads as $key => $value)
                                         <li class="list-item custom-list-style1">

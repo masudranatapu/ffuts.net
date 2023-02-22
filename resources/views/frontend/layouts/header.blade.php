@@ -3,27 +3,28 @@
         <div class="col-lg-9">
             @if (Route::is('frontend.search'))
                 @php
-                    $ad_type = DB::table('ad_types')
-                        ->where('slug', request()->category)
-                        ->first();
-                        if (isset($ad_type)) {
-                            $old_cats = $categories->where('ad_type_id', $ad_type->id);
-                        }
+                    $country_id = getCountryId();
+                    $cities = DB::table('city')
+                        ->where('country_id', $country_id)
+                        ->orderBy('order_id','desc')
+                        ->get();
+
+
                 @endphp
                 <form action="{{ route('frontend.search') }}" method="get" id="searchForm">
                     <a class="header_logo" name="logoLink" href="{{ route('frontend.index') }}">ffutS</a>
                     <div class="d-inline">
-                        <select name="country" id="country" class="select2" onchange="serachSubmit()">
-                            <option value="" disabled selected>Country</option>
-                            @foreach ($countries as $country)
-                                <option value="{{ strtolower($country->iso) }}"
-                                    {{ request()->country ==  strtolower($country->iso) ? 'selected':'' }} >
-                                    {{ ucfirst(strtolower($country->name)) }}</option>
+                        <select name="city" id="city" class="select2" onchange="serachSubmit()">
+                            <option value="">All</option>
+                            @foreach ($cities as $city)
+                                <option value="{{ $city->slug }}"
+                                    {{ request()->city ==  strtolower($city->slug) ? 'selected':'' }} >
+                                    {{ ucfirst(strtolower($city->name)) }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="d-inline">
-                        <select name="ad_type" id="ad_type" class="select2" onchange="serachSubmit()">
+                        <select name="category" id="category" class="select2" onchange="serachSubmit()">
                             <option value="">All</option>
                             @if(isset($categories) && count($categories)>0)
                                 @foreach ($categories as $cat)
@@ -33,7 +34,7 @@
                         </select>
                     </div>
                     <div class="d-inline">
-                        <select name="category" id="category" class="select2" onchange="serachSubmit()">
+                        <select name="sbucategory" id="sbucategory" class="select2" onchange="serachSubmit()">
                             <option value="">All</option>
                                 @if(isset($subcategories) && count($subcategories)>0)
                                 @foreach ($subcategories as $scat)

@@ -243,6 +243,15 @@ function getCountryCode()
 }
 
 
+function getCountryId()
+{
+
+    $code = session()->get('local_country');
+    $country = DB::table('country')->where('iso',$code)->first();
+    return $country->id;
+}
+
+
 function error($name)
 {
     $errors = session()->get('errors', app(ViewErrorBag::class));

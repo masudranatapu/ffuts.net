@@ -77,7 +77,8 @@ class FrontendController extends Controller
         //         $q->where('slug', $ad_type);
         //     });
         // }
-
+        // $ads = $query->get();
+        // dd($ads);
         if ($request->category) {
             $category_slug = $request->category;
             $subcategories = SubCategory::whereHas('category', function ($q) use ($category_slug) {
@@ -88,6 +89,8 @@ class FrontendController extends Controller
             });
 
         }
+
+
 
 
 
