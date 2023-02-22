@@ -30,19 +30,21 @@ class AdPostController extends Controller
 
             if ($subcategory) {
 
-                if ($subcategory) {
-                    $ad_type = AdType::where('slug', $post_type)->first();
-                    $category = Category::where('slug', $category)->first();
-                    $subCategory = SubCategory::where('slug', $subcategory)->first();
-                    $country = Country::with('cities')->where('iso' , strtoupper(getCountryCode()))->first();
+                $ad_type = AdType::where('slug', $post_type)->first();
+                $subCategory = SubCategory::where('slug', $subcategory)->first();
+                $category = Category::where('id', $subCategory->category_id)->first();
+                $country = Country::with('cities')->where('iso' , strtoupper(getCountryCode()))->first();
+                return view('frontend.post.step_four', compact('ad_type', 'category', 'subCategory', 'country'));
 
-                    return view('frontend.post.step_four', compact('ad_type', 'category', 'subCategory', 'country'));
-                } else {
-                    $ad_type = AdType::where('slug', $post_type)->first();
-                    $category = Category::where('slug', $category)->first();
-                    $subCategory = SubCategory::where('category_id', $category->id)->orderBy('id', 'desc')->get();
-                    return view('frontend.post.step_three', compact('subCategory', 'category', 'ad_type'));
-                }
+
+                // if ($subcategory) {
+                // } else {
+                //     $ad_type = AdType::where('slug', $post_type)->first();
+                //     $category = Category::where('slug', $category)->first();
+                //     $subCategory = SubCategory::where('category_id', $category->id)->orderBy('id', 'desc')->get();
+                //     return view('frontend.post.step_three', compact('subCategory', 'category', 'ad_type'));
+                // }
+
             } else {
                 $ad_type = AdType::where('slug', $post_type)->first();
                 $subCategory = SubCategory::where('ad_type_id', $ad_type->id)->orderBy('id', 'desc')->get();

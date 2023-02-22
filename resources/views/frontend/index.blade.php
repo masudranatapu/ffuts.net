@@ -175,13 +175,12 @@
                                 </select>
                             </form>
 
-                            @if (isset($cities) && count($cities) > 0)
+                        @if (isset($cities) && count($cities) > 0)
                         <div class="mt-2 list-syle-hover">
                             <ul class="list-group ">
                                 @foreach ($cities as $key => $city)
-                                <li><a
-                                        href="{{ route('frontend.search',['country'=>$country,'ad_type' => $ad_type->slug, 'category' => $item->slug]) }}?city={{ $city->slug }}">{{
-                                        $city->name }}</a></li>
+                                <li><a href="{{ route('frontend.search',['country'=>$country]) }}?city={{ $city->slug }}">
+                                {{ $city->name }}</a></li>
                                 @endforeach
 
                             </ul>

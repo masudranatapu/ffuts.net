@@ -24,7 +24,15 @@ class FrontendController extends Controller
     public function index()
     {
 
-        $ads = Ad::orderBy('id','desc')->take(10)->get();
+        $local_country = session()->get('local_country');
+        $ads = Ad::orderBy('id','desc')->take(10);
+
+        if($local_country){
+            $ads->where('country',$local_country);
+        }
+
+        $ads = $ads->get();
+
         $countries =  DB::table('country')->orderBy('name', 'asc')->get();
         $ad_types = AdType::orderBy('id', 'asc')->get();
         $categories = Category::orderBy('id', 'asc')->get();
