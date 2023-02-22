@@ -233,7 +233,7 @@ Route::prefix('admin')->group(function () {
         Route::prefix('user-contact')->group(function(){
             Route::get('/',[ContactController::class,'index'])->name('contact.index');
             Route::get('/view/{id}',[ContactController::class,'view'])->name('contact.view');
-            Route::get('/delete/{id}',[ContactController::class,'delete'])->name('contact.delete');
+            Route::delete('/delete/{id}',[ContactController::class,'delete'])->name('contact.delete');
         });
 
     });

@@ -54,7 +54,7 @@
             <div class="header_end float-lg-end">
                 <ul id="wishlist_count">
                     @if (auth()->guard('user')->check() && userWishlist() > 0)
-                        <li><a href="javascript:;" class="badge text-bg-warning">
+                        <li><a href="{{ route('user.favourite') }}" class="badge text-bg-warning">
                                 <i class="las la-star"></i> {{ userWishlist() }}
                                 {{ userWishlist() > 1 ? 'favourites' : 'favourite' }}</a>
                         </li>

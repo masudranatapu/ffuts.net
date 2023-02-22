@@ -32,27 +32,23 @@ $user = auth()->user();
                                     <th>{{ __('Contact Email') }}</th>
                                     <th>{{ __('Contact Phone') }}</th>
                                     <th>{{ __('Contact Details') }}</th>
+                                    <th>{{ __('Contact Date') }}</th>
                                     <th>{{ __('Action') }}</th>
 
                                 </tr>
                             </thead>
                             <tbody id="sortable">
-                                @foreach($cities as $key => $value)
+                                @foreach($users as $key => $value)
                                     <tr class="text-center">
-                                        <td>{{  $cities->firstItem() + $key  }}</td>
-                                        <td>{{ $value->country->name ?? '' }}</td>
-                                        <td>{{ $value->name }}</td>
-                                        <td>{{ $value->slug }}</td>
-                                        <td>{{ $value->order_id }}</td>
+                                        <td>{{  $users->firstItem() + $key  }}</td>
+                                        <td>{{ $value->name}}</td>
+                                        <td>{{ $value->email }}</td>
+                                        <td>{{ $value->phone }}</td>
+                                        <td>{{ Str::limit($value->message, 40, '...') }}</td>
+                                       <td>{{ date('d M Y',strtotime($value->created_at)) }}</td>
                                         <td>
-                                            @if($value->status == 1)
-                                                <span class="badge badge-success">Active</span>
-                                            @else
-                                                <span class="badge badge-danger">Inactive</span>
-                                            @endif                                        </td>
-                                        <td>
-                                            <a href="{{ route('city.edit',$value->id) }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
-                                            <form action="{{ route('city.delete', $value->id) }}"
+                                            <a href="{{ route('contact.view',$value->id) }}" class="btn btn-secondary"><i class="fa fa-eye"></i></a>
+                                            <form action="{{ route('contact.delete', $value->id) }}"
                                                     method="POST" class="d-inline">
                                                     @method('DELETE')
                                                     @csrf
@@ -69,7 +65,7 @@ $user = auth()->user();
                     </div>
                         <div class="card-footer ">
                             <div class="d-flex justify-content-center">
-                                {{ $cities->links() }}
+                                {{ $users->links() }}
                             </div>
                         </div>
                 </div>

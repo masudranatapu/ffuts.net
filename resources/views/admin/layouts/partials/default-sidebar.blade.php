@@ -159,6 +159,9 @@
                         <x-admin.sidebar-list :linkActive="Route::is('faq.*') ? true : false" route="faq.index" icon="fas fa-question">
                             {{ __('faq') }}
                         </x-admin.sidebar-list>
+                        <x-admin.sidebar-list :linkActive="Route::is('contact.*') ? true : false" route="contact.index" icon="fa fa-phone-square">
+                            {{ __('User Contact') }}
+                        </x-admin.sidebar-list>
                     @if ($settings->ads_admin_approval)
                         <form action="{{ route('module.ad.index') }}" method="GET" id="pending_ads_form">
                             <input name="filter_by" type="text" value="pending" hidden>

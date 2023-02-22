@@ -57,6 +57,7 @@
                 <table class="table table-hover" style="min-width: 950px;">
                     <thead>
                         <tr>
+                            <th width="5%">Sl No</th>
                             <th width="30%">Posting</th>
                             <th width="10%">Ad Type</th>
                             <th width="10%">Category</th>
@@ -66,26 +67,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($wishlist as $item)
+                        @forelse ($wishlist as $key=> $item)
 
                         <tr>
+                            <td>{{ $wishlist->firstItem() + $key }}</td>
                             <td>
-                                <a href="{{route('frontend.details', $item->ad->slug)}}"> {{$item->ad->title}}</a>
+                                <a href="{{route('frontend.details',$item->ad->slug?? "")}}"> {{$item->ad->title?? ""}}</a>
                             </td>
                             <td>
-                               {{ $item->ad->ad_type->name }}
+                               {{ $item->ad->ad_type->name?? "" }}
                             </td>
                             <td>
-                               {{ $item->ad->category->name }}
+                               {{ $item->ad->category->name?? "" }}
                             </td>
                             <td>
-                               {{ $item->ad->subcategory->name }}
+                               {{ $item->ad->subcategory->name?? "" }}
                             </td>
                             <td>
                                 {{ $item->created_at->diffForHumans() }}
                             </td>
                             <td>
-                                <a href="{{route('frontend.details', $item->ad->slug)}}" class="btn btn-sm btn-secondary">View</a>
+                                <a href="{{route('frontend.details', $item->ad->slug?? "")}}" class="btn btn-sm btn-secondary">View</a>
                                 <a href="{{ route('user.favourite.delete', $item->id) }}" onclick="return confirm('Are you sure to remove from favourite?')" class="btn btn-sm btn-danger">Remove</a>
                             </td>
                         </tr>
@@ -98,9 +100,32 @@
                     </tbody>
                 </table>
             </div>
+            <div class="card-footer mb-5">
+                <div class="d-flex justify-content-center">
+                    {{ $wishlist->links() }}
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<footer class="text-center footer_menu mt-5">
+    <div class="container">
+        <div class="p-2">
+            <ul>
+                <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
+                <li><a href="{{ route('frontend.faq') }}">{{ __('faq') }} |</a></li>
+                <li><a href="{{ route('frontend.price.plan') }}">{{ __('price plan') }} |</a></li>
+                <li><a href="{{ route('frontend.search') }}">{{ __('shop') }} |</a></li>
+                <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
+                <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a>
+                </li>
+                <li><a href="{{ route('frontend.about') }}">{{ __('about') }} |</a></li>
+                <li><a href="{{ route('frontend.contact') }}">{{ __('contact') }} |</a></li>
+                <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
 @endsection
 
 @push('script')

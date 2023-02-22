@@ -38,7 +38,8 @@ class UserDashboardController extends Controller
     public function favourite()
     {
         $user = Auth::user();
-        $wishlist = Wishlist::where('user_id', Auth::user()->id)->get();
+        $wishlist = Wishlist::where('user_id', Auth::user()->id)->paginate(15);
+
         return view('frontend.user.search', compact('user', 'wishlist'));
     }
     public function favouriteDelete($id)
