@@ -12,10 +12,14 @@
 @endsection
 
 @push('style') @endpush
-
+@section('breadcrumb')
+    <ul>
+        <li>{{ config('app.name') }}</li>
+    </ul>
+@endsection
 @section('content')
 <!-- ======================= breadcrumb start  ============================ -->
-<div class="breadcrumb_sec">
+<div class="breadcrumb_sec mt-5">
     <div class="container">
         <div class="breadcrumb_nav text-center">
             {{-- <h5>{{ $title ?? 'Page header' }}</h5> --}}
@@ -53,25 +57,25 @@
             </div>
         </div>
     </div>
-    <footer class="text-center footer_menu mt-5">
-        <div class="container">
-            <div class="p-2">
-                <ul>
-                        <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
-                        <li><a href="{{ route('frontend.faq') }}">{{ __('faq') }} |</a></li>
-                        <li><a href="{{ route('frontend.price.plan') }}">{{ __('price plan') }} |</a></li>
-                        <li><a href="{{ route('frontend.search') }}">{{ __('shop') }} |</a></li>
-                        <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
-                        <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a>
-                        </li>
-                        <li><a href="{{ route('frontend.about') }}">{{ __('about') }} |</a></li>
-                        <li><a href="{{ route('frontend.contact') }}">{{ __('contact') }} |</a></li>
-                        <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
 </div>
+<footer class="text-center footer_menu mt-5">
+    <div class="container">
+        <div class="p-2">
+            <ul>
+                    <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
+                    <li><a href="{{ route('frontend.faq') }}">{{ __('faq') }} |</a></li>
+                    <li><a href="{{ route('frontend.price.plan') }}">{{ __('price plan') }} |</a></li>
+                    <li><a href="{{ route('frontend.search') }}">{{ __('shop') }} |</a></li>
+                    <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
+                    <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a>
+                    </li>
+                    <li><a href="{{ route('frontend.about') }}">{{ __('about') }} |</a></li>
+                    <li><a href="{{ route('frontend.contact') }}">{{ __('contact') }} |</a></li>
+                    <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
 <!-- ======================= faq end  ============================ -->
 @endsection
 

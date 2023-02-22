@@ -71,17 +71,10 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="" class="form-label">Reason for Inquiry <span
+                                <label for="reason" class="form-label">Reason for Inquiry <span
                                         class="text-danger">*</span></label>
-                                <select name="reason" id="reason" class="form-control" required>
-                                    <option value="" selected disabled>Select One</option>
-                                    <option value="Advertising">Advertising</option>
-                                    <option value="Franchising my business">Franchising my business</option>
-                                    <option value="Help in finding a franchise">Help in finding a franchise</option>
-                                    <option value="Question about a franchise">Question about a franchise</option>
-                                    <option value="Site suggestion">Site suggestion</option>
-                                    <option value="Site question">Site question</option>
-                                </select>
+                                <input type="text" name="reason" id="phone" {{ old('reason') }}
+                                    class="form-control" placeholder="Your Reason" required>
                                 @error('reason')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -102,7 +95,27 @@
                 </div>
             </form>
         </div>
+        
     </div>
+    <!-- footer -->
+        <footer class="text-center footer_menu">
+            <div class="container">
+                <div class="p-2">
+                    <ul>
+                        <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
+                        <li><a href="{{ route('frontend.faq') }}">{{ __('faq') }} |</a></li>
+                        <li><a href="{{ route('frontend.price.plan') }}">{{ __('price plan') }} |</a></li>
+                        <li><a href="{{ route('frontend.search') }}">{{ __('shop') }} |</a></li>
+                        <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
+                        <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a>
+                        </li>
+                        <li><a href="{{ route('frontend.about') }}">{{ __('about') }} |</a></li>
+                        <li><a href="{{ route('frontend.contact') }}">{{ __('contact') }} |</a></li>
+                        <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
     <!-- ======================= contact end  ============================ -->
 @endsection
 

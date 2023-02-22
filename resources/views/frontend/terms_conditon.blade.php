@@ -17,11 +17,18 @@
 @endsection
 @section('breadcrumb')
     <ul>
-        <li>Terms & Conditions</li>
+        <li>{{ config('app.name') }}</li>
     </ul>
 @endsection
 
 @section('content')
+<div class="breadcrumb_sec mt-5">
+        <div class="container">
+            <div class="breadcrumb_nav text-center">
+                <h2>Terms & Condition</h2>
+            </div>
+        </div>
+    </div>
     <div class="main_template">
         <div class="container">
             <div class="single_product mt-5 mb-5">
@@ -36,7 +43,8 @@
                 </div>
             </div>
         </div>
-        <!-- footer -->
+    </div>
+    <!-- footer -->
         <footer class="text-center footer_menu">
             <div class="container">
                 <div class="p-2">
@@ -55,7 +63,6 @@
                 </div>
             </div>
         </footer>
-    </div>
 @endsection
 
 @push('script')
