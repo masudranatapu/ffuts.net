@@ -22,7 +22,7 @@ class UserDashboardController extends Controller
     public function profile()
     {
         $user = Auth::user();
-        $ads = Ad::active()->where('user_id', $user->id)->paginate(10);
+        $ads = Ad::active()->where('user_id', $user->id)->paginate(15);
         return view('frontend.user.profile', compact('user', 'ads'));
     }
 
@@ -31,7 +31,7 @@ class UserDashboardController extends Controller
     public function drafts()
     {
         $user = Auth::user();
-        $ads = Ad::pending()->where('user_id', $user->id)->paginate(10);
+        $ads = Ad::pending()->where('user_id', $user->id)->paginate(15);
         return view('frontend.user.drafts', compact('user', 'ads'));
     }
 

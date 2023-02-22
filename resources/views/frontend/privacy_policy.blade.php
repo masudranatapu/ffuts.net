@@ -17,7 +17,7 @@
 @endsection
 @section('breadcrumb')
     <ul>
-        <li>{{ config('app.name') }}</li>
+        <li>{{ __('privacy_policy') }}</li>
     </ul>
 @endsection
 

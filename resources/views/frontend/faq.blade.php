@@ -14,7 +14,7 @@
 @push('style') @endpush
 @section('breadcrumb')
     <ul>
-        <li>{{ config('app.name') }}</li>
+        <li>{{ __('faq') }}</li>
     </ul>
 @endsection
 @section('content')

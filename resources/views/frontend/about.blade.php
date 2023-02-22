@@ -17,7 +17,7 @@
 @endsection
 @section('breadcrumb')
     <ul>
-        <li>{{ config('app.name') }}</li>
+        <li>{{ __('about') }}</li>
     </ul>
 @endsection
 

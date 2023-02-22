@@ -3,12 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\AdTypesController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -17,7 +19,6 @@ use App\Http\Controllers\Admin\CmsSettingController;
 use App\Http\Controllers\Admin\ManualPaymentController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
-use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\Setting\GeneralSettingController;
 
 Route::prefix('admin')->group(function () {
@@ -226,6 +227,13 @@ Route::prefix('admin')->group(function () {
             Route::get('/edit/{id}', [FaqController::class, 'edit'])->name('faq.edit');
             Route::post('/update/{id}', [FaqController::class, 'update'])->name('faq.update');
             Route::delete('/delete/{id}', [FaqController::class, 'delete'])->name('faq.delete');
+        });
+
+        //Contact
+        Route::prefix('user-contact')->group(function(){
+            Route::get('/',[ContactController::class,'index'])->name('contact.index');
+            Route::get('/view/{id}',[ContactController::class,'view'])->name('contact.view');
+            Route::get('/delete/{id}',[ContactController::class,'delete'])->name('contact.delete');
         });
 
     });

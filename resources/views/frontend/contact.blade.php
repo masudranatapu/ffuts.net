@@ -22,7 +22,7 @@
 @endsection
 @section('breadcrumb')
     <ul>
-        <li>{{ config('app.name') }}</li>
+        <li>{{ __('contact') }}</li>
     </ul>
 @endsection
 
