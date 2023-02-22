@@ -34,12 +34,12 @@
                     </div>
                     <div class="d-inline">
                         <select name="category" id="category" class="select2" onchange="serachSubmit()">
-                            <option value="" >All</option>
-
+                            <option value="">All</option>
+                                @if(isset($subcategories) && count($subcategories)>0)
                                 @foreach ($subcategories as $scat)
                                     <option value="{{ $scat->slug }}" {{ request()->subcategory ==  $scat->slug ? 'selected':'' }}>{{ $scat->name }}</option>
                                 @endforeach
-
+                                @endif
                         </select>
                     </div>
                 </form>

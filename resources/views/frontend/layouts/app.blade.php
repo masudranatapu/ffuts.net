@@ -13,6 +13,7 @@
     @include('frontend.layouts.header_script')
     {{-- custom style --}}
     @stack('style')
+    <input type="hidden" id="base_url" value="{{ URL('/') }}" />
 </head>
 
 <body>

@@ -417,12 +417,12 @@
         </footer>
     </div>
 
-    <div class="d-none">
+    {{-- <div class="d-none">
         <form action="{{ route('frontend.search') }}" method="get" id="eventForm">
-            <input type="hidden" name="ad_type" value="event-class">
+            <input type="hidden" name="category" value="event-class">
             <input type="hidden" name="date" id="date_select">
         </form>
-    </div>
+    </div> --}}
 
 @endsection
 
@@ -433,11 +433,16 @@
     <script>
         $(function() {
             $("#datepicker").datepicker({
+                dateFormat: 'dd-mm-yy',
                 onSelect: function (date, datepicker) {
                     if (date != "") {
                         alert("Selected Date: " + date);
-                        $('#date_select').val(date);
-                        $('#eventForm').submit();
+                        // $('#date_select').val(date);
+                        // $('#eventForm').submit();
+                        var base_url = $('#base_url').val();
+                        var country = $('#country').val();
+                        var full_url = base_url+'/shop/'+country+'/events/?date='+date
+                        window.location.replace(full_url);
                     }
                 }
             });
