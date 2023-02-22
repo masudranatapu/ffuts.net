@@ -74,7 +74,7 @@
                                     <div class="col-sm-9">
                                         <input value="{{ $city->order_id}}" name="order_id" type="text"
                                             class="form-control @error('order_id') is-invalid @enderror"
-                                            placeholder="{{ __('Ordre No') }}">
+                                            placeholder="{{ __('Order No') }}">
                                         @error('order_id')
                                             <span class="invalid-feedback"
                                                 role="alert"><strong>{{ $message }}</strong></span>
