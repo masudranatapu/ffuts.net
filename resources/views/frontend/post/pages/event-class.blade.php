@@ -22,13 +22,13 @@
             <div class="row mb-3">
                 <div class="mb-3">
                     <label for="venue" class="form-label">venue</label>
-                    <input type="text" name="venue" id="venue" class="form-control" required>
+                    <input type="text" name="venue" id="venue" value="{{ old('venue') }}" class="form-control" required>
                 </div>
                 <div class="col-md-6">
                     <div class="row">
                         <div class="mb-3 col-md-6">
                             <label for="datepicker" class="form-label">event start date</label>
-                            <input type="text" name="event_start_date" id="datepicker" class="form-control" required readonly>
+                            <input type="text" name="event_start_date" value="{{ old('event_start_date')}}" id="datepicker" class="form-control" required readonly>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="event_duration" class="form-label">event duration</label>
@@ -221,21 +221,21 @@
                         <div class="col-lg-6">
                             <div class="mb-1">
                                 <label for="phone" class="form-label">Phone number</label>
-                                <input type="number" name="phone" id="phone"
+                                <input type="number" name="phone" {{ old('phone') }} id="phone"
                                     class="form-control" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-1">
                                 <label for="phone_2" class="form-label">Local number</label>
-                                <input type="number" name="phone_2" id="phone_2"
+                                <input type="number" name="phone_2" value="{{ old('phone_2') }}" id="phone_2"
                                     class="form-control" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-1">
                                 <label for="contact_name" class="form-label">contact name</label>
-                                <input type="text" name="contact_name" id="contact_name"
+                                <input type="text" name="contact_name" value="{{ old('contact_name') }}" id="contact_name"
                                     class="form-control" disabled>
                             </div>
                         </div>

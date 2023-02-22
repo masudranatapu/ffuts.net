@@ -5,6 +5,7 @@ use File;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\AdType;
+use App\Models\Country;
 use App\Mail\RegisterMail;
 use Illuminate\Support\Str;
 use Modules\Ad\Entities\Ad;
@@ -57,7 +58,9 @@ class UserDashboardController extends Controller
     {
 
         $ad = Ad::where('slug', $slug)->first();
-        return view('frontend.user.post-edit', compact('ad'));
+        $country = Country::with('cities')->where('iso', strtoupper(getCountryCode()))->first();
+
+        return view('frontend.user.post-edit', compact('ad', 'country'));
     }
 
     public function updatePost(Request $request, $slug)

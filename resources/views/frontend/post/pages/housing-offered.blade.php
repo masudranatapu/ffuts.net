@@ -8,7 +8,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="mb-3">
                         <label for="sqft" class="form-label">sqft</label>
-                        <input type="number" name="sqft" id="sqft" value="0"
+                        <input type="number" name="sqft" value="{{  old('sqft') }}" id="sqft" value="0"
                             class="form-control">
                     </div>
                 </div>
@@ -150,7 +150,7 @@
                 <div class="col-md-4">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" name="email" id="email" class="form-control"
+                        <input type="text" name="email" id="email" value="{{ Auth::user()->email ?? old('email') }}" class="form-control"
                             placeholder="Your email address" required>
                     </div>
                     <div class="mb-3">
@@ -199,21 +199,21 @@
                         <div class="col-lg-6">
                             <div class="mb-1">
                                 <label for="phone" class="form-label">Phone number</label>
-                                <input type="number" name="phone" id="phone"
+                                <input type="number" name="phone" value="{{ old('phone')}}" id="phone"
                                     class="form-control" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-1">
                                 <label for="phone_2" class="form-label">Local number</label>
-                                <input type="number" name="phone_2" id="phone_2"
+                                <input type="number" name="phone_2" value="{{ old('phone_2')}}" id="phone_2"
                                     class="form-control" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-1">
                                 <label for="contact_name" class="form-label">contact name</label>
-                                <input type="text" name="contact_name" id="contact_name"
+                                <input type="text" name="contact_name" value="{{ old('contact_name')}}" id="contact_name"
                                     class="form-control" disabled>
                             </div>
                         </div>
