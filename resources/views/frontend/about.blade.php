@@ -17,11 +17,18 @@
 @endsection
 @section('breadcrumb')
     <ul>
-        <li>About</li>
+        <li>{{ config('app.name') }}</li>
     </ul>
 @endsection
 
 @section('content')
+<div class="breadcrumb_sec mt-5">
+        <div class="container">
+            <div class="breadcrumb_nav text-center">
+                <h2>About Us</h2>
+            </div>
+        </div>
+    </div>
     <div class="main_template">
         <div class="container">
             <div class="single_product mt-5 mb-5">

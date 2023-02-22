@@ -174,7 +174,8 @@
             @endforeach
         </div>
     </div>
-    <!-- footer -->
+</div>
+<!-- footer -->
     <footer class="text-center footer_menu">
         <div class="container">
             <div class="p-2">
@@ -193,7 +194,6 @@
             </div>
         </div>
     </footer>
-</div>
 @endsection
 @push('script')
 <script>

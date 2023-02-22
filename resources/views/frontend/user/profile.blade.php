@@ -57,7 +57,8 @@
                 <table class="table table-hover" style="min-width: 950px;">
                     <thead>
                         <tr>
-                            <th width="30%">Posting</th>
+                            <th width="5%">Sl No</th>
+                            <th width="25%">Posting</th>
                             <th width="10%">Ad Type</th>
                             <th width="10%">Category</th>
                             <th width="10%">Sub Category</th>
@@ -67,8 +68,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($ads as $ad)
+                        @forelse($ads as $key=> $ad)
                             <tr>
+                                <td>{{ $ads->firstItem() + $key }}</td>
                                 <td>
                                     <a href="{{route('frontend.details', $ad->slug)}}"> {{$ad->title}}</a>
                                 </td>
@@ -102,8 +104,32 @@
                     </tbody>
                 </table>
             </div>
+             <div class="card-footer mb-5">
+                <div class="d-flex justify-content-center">
+                    {{ $ads->links() }}
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<!-- footer -->
+    <footer class="text-center footer_menu">
+        <div class="container">
+            <div class="p-2">
+                <ul>
+                    <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
+                    <li><a href="{{ route('frontend.faq') }}">{{ __('faq') }} |</a></li>
+                    <li><a href="{{ route('frontend.price.plan') }}">{{ __('price plan') }} |</a></li>
+                    <li><a href="{{ route('frontend.search') }}">{{ __('shop') }} |</a></li>
+                    <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
+                    <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a>
+                    </li>
+                    <li><a href="{{ route('frontend.about') }}">{{ __('about') }} |</a></li>
+                    <li><a href="{{ route('frontend.contact') }}">{{ __('contact') }} |</a></li>
+                    <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 @endsection
 
