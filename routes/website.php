@@ -37,7 +37,7 @@ Route::group(['as' => 'frontend.'], function () {
     // Route::get('create-post/post-type/sub-category', [AdPostController::class, 'postSubCategory'])->name('create-post.step_three');
 
 
-    Route::get('create-post/{type?}/{category?}/{subcategory?}', [AdPostController::class, 'create'])->name('post.create');
+    Route::get('create-post/{type?}/{subcategory?}', [AdPostController::class, 'create'])->name('post.create');
     Route::post('store-post', [AdPostController::class, 'store'])->name('post.store');
 });
 

@@ -24,9 +24,18 @@ class FrontendController extends Controller
     public function index()
     {
 
-        $ads = Ad::orderBy('id','desc')->take(10)->get();
+        $local_country = session()->get('local_country');
+        $ads = Ad::orderBy('id','desc')->take(10);
+
+        if($local_country){
+            $ads->where('country',$local_country);
+        }
+
+        $ads = $ads->get();
+
         $countries =  DB::table('country')->orderBy('name', 'asc')->get();
         $ad_types = AdType::orderBy('id', 'asc')->get();
+        $categories = Category::orderBy('id', 'asc')->get();
         $coutry_iso = strtoupper(getCountryCode());
 
         $country = DB::table('country')->where('iso', $coutry_iso)->first();
@@ -38,7 +47,7 @@ class FrontendController extends Controller
         $meta_keywords = $seo->contents->keywords;
         $meta_image = $seo->contents->image;
 
-        return view('frontend.index', compact('ads','ad_types', 'countries', 'cities', 'meta_title', 'meta_description', 'meta_image', 'meta_keywords'));
+        return view('frontend.index', compact('ads','ad_types', 'countries', 'cities', 'meta_title', 'meta_description', 'meta_image', 'meta_keywords','categories'));
     }
 
     public function setCountry(Request $request)

@@ -84,21 +84,21 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="row">
-                                    @foreach ($ad_types as $key => $ad_type)
-                                        @if ($ad_type->slug != 'jobs')
-                                            <div class="col-md-6">
+                                    @foreach ($categories as $key => $item)
+                                    @if (!in_array($item->id, ['10','14','15']))
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="category_heading text-center">
-                                                    <h5><a
-                                                            href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $ad_type->slug]) }}">{{ __($ad_type->slug) }}</a>
+                                                    <h5>
+                                                        <a href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $item->slug]) }}">
+                                                        {{ __($item->slug) }}</a>
                                                     </h5>
                                                 </div>
                                                 <div class="row g-1">
-                                                    @foreach ($ad_type->categories as $item)
-                                                        <div class="col-md-6 col-lg-6">
-                                                            <div class="mt-2">
+                                                    @foreach ($item->subcategories as $scat)
+                                                        <div class="@if($item->id == 8 ) col-md-6 @elseif($item->id == 9) col-md-12  @elseif($item->id == 11) col-md-6  @elseif($item->id == 12) col-md-6  @elseif($item->id == 13) col-md-4 @else col-md-12 @endif  ">
+                                                            <div class="mt-1">
                                                                 <ul class="list-group category_list">
-                                                                    <li><a
-                                                                            href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $ad_type->slug, 'category' => $item->slug]) }}">{{ __($item->name) }}</a>
+                                                                    <li><a href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $scat->slug, 'category' => $scat->slug]) }}">{{ __($scat->name) }}</a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -110,32 +110,37 @@
                                     @endforeach
                                 </div>
                             </div>
+
                             <div class="col-md-3">
-                                @foreach ($ad_types as $key => $ad_type)
-                                    @if ($ad_type->slug == 'jobs')
-                                        <div class="col-md-12">
-                                            <div class="category_heading text-center">
-                                                <h5><a
-                                                        href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $ad_type->slug]) }}">{{ __($ad_type->slug) }}</a>
-                                                </h5>
-                                            </div>
-                                            <div class="row g-1">
-                                                @foreach ($ad_type->categories as $item)
-                                                    <div class="col-md-12">
-                                                        <div class="mt-2">
-                                                            <ul class="list-group category_list">
-                                                                <li><a
-                                                                        href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $ad_type->slug, 'category' => $item->slug]) }}">{{ __($item->slug) }}</a>
-                                                                </li>
-                                                            </ul>
+                                <div class="row">
+                                    @foreach ($categories as $key => $item)
+                                    @if (in_array($item->id, ['10','14','15']))
+                                            <div class="col-md-12 mb-2">
+                                                <div class="category_heading text-center">
+                                                    <h5>
+                                                        <a href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $item->slug]) }}">
+                                                        {{ __($item->slug) }}</a>
+                                                    </h5>
+                                                </div>
+                                                <div class="row g-1">
+                                                    @foreach ($item->subcategories as $scat)
+                                                        <div class="col-md-12">
+                                                            <div class="mt-2">
+                                                                <ul class="list-group category_list">
+                                                                    <li><a href="{{ route('frontend.search', ['country' => $country, 'ad_type' => $scat->slug, 'category' => $scat->slug]) }}">{{ __($scat->name) }}</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                @endforeach
+                                                    @endforeach
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endif
-                                @endforeach
+                                        @endif
+                                    @endforeach
+                                </div>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -170,13 +175,12 @@
                                 </select>
                             </form>
 
-                            @if (isset($cities) && count($cities) > 0)
+                        @if (isset($cities) && count($cities) > 0)
                         <div class="mt-2 list-syle-hover">
                             <ul class="list-group ">
                                 @foreach ($cities as $key => $city)
-                                <li><a
-                                        href="{{ route('frontend.search',['country'=>$country,'ad_type' => $ad_type->slug, 'category' => $item->slug]) }}?city={{ $city->slug }}">{{
-                                        $city->name }}</a></li>
+                                <li><a href="{{ route('frontend.search',['country'=>$country]) }}?city={{ $city->slug }}">
+                                {{ $city->name }}</a></li>
                                 @endforeach
 
                             </ul>
@@ -412,12 +416,14 @@
             </div>
         </footer>
     </div>
+
     <div class="d-none">
         <form action="{{ route('frontend.search') }}" method="get" id="eventForm">
             <input type="hidden" name="ad_type" value="event-class">
             <input type="hidden" name="date" id="date_select">
         </form>
     </div>
+
 @endsection
 
 @push('script')

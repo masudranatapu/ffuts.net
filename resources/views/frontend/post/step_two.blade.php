@@ -25,9 +25,9 @@
                 </div>
                 <form action="{{ route('frontend.post.create') }}" method="get" id="create-post-frm">
                     <input type="hidden" value="{{ $ad_type->slug }}" name="ad_type" />
-                    @foreach($category as $key => $value)
+                    @foreach($subCategory as $key => $value)
                     <div class="form-check">
-            <input class="form-check-input" type="radio" value="{{ $value ->slug}}" name="category" id="category_{{ $value ->id}}"
+                <input class="form-check-input" type="radio" value="{{ $value ->slug}}" name="category" id="category_{{ $value ->id}}"
                             required>
                         <label class="form-check-label" for="category_{{ $value ->id}}">
                             {{ __($value->slug )}}
