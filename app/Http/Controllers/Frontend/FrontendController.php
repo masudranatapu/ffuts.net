@@ -64,7 +64,7 @@ class FrontendController extends Controller
         $query = Ad::active();
         $country = getCountryCode();
         $categories = Category::orderBy('id','asc')->get();
-        $subcategories = '';
+        $subcategories = [];
         if($request->country) {
             $country = $request->country;
             $query->whereHas('countries', function ($q) use ($country) {
