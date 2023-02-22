@@ -80,25 +80,23 @@
                                     </div>
                                 </td>
                                 <td style="max-width: 300px; white-space: normal">
-                                    @foreach ($seo->contents as $content)
-                                        {{ $content->title ?? '' }}
-                                    @endforeach
+                                    {{ $seo->contents->title ?? '' }}
                                 </td>
                                 <td style="max-width: 300px; white-space: normal">
-                                    @foreach ($seo->contents as $content)
-                                        {{ $content->keywords ?? '' }}
-                                    @endforeach
+
+                                        {{ $seo->contents->keywords ?? '' }}
+
                                 </td>
                                 <td style="max-width: 500px; white-space: normal">
-                                    @foreach ($seo->contents as $content)
-                                        {{ $content->description  ?? '' }}
-                                    @endforeach
+
+                                    {{ $seo->contents->description  ?? '' }}
+
                                 </td>
                                 <td>
-                                    @foreach ($seo->contents as $content)
-                                        <img style="height: auto; width: 200px; object-fit: contain"
-                                            src="{{ asset($content->image) }}" alt="">
-                                    @endforeach
+
+                                <img style="height: auto; width: 200px; object-fit: contain"
+                                            src="{{ asset($seo->contents->image ?? '') }}" alt="">
+
                                 </td>
                                 <td>
                                     <a href="{{ route('settings.seo.edit', [$seo->id, 'lang_query' => request('lang_query') ?? 'en']) }}"
