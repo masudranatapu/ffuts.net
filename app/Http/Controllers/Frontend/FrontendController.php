@@ -91,12 +91,17 @@ class FrontendController extends Controller
 
 
 
+
+
         if ($request->subcategory) {
             $subcategory =$request->subcategory;
             $query->whereHas('subcategory', function ($q) use ($subcategory) {
-                $q->whereIn('slug', $subcategory);
+                $q->where('slug', $subcategory);
             });
+
         }
+
+
         if ($request->search && $request->search != '') {
             $query->where('title', 'like', '%'.$request->search.'%');
         }
@@ -140,7 +145,6 @@ class FrontendController extends Controller
         }
 
         $ads = $query->get();
-
 
 
         return view('frontend.shop', compact('ads', 'subcategories', 'categories'));
