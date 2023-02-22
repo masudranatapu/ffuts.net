@@ -18,6 +18,7 @@ Route::group(['as' => 'frontend.'], function () {
     Route::get('faq', [FrontendController::class, 'faq'])->name('faq');
     Route::get('price-plan', [FrontendController::class, 'pricePlan'])->name('price.plan');
     Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
+    Route::post('contact/submit', [FrontendController::class, 'contactSub'])->name('contact.submit');
 
 
 
