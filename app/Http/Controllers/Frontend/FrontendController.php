@@ -98,7 +98,14 @@ class FrontendController extends Controller
             $query->whereHas('subcategory', function ($q) use ($subcategory) {
                 $q->where('slug', $subcategory);
             });
+        }
 
+
+        if ($request->city) {
+            $city =$request->city;
+            $query->whereHas('city', function ($q) use ($city) {
+                $q->where('slug', $city);
+            });
         }
 
 
