@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\AdType;
+use App\Models\Country;
 use App\Mail\RegisterMail;
 use Illuminate\Support\Str;
 use Modules\Ad\Entities\Ad;
@@ -33,8 +34,9 @@ class AdPostController extends Controller
                     $ad_type = AdType::where('slug', $post_type)->first();
                     $category = Category::where('slug', $category)->first();
                     $subCategory = SubCategory::where('slug', $subcategory)->first();
+                    $country = Country::with('cities')->where('iso' , strtoupper(getCountryCode()))->first();
 
-                    return view('frontend.post.step_four', compact('ad_type', 'category', 'subCategory'));
+                    return view('frontend.post.step_four', compact('ad_type', 'category', 'subCategory', 'country'));
                 } else {
                     $ad_type = AdType::where('slug', $post_type)->first();
                     $category = Category::where('slug', $category)->first();
