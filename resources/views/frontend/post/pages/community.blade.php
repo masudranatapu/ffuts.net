@@ -57,21 +57,21 @@
                         <div class="col-lg-6">
                             <div class="mb-1">
                                 <label for="phone" class="form-label">Phone number</label>
-                                <input type="number" name="phone" id="phone"
+                                <input type="number" name="phone" {{ old('phone') }} id="phone"
                                     class="form-control" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-1">
                                 <label for="phone_2" class="form-label">Local number</label>
-                                <input type="number" name="phone_2" id="phone_2"
+                                <input type="number" name="phone_2" value="{{ old('phone_2') }}" id="phone_2"
                                     class="form-control" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-1">
                                 <label for="contact_name" class="form-label">contact name</label>
-                                <input type="text" name="contact_name" id="contact_name"
+                                <input type="text" name="contact_name" value="{{ old('contact_name') }}" id="contact_name"
                                     class="form-control" disabled>
                             </div>
                         </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Faq;
 use App\Models\Seo;
 use App\Models\AdType;
+use App\Models\Contact;
 use App\Models\AdGallery;
 use Modules\Ad\Entities\Ad;
 use function Sodium\compare;
@@ -224,6 +225,42 @@ class FrontendController extends Controller
         return view('frontend.price_plan');
     }
     public function contact(){
-        return view('frontend.contact');
+
+        $seo = Seo::where('page_slug', 'home')->first();
+        $meta_title = $seo->contents->title;
+        $meta_description = $seo->contents->description;
+        $meta_keywords = $seo->contents->keywords;
+        $meta_image = $seo->contents->image;
+        return view('frontend.contact',compact('seo', 'meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
+    }
+
+    public function contactSub(Request $request)
+    {
+        $this->validate($request, [
+            'name'  => 'required',
+            'email'  => 'required',
+            'phone' => 'required',
+            'reason' => 'required',
+            'message' => 'nullable'
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $data = new Contact();
+            $data->name = $request->name;
+            $data->email = $request->email;
+            $data->phone = $request->phone;
+            $data->reason = $request->reason;
+            $data->message = $request->message;
+            $data->save();
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            flashSuccess('Your Request is Not Submitted!.');
+            return redirect()->route('frontend.contact')->with('message', 'Your Request is Not Submitted!');
+        }
+        DB::commit();
+        flashSuccess('Your Request is Submitted!.');
+        return redirect()->route('frontend.contact')->with('message', 'Your Request is Submitted!');
     }
 }
