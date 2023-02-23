@@ -567,15 +567,23 @@ body {
     width: 200px;
     background-color: #fff;
 }
+@media only screen and (min-width: 576px) {
+ 
+    .main_template .sidebar_menu {
+        left: 0;
+    }
 
-.main_template .sidebar_menu {
-    left: 0;
+    .main_template .margin_left {
+        margin-left: 200px;
+    }
 }
-
-.main_template .margin_left {
-    margin-left: 200px;
-}
-
+/* @media only screen and (min-width: 576px) {
+ 
+   .row{
+        margin:0;
+        padding:2em 4em;
+        }
+} */
 .main_template .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;

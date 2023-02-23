@@ -6,42 +6,49 @@
                     $country_id = getCountryId();
                     $cities = DB::table('city')
                         ->where('country_id', $country_id)
-                        ->orderBy('order_id','desc')
+                        ->orderBy('order_id', 'desc')
                         ->get();
-
-
+                    
                 @endphp
                 <form action="{{ route('frontend.search') }}" method="get" id="searchForm">
-                    <a class="header_logo" name="logoLink" href="{{ route('frontend.index') }}">ffutS</a>
-                    <div class="d-inline">
-                        <select name="city" id="city" class="select2" onchange="serachSubmit()">
-                            <option value="">All</option>
-                            @foreach ($cities as $city)
-                                <option value="{{ $city->slug }}"
-                                    {{ request()->city ==  strtolower($city->slug) ? 'selected':'' }} >
-                                    {{ ucfirst(strtolower($city->name)) }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="d-inline">
-                        <select name="category" id="category" class="select2" onchange="serachSubmit()">
-                            <option value="">All</option>
-                            @if(isset($categories) && count($categories)>0)
-                                @foreach ($categories as $cat)
-                                    <option value="{{ $cat->slug }}" {{ request()->category ==  $cat->slug ? 'selected':'' }}>{{ $cat->name }}</option>
+                    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-6 ">
+                        <a class="header_logo mb-sm-3 mb-md-0" name="logoLink"
+                            href="{{ route('frontend.index') }}">ffutS</a>
+                        <div class="d-inline mb-sm-3 mb-md-0">
+                            <select name="city" id="city" class="select2" onchange="serachSubmit()">
+                                <option value="">All</option>
+                                @foreach ($cities as $city)
+                                    <option value="{{ $city->slug }}"
+                                        {{ request()->city == strtolower($city->slug) ? 'selected' : '' }}>
+                                        {{ ucfirst(strtolower($city->name)) }}</option>
                                 @endforeach
-                            @endif
-                        </select>
-                    </div>
-                    <div class="d-inline">
-                        <select name="subcategory" id="subcategory" class="select2" onchange="serachSubmit()">
-                            <option value="">All</option>
-                                @if(isset($subcategories) && count($subcategories)>0)
-                                @foreach ($subcategories as $scat)
-                                    <option value="{{ $scat->slug }}" {{ request()->subcategory ==  $scat->slug ? 'selected':'' }}>{{ $scat->name }}</option>
-                                @endforeach
+                            </select>
+                        </div>
+                        <div class="d-inline">
+                            <select name="category" id="category" class="select2" onchange="serachSubmit()">
+                                <option value="">All</option>
+                                @if (isset($categories) && count($categories) > 0)
+                                    @foreach ($categories as $cat)
+                                        <option value="{{ $cat->slug }}"
+                                            {{ request()->category == $cat->slug ? 'selected' : '' }}>
+                                            {{ $cat->name }}
+                                        </option>
+                                    @endforeach
                                 @endif
-                        </select>
+                            </select>
+                        </div>
+                        <div class="d-inline">
+                            <select name="subcategory" id="subcategory" class="select2" onchange="serachSubmit()">
+                                <option value="">All</option>
+                                @if (isset($subcategories) && count($subcategories) > 0)
+                                    @foreach ($subcategories as $scat)
+                                        <option value="{{ $scat->slug }}"
+                                            {{ request()->subcategory == $scat->slug ? 'selected' : '' }}>
+                                            {{ $scat->name }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
                     </div>
                 </form>
             @else

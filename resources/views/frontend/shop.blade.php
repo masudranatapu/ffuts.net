@@ -17,7 +17,7 @@
 </style>
 @endpush
 @section('title')
-    {{ __('Shop') }}
+    {{ __('Ads') }}
 @endsection
 @section('content')
     <div class="main_template">
