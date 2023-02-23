@@ -71,7 +71,7 @@
                             Stripe Payment
                         </h5>
                         <div class="card-body mt-5 mb-0">
-                            <button class="btn btn-info">Pay Now</button>
+                            <button class="btn btn-info" onclick="alert('Comming Soon..')">Pay Now</button>
                         </div>
                     </div>
                 </div>

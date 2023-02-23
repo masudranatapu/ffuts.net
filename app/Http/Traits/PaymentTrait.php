@@ -5,6 +5,7 @@ namespace App\Http\Traits;
 use App\Models\Setting;
 use App\Models\UserPlan;
 use App\Models\Transaction;
+use Modules\Ad\Entities\Ad;
 use App\Notifications\MembershipUpgradeNotification;
 
 trait PaymentTrait
@@ -13,7 +14,6 @@ trait PaymentTrait
     {
         // fetch session data
         $ad = Ad::find(session('ad_id'));
-        dd($ad);
         $order_amount = session('order_payment');
         $transaction_id = session('transaction_id') ?? uniqid('tr_');
 
@@ -25,7 +25,7 @@ trait PaymentTrait
             'order_id' => rand(1000, 999999999),
             'transaction_id' =>  $transaction_id,
             'ad_id' => $ad->id,
-            'user_id' => auth('user')->id(),
+            'user_id' => auth('user')->id() ?? 1,
             'payment_provider' => $order_amount['payment_provider'],
             'amount' => $order_amount['amount'],
             'currency_symbol' => $order_amount['currency_symbol'],
@@ -33,6 +33,7 @@ trait PaymentTrait
             'payment_status' => 'paid',
         ]);
 
+        $ad->status = 'active';
         $ad->payment_status = 1;
         $ad->save();
 
@@ -43,17 +44,17 @@ trait PaymentTrait
         $this->forgetSessions();
 
         // create notification and send mail to customer
-        if (checkMailConfig()) {
-            $user = auth('user')->user();
-            if (checkSetup('mail')) {
-                $user->notify(new MembershipUpgradeNotification($user, $ad->title));
-            }
-        }
+        // if (checkMailConfig()) {
+        //     $user = auth('user')->user();
+        //     if (checkSetup('mail')) {
+        //         $user->notify(new MembershipUpgradeNotification($user, $ad->title));
+        //     }
+        // }
 
         // redirect to customer billing
         if ($redirect) {
-            session()->flash('success', 'Plan purchased successfully');
-            return redirect()->route('frontend.plans-billing')->send();
+            session()->flash('message', 'Ad purchased successfully');
+            return redirect()->route('frontend.index')->send();
         }
     }
 
