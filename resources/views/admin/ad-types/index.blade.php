@@ -31,6 +31,8 @@ $user = auth()->user();
                                     <th>{{ __('Sl.No') }}</th>
                                     <th>{{ __('Name') }}</th>
                                     <th>{{ __('Slug') }}</th>
+                                    <th>{{ __('Adtype Amount') }}</th>
+                                    <th>{{ __('Is Paid') }}</th>
                                     <th>{{ __('Time') }}</th>
                                     <th>{{ __('Action') }}</th>
                                     
@@ -42,6 +44,14 @@ $user = auth()->user();
                                         <td>{{  $ad_types->firstItem() + $key  }}</td>
                                         <td>{{ $value->name }}</td>
                                         <td>{{ $value->slug }}</td>
+                                        <td>{{ $value->amount }}</td>
+                                        <td>
+                                            @if($value->is_paid == 1)
+                                                <span class="btn btn-info" >Yes</span>
+                                            @else    
+                                               <span class="btn btn-danger" >No</span>
+                                            @endif
+                                        </td>
                                         <td>{{ date('d M Y',strtotime($value->created_at)) }}</td>
                                         <td>
                                             <a href="{{ route('adtypes.edit',$value->slug) }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>

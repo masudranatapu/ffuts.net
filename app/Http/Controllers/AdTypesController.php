@@ -42,6 +42,8 @@ class AdTypesController extends Controller
             $ad_type = new AdType();
             $ad_type->name = $request->name;
             $ad_type->slug = Str::slug($request->name);
+            $ad_type->amount = $request->amount;
+            $ad_type->is_paid = $request->is_paid;
             $ad_type->save();
         } catch (\Exception $e) {
             DB::rollback();
@@ -71,6 +73,8 @@ class AdTypesController extends Controller
 
             $ad_type->name = $request->name;
             $ad_type->slug = Str::slug($request->name);
+            $ad_type->amount = $request->amount;
+            $ad_type->is_paid = $request->is_paid;
             $ad_type->save();
         } catch (\Exception $e) {
             DB::rollback();
