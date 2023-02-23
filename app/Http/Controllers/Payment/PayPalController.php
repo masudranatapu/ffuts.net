@@ -20,9 +20,11 @@ class PayPalController extends Controller
      */
     public function processTransaction(Request $request)
     {
-        return $request;
-        $plan = session('plan');
-        $converted_amount = currencyConversion($plan->price);
+        // return $request;
+        $price = $request->price;
+        $ad_id = $request->ad_id;
+        session()->put('ad_id', $ad_id);
+        $converted_amount = currencyConversion($price);
         session(['order_payment' => [
             'payment_provider' => 'paypal',
             'amount' =>  $converted_amount,
@@ -38,7 +40,7 @@ class PayPalController extends Controller
             "intent" => "CAPTURE",
             "application_context" => [
                 "return_url" => route('paypal.successTransaction', [
-                    'plan_id' => $plan->id,
+                    'plan_id' => $ad_id,
                     'amount' => $converted_amount
                 ]),
                 "cancel_url" => route('paypal.cancelTransaction'),

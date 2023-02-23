@@ -12,18 +12,19 @@ trait PaymentTrait
     public function orderPlacing($redirect = true)
     {
         // fetch session data
-        $plan = session('plan');
+        $ad = Ad::find(session('ad_id'));
+        dd($ad);
         $order_amount = session('order_payment');
         $transaction_id = session('transaction_id') ?? uniqid('tr_');
 
         // Plan benefit attach to user
-        $this->userPlanInfoUpdate($plan);
+        // $this->userPlanInfoUpdate($plan);
 
         // Transaction create
         Transaction::create([
             'order_id' => rand(1000, 999999999),
             'transaction_id' =>  $transaction_id,
-            'plan_id' => $plan->id,
+            'ad_id' => $ad->id,
             'user_id' => auth('user')->id(),
             'payment_provider' => $order_amount['payment_provider'],
             'amount' => $order_amount['amount'],
@@ -32,15 +33,20 @@ trait PaymentTrait
             'payment_status' => 'paid',
         ]);
 
+        $ad->payment_status = 1;
+        $ad->save();
+
+
+
         // Store plan benefit in session and forget session
-        storePlanInformation();
+        // storePlanInformation();
         $this->forgetSessions();
 
         // create notification and send mail to customer
         if (checkMailConfig()) {
             $user = auth('user')->user();
             if (checkSetup('mail')) {
-                $user->notify(new MembershipUpgradeNotification($user, $plan->label));
+                $user->notify(new MembershipUpgradeNotification($user, $ad->title));
             }
         }
 

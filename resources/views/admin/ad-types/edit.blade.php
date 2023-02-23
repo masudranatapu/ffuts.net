@@ -52,32 +52,33 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <x-forms.label name="Adtype Amount" required="true" class="col-sm-3 col-form-label" />
-                                    <div class="col-sm-9">
-                                        <input value="{{ $ad_type->amount }}" name="amount" type="text"
-                                            class="form-control @error('amount') is-invalid @enderror"
-                                            placeholder="{{ __('Amount') }}">
-                                        @error('amount')
-                                            <span class="invalid-feedback"
-                                                role="alert"><strong>{{ $message }}</strong></span>
-                                        @enderror
-                                    </div>
-                                </div>
-                               <div class="form-group row mb-15">
+                                <div class="form-group row mb-15">
                                     <x-forms.label name="Paid Type" required="true" class="col-sm-3" />
                                     <div class="col-sm-9">
-                                        <select name="is_paid"
-                                            class="select2bs4 @error('is_paid') is-invalid @enderror"
+                                        <select name="is_paid" id="is_paid" onchange="isPaid()"
+                                            class="form-control @error('is_paid') is-invalid @enderror"
                                             style="width: 100%;">
-                                            <option value="" disabled >{{ __('Is Paid') }}</option>
+                                            <option value="0" {{ $ad_type->is_paid == 0? "selected" : "" }}>No</option>
                                            <option value="1" {{ $ad_type->is_paid == 1? "selected" : "" }}>Yes</option>
-                                           <option value="0" {{ $ad_type->is_paid == 0? "selected" : "" }}>No</option>
                                         </select>
                                         @error('is_paid')
                                             <span class="invalid-feedback"
                                                 role="alert"><strong>{{ $message }}</strong></span>
                                         @enderror
+                                    </div>
+                                </div>
+                                <div id="amount" style="display: none">
+                                    <div class="form-group row">
+                                        <x-forms.label name="Adtype Amount ($)" required="true" class="col-sm-3 col-form-label" />
+                                        <div class="col-sm-9">
+                                            <input value="{{ $ad_type->amount }}" name="amount" type="text"
+                                                class="form-control @error('amount') is-invalid @enderror"
+                                                placeholder="{{ __('Amount') }}">
+                                            @error('amount')
+                                                <span class="invalid-feedback"
+                                                    role="alert"><strong>{{ $message }}</strong></span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -97,11 +98,12 @@
 @endsection
 
 @section('script')
-<script src="{{ asset('backend') }}/plugins/select2/js/select2.full.min.js"></script>
-    <script>
-        //Initialize Select2 Elements
-        $('.select2bs4').select2({
-            theme: 'bootstrap4'
-        })
-    </script>
+   <script>
+    isPaid()
+      function isPaid() {
+         var is_paid = document.getElementById("is_paid");
+         var amount = document.getElementById("amount");
+         amount.style.display = is_paid.value == "1" ? "block" : "none";
+      }
+   </script>
 @endsection

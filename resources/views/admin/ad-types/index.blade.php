@@ -19,7 +19,7 @@ $user = auth()->user();
                             <div>
                                 <a href="{{ route('adtypes.create') }}"
                                          class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
-                                class="fas fa-plus"></i>&nbsp; {{ __('Ad Type') }}</a>
+                                class="fas fa-plus"></i>&nbsp; {{ __('Addtype') }}</a>
                                 
                             </div>
                         </div>
@@ -31,7 +31,7 @@ $user = auth()->user();
                                     <th>{{ __('Sl.No') }}</th>
                                     <th>{{ __('Name') }}</th>
                                     <th>{{ __('Slug') }}</th>
-                                    <th>{{ __('Adtype Amount') }}</th>
+                                    <th>{{ __('Adtype Amount') }} <small class="text-success">($)</small></th>
                                     <th>{{ __('Is Paid') }}</th>
                                     <th>{{ __('Time') }}</th>
                                     <th>{{ __('Action') }}</th>
@@ -46,7 +46,7 @@ $user = auth()->user();
                                         <td>{{ $value->slug }}</td>
                                         <td>{{ $value->amount }}</td>
                                         <td>
-                                            @if($value->is_paid == 1)
+                                            @if($value->is_paid == "1")
                                                 <span class="btn btn-info" >Yes</span>
                                             @else    
                                                <span class="btn btn-danger" >No</span>

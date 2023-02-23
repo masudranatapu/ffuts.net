@@ -25,10 +25,10 @@ class FrontendController extends Controller
     {
 
         $local_country = session()->get('local_country');
-        $ads = Ad::orderBy('id','desc')->take(10);
+        $ads = Ad::orderBy('id', 'desc')->take(10);
 
-        if($local_country){
-            $ads->where('country',$local_country);
+        if ($local_country) {
+            $ads->where('country', $local_country);
         }
 
         $ads = $ads->get();
@@ -47,12 +47,11 @@ class FrontendController extends Controller
         $meta_keywords = $seo->contents->keywords;
         $meta_image = $seo->contents->image;
 
-        return view('frontend.index', compact('ads','ad_types', 'countries', 'cities', 'meta_title', 'meta_description', 'meta_image', 'meta_keywords','categories'));
+        return view('frontend.index', compact('ads', 'ad_types', 'countries', 'cities', 'meta_title', 'meta_description', 'meta_image', 'meta_keywords', 'categories'));
     }
 
     public function setCountry(Request $request)
     {
-
         session()->put('local_country', strtolower($request->country));
         return redirect()->back()->with('success', 'Coutry change successfully');
     }
@@ -63,9 +62,9 @@ class FrontendController extends Controller
     {
         $query = Ad::active();
         $country = getCountryCode();
-        $categories = Category::orderBy('id','asc')->get();
+        $categories = Category::orderBy('id', 'asc')->get();
         $subcategories = [];
-        if($request->country) {
+        if ($request->country) {
             $country = $request->country;
             $query->whereHas('countries', function ($q) use ($country) {
                 $q->where('iso', $country);
@@ -87,7 +86,6 @@ class FrontendController extends Controller
             $query->whereHas('category', function ($q) use ($category_slug) {
                 $q->where('slug', $category_slug);
             });
-
         }
 
 
@@ -97,7 +95,7 @@ class FrontendController extends Controller
 
 
         if ($request->subcategory) {
-            $subcategory =$request->subcategory;
+            $subcategory = $request->subcategory;
             $query->whereHas('subcategory', function ($q) use ($subcategory) {
                 $q->where('slug', $subcategory);
             });
@@ -110,7 +108,7 @@ class FrontendController extends Controller
 
 
         if ($request->search && $request->search != '') {
-            $query->where('title', 'like', '%'.$request->search.'%');
+            $query->where('title', 'like', '%' . $request->search . '%');
         }
         if ($request->post && $request->post != '') {
             $post = $request->post;
@@ -155,7 +153,6 @@ class FrontendController extends Controller
 
 
         return view('frontend.shop', compact('ads', 'subcategories', 'categories'));
-
     }
 
 
@@ -238,28 +235,31 @@ class FrontendController extends Controller
         return view('frontend.privacy_policy', compact('meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
     }
 
-    public function faq(){
+    public function faq()
+    {
 
-        $faqs = Faq::orderBy('id','asc')->get();
+        $faqs = Faq::orderBy('id', 'asc')->get();
         $seo = Seo::where('page_slug', 'home')->first();
         $meta_title = $seo->contents->title;
         $meta_description = $seo->contents->description;
         $meta_keywords = $seo->contents->keywords;
         $meta_image = $seo->contents->image;
-        return view('frontend.faq', compact('faqs','meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
+        return view('frontend.faq', compact('faqs', 'meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
     }
 
-    public function pricePlan(){
+    public function pricePlan()
+    {
         return view('frontend.price_plan');
     }
-    public function contact(){
+    public function contact()
+    {
 
         $seo = Seo::where('page_slug', 'home')->first();
         $meta_title = $seo->contents->title;
         $meta_description = $seo->contents->description;
         $meta_keywords = $seo->contents->keywords;
         $meta_image = $seo->contents->image;
-        return view('frontend.contact',compact('seo', 'meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
+        return view('frontend.contact', compact('seo', 'meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
     }
 
     public function contactSub(Request $request)
@@ -281,7 +281,6 @@ class FrontendController extends Controller
             $data->reason = $request->reason;
             $data->message = $request->message;
             $data->save();
-
         } catch (\Exception $e) {
             DB::rollback();
             flashSuccess('Your Request is Not Submitted!.');
@@ -290,5 +289,11 @@ class FrontendController extends Controller
         DB::commit();
         flashSuccess('Your Request is Submitted!.');
         return redirect()->route('frontend.contact')->with('message', 'Your Request is Submitted!');
+    }
+
+    public function postPayment($id)
+    {
+        $ad = Ad::find($id);
+        return view('frontend.post.payment',compact('ad'));
     }
 }

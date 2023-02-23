@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Session;
 use Modules\Category\Entities\Category;
 use Modules\Category\Entities\SubCategory;
 
@@ -33,7 +34,7 @@ class AdPostController extends Controller
                 $ad_type = AdType::where('slug', $post_type)->first();
                 $subCategory = SubCategory::where('slug', $subcategory)->first();
                 $category = Category::where('id', $subCategory->category_id)->first();
-                $country = Country::with('cities')->where('iso' , strtoupper(getCountryCode()))->first();
+                $country = Country::with('cities')->where('iso', strtoupper(getCountryCode()))->first();
                 return view('frontend.post.step_four', compact('ad_type', 'category', 'subCategory', 'country'));
 
 
@@ -77,7 +78,7 @@ class AdPostController extends Controller
             'event_start_date' => 'required_if:ad_type,event-class',
             'event_duration' => 'required_if:ad_type,event-class',
             'services' => 'required_if:ad_type,event-class',
-        ],[
+        ], [
             'phone.required_if' => 'The phone number field is required if you want to show your phone.'
         ]);
 
@@ -170,7 +171,7 @@ class AdPostController extends Controller
         // event class
         $ad->event_start_date   = $event_start_date ?? null;
         $ad->event_end_date     = $event_end_date ?? null;
-        $ad->event_duration     = $request->event_duration.' days';
+        $ad->event_duration     = $request->event_duration . ' days';
         $ad->venue              = $request->venue;
         // House wanted
         $ad->broker_fee                 = $request->broker_fee ?? 0;
@@ -202,12 +203,21 @@ class AdPostController extends Controller
                 }
             }
         }
+        $is_pay = $ad->ad_type->is_paid;
+        if ($is_pay == 1) {
+            $status = 'pending';
+            $ad->status = $status;
+            $ad->is_payable = 1;
+            $ad->save();
+            Session::put('ad_id', $ad->id);
+            return redirect()->route('frontend.payment.post', $ad->id);
+        }
         if ($ad->status == 'active') {
             flashSuccess('Post created successfully');
             return redirect()->route('frontend.index')->with('message', 'Post created successfully');
         } else {
             flashSuccess('Your Post is in drafted. Please verify email to publish this post.');
-            return redirect()->route('signin')->with('message', 'Your Post is in drafted. Please verify email to publish this post.');;
+            return redirect()->route('signin')->with('message', 'Your Post is in drafted. Please verify email to publish this post.');
         }
     }
 }

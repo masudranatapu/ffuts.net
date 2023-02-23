@@ -19,6 +19,7 @@ Route::group(['as' => 'frontend.'], function () {
     Route::get('price-plan', [FrontendController::class, 'pricePlan'])->name('price.plan');
     Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
     Route::post('contact/submit', [FrontendController::class, 'contactSub'])->name('contact.submit');
+    Route::get('payment/post/{id}', [FrontendController::class, 'postPayment'])->name('payment.post');
 
 
 
@@ -46,7 +47,7 @@ Route::group(['as' => 'user.'], function () {
         Route::get('user/post', [UserDashboardController::class, 'profile'])->name('profile');
         Route::get('user/post/delete/{id}', [UserDashboardController::class, 'deletePost'])->name('post.delete');
         Route::get('user/post/edit/{slug}', [UserDashboardController::class, 'editPost'])->name('post.edit');
-        Route::post('user/post/update/{slug}',[UserDashboardController::class,'updatePost'])->name('post.update');
+        Route::post('user/post/update/{slug}', [UserDashboardController::class, 'updatePost'])->name('post.update');
         Route::get('user/post/statusUpdate/{id}/{status}', [UserDashboardController::class, 'statusUpdate'])->name('post.statusUpdate');
         Route::get('user/drafts', [UserDashboardController::class, 'drafts'])->name('drafts');
         Route::get('user/favourite', [UserDashboardController::class, 'favourite'])->name('favourite');
@@ -56,8 +57,3 @@ Route::group(['as' => 'user.'], function () {
         Route::post('user-logout', [UserDashboardController::class, 'userLogOut'])->name('logout');
     });
 });
-
-
-
-
-
