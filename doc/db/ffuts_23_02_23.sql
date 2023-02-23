@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2023 at 08:20 AM
+-- Generation Time: Feb 23, 2023 at 09:27 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -3075,7 +3075,7 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `phone`, `email_verified
 (4, NULL, 'abcd_7634', 'abcd@gmail.com', NULL, NULL, NULL, NULL, 'backend/image/default-user.png', 'QVFED9KiOi608FFeahiZAvwXnXFUGWo0gVODIg2V', NULL, NULL, '2023-02-18 02:14:14', NULL, 'email', NULL, NULL, NULL),
 (5, NULL, 'mmm_8504', 'mmm@gmail.com', NULL, NULL, NULL, NULL, 'backend/image/default-user.png', 'x0CwD56SUM1Rv5VjzdVX3YLsBlZ34CmRJi2AmErY', NULL, NULL, '2023-02-18 03:16:32', '2023-02-18 03:16:32', 'email', NULL, NULL, NULL),
 (6, NULL, 'arobil_7365', 'arobil@gmail.com', NULL, '2023-02-16 12:54:25', NULL, NULL, 'backend/image/default-user.png', '0qoTW4VMU3mzvHUPVAIJeL6uotfzxGSKiZ4psrG0', '2023-02-20 13:26:06', NULL, '2023-02-19 01:02:31', '2023-02-20 07:26:06', 'email', NULL, NULL, NULL),
-(7, NULL, 'moshiur2187_8521', 'moshiur2187@gmail.com', NULL, '2023-02-09 11:55:56', NULL, NULL, 'backend/image/default-user.png', '4SOIgMjYUYhC8Kj3oU4ydrpHfyagfQKuhsQ7w3cb', '2023-02-23 07:19:03', NULL, '2023-02-19 01:06:47', '2023-02-23 01:19:03', 'email', NULL, NULL, NULL),
+(7, NULL, 'moshiur2187_8521', 'moshiur2187@gmail.com', NULL, '2023-02-09 11:55:56', NULL, NULL, 'backend/image/default-user.png', '4SOIgMjYUYhC8Kj3oU4ydrpHfyagfQKuhsQ7w3cb', '2023-02-23 08:21:03', NULL, '2023-02-19 01:06:47', '2023-02-23 02:21:03', 'email', NULL, NULL, NULL),
 (8, NULL, 'manik_1739', 'manik@gmail.com', NULL, '2023-02-20 13:25:41', NULL, NULL, 'backend/image/default-user.png', 'KjrOApcjZo2p1casfAezBakuf6A3yTChwa5jT5W8', '2023-02-20 13:30:41', NULL, '2023-02-19 01:08:49', '2023-02-20 07:30:41', 'email', NULL, NULL, NULL),
 (9, NULL, 'admin_3363', 'admin@gmail.com', NULL, '2023-02-03 13:30:21', NULL, NULL, 'backend/image/default-user.png', 'WfcZ24DOO5et1Re8GosQF14YDobwTg466nbD4jYw', '2023-02-20 13:50:46', NULL, '2023-02-19 01:12:57', '2023-02-20 07:50:46', 'email', NULL, NULL, NULL),
 (10, NULL, 'test_9875', 'test@gmail.com', NULL, NULL, NULL, NULL, 'backend/image/default-user.png', 'cWGwcxGZdBK2zfa2QqiHW3ezSjjHowCtvSfoX900', NULL, NULL, '2023-02-19 01:18:25', '2023-02-19 01:18:25', 'email', NULL, NULL, NULL),
@@ -3609,7 +3609,7 @@ ALTER TABLE `ad_galleries`
 -- AUTO_INCREMENT for table `ad_types`
 --
 ALTER TABLE `ad_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `blog_comments`
