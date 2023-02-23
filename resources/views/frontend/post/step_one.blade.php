@@ -10,7 +10,7 @@
 
 @section('breadcrumb')
     <ul>
-        <li>{{__('ffuts')}}</li>
+        {{-- <li>{{__('ffuts')}}</li> --}}
     </ul>
 @endsection
 

@@ -30,7 +30,7 @@
 <!-- ======================= breadcrumb end  ============================ -->
 
 <!-- ======================= faq start  ============================ -->
-<div class="faq_sec section mt-5">
+<div class="faq_sec section mt-5 mb-5">
     <div class="container">
         <div class="row">
             <div class="faq_question_wrap">
@@ -58,24 +58,8 @@
         </div>
     </div>
 </div>
-<footer class="text-center footer_menu mt-5">
-    <div class="container">
-        <div class="p-2">
-            <ul>
-                    <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
-                    <li><a href="{{ route('frontend.faq') }}">{{ __('faq') }} |</a></li>
-                    <li><a href="{{ route('frontend.price.plan') }}">{{ __('price plan') }} |</a></li>
-                    <li><a href="{{ route('frontend.search') }}">{{ __('shop') }} |</a></li>
-                    <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
-                    <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a>
-                    </li>
-                    <li><a href="{{ route('frontend.about') }}">{{ __('about') }} |</a></li>
-                    <li><a href="{{ route('frontend.contact') }}">{{ __('contact') }} |</a></li>
-                    <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
-            </ul>
-        </div>
-    </div>
-</footer>
+   @include('frontend.layouts.footer')
+
 <!-- ======================= faq end  ============================ -->
 @endsection
 

@@ -10,7 +10,6 @@
 
 @section('breadcrumb')
     <ul>
-        <li>{{ __('ffuts') }} ></li>
         <li>{{ __($ad_type->slug) }} </li>
     </ul>
 @endsection

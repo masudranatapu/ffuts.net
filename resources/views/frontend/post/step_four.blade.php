@@ -9,7 +9,6 @@
 @endsection
 @section('breadcrumb')
     <ul>
-        <li>Ffuts ></li>
         <li>{{ $ad_type->name }} ></li>
         <li>{{ $category->name }} ></li>
         <li>{{ $subCategory->name }}</li>

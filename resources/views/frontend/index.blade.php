@@ -63,11 +63,14 @@
                                 <div id="datepicker"></div>
                             </div>
                             <div class="list-style1 mb-4">
-                                <h5 class="mb-3" ><a href="javascript:;" style="font-size: 14px;text-align: center;margin-top: 5px;color: #0000EE;font-weight: 600;">Latest Post</a></h5>
+                                <h5 class="mb-3"><a href="javascript:;"
+                                        style="font-size: 14px;text-align: center;margin-top: 5px;color: #0000EE;font-weight: 600;">Latest
+                                        Post</a></h5>
                                 <ul class="list-group">
-                                    @foreach($ads as $key => $value)
+                                    @foreach ($ads as $key => $value)
                                         <li class="list-item custom-list-style1">
-                                            <a href="{{ route('frontend.details',$value->slug) }}">{{ $value->title }}</a>
+                                            <a
+                                                href="{{ route('frontend.details', $value->slug) }}">{{ $value->title }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -86,20 +89,23 @@
                             <div class="col-md-9">
                                 <div class="row">
                                     @foreach ($categories as $key => $item)
-                                    @if (!in_array($item->id, ['10','14','15']))
+                                        @if (!in_array($item->id, ['10', '14', '15']))
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="category_heading text-center">
                                                     <h5>
-                                                        <a href="{{ route('frontend.search', ['country' => $country, 'category' => $item->slug]) }}">
-                                                        {{ __($item->slug) }}</a>
+                                                        <a
+                                                            href="{{ route('frontend.search', ['country' => $country, 'category' => $item->slug]) }}">
+                                                            {{ __($item->slug) }}</a>
                                                     </h5>
                                                 </div>
                                                 <div class="row g-1">
                                                     @foreach ($item->subcategories as $scat)
-                                                        <div class="@if($item->id == 8 ) col-md-6 @elseif($item->id == 9) col-md-12  @elseif($item->id == 11) col-md-6  @elseif($item->id == 12) col-md-6  @elseif($item->id == 13) col-md-4 @else col-md-12 @endif  ">
+                                                        <div
+                                                            class="@if ($item->id == 8) col-md-6 @elseif($item->id == 9) col-md-12  @elseif($item->id == 11) col-md-6  @elseif($item->id == 12) col-md-6  @elseif($item->id == 13) col-md-4 @else col-md-12 @endif  ">
                                                             <div class="mt-1">
                                                                 <ul class="list-group category_list">
-                                                                    <li><a href="{{ route('frontend.search', ['country' => $country, 'category' => $item->slug,'subcategory' => $scat->slug]) }}">{{ __($scat->name) }}</a>
+                                                                    <li><a
+                                                                            href="{{ route('frontend.search', ['country' => $country, 'category' => $item->slug, 'subcategory' => $scat->slug]) }}">{{ __($scat->name) }}</a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -115,12 +121,13 @@
                             <div class="col-md-3">
                                 <div class="row">
                                     @foreach ($categories as $key => $item)
-                                    @if (in_array($item->id, ['10','14','15']))
+                                        @if (in_array($item->id, ['10', '14', '15']))
                                             <div class="col-md-12 mb-2">
                                                 <div class="category_heading text-center">
                                                     <h5>
-                                                        <a href="{{ route('frontend.search', ['country' => $country, 'category' => $item->slug]) }}">
-                                                        {{ __($item->slug) }}</a>
+                                                        <a
+                                                            href="{{ route('frontend.search', ['country' => $country, 'category' => $item->slug]) }}">
+                                                            {{ __($item->slug) }}</a>
                                                     </h5>
                                                 </div>
                                                 <div class="row g-1">
@@ -128,7 +135,8 @@
                                                         <div class="col-md-12">
                                                             <div class="mt-2">
                                                                 <ul class="list-group category_list">
-                                                                    <li><a href="{{ route('frontend.search', ['country' => $country, 'category' => $item->slug,'subcategory' => $scat->slug,]) }}">{{ __($scat->name) }}</a>
+                                                                    <li><a
+                                                                            href="{{ route('frontend.search', ['country' => $country, 'category' => $item->slug, 'subcategory' => $scat->slug]) }}">{{ __($scat->name) }}</a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -176,40 +184,24 @@
                                 </select>
                             </form>
 
-                        @if (isset($cities) && count($cities) > 0)
-                        <div class="mt-2 list-syle-hover">
-                            <ul class="list-group ">
-                                @foreach ($cities as $key => $city)
-                                <li><a href="{{ route('frontend.search',['country'=>$country]) }}?city={{ $city->slug }}">
-                                {{ $city->name }}</a></li>
-                                @endforeach
+                            @if (isset($cities) && count($cities) > 0)
+                                <div class="mt-2 list-syle-hover">
+                                    <ul class="list-group ">
+                                        @foreach ($cities as $key => $city)
+                                            <li><a
+                                                    href="{{ route('frontend.search', ['country' => $country]) }}?city={{ $city->slug }}">
+                                                    {{ $city->name }}</a></li>
+                                        @endforeach
 
-                            </ul>
-                        </div>
-                        @endif
+                                    </ul>
+                                </div>
+                            @endif
 
                         </div>
                     </div>
                 </div>
             </div>
-            <footer class="text-center footer_menu">
-                <div class="container">
-                    <div class="p-3">
-                        <ul>
-                            <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
-                            <li><a href="{{ route('frontend.faq') }}">{{ __('faq') }} |</a></li>
-                            <li><a href="{{ route('frontend.price.plan') }}">{{ __('price plan') }} |</a></li>
-                            <li><a href="{{ route('frontend.search') }}">{{ __('shop') }} |</a></li>
-                            <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
-                            <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a>
-                            </li>
-                            <li><a href="{{ route('frontend.about') }}">{{ __('about') }} |</a></li>
-                            <li><a href="{{ route('frontend.contact') }}">{{ __('contact') }} |</a></li>
-                            <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
+            @include('frontend.layouts.footer')
         </div>
     </div>
 
@@ -222,16 +214,31 @@
                     <div class="col-5">
                         <div class="mobile_heade_left">
                             <div class="site_logo">
-                                <a class="header_logo" name="logoLink" href="index.html">CL</a>
-                                <a href="index.html">Jerusalem</a>
+                                <a class="header_logo" name="logoLink" href="{{ route('frontend.index') }}">ffutS</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-7">
                         <div class="mobile_heade_right float-end">
-                            <ul>
-                                <li><a href="{{ route('frontend.search') }}">Post</a></li>
-                                <li><a href="{{ route('frontend.search') }}">Account</a></li>
+                            <ul id="wishlist_count">
+                                @if (auth()->guard('user')->check() && userWishlist() > 0)
+                                    <li><a href="{{ route('user.favourite') }}" class="badge text-bg-warning">
+                                            <i class="las la-star"></i> {{ userWishlist() }}
+                                            {{ userWishlist() > 1 ? 'favourites' : 'favourite' }}</a>
+                                    </li>
+                                @endif
+                                {{-- <li>
+                                    <a href="javascript:;" class="badge text-bg-danger">
+                                        <i class="las la-times-circle"></i> 2
+                                        hidden
+                                    </a>
+                                </li> --}}
+                                <li><a href="{{ route('frontend.post.create') }}">post</a></li>
+                                @if (auth('user')->check())
+                                    <li><a href="{{ route('user.profile') }}">account</a></li>
+                                @else
+                                    <li><a href="{{ route('signin') }}">account</a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -240,182 +247,73 @@
         </div>
         <div class="container">
             <div class="mobile_body">
-                <form action="#" method="post" class="mb-3 mt-3 p-2">
+                <form action="{{ route('frontend.search') }}" method="get" class="mb-3 mt-3 p-2">
                     <div class="input-group">
                         <input type="text" name="search" id="search" class="form-control"
                             placeholder="Search..." required>
-                        <button type="submit" class="text-input-group"><i class="la la-search"></i></button>
+                        <button type="submit" class="text-input-group"><i
+                                class="la la-search"></i></button>
                     </div>
                 </form>
                 <div class="accordion_item mb-4">
                     <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading_1">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse_1" aria-expanded="false" aria-controls="collapse_1">
-                                    For Sale
-                                </button>
-                            </h2>
-                            <div id="collapse_1" class="accordion-collapse collapse" aria-labelledby="heading_1"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion_body">
-                                    <ul>
-                                        <li><a href="{{ route('frontend.search') }}">all for sale</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">antiques</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">appliances</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">arts+crafts</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">atv/utv/sno</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">aviation</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">barter</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">beauty</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">bikes</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">boat parts</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">books</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">business</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">computer</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">collectibles</a></li>
-                                    </ul>
+                        @foreach ($categories as $key => $item)
+                            @if (!in_array($item->id, ['10', '14', '15']))
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading_{{ $item->id }}">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapse_{{ $item->id }}"
+                                            aria-expanded="false" aria-controls="collapse_{{ $item->id }}">
+                                            {{ __($item->slug) }}
+                                        </button>
+                                    </h2>
+                                    <div id="collapse_{{ $item->id }}" class="accordion-collapse collapse"
+                                        aria-labelledby="heading_{{ $item->id }}" data-bs-parent="#accordionExample">
+                                        <div class="accordion_body">
+                                            <ul>
+                                                @foreach ($item->subcategories as $scat)
+                                                    <li>
+                                                        <a href="{{ route('frontend.search', ['country' => $country, 'category' => $item->slug, 'subcategory' => $scat->slug]) }}">{{ __($scat->name) }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading_2">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse_2" aria-expanded="false" aria-controls="collapse_2">
-                                    Jobs
-                                </button>
-                            </h2>
-                            <div id="collapse_2" class="accordion-collapse collapse" aria-labelledby="heading_2"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion_body">
-                                    <ul>
-                                        <li><a href="{{ route('frontend.search') }}">all for sale</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">antiques</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">appliances</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">arts+crafts</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">atv/utv/sno</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">aviation</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">barter</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">beauty</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">bikes</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">boat parts</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">books</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">business</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">computer</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">collectibles</a></li>
-                                    </ul>
+                            @endif
+                        @endforeach
+                        @foreach ($categories as $key => $item)
+                            @if (in_array($item->id, ['10', '14', '15']))
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading_{{ $item->id }}">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapse_{{ $item->id }}"
+                                            aria-expanded="false" aria-controls="collapse_{{ $item->id }}">
+                                            {{ __($item->slug) }}
+                                        </button>
+                                    </h2>
+                                    <div id="collapse_{{ $item->id }}" class="accordion-collapse collapse"
+                                        aria-labelledby="heading_{{ $item->id }}" data-bs-parent="#accordionExample">
+                                        <div class="accordion_body">
+                                            <ul>
+                                                @foreach ($item->subcategories as $scat)
+                                                    <li>
+                                                        <a href="{{ route('frontend.search', ['country' => $country, 'category' => $item->slug, 'subcategory' => $scat->slug]) }}">{{ __($scat->name) }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading_3">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse_3" aria-expanded="false" aria-controls="collapse_3">
-                                    Housing
-                                </button>
-                            </h2>
-                            <div id="collapse_3" class="accordion-collapse collapse" aria-labelledby="heading_3"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion_body">
-                                    <ul>
-                                        <li><a href="{{ route('frontend.search') }}">all for sale</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">antiques</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">appliances</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">arts+crafts</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">atv/utv/sno</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">aviation</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">barter</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">beauty</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">bikes</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">boat parts</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">books</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">business</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">computer</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">collectibles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading_4">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse_4" aria-expanded="false" aria-controls="collapse_4">
-                                    Community
-                                </button>
-                            </h2>
-                            <div id="collapse_4" class="accordion-collapse collapse" aria-labelledby="heading_4"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion_body">
-                                    <ul>
-                                        <li><a href="{{ route('frontend.search') }}">all for sale</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">antiques</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">appliances</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">arts+crafts</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">atv/utv/sno</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">aviation</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">barter</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">beauty</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">bikes</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">boat parts</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">books</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">business</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">computer</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">collectibles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading_5">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse_5" aria-expanded="false" aria-controls="collapse_5">
-                                    Services
-                                </button>
-                            </h2>
-                            <div id="collapse_5" class="accordion-collapse collapse" aria-labelledby="heading_5"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion_body">
-                                    <ul>
-                                        <li><a href="{{ route('frontend.search') }}">all for sale</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">antiques</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">appliances</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">arts+crafts</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">atv/utv/sno</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">aviation</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">barter</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">beauty</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">bikes</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">boat parts</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">books</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">business</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">computer</a></li>
-                                        <li><a href="{{ route('frontend.search') }}">collectibles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                            @endif
+                        @endforeach
+                        
+                        
                     </div>
                 </div>
             </div>
         </div>
-        <footer class="text-center footer_menu">
-            <div class="container">
-                <div class="p-2">
-                    <ul>
-                        <li class="list-item text-white"> © {{ date('Y') }} ffuts |</li>
-                        <li><a href="{{ route('frontend.faq') }}">{{ __('faq') }} |</a></li>
-                        <li><a href="{{ route('frontend.price.plan') }}">{{ __('price plan') }} |</a></li>
-                        <li><a href="{{ route('frontend.search') }}">{{ __('shop') }} |</a></li>
-                        <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
-                        <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a>
-                        </li>
-                        <li><a href="{{ route('frontend.about') }}">{{ __('about') }} |</a></li>
-                        <li><a href="{{ route('frontend.contact') }}">{{ __('contact') }} |</a></li>
-                        <li><a href="sitemap.html">{{ __('sitemap') }} </a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
+        @include('frontend.layouts.footer')
     </div>
 
     {{-- <div class="d-none">
@@ -435,14 +333,14 @@
         $(function() {
             $("#datepicker").datepicker({
                 dateFormat: 'dd-mm-yy',
-                onSelect: function (date, datepicker) {
+                onSelect: function(date, datepicker) {
                     if (date != "") {
                         alert("Selected Date: " + date);
                         // $('#date_select').val(date);
                         // $('#eventForm').submit();
                         var base_url = $('#base_url').val();
                         var country = $('#country').val();
-                        var full_url = base_url+'/shop/'+country+'/events/?date='+date
+                        var full_url = base_url + '/shop/' + country + '/events/?date=' + date
                         window.location.replace(full_url);
                     }
                 }
