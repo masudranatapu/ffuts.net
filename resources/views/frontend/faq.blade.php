@@ -13,9 +13,9 @@
 
 @push('style') @endpush
 @section('breadcrumb')
-    {{-- <ul>
+    <ul>
         <li>{{ __('faq') }}</li>
-    </ul> --}}
+    </ul>
 @endsection
 @section('content')
 <!-- ======================= breadcrumb start  ============================ -->
