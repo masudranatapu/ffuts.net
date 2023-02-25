@@ -211,7 +211,7 @@
                             @forelse ($latestAds as $ad)
                                 <tr>
                                     <td>
-                                        <a href="{{route('frontend.details', $ad->slug)}}"> {{$ad->title}}</a>
+                                        <a href="{{ route('frontend.details', $ad->slug) }}"> {{ $ad->title }}</a>
                                     </td>
                                     <td class="text-muted">${{ number_format($ad->price, 2, '.', ',') }}</td>
                                     <td class="text-muted">
@@ -295,50 +295,54 @@
                                 <th width="10%">{{ __('Payment Method') }}</th>
                                 <th width="10%">{{ __('Area') }}</th>
                                 <th width="10%">{{ __('Payment Status') }}</th>
-                               <th width="10%">{{ __('Date') }}</th>
+                                <th width="10%">{{ __('Date') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($latestTransactionUsers as $transaction)
+                            @if (isset($latestTransactionUsers) && $latestTransactionUsers->count() > 0)
+                                @foreach ($latestTransactionUsers as $transaction)
+                                    <tr>
+                                        <td>
+                                            {{ $transaction->customer->username }}
+                                        </td>
+                                        <td class="text-muted">
+                                            <a href="{{ route('frontend.details', $transaction->ad->slug) }}">
+                                                {{ $transaction->ad->title }}</a>
+                                        </td>
+                                        <td class="text-muted">
+                                            {{ $transaction->ad->ad_type->name ?? '' }}
+                                        </td>
+                                        <td class="text-muted">
+                                            {{ $transaction->ad->category->name ?? '' }}
+                                        </td>
+                                        <td class="text-muted">
+                                            {{ $transaction->currency_symbol }}{{ $transaction->amount }}
+                                        </td>
+                                        <td class="text-muted">
+                                            {{ $transaction->payment_provider }}
+                                        </td>
+                                        <td class="text-muted">
+                                            {{ $transaction->ad->city ?? '' }}
+                                            {{ isset($transaction->ad->countries->name) ? ', ' . ucfirst(strtolower($transaction->ad->countries->name)) : '' }}
+                                        </td>
+                                        <td class="text-muted">
+                                            @if ($transaction->payment_status == 'paid')
+                                                <span class='badge bg-success'>Paid</span>
+                                            @else
+                                                <span class='badge bg-danger'>Unpaid</span>
+                                            @endif
+                                        </td>
+                                        <td class="text-muted">
+                                            {{ date('M d, Y', strtotime($transaction->created_at)) }}</td>
+                                    </tr>
+                                @endforeach
+                            @else
                                 <tr>
-                                    <td>
-                                        {{ $transaction->customer->username }}
-                                    </td>
-                                    <td class="text-muted">
-                                          <a href="{{route('frontend.details', $transaction->ad->slug ?? "")}}"> {{$transaction->ad->title ?? ""}}</a>
-                                    </td>
-                                    <td class="text-muted">
-                                        {{$transaction->ad->ad_type->name ?? ''}}
-                                    </td>
-                                    <td class="text-muted">
-                                        {{$transaction->ad->category->name ?? ''}}
-                                    </td>
-                                   <td class="text-muted">
-                                        {{ $transaction->currency_symbol }}{{ $transaction->amount }}
-                                    </td>
-                                    <td class="text-muted">
-                                        {{ $transaction->payment_provider }}
-                                    </td>
-                                    <td class="text-muted">
-                                        {{$transaction->ad->city ?? ''}} {{ isset($transaction->ad->countries->name ?? '') ? ', ' .ucfirst(strtolower($transaction->ad->countries->name ?? '')) : ''}}
-                                    </td>
-                                    <td class="text-muted">
-                                        @if($transaction->payment_status == 'paid')
-                                            <span class='badge bg-success'>Paid</span>
-                                        @else
-                                        <span class='badge bg-danger'>Unpaid</span>    
-                                        @endif
-                                    </td>
-                                    <td class="text-muted">
-                                        {{ date('M d, Y', strtotime($transaction->created_at)) }}</td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="3" class="text-center">
+                                    <td colspan="9" class="text-center">
                                         <span class="">{{ __('no_transactions_found') }}...</span>
                                     </td>
                                 </tr>
-                            @endforelse
+                            @endif
                         </tbody>
                     </table>
                 </div>
