@@ -305,13 +305,13 @@
                                         {{ $transaction->customer->username }}
                                     </td>
                                     <td class="text-muted">
-                                          <a href="{{route('frontend.details', $transaction->ad->slug)}}"> {{$transaction->ad->title}}</a>
+                                          <a href="{{route('frontend.details', $transaction->ad->slug ?? "")}}"> {{$transaction->ad->title ?? ""}}</a>
                                     </td>
                                     <td class="text-muted">
-                                        {{$transaction->ad->ad_type->name}}
+                                        {{$transaction->ad->ad_type->name ?? ''}}
                                     </td>
                                     <td class="text-muted">
-                                        {{$transaction->ad->category->name}}
+                                        {{$transaction->ad->category->name ?? ''}}
                                     </td>
                                    <td class="text-muted">
                                         {{ $transaction->currency_symbol }}{{ $transaction->amount }}
@@ -320,7 +320,7 @@
                                         {{ $transaction->payment_provider }}
                                     </td>
                                     <td class="text-muted">
-                                        {{$transaction->ad->city}} {{ isset($transaction->ad->countries->name) ? ', ' .ucfirst(strtolower($transaction->ad->countries->name)) : ''}}
+                                        {{$transaction->ad->city ?? ''}} {{ isset($transaction->ad->countries->name ?? '') ? ', ' .ucfirst(strtolower($transaction->ad->countries->name ?? '')) : ''}}
                                     </td>
                                     <td class="text-muted">
                                         @if($transaction->payment_status == 'paid')
