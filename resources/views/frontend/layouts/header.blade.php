@@ -1,10 +1,10 @@
 <div class="container-fluid">
     <div class="row g-1">
         <div class="col-6 col-lg-9">
+            @if (Route::is('frontend.search'))
             <div class="float-start">
                 <a class="header_logo" name="logoLink" href="{{ route('frontend.index') }}">ffutS</a>
             </div>
-            @if (Route::is('frontend.search'))
             @php
             $country_id = getCountryId();
             $cities = DB::table('city')

@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card p-4 w-100 mb-5">
-                        <table class="table ">
+                        <table class="table table-striped table-bordered dt-responsive nowrap">
                             <tr>
                                 <td>Post Title:</td>
                                 <td>{{ $ad->title }}</td>

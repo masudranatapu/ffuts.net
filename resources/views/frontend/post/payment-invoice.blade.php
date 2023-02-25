@@ -66,6 +66,10 @@
                                 <td width="80%">{{ $transaction->payment_provider }}</td>
                             </tr>
                             <tr class="mb-5">
+                                    <th width="20%">{{ __('Area') }}</th>
+                                    <td width="80%">{{$transaction->ad->city}} {{ isset($transaction->ad->countries->name) ? ', ' .ucfirst(strtolower($transaction->ad->countries->name)) : ''}}</td>
+                             </tr>
+                            <tr class="mb-5">
                                 <th width="20%">{{ __('Payment Status') }}</th>
                                 <td width="80%">
                                     @if($transaction->payment_status == 'paid')
