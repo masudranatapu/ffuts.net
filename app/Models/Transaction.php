@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\ManualPayment;
-use Modules\Plan\Entities\Plan;
+use Modules\Ad\Entities\Ad;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -42,9 +42,9 @@ class Transaction extends Model
      *
      * @return BelongsTo
      */
-    public function plan(): BelongsTo
+    public function ad(): BelongsTo
     {
-        return $this->belongsTo(Plan::class);
+        return $this->belongsTo(Ad::class);
     }
 
      /**

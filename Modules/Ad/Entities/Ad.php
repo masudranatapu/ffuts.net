@@ -26,6 +26,7 @@ class Ad extends Model
     protected $appends = ['image_url'];
     protected $casts = ['wishlisted' => 'boolean', 'show_phone' => 'boolean', 'services' => 'array', 'availability' => 'array'];
 
+
     protected static function newFactory()
     {
         return AdFactory::new();
