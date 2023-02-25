@@ -551,8 +551,6 @@ body {
 }
 
 
-
-
 /* shop page */
 .main_template .sidenav {
     height: 100%;
@@ -560,25 +558,26 @@ body {
     position: fixed;
     z-index: 1;
     top: 50px;
-    left: -50%;
+    left: -88%;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 18px;
     width: 200px;
     background-color: #fff;
 }
-@media only screen and (min-width: 576px) {
- 
-    .main_template .sidebar_menu {
-        left: 0;
-    }
 
-    .main_template .margin_left {
-        margin-left: 200px;
-    }
+
+
+.main_template .sidebar_menu {
+    left: 0;
 }
+
+.main_template .margin_left {
+    margin-left: 200px;
+}
+
 /* @media only screen and (min-width: 576px) {
- 
+
    .row{
         margin:0;
         padding:2em 4em;
@@ -1209,7 +1208,9 @@ body {
 }
 
 
-
+.select2-container {
+    width: 100% !important;
+}
 
 
 
