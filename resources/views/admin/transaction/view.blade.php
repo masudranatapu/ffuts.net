@@ -28,23 +28,23 @@ $user = auth()->user();
                                 <tbody>
                                     <tr class="mb-5">
                                         <th width="20%">{{ __('Customer Name') }}</th>
-                                        <td width="80%">{{ $transaction->customer->username }}</td>
+                                        <td width="80%">{{ $transaction->customer->username ?? '' }}</td>
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="20%">{{ __('Posting Title') }}</th>
-                                        <td width="80%">{{ $transaction->ad->title }}</td>
+                                        <td width="80%">{{ $transaction->ad->title ?? '' }}</td>
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="20%">{{ __('Add Type') }}</th>
-                                        <td width="80%">{{ $transaction->ad->ad_type->name }}</td>
+                                        <td width="80%">{{ $transaction->ad->ad_type->name ?? '' }}</td>
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="20%">{{ __('Category') }}</th>
-                                        <td width="80%">{{ $transaction->ad->category->name }}</td>
+                                        <td width="80%">{{ $transaction->ad->category->name ?? '' }}</td>
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="20%">{{ __('Sub Category') }}</th>
-                                        <td width="80%">{{ $transaction->ad->subCategory->name }}</td>
+                                        <td width="80%">{{ $transaction->ad->subCategory->name ?? '' }}</td>
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="20%">{{ __('Order ID') }}</th>

@@ -79,20 +79,20 @@
                             <tr>
                                 <td>{{ $transactions->firstItem() + $key }}</td>
                                 <td>
-                                    <a href="{{route('frontend.details', $value->ad->slug)}}"> {{ Str::limit($value->ad->title,35,'....')}}</a>
+                                    <a href="{{route('frontend.details', $value->ad->slug ?? '')}}"> {{ Str::limit($value->ad->title ?? '',35,'....')}}</a>
                                 </td>
                                 <td>
-                                    {{$value->ad->ad_type->name}}
+                                    {{$value->ad->ad_type->name ?? ''}}
                                 </td>
                                 <td>
-                                    {{$value->ad->category->name}}
+                                    {{$value->ad->category->name ?? ''}}
                                 </td>
                                 <td>
                                     {{ $value->amount }}
                                 </td>
                                 <td>{{ $value->payment_provider }}</td>
                                 <td>
-                                    {{$value->ad->city}} {{ isset($value->ad->countries->name) ? ', ' .ucfirst(strtolower($value->ad->countries->name)) : ''}}
+                                    {{$value->ad->city ?? ''}} {{ isset($value->ad->countries->name ?? '') ? ', ' .ucfirst(strtolower($value->ad->countries->name ?? '')) : ''}}
                                 </td>
                                 <td>
                                     @if($value->payment_status == 'paid')

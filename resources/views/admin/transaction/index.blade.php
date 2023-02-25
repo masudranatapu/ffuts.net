@@ -43,9 +43,9 @@ $user = auth()->user();
                                 @foreach($transactions as $key => $value)
                                     <tr>
                                        <td>{{  $transactions->firstItem() + $key  }}</td>
-                                       <td>{{ Str::limit($value->ad->title,40,'...') }}</td>
-                                       <td>{{ $value->ad->ad_type->name }}</td>
-                                       <td>{{ $value->ad->category->name }}</td>
+                                       <td>{{ Str::limit($value->ad->title ?? '',40,'...') }}</td>
+                                       <td>{{ $value->ad->ad_type->name ?? '' }}</td>
+                                       <td>{{ $value->ad->category->name ?? '' }}</td>
                                        <td>{{ $value->currency_symbol }}{{ $value->amount }}</td>
                                        <td>{{ $value->payment_provider }}</td>
                                        <td>
