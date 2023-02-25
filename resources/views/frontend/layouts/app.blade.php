@@ -56,9 +56,8 @@
             }
     </script>
     <script>
-        $(document).ready(function() {
-            $(".select2").select2();
-        });
+         $(".select2").select2();
+         $(".select_2").select2();
         function serachSubmit() {
 
             var city = $('#city').val();
@@ -67,7 +66,7 @@
 
             var base_url = $('#base_url').val();
             var country = $('#country').val();
-            var full_url = base_url+'/shop/'+country
+            var full_url = base_url+'/ads/'+country
             if(category != ''){
                 full_url += '/'+category;
             }

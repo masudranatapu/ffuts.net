@@ -16,7 +16,7 @@
                 <form action="{{ route('frontend.search') }}" method="get" id="searchForm">
                     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-6 ">
                         <div class="d-inline mb-sm-3 mb-md-0">
-                            <select name="city" id="city" class="select2" onchange="serachSubmit()">
+                            <select name="city" id="city" class="select_2" onchange="serachSubmit()">
                                 <option value="">All</option>
                                 @foreach ($cities as $city)
                                 <option value="{{ $city->slug }}" {{ request()->city == strtolower($city->slug) ?
@@ -27,7 +27,7 @@
                             </select>
                         </div>
                         <div class="d-inline">
-                            <select name="category" id="category" class="select2" onchange="serachSubmit()">
+                            <select name="category" id="category" class="select_2" onchange="serachSubmit()">
                                 <option value="">All</option>
                                 @if (isset($categories) && count($categories) > 0)
                                 @foreach ($categories as $cat)
@@ -40,7 +40,7 @@
                             </select>
                         </div>
                         <div class="d-inline">
-                            <select name="subcategory" id="subcategory" class="select2" onchange="serachSubmit()">
+                            <select name="subcategory" id="subcategory" class="select_2" onchange="serachSubmit()">
                                 <option value="">All</option>
                                 @if (isset($subcategories) && count($subcategories) > 0)
                                 @foreach ($subcategories as $scat)
@@ -103,7 +103,7 @@
             <form action="{{ route('frontend.search') }}" method="get" id="searchForm">
                 <div class="row g-1">
                     <div class="col-sm-6 col-md-4">
-                        <select name="city" id="city" class="select2" onchange="serachSubmit()">
+                        <select name="city" id="city2" class="select2" onchange="serachSubmit()">
                             <option value="">All</option>
                             @foreach ($cities as $city)
                             <option value="{{ $city->slug }}" {{ request()->city == strtolower($city->slug) ?
@@ -114,7 +114,7 @@
                         </select>
                     </div>
                     <div class="col-sm-6 col-md-4">
-                        <select name="category" id="category" class="select2" onchange="serachSubmit()">
+                        <select name="category" id="category2" class="select2" onchange="serachSubmit()">
                             <option value="">All</option>
                             @if (isset($categories) && count($categories) > 0)
                             @foreach ($categories as $cat)
@@ -127,7 +127,7 @@
                         </select>
                     </div>
                     <div class="col-sm-6 col-md-4">
-                        <select name="subcategory" id="subcategory" class="select2" onchange="serachSubmit()">
+                        <select name="subcategory" id="subcategory2" class="select2" onchange="serachSubmit()">
                             <option value="">All</option>
                             @if (isset($subcategories) && count($subcategories) > 0)
                             @foreach ($subcategories as $scat)

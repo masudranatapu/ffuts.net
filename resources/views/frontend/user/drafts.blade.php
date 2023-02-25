@@ -18,7 +18,7 @@
 @section('breadcrumb')
 <ul>
     <li>User Profile > </li>
-    <li>{{ $user->name }}</li>
+    <li>{!! $user->name !!}</li>
 </ul>
 @endsection
 
@@ -61,14 +61,14 @@
                 <table class="table table-hover" style="min-width: 950px;">
                     <thead>
                         <tr>
-                            <th width="5%">Sl No</th>
-                            <th width="30%">Posting</th>
-                            <th width="10%">Ad Type</th>
-                            <th width="10%">Category</th>
-                            <th width="10%">Sub Category</th>
-                            <th width="10%">Area</th>
-                            <th width="10%">Status</th>
-                            <th width="15%">Action</th>
+                            <th style="width:5%">Sl No</th>
+                            <th style="width:30%">Posting</th>
+                            <th style="width:10%">Ad Type</th>
+                            <th style="width:10%">Category</th>
+                            <th style="width:10%">Sub Category</th>
+                            <th style="width:10%">Area</th>
+                            <th style="width:10%">Status</th>
+                            <th style="width:15%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,7 +91,11 @@
                                     {{$ad->city}} {{ isset($ad->countries->name) ? ', ' .ucfirst(strtolower($ad->countries->name)) : ''}}
                                 </td>
                                 <td>
+                                    @if($ad->is_payable == 1)
+                                        <a href="{{ route('frontend.payment.post', $ad->id) }}" onclick="return confirm('This ad is payable. Do you want to publish?')"  class="btn btn-sm btn-danger">Unpublished</a>
+                                    @else
                                     <a href="{{ route('user.post.statusUpdate', [$ad->id, 'active']) }}"  class="btn btn-sm btn-danger">Unpublished</a>
+                                    @endif
                                 </td>
                                 <td>
                                    <a href="{{route('frontend.details', $ad->slug)}}" class="btn btn-sm btn-success">View</a>

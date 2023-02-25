@@ -5,7 +5,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\AdPostController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\LocalizationController;
-
+use Illuminate\Http\Request;
 Route::group(['as' => 'frontend.'], function () {
     Route::get('/', [FrontendController::class, 'index'])->name('index');
     // Route::get('shop/', [FrontendController::class, 'shop'])->name('shop');
@@ -60,3 +60,4 @@ Route::group(['as' => 'user.'], function () {
         Route::post('user-logout', [UserDashboardController::class, 'userLogOut'])->name('logout');
     });
 });
+

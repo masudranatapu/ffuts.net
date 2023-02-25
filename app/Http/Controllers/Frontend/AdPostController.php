@@ -209,8 +209,9 @@ class AdPostController extends Controller
             $ad->status = $status;
             $ad->is_payable = 1;
             $ad->save();
-            Session::put('ad_id', $ad->id);
-            return redirect()->route('frontend.payment.post', $ad->id);
+            if (Auth::check()) {
+                return redirect()->route('frontend.payment.post', $ad->id);
+            }
         }
         if ($ad->status == 'active') {
             flashSuccess('Post created successfully');

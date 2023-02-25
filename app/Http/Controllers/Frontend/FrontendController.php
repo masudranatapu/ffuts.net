@@ -61,6 +61,7 @@ class FrontendController extends Controller
 
     public function search(Request $request)
     {
+//        dd($request->country);
         $query = Ad::active();
         $country = getCountryCode();
         $categories = Category::orderBy('id', 'asc')->get();
@@ -88,11 +89,6 @@ class FrontendController extends Controller
                 $q->where('slug', $category_slug);
             });
         }
-
-
-
-
-
 
 
         if ($request->subcategory) {

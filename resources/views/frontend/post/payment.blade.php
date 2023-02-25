@@ -71,7 +71,7 @@
                             Stripe Payment
                         </h5>
                         <div class="card-body mt-5 mb-0">
-                            <button class="btn btn-info" onclick="alert('Comming Soon..')">Pay Now</button>
+                            <button class="btn btn-info" id="stripe_btn">Pay Now</button>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,23 @@
             </div>
         </div>
     </div>
+    <form action="{{ route('stripe.post') }}" method="POST" class="d-none">
+        @csrf
+        <input type="hidden" name="ad_id" value="{{ $ad->id  }}">
+        <input type="hidden" name="price" value="{{ $ad->ad_type->amount }}">
+        <script id="stripe_script" src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="{{ config('zakirsoft.stripe_key') }}" data-ad_id="{{ $ad->id }}" data-amount="{{ $ad->ad_type->amount * 100 }}"
+                data-name="{{ config('app.name') }}" data-description="Money pay with stripe"
+                data-locale="{{ app()->getLocale() == 'default' ? 'en' : app()->getLocale() }}" data-currency="USD"></script>
+    </form>
 @endsection
 
 @push('script')
+    <script type="text/javascript">
+        $('#stripe_btn').on('click', function(e) {
+            e.preventDefault();
+            $('.stripe-button-el').click();
+        });
+    </script>
+
 @endpush

@@ -3,6 +3,17 @@
 @endsection
 @push('style')
     <link rel="stylesheet" href="{{ asset('image_uploader/dist/image-uploader.min.css') }}">
+    <style>
+        .select2-selection--single{
+            height: 35px !important;
+        }
+        .select2-selection__rendered{
+            line-height: 35px !important;
+        }
+        .select2-selection__arrow{
+            height: 35px !important;
+        }
+    </style>
 @endpush
 @section('title')
     {{ __('Post') }}
