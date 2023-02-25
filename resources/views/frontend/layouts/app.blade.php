@@ -56,9 +56,8 @@
             }
     </script>
     <script>
-        $(document).ready(function() {
-            $(".select2").select2();
-        });
+         $(".select2").select2();
+         $(".select_2").select2();
         function serachSubmit() {
 
             var city = $('#city').val();
