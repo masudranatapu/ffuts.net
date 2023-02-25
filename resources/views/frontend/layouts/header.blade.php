@@ -8,11 +8,11 @@
                         ->where('country_id', $country_id)
                         ->orderBy('order_id', 'desc')
                         ->get();
-                    
+
                 @endphp
                 <form action="{{ route('frontend.search') }}" method="get" id="searchForm">
                     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-6 ">
-                        <a class="header_logo mb-sm-3 mb-md-0" name="logoLink"
+                        <a class="header_logo" name="logoLink"
                             href="{{ route('frontend.index') }}">ffutS</a>
                         <div class="d-inline mb-sm-3 mb-md-0">
                             <select name="city" id="city" class="select2" onchange="serachSubmit()">
