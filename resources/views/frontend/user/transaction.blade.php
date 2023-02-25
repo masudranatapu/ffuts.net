@@ -18,7 +18,7 @@
 @section('breadcrumb')
 <ul>
     <li>User Transactions > </li>
-    <li>{{ $user->name }}</li>
+    {{-- <li>{{ $user->name }}</li> --}}
 </ul>
 @endsection
 
@@ -65,31 +65,41 @@
                             <th width="25%">Posting</th>
                             <th width="10%">Ad Type</th>
                             <th width="10%">Category</th>
-                            <th width="10%">Sub Category</th>
+                            <th width="10%">Amount</th>
+                            <th width="10%">Payment Method</th>
                             <th width="10%">Area</th>
-                            <th width="10%">Status</th>
-                            <th width="15%">Action</th>
+                            <th width="10%">Payment Status</th>
+                            <th width="10%">Date</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($ads as $key=> $ad)
+                        @forelse($transactions as $key=> $value)
                             <tr>
-                                <td>{{ $ads->firstItem() + $key }}</td>
+                                <td>{{ $transactions->firstItem() + $key }}</td>
                                 <td>
-                                    <a href="{{route('frontend.details', $ad->slug)}}"> {{$ad->title}}</a>
+                                    <a href="{{route('frontend.details', $value->ad->slug)}}"> {{$value->ad->title}}</a>
                                 </td>
                                 <td>
-                                    {{$ad->ad_type->name}}
+                                    {{$value->ad->ad_type->name}}
                                 </td>
                                 <td>
-                                    {{$ad->category->name}}
+                                    {{$value->ad->category->name}}
                                 </td>
                                 <td>
-                                    {{$ad->subCategory->name}}
+                                    {{ $value->amount }}
+                                </td>
+                                <td>{{ $value->payment_provider }}</td>
+                                <td>
+                                    {{$value->ad->city}} {{ isset($value->ad->countries->name) ? ', ' .ucfirst(strtolower($value->ad->countries->name)) : ''}}
                                 </td>
                                 <td>
-                                    {{$ad->city}} {{ isset($ad->countries->name) ? ', ' .ucfirst(strtolower($ad->countries->name)) : ''}}
+                                    @if($value->payment_status == 'paid')
+                                        <span class="badge bg-success">Paid</span>
+                                    @else
+                                        <span class="badge bg-danger">Unpaid</span>
+                                    @endif
                                 </td>
+                                <td>{{ date('d M Y',strtotime($value->created_at)) }}</td>
                                 
                             </tr>
                             @empty
@@ -103,7 +113,7 @@
             </div>
              <div class="card-footer mb-5">
                 <div class="d-flex justify-content-center">
-                    {{ $ads->links() }}
+                    {{ $transactions->links() }}
                 </div>
             </div>
         </div>

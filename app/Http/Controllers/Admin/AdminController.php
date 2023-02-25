@@ -60,7 +60,7 @@ class AdminController extends Controller
 
         $data['latestAds'] = Ad::select(['id', 'slug', 'price', 'status', 'title'])->orderBy('id', 'DESC')->limit(10)->get();
         $data['latestusers'] = User::select(['id', 'name', 'email', 'created_at', 'username'])->orderBy('id', 'DESC')->limit(10)->get();
-        $data['latestTransactionUsers'] = Transaction::with(['customer:id,name,email,username', 'plan:id,label,price'])->latest()->limit(10)->get();
+        $data['latestTransactionUsers'] = Transaction::with(['customer:id,name,email,username'])->latest()->limit(10)->get();
 
         $data['topLocations'] = DB::table('ads')
             ->select('country', DB::raw('count(*) as total'))

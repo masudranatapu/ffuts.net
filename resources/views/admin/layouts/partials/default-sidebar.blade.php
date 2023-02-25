@@ -55,6 +55,10 @@
                             {{ __('Ad Types') }}
                         </x-sidebar-list>
 
+                        <x-sidebar-list :linkActive="Route::is('transaction.*') ? true : false" route="transaction.index" icon="fa fa-money">
+                            {{ __('Transaction') }}
+                        </x-sidebar-list>
+
                         <x-sidebar-list :linkActive="Route::is('city.*') ? true : false" route="city.index" icon="fa fa-plus-square">
                             {{ __('City') }}
                         </x-sidebar-list>

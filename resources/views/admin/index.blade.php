@@ -141,7 +141,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">{{ __('total_plan') }}</span>
-                    <span class="info-box-number"> {{ $total_plan }} </span>
+                    {{-- <span class="info-box-number"> {{ $total_plan }} </span> --}}
                 </div>
             </div>
         </div>
@@ -270,37 +270,46 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>{{ __('customer') }}</th>
-                                <th>{{ __('amount') }}</th>
-                                <th>{{ __('plan_name') }}</th>
-                                <th>{{ __('payment_provider') }}</th>
-                                <th>{{ __('created_time') }}</th>
+                                <th width="5%">{{ __('customer') }}</th>
+                                <th width="25%">{{ __('Posting') }}</th>
+                                <th width="10%">{{ __('Ad Type') }}</th>
+                                <th width="10%">{{ __('Category') }}</th>
+                                <th width="10%">{{ __('amount') }}</th>
+                                <th width="10%">{{ __('Payment Method') }}</th>
+                                <th width="10%">{{ __('Area') }}</th>
+                                <th width="10%">{{ __('Payment Status') }}</th>
+                               <th width="10%">{{ __('Date') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($latestTransactionUsers as $transaction)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('module.customer.show', $transaction->customer->username) }}">
-                                            {{ $transaction->customer->name }}
-                                        </a>
+                                        {{ $transaction->customer->username }}
                                     </td>
                                     <td class="text-muted">
+                                          <a href="{{route('frontend.details', $transaction->ad->slug)}}"> {{$transaction->ad->title}}</a>
+                                    </td>
+                                    <td class="text-muted">
+                                        {{$transaction->ad->ad_type->name}}
+                                    </td>
+                                    <td class="text-muted">
+                                        {{$transaction->ad->category->name}}
+                                    </td>
+                                   <td class="text-muted">
                                         {{ $transaction->currency_symbol }}{{ $transaction->amount }}
                                     </td>
                                     <td class="text-muted">
-                                        <span class="badge badge-primary">
-                                            {{ $transaction->plan->label }}
-                                        </span>
+                                        {{ $transaction->payment_provider }}
                                     </td>
                                     <td class="text-muted">
-                                        @if ($transaction->payment_provider == 'offline')
-                                            {{ __('offline') }}
-                                            @if (isset($transaction->manualPayment) && isset($transaction->manualPayment->name))
-                                                (<b>{{ $transaction->manualPayment->name }}</b>)
-                                            @endif
+                                        {{$transaction->ad->city}} {{ isset($transaction->ad->countries->name) ? ', ' .ucfirst(strtolower($transaction->ad->countries->name)) : ''}}
+                                    </td>
+                                    <td class="text-muted">
+                                        @if($transaction->payment_status == 'paid')
+                                            <span class='badge bg-success'>Paid</span>
                                         @else
-                                            {{ ucfirst($transaction->payment_provider) }}
+                                        <span class='badge bg-danger'>Unpaid</span>    
                                         @endif
                                     </td>
                                     <td class="text-muted">
