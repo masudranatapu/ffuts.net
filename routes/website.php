@@ -20,6 +20,7 @@ Route::group(['as' => 'frontend.'], function () {
     Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
     Route::post('contact/submit', [FrontendController::class, 'contactSub'])->name('contact.submit');
     Route::get('payment/post/{id}', [FrontendController::class, 'postPayment'])->name('payment.post');
+    Route::get('payment/invoice/{id}',[FrontendController::class,'paymentInvoice'])->name('payment.invoice');
 
 
 
@@ -53,6 +54,7 @@ Route::group(['as' => 'user.'], function () {
         Route::get('user/favourite', [UserDashboardController::class, 'favourite'])->name('favourite');
         Route::get('user/favouriteDelete/{id}', [UserDashboardController::class, 'favouriteDelete'])->name('favourite.delete');
         Route::get('user/transaction',[UserDashboardController::class, 'transaction'])->name('transaction');
+        Route::get('user/transaction/details/{id}',[UserDashboardController::class, 'transactionDetails'])->name('transaction.details');
         Route::get('user/setting', [UserDashboardController::class, 'setting'])->name('setting');
         Route::get('user/passwordReset', [UserDashboardController::class, 'passwordReset'])->name('password.reset');
         Route::post('user-logout', [UserDashboardController::class, 'userLogOut'])->name('logout');

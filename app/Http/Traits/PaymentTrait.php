@@ -21,7 +21,7 @@ trait PaymentTrait
         // $this->userPlanInfoUpdate($plan);
 
         // Transaction create
-        Transaction::create([
+        $tr = Transaction::create([
             'order_id' => rand(1000, 999999999),
             'transaction_id' =>  $transaction_id,
             'ad_id' => $ad->id,
@@ -54,7 +54,7 @@ trait PaymentTrait
         // redirect to customer billing
         if ($redirect) {
             session()->flash('message', 'Ad purchased successfully');
-            return redirect()->route('frontend.index')->send();
+            return redirect()->route('frontend.payment.invoice', $tr->id)->send();
         }
     }
 

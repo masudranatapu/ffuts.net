@@ -7,6 +7,7 @@ use App\Models\Seo;
 use App\Models\AdType;
 use App\Models\Contact;
 use App\Models\AdGallery;
+use App\Models\Transaction;
 use Modules\Ad\Entities\Ad;
 use function Sodium\compare;
 use Illuminate\Http\Request;
@@ -295,5 +296,10 @@ class FrontendController extends Controller
     {
         $ad = Ad::find($id);
         return view('frontend.post.payment',compact('ad'));
+    }
+
+    public function paymentInvoice($id){
+        $transaction = Transaction::find($id);
+        return view('frontend.post.payment-invoice',compact('transaction'));
     }
 }

@@ -11,6 +11,9 @@ use Modules\Blog\Entities\Post;
 use Modules\Plan\Entities\Plan;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\AdType;
+use Modules\Category\Entities\Category;
+use Modules\Category\Entities\SubCategory;
 
 class AdminController extends Controller
 {
@@ -48,8 +51,11 @@ class AdminController extends Controller
         $data['adcount'] = $ads->count();
         $data['adcountActive'] = $ads->where('status', 'active')->count();
         $data['adcountPending'] = $ads->where('status', 'pending')->count();
-        $data['adcountExpired'] = $ads->where('status', 'sold')->count();
+        $data['adcountExpired'] = $ads->where('status', 'pending')->count();
         $data['adcountFeatured'] = $ads->where('featured', 1)->count();
+        $data['ad_type'] = AdType::all()->count();
+        $data['category'] = Category::all()->count();
+        $data['subCategory'] = SubCategory::all()->count();
         $countryCount =  DB::table('ads')
             ->select('country', DB::raw('count(*) as total'))
             ->groupBy('country')

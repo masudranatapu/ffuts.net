@@ -26,37 +26,37 @@ $user = auth()->user();
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap table-bordered">
                             <thead>
-                                <tr>
-                                <th>{{ __('Sl No') }}</th>
-                                <th>{{ __('Posting') }}</th>
-                                <th>{{ __('Ad Type') }}</th>
-                                <th>{{ __('Category') }}</th>
-                                <th>{{ __('amount') }}</th>
-                                <th>{{ __('Payment Method') }}</th>
-                                <th>{{ __('Payment Status') }}</th>
-                                <th>{{ __('Date') }}</th>
-                                <th>{{ __('Action') }}</th>
+                                <tr class="">
+                                    <th width="5%">{{ __('Sl.No') }}</th>
+                                    <th width="25%">{{ __('Posting') }}</th>
+                                    <th width="10%">{{ __('Ad Type') }}</th>
+                                    <th width="10%">{{ __('Category') }}</th>
+                                    <th width="10%">{{ __('amount') }}</th>
+                                    <th width="10%">{{ __('Payment Method') }}</th>
+                                    <th width="10%">{{ __('Payment Status') }}</th>
+                                    <th width="10%">{{ __('Date') }}</th>
+                                    <th width="10%">{{ __('Action') }}</th>
 
-                            </tr>
+                                </tr>
                             </thead>
-                            <tbody id="sortable">
+                            <tbody>
                                 @foreach($transactions as $key => $value)
                                     <tr>
-                                        <td>{{  $transactions->firstItem() + $key  }}</td>
-                                        <td>{{ Str::limit($value->ad->title,35,'...')}}</td>
-                                        <td>{{ $value->ad->ad_type->name }}</td>
-                                        <td>{{ $value->ad->category->name }}</td>
-                                        <td>{{ $value->amount }}</td>
-                                        <td>{{ $value->payment_provider }}</td>
-                                        <td>
-                                            @if($value->payment_status == 'paid')
-                                                <span class='badge bg-success'>Paid</span>
-                                            @else
-                                            <span class='badge bg-danger'>Unpaid</span>    
+                                       <td>{{  $transactions->firstItem() + $key  }}</td>
+                                       <td>{{ Str::limit($value->ad->title,40,'...') }}</td>
+                                       <td>{{ $value->ad->ad_type->name }}</td>
+                                       <td>{{ $value->ad->category->name }}</td>
+                                       <td>{{ $value->currency_symbol }}{{ $value->amount }}</td>
+                                       <td>{{ $value->payment_provider }}</td>
+                                       <td>
+                                            @if($value->payment_status == "paid")
+                                                <span class="badge bg-success">Paid</span>
+                                            @else 
+                                            <span class="badge bg-success">Unpaid</span>   
                                             @endif
-                                        <td>
-                                         <td>{{ date('d M Y',strtotime($value->created_at)) }}</td>   
-                                        <td>
+                                       </td>
+                                       <td>{{ date('d M Y',strtotime($value->created_at)) }}</td>
+                                       <td>
                                             <a href="{{ route('transaction.view',$value->id) }}" class="btn btn-secondary"><i class="fa fa-eye"></i></a>
                                             <form action="{{ route('transaction.delete', $value->id) }}"
                                                     method="POST" class="d-inline">
@@ -67,7 +67,8 @@ $user = auth()->user();
                                                         onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');"
                                                         class="btn bg-danger mr-1"><i class="fas fa-trash"></i></button>
                                             </form>
-                                        </td>
+                                       </td>
+                                      
                                     </tr>
                                 @endforeach
                             </tbody>
