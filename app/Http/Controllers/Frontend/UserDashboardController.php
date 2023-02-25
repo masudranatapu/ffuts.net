@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\AdType;
 use App\Models\Country;
 use App\Mail\RegisterMail;
+use App\Models\Transaction;
 use Illuminate\Support\Str;
 use Modules\Ad\Entities\Ad;
 use Illuminate\Http\Request;
@@ -47,6 +48,12 @@ class UserDashboardController extends Controller
         $wishlist = Wishlist::find($id);
         $wishlist->delete();
         return back()->with('message', 'Item successfully removed from favourite.');
+    }
+
+    public function transaction(){
+        $transactions = Transaction::with('ad')->orderBy('id','desc')->paginate(10);
+        
+        return view('frontend.user.transaction',compact('transactions'));
     }
 
     public function setting()

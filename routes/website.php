@@ -52,6 +52,7 @@ Route::group(['as' => 'user.'], function () {
         Route::get('user/drafts', [UserDashboardController::class, 'drafts'])->name('drafts');
         Route::get('user/favourite', [UserDashboardController::class, 'favourite'])->name('favourite');
         Route::get('user/favouriteDelete/{id}', [UserDashboardController::class, 'favouriteDelete'])->name('favourite.delete');
+        Route::get('user/transaction',[UserDashboardController::class, 'transaction'])->name('transaction');
         Route::get('user/setting', [UserDashboardController::class, 'setting'])->name('setting');
         Route::get('user/passwordReset', [UserDashboardController::class, 'passwordReset'])->name('password.reset');
         Route::post('user-logout', [UserDashboardController::class, 'userLogOut'])->name('logout');

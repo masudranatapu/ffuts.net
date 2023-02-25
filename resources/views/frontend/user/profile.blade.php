@@ -45,6 +45,11 @@
                             href="{{ route('user.favourite') }}">Favourites</a></button>
                 </li>
                 <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="searches-tab" data-bs-toggle="tab" data-bs-target="#searches-tab-pane"
+                        type="button" role="tab" aria-controls="searches-tab-pane" aria-selected="false"><a
+                            href="{{ route('user.transaction') }}">Transaction</a></button>
+                </li>
+                <li class="nav-item" role="presentation">
                     <button class="nav-link" id="setting-tab" data-bs-toggle="tab" data-bs-target="#setting-tab-pane"
                         type="button" role="tab" aria-controls="setting-tab-pane" aria-selected="false"><a
                             href="{{ route('user.setting') }}">Settings</a></button>

@@ -10,6 +10,12 @@
     }
 }
 
+@media screen and (max-width:991px) {
+    .main_template .sidenav {
+        top: 79px;
+    }
+}
+
 @media (max-width: 767px) {
     .single_product .swiper-button-next {
         right: 6px;
@@ -23,7 +29,34 @@
     .single_product .swiper-button-prev {
         left: 6px;
     }
+
+    .main_template .sidenav {
+        top: 112px;
+    }
 }
+
+@media screen and (max-width:575px) {
+    .main_template .sidenav {
+        top: 144px;
+    }
+
+    .main_template .sidebar_menu {
+        left: 0;
+    }
+
+    .main_template .margin_left {
+        margin-left: 0px;
+    }
+
+    .mobile_nav {
+        position: absolute;
+        top: 8px;
+        right: 13px;
+    }
+
+}
+
+
 
 @media screen and (max-width:500px) {
     .user_dashboard ul li a {

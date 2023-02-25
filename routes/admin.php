@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SocialiteController;
 use App\Http\Controllers\Admin\CmsSettingController;
+use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\ManualPaymentController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
@@ -208,6 +209,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/edit/{slug}',[AdTypesController::class,'edit'])->name('adtypes.edit');
             Route::post('/update/{slug}',[AdTypesController::class,'update'])->name('adtypes.update');
             Route::delete('/delete/{id}',[AdTypesController::class,'delete'])->name('adtypes.delete');
+
         });
 
         Route::prefix('city')->group(function(){
@@ -234,6 +236,13 @@ Route::prefix('admin')->group(function () {
             Route::get('/',[ContactController::class,'index'])->name('contact.index');
             Route::get('/view/{id}',[ContactController::class,'view'])->name('contact.view');
             Route::delete('/delete/{id}',[ContactController::class,'delete'])->name('contact.delete');
+        });
+
+        //User Transaction
+        Route::prefix('user-transaction')->group(function(){
+            Route::get('/',[TransactionController::class,'index'])->name('transaction.index');
+            Route::get('/view/{id}',[TransactionController::class,'view'])->name('transaction.view');
+            Route::delete('/delete/{id}',[TransactionController::class,'delete'])->name('transaction.delete');
         });
 
     });

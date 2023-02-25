@@ -17,8 +17,8 @@
 
 @section('breadcrumb')
 <ul>
-    <li>User Profile > </li>
-    <li>{!! $user->name !!}</li>
+    <li>User Transactions > </li>
+    {{-- <li>{{ $user->name }}</li> --}}
 </ul>
 @endsection
 
@@ -30,14 +30,14 @@
         <div class="user_dashboard mb-4">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="posting-tab" data-bs-toggle="tab" data-bs-target="#posting-tab-pane"
-                        type="button" role="tab" aria-controls="posting-tab-pane" aria-selected="true"><a
-                            href="{{ route('user.profile') }}">Posting</a></button>
+                    <button class="nav-link" id="posting-tab" data-bs-toggle="tab"
+                        data-bs-target="#posting-tab-pane" type="button" role="tab" aria-controls="posting-tab-pane"
+                        aria-selected="true"><a href="{{ route('user.profile') }}">Posting</a></button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="drafts-tab" data-bs-toggle="tab"
-                        data-bs-target="#drafts-tab-pane" type="button" role="tab" aria-controls="drafts-tab-pane"
-                        aria-selected="false"><a href="{{ route('user.drafts') }}">Drafts</a></button>
+                    <button class="nav-link" id="drafts-tab" data-bs-toggle="tab" data-bs-target="#drafts-tab-pane"
+                        type="button" role="tab" aria-controls="drafts-tab-pane" aria-selected="false"><a
+                            href="{{ route('user.drafts') }}">Drafts</a></button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="searches-tab" data-bs-toggle="tab" data-bs-target="#searches-tab-pane"
@@ -45,7 +45,7 @@
                             href="{{ route('user.favourite') }}">Favourites</a></button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="searches-tab" data-bs-toggle="tab" data-bs-target="#searches-tab-pane"
+                    <button class="nav-link active" id="searches-tab" data-bs-toggle="tab" data-bs-target="#searches-tab-pane"
                         type="button" role="tab" aria-controls="searches-tab-pane" aria-selected="false"><a
                             href="{{ route('user.transaction') }}">Transaction</a></button>
                 </li>
@@ -61,47 +61,46 @@
                 <table class="table table-hover" style="min-width: 950px;">
                     <thead>
                         <tr>
-                            <th style="width:5%">Sl No</th>
-                            <th style="width:30%">Posting</th>
-                            <th style="width:10%">Ad Type</th>
-                            <th style="width:10%">Category</th>
-                            <th style="width:10%">Sub Category</th>
-                            <th style="width:10%">Area</th>
-                            <th style="width:10%">Status</th>
-                            <th style="width:15%">Action</th>
+                            <th width="5%">Sl No</th>
+                            <th width="25%">Posting</th>
+                            <th width="10%">Ad Type</th>
+                            <th width="10%">Category</th>
+                            <th width="10%">Amount</th>
+                            <th width="10%">Payment Method</th>
+                            <th width="10%">Area</th>
+                            <th width="10%">Payment Status</th>
+                            <th width="10%">Date</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($ads as $key=> $ad)
+                        @forelse($transactions as $key=> $value)
                             <tr>
-                                <td>{{ $ads->firstItem() + $key }}</td>
+                                <td>{{ $transactions->firstItem() + $key }}</td>
                                 <td>
-                                    <a href="{{route('frontend.details', $ad->slug)}}"> {{$ad->title}}</a>
+                                    <a href="{{route('frontend.details', $value->ad->slug)}}"> {{$value->ad->title}}</a>
                                 </td>
                                 <td>
-                                    {{$ad->ad_type->name}}
+                                    {{$value->ad->ad_type->name}}
                                 </td>
                                 <td>
-                                    {{$ad->category->name}}
+                                    {{$value->ad->category->name}}
                                 </td>
                                 <td>
-                                    {{$ad->subCategory->name}}
+                                    {{ $value->amount }}
+                                </td>
+                                <td>{{ $value->payment_provider }}</td>
+                                <td>
+                                    {{$value->ad->city}} {{ isset($value->ad->countries->name) ? ', ' .ucfirst(strtolower($value->ad->countries->name)) : ''}}
                                 </td>
                                 <td>
-                                    {{$ad->city}} {{ isset($ad->countries->name) ? ', ' .ucfirst(strtolower($ad->countries->name)) : ''}}
-                                </td>
-                                <td>
-                                    @if($ad->is_payable == 1)
-                                        <a href="{{ route('frontend.payment.post', $ad->id) }}" onclick="return confirm('This ad is payable. Do you want to publish?')"  class="btn btn-sm btn-danger">Unpublished</a>
+                                    @if($value->payment_status == 'paid')
+                                        <span class="badge bg-success">Paid</span>
                                     @else
-                                    <a href="{{ route('user.post.statusUpdate', [$ad->id, 'active']) }}"  class="btn btn-sm btn-danger">Unpublished</a>
+                                        <span class="badge bg-danger">Unpaid</span>
                                     @endif
                                 </td>
-                                <td>
-                                   <a href="{{route('frontend.details', $ad->slug)}}" class="btn btn-sm btn-success">View</a>
-                                    <a href="{{ route('user.post.edit',$ad->slug) }}"  class="btn btn-sm btn-secondary">Edit</a>
-                                    <a href="{{ route('user.post.delete', $ad->id) }}" onclick="return confirm('Are you sure to delete?')" class="btn btn-sm btn-danger">Delete</a>
-                                </td>
+                                <td>{{ date('d M Y',strtotime($value->created_at)) }}</td>
+                                
                             </tr>
                             @empty
                             <tr>
@@ -112,15 +111,16 @@
                     </tbody>
                 </table>
             </div>
-            <div class="card-footer mb-5">
+             <div class="card-footer mb-5">
                 <div class="d-flex justify-content-center">
-                    {{ $ads->links() }}
+                    {{ $transactions->links() }}
                 </div>
             </div>
         </div>
     </div>
 </div>
-   @include('frontend.layouts.footer')
+<!-- footer -->
+       @include('frontend.layouts.footer')
 
 @endsection
 
