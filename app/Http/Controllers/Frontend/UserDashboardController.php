@@ -49,6 +49,10 @@ class UserDashboardController extends Controller
         return back()->with('message', 'Item successfully removed from favourite.');
     }
 
+    public function transaction(){
+        return view('frontend.user.transaction');
+    }
+
     public function setting()
     {
         $user = Auth::user();
