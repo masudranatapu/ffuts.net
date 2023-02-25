@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        @if (enableModule('blog'))
+        {{-- @if (enableModule('blog'))
             <div class="col-sm-6 col-lg-4 col-xl-3">
                 <div class="info-box">
                     <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-book"></i></span>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
             </div>
-        @endif
+        @endif --}}
         <div class="col-sm-6 col-lg-4 col-xl-3">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-photo-video"></i></span>
@@ -67,7 +67,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-4 col-xl-3">
+        {{-- <div class="col-sm-6 col-lg-4 col-xl-3">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-clock"></i></span>
                 <div class="info-box-content">
@@ -75,7 +75,7 @@
                     <span class="info-box-number"> {{ $adcountPending }} </span>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="col-sm-6 col-lg-4 col-xl-3">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-success elevation-1">
@@ -111,17 +111,35 @@
                     </svg>
                 </span>
                 <div class="info-box-content">
-                    <span class="info-box-text">{{ __('sold_ads') }}</span>
+                    <span class="info-box-text">{{ __('Drafts') }}</span>
                     <span class="info-box-number"> {{ $adcountExpired }} </span>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-lg-4 col-xl-3">
             <div class="info-box mb-3">
-                <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-photo-video"></i></span>
+                <span class="info-box-icon bg-success elevation-1"><i class="fa fa-align-justify"></i></span>
                 <div class="info-box-content">
-                    <span class="info-box-text">{{ __('featured_ads') }}</span>
-                    <span class="info-box-number"> {{ $adcountFeatured }} </span>
+                    <span class="info-box-text">{{ __('Total Ad Type') }}</span>
+                    <span class="info-box-number"> {{ $ad_type }} </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 col-xl-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-secondary elevation-1"><i class="fa fa-th"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ __('Total Category') }}</span>
+                    <span class="info-box-number"> {{ $category }} </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 col-xl-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-info elevation-1"><i class="fa fa-th-list"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">{{ __('Total Sub Category') }}</span>
+                    <span class="info-box-number"> {{ $subCategory }} </span>
                 </div>
             </div>
         </div>
@@ -135,16 +153,16 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-4 col-xl-3">
+        {{-- <div class="col-sm-6 col-lg-4 col-xl-3">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-money-check"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">{{ __('total_plan') }}</span>
-                    {{-- <span class="info-box-number"> {{ $total_plan }} </span> --}}
+                    <span class="info-box-number"> {{ $total_plan }} </span>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="clearfix hidden-md-up"></div>
     </div>
@@ -193,8 +211,7 @@
                             @forelse ($latestAds as $ad)
                                 <tr>
                                     <td>
-                                        <a href="#" class="ms-1"
-                                            aria-label="Open website">{{ $ad->title }}</a>
+                                        <a href="{{route('frontend.details', $ad->slug)}}"> {{$ad->title}}</a>
                                     </td>
                                     <td class="text-muted">${{ number_format($ad->price, 2, '.', ',') }}</td>
                                     <td class="text-muted">
@@ -261,7 +278,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">{{ __('latest_transaction') }}</h3>
-                    <a href="{{ route('order.index') }}"
+                    <a href="{{ route('transaction.index') }}"
                         class="btn bg-primary float-right d-flex align-items-center justify-content-center">
                         {{ __('view_all') }}
                     </a>

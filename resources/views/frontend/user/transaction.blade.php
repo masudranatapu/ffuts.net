@@ -62,7 +62,7 @@
                     <thead>
                         <tr>
                             <th width="5%">Sl No</th>
-                            <th width="25%">Posting</th>
+                            <th width="15%">Posting</th>
                             <th width="10%">Ad Type</th>
                             <th width="10%">Category</th>
                             <th width="10%">Amount</th>
@@ -70,6 +70,8 @@
                             <th width="10%">Area</th>
                             <th width="10%">Payment Status</th>
                             <th width="10%">Date</th>
+                            <th width="10%">Action</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -77,7 +79,7 @@
                             <tr>
                                 <td>{{ $transactions->firstItem() + $key }}</td>
                                 <td>
-                                    <a href="{{route('frontend.details', $value->ad->slug)}}"> {{$value->ad->title}}</a>
+                                    <a href="{{route('frontend.details', $value->ad->slug)}}"> {{ Str::limit($value->ad->title,35,'....')}}</a>
                                 </td>
                                 <td>
                                     {{$value->ad->ad_type->name}}
@@ -100,7 +102,9 @@
                                     @endif
                                 </td>
                                 <td>{{ date('d M Y',strtotime($value->created_at)) }}</td>
-                                
+                                <td>
+                                    <a href="{{ route('user.transaction.details',$value->id) }}" class="btn btn-sm btn-success">View</a>
+                                </td>
                             </tr>
                             @empty
                             <tr>

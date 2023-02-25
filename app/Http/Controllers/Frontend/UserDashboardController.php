@@ -56,6 +56,12 @@ class UserDashboardController extends Controller
         return view('frontend.user.transaction',compact('transactions'));
     }
 
+    public function transactionDetails($id){
+        
+        $transactionDetails = Transaction::find($id);
+        return view('frontend.user.transaction-details',compact('transactionDetails'));
+    }
+
     public function setting()
     {
         $user = Auth::user();

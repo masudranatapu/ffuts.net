@@ -5,7 +5,7 @@ $user = auth()->user();
 @extends('admin.layouts.app')
 
 @section('title')
-    {{ __('Contact') }}
+    {{ __('Transaction') }}
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@ $user = auth()->user();
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title" style="line-height: 36px;">{{ __('User Details') }}</h3>
-                        <a href="{{ route('contact.index') }}"
+                        <a href="{{ route('transaction.index') }}"
                             class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
                                 class="fas fa-arrow-left"></i>&nbsp;{{ __('back') }}</a>
                     </div>
@@ -27,29 +27,54 @@ $user = auth()->user();
                                 cellspacing="0" width="100%">
                                 <tbody>
                                     <tr class="mb-5">
-                                        <th width="20%">{{ __('User Name') }}</th>
-                                        <td width="80%">{{ $contact->name }}</td>
+                                        <th width="20%">{{ __('Customer Name') }}</th>
+                                        <td width="80%">{{ $transaction->customer->username }}</td>
                                     </tr>
                                     <tr class="mb-5">
-                                        <th width="20%">{{ __('User Email') }}</th>
-                                        <td width="80%">{{ $contact->email }}</td>
+                                        <th width="20%">{{ __('Posting Title') }}</th>
+                                        <td width="80%">{{ $transaction->ad->title }}</td>
                                     </tr>
                                     <tr class="mb-5">
-                                        <th width="20%">{{ __('User Phone') }}</th>
-                                        <td width="80%">{{ $contact->phone }}</td>
+                                        <th width="20%">{{ __('Add Type') }}</th>
+                                        <td width="80%">{{ $transaction->ad->ad_type->name }}</td>
                                     </tr>
                                     <tr class="mb-5">
-                                        <th width="20%">{{ __('User Reason') }}</th>
-                                        <td width="80%">{{ $contact->reason }}</td>
+                                        <th width="20%">{{ __('Category') }}</th>
+                                        <td width="80%">{{ $transaction->ad->category->name }}</td>
                                     </tr>
-                                    
                                     <tr class="mb-5">
-                                        <th width="20%">{{ __('User Message') }}</th>
-                                        <td width="80%">{{ $contact->message }}</td>
+                                        <th width="20%">{{ __('Sub Category') }}</th>
+                                        <td width="80%">{{ $transaction->ad->subCategory->name }}</td>
+                                    </tr>
+                                    <tr class="mb-5">
+                                        <th width="20%">{{ __('Order ID') }}</th>
+                                        <td width="80%">{{ $transaction->order_id }}</td>
+                                    </tr>
+                                    <tr class="mb-5">
+                                        <th width="20%">{{ __('Transaction ID') }}</th>
+                                        <td width="80%">{{ $transaction->transaction_id }}</td>
+                                    </tr>
+                                    <tr class="mb-5">
+                                        <th width="20%">{{ __('Amount') }}</th>
+                                        <td width="80%">{{ $transaction->currency_symbol }}{{ $transaction->amount }}</td>
+                                    </tr>
+                                    <tr class="mb-5">
+                                        <th width="20%">{{ __('Payment Method') }}</th>
+                                        <td width="80%">{{ $transaction->payment_provider }}</td>
+                                    </tr>
+                                    <tr class="mb-5">
+                                        <th width="20%">{{ __('Payment Status') }}</th>
+                                        <td width="80%">
+                                            @if($transaction->payment_status == 'paid')
+                                                <span class="badge bg-success">Paid</span>
+                                            @else
+                                                <span class="badge bg-danger">Uppaid</span>
+                                            @endif
+                                        </td>
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="20%">{{ __('User Date') }}</th>
-                                        <td width="80%">{{ date('d M Y',strtotime($contact->created_at)) }}</td>
+                                        <td width="80%">{{ date('d M Y',strtotime($transaction->created_at)) }}</td>
                                     </tr>
                                 
                                 </tbody>
