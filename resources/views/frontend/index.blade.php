@@ -340,7 +340,7 @@
                         // $('#eventForm').submit();
                         var base_url = $('#base_url').val();
                         var country = $('#country').val();
-                        var full_url = base_url + '/shop/' + country + '/events/?date=' + date
+                        var full_url = base_url + '/ads/' + country + '/events/?date=' + date
                         window.location.replace(full_url);
                     }
                 }

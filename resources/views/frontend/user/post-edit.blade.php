@@ -15,6 +15,15 @@
         .img-style :hover {
             box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
         }
+         .select2-selection--single{
+             height: 35px !important;
+         }
+        .select2-selection__rendered{
+            line-height: 35px !important;
+        }
+        .select2-selection__arrow{
+            height: 35px !important;
+        }
     </style>
 @endpush
 @section('title')

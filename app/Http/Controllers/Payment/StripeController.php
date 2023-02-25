@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Payment;
 
+use Modules\Ad\Entities\Ad;
 use Stripe\Charge;
 use Stripe\Stripe;
 use Stripe\Customer;
@@ -23,8 +24,10 @@ class StripeController extends Controller
      */
     public function stripePost(Request $request)
     {
-        $plan = session('plan');
-        $converted_amount = currencyConversion($plan->price);
+        $ad = Ad::find($request->ad_id);
+        session()->put('ad_id', $ad->id);
+        $amount = $request->price * 100 ;
+        $converted_amount = currencyConversion($request->price);
 
         session(['order_payment' => [
             'payment_provider' => 'stripe',
@@ -37,10 +40,10 @@ class StripeController extends Controller
             Stripe::setApiKey(config('zakirsoft.stripe_secret'));
 
             $charge = Charge::create([
-                "amount" => session('stripe_amount'),
+                "amount" => $amount,
                 "currency" => 'USD',
                 "source" => $request->stripeToken,
-                "description" => "Payment for " . $plan->label . " plan" . " in " . config('app.name'),
+                "description" => "Payment for " . $ad->title . " plan" . " in " . config('app.name'),
             ]);
 
             session(['transaction_id' => $charge->id ?? null]);
