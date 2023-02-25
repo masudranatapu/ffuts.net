@@ -742,6 +742,26 @@ body {
     border-radius: 2px;
 }
 
+.faq_sec .accordion-item {
+    margin-bottom: 8px;
+}
+
+.faq_sec .accordion-button {
+    border: 1px solid #EEE;
+    box-shadow: none !important;
+    outline: none !important;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+}
+
+.accordion-body p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 25px;
+    color: #777;
+}
+
 .prodouct_wrap .form-check-input[type=checkbox] {
     display: none;
 }
