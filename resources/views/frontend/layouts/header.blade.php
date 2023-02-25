@@ -91,7 +91,7 @@
 
 
         {{-- mobile device search --}}
-        <div class="d-block d-lg-none">
+        <div class="d-block d-lg-none pt-2">
             @if (Route::is('frontend.search'))
             @php
             $country_id = getCountryId();
