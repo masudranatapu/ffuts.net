@@ -45,7 +45,7 @@ class CustomerController extends Controller
             }
         }
 
-        $query->withCount('transactions')->with('userPlan');
+        $query->withCount('transactions');
         $customers = $query->paginate(10)
         ->withQueryString();
 
@@ -90,7 +90,7 @@ class CustomerController extends Controller
     public function show(User $customer)
     {
         $ads = $customer->ads->load('category:id,name,slug');
-        $transactions = Transaction::where('user_id', $customer->id)->with('plan:id,label')->latest()->get();
+        $transactions = Transaction::where('user_id', $customer->id)->latest()->get();
 
         return view('customer::show', compact('customer', 'ads', 'transactions'));
     }

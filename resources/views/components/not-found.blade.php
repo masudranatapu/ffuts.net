@@ -15,7 +15,7 @@
         @if ($route)
             <div class="empty-action">
                 <a href="{{ route($route) }}" class="d-flex justify-content-center align-items-center text-center">
-                    <button type="button"
+                    {{-- <button type="button"
                         class="btn btn-primary d-flex justify-content-center align-items-center text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -25,7 +25,7 @@
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                         <span class="ml-2">{{ __('add_your_first') }} {{ strtolower($singuler) }}</span>
-                    </button>
+                    </button> --}}
                 </a>
             </div>
         @endif
