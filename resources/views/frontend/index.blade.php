@@ -337,7 +337,7 @@ $country = getCountryCode();
                 dateFormat: 'dd-mm-yy',
                 onSelect: function(date, datepicker) {
                     if (date != "") {
-                        alert("Selected Date: " + date);
+                        // alert("Selected Date: " + date);
                         // $('#date_select').val(date);
                         // $('#eventForm').submit();
                         var base_url = $('#base_url').val();

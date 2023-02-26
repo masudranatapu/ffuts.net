@@ -47,7 +47,6 @@
 @endsection
 @section('breadcrumb')
     <ul>
-        <li>Jerusalem > </li>
         <li>Set your password for account security</li>
     </ul>
 @endsection

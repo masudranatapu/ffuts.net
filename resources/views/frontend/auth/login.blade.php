@@ -16,7 +16,6 @@
 @endsection
 @section('breadcrumb')
     <ul>
-        <li>Jerusalem > </li>
         <li>Login & Register</li>
     </ul>
 @endsection

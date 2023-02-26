@@ -61,6 +61,7 @@ class ProfileController extends Controller
      */
     public function profile_update(ProfileRequest $request)
     {
+
         if (is_null($this->user) || !$this->user->can('profile.edit')) {
             abort(403, 'Sorry !! You are Unauthorized to profile settings.');
         }

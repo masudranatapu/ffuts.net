@@ -281,7 +281,7 @@ class FrontendController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
             flashSuccess('Your Request is Not Submitted!.');
-            return redirect()->route('frontend.contact')->with('message', 'Your Request is Not Submitted!');
+            return redirect()->route('frontend.contact')->with('error', 'Your Request is Not Submitted!');
         }
         DB::commit();
         flashSuccess('Your Request is Submitted!.');
