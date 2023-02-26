@@ -34,7 +34,7 @@ $country = getCountryCode();
                         </h5>
                         <ul class="list-group pt-3">
                             <li class="custom-list-style mb-2">
-                                <a href="{{ route('frontend.post.create') }}">Create a posting</a>
+                                <a href="{{ route('frontend.post.create') }}">Post Your Ad</a>
                             </li>
                             @if (auth('user')->check())
                             <li class="mt-1 mb-3">
