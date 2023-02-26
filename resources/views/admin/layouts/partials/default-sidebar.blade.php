@@ -32,7 +32,7 @@
                             <a href="{{ route('module.customer.index') }}"
                                 class="nav-link {{ Route::is('module.customer.*') ? ' active' : '' }}">
                                 <i class="nav-icon fas fa-users"></i>
-                                <p>{{ __('customer') }}</p>
+                                <p>{{ __('Customer') }}</p>
                             </a>
                         </li>
                     @endif
