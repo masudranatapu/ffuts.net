@@ -233,11 +233,11 @@ $country = getCountryCode();
                                     hidden
                                 </a>
                             </li> --}}
-                            <li><a href="{{ route('frontend.post.create') }}">post</a></li>
+                            <li><a href="{{ route('frontend.post.create') }}">Post an Ad</a></li>
                             @if (auth('user')->check())
-                            <li><a href="{{ route('user.profile') }}">account</a></li>
+                            <li><a href="{{ route('user.profile') }}">My Account</a></li>
                             @else
-                            <li><a href="{{ route('signin') }}">account</a></li>
+                            <li><a href="{{ route('signin') }}">My Account</a></li>
                             @endif
                         </ul>
                     </div>

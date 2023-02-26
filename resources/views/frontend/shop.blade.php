@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <div class="filter_wrap mb-3">
-                    <label for="" class="form-label">offices and activities trade</label>
+                    <label for="" class="form-label">Offices and Activities Trade</label>
                     <div class="form-check">
                         <input class="form-check-input" name="post[]" type="checkbox" value="title" id="duration_1" {{
                             request()->has('post') && in_array('title', request()->post) ? 'checked':'' }}
@@ -142,7 +142,7 @@
                 </div>
                 <div class="filter_wrap mb-3">
                     <a href="{{ route('frontend.search') }}" class="reset">Reset</a>
-                    <button type="submit" class="float-end">update search</button>
+                    <button type="submit" class="float-end">Update Search</button>
                 </div>
         </div>
     </div>
