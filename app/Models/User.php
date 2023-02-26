@@ -140,4 +140,6 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(UserDeviceToken::class, 'user_id', 'id');
     }
+
+    
 }
