@@ -53,7 +53,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <x-forms.label name="free_ad_limit" required="true" />
                         <x-forms.input type="number" name="free_ad_limit" value="{{ $setting->free_ad_limit }}"
                             placeholder="{{ __('free_ad_limit') }}" />
@@ -69,8 +69,8 @@
                         <x-forms.input type="number" name="maximum_ad_image_limit"
                             value="{{ $setting->maximum_ad_image_limit }}"
                             placeholder="{{ __('maximum_ad_image_limit') }}" />
-                    </div>
-                    <div class="form-group">
+                    </div> --}}
+                    {{-- <div class="form-group">
                         <x-forms.label name="default_subscription_type" required="true" />
                         <select name="subscription_type" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                             <option {{ $setting->subscription_type == 'one_time' ? 'selected' : '' }} value="one_time">
@@ -81,7 +81,7 @@
                                 {{ __('recurring') }}
                             </option>
                         </select>
-                    </div>
+                    </div> --}}
                 </div>
 
 
@@ -97,7 +97,7 @@
                             <x-forms.error name="app_debug" />
                         </div>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <x-forms.label name="{{ __('frontend_language_switcher') }}" :required="true" />
                         <div>
                             <input type="hidden" name="language_changing" value="0" />
@@ -107,8 +107,8 @@
                                 data-off-color="default" data-off-text="{{ __('hide') }}" data-size="small" value="1">
                             <x-forms.error name="language_changing" />
                         </div>
-                    </div>
-                    <div class="form-group">
+                    </div> --}}
+                    {{-- <div class="form-group">
                         <x-forms.label name="{{ __('frontend_currency_switcher') }}" :required="true" />
                         <div>
                             <input type="hidden" name="currency_changing" value="0" />
@@ -118,7 +118,7 @@
                                 data-off-color="default" data-off-text="{{ __('hide') }}" data-size="small" value="1">
                             <x-forms.error name="currency_changing" />
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <x-forms.label name="{{ __('customer_email_verification') }}" :required="true" />
                         <div>
@@ -130,7 +130,7 @@
                             <x-forms.error name="email_verification" />
                         </div>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <x-forms.label name="website_loader" required="true" class="d-block" />
                         <input type="checkbox" name="website_loader" {{ $setting->website_loader ? 'checked' : '' }}
                             data-bootstrap-switch value="1">
@@ -139,8 +139,8 @@
                         <x-forms.label name="show_featured_ads_on_homepage" required="true" class="d-block" />
                         <input type="checkbox" name="featured_ads_homepage"
                             {{ $setting->featured_ads_homepage ? 'checked' : '' }} data-bootstrap-switch value="1">
-                    </div>
-                    <div class="form-group">
+                    </div> --}}
+                    {{-- <div class="form-group">
                         <x-forms.label name="show_regular_ads_on_homepage" required="true" class="d-block" />
                         <input type="checkbox" name="regular_ads_homepage"
                             {{ $setting->regular_ads_homepage ? 'checked' : '' }} data-bootstrap-switch value="1">
@@ -150,7 +150,7 @@
                         <input type="checkbox" name="customer_email_verification"
                             {{ $setting->customer_email_verification ? 'checked' : '' }} data-bootstrap-switch
                             value="1">
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <x-forms.label name="ads_admin_approval" required="true" class="d-block" />
                         <input type="checkbox" name="ads_admin_approval"

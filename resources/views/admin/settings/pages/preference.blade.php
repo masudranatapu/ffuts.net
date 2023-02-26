@@ -96,7 +96,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6 col-12">
+        {{-- <div class="col-lg-6 col-12">
             <!-- Application Mode -->
             <div class="card">
                 <div class="card-header">
@@ -151,9 +151,9 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
-        <div class="col-lg-6 col-12">
+        {{-- <div class="col-lg-6 col-12">
             <!-- MAp -->
             <div class="card">
                 <form id="" class="form-horizontal" action="{{ route('module.map.update') }}" method="POST">
@@ -165,9 +165,9 @@
                             <h3 class="card-title" style="line-height: 36px;">{{ __('map_configuration') }}
                             </h3>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- ============== for text =============== -->
-                    <div class="card-body card-body-pt">
+                    {{-- <div class="card-body card-body-pt">
                         <div class="justify-content-center">
                             <div id="text-card" class="card-body">
                                 <div class="form-group">
@@ -195,7 +195,7 @@
                                                 {{ __('google_map') }}
                                             </label>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     {{-- <select name="map_type"
                                         class="form-control @error('watermark_type') is-invalid @enderror"
                                         id="">
@@ -211,7 +211,7 @@
                                     @error('map_type')
                                         <span class="invalid-feedback" role="alert"><span>{{ $message }}</span></span>
                                     @enderror --}}
-                                </div>
+                                {{-- </div>
                                 <!-- map-box key  -->
                                 <div id="mapbox_key"
                                     class="form-group {{ setting('default_map') == 'map-box' ? '' : 'd-none' }} ">
@@ -250,7 +250,7 @@
                         </div>
                     </div>
                 </form>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
