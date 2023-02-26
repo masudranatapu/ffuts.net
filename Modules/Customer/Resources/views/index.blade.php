@@ -11,9 +11,9 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title" style="line-height: 36px;">{{ __('customer_list') }}</h3>
-                        <a href="{{ route('module.customer.create') }}"
+                        {{-- <a href="{{ route('module.customer.create') }}"
                             class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
-                                class="fas fa-plus"></i>&nbsp; {{ __('add_customer') }}</a>
+                                class="fas fa-plus"></i>&nbsp; {{ __('add_customer') }}</a> --}}
                     </div>
                     <div class="card-body table-responsive p-0">
                         <form action="{{ route('module.customer.index') }}" method="GET">
@@ -63,7 +63,7 @@
                                             <th width="10%">{{ __('name') }}</th>
                                             <th width="10%">{{ __('email') }}</th>
                                             <th width="10%">{{ __('username') }}</th>
-                                            <th width="10%">{{ __('purchase_plan') }}</th>
+                                            <th width="10%">{{ __('Transaction') }}</th>
                                             <th width="10%">{{ __('verified_email') }}</th>
                                             <th width="5%">{{ __('actions') }}</th>
                                         </tr>
@@ -102,11 +102,11 @@
                                                                 {{ __('view_details') }}
                                                             </a></li>
 
-                                                        <li><a class="dropdown-item"
+                                                        {{-- <li><a class="dropdown-item"
                                                                 href="{{ route('module.customer.edit', $customer->username) }}">
                                                                 <i class="fas fa-edit text-success"></i>
                                                                 {{ __('edit_customer') }}
-                                                            </a></li>
+                                                            </a></li> --}}
                                                         <li><a class="dropdown-item"
                                                                 href="{{ route('module.customer.ads', $customer->username) }}">
                                                                 <i class="fab fa-adversal text-primary"></i></i>
