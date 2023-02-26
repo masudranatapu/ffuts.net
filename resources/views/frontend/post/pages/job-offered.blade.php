@@ -99,9 +99,9 @@
                         options</span>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="email_privacy"
-                            id="privacy_1" value="CL mail relay">
+                            id="privacy_1" value="ffuts mail relay">
                         <label class="form-check-label" for="privacy_1">
-                            CL mail relay (recommended)
+                            Ffuts mail relay (recommended)
                         </label>
                     </div>
                     <div class="form-check">
@@ -171,7 +171,7 @@
 </div>
 <div class="col-12">
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="job_for_disabilities"
+        <input class="form-check-input" type="checkbox" value="1" id="job_for_disabilities"
             required>
         <label class="form-check-label" for="job_for_disabilities" style="font-size: 14px;">
             job open to people with disabilities

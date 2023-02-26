@@ -181,7 +181,7 @@
                                         src="{{ asset($value->thumbnail) }}" class="w-100" alt="image"></a>
                             </div>
                             <div class="product_content">
-                                <h5>{{ $value->price }}</h5>
+                                <h5>${{ $value->price }}</h5>
                                 <h4><a href="{{ route('frontend.details', $value->slug) }}">{{ Str::limit($value->title, '32',
                                         '...') }}</a>
                                 </h4>

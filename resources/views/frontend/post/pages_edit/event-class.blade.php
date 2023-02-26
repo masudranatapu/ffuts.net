@@ -22,19 +22,19 @@
             <div class="row mb-3">
                 <div class="mb-3">
                     <label for="venue" class="form-label">venue</label>
-                    <input type="text" name="venue" id="venue" value="{{ $ad->venue}}" class="form-control" required>
+                    <input type="text" name="venue" id="venue" value="{{ $ad->venue }}" class="form-control" required>
                 </div>
                 <div class="col-md-6">
                     <div class="row">
                         <div class="mb-3 col-md-6">
                             <label for="datepicker" class="form-label">event start date</label>
-                            <input type="text" name="event_start_date" value="{{ date('d M Y',strtotime($ad->event_start_date) }}" id="datepicker" class="form-control" required readonly>
+                            <input type="text" name="event_start_date" value="{{ $ad->event_start_date }}" id="datepicker" class="form-control" required readonly>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="event_duration" class="form-label">event duration</label>
                             <select type="text" name="event_duration" id="event_duration" class="form-control select2" required>
                                 @for ($i = 1; $i <= 14; $i++)
-                                <option value="{{ $i }}" {{ $ad->event_duration == $i . ' days' ? "selected" : ""}}>{{ $i }} Days</option>
+                                <option value="{{ $i }}"{{ $ad->event_duration == $i . ' days' ? "selected" : ""}}>{{ $i }} Days</option>
                                 @endfor
                             </select>
                         </div>
@@ -46,8 +46,9 @@
                     </div>
                     <div class="row mb-3 px-2">
                         <div class="form-check col-md-3">
-                            <input class="form-check-input" type="checkbox" name="services[]" value="art/film"
-                            {{ isset($ad->services) && in_arrary('art/film',$ad->services)? "checked" : "" }}
+                            <input class="form-check-input" type="checkbox" name="services[]"
+                            {{ isset($ad->services) && in_array('art/film', $ad->services) ? 'checked' : '' }}
+                            value="art/film"
                                 id="art/film">
                             <label class="form-check-label" for="art/film">
                                 art/film
@@ -55,7 +56,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="fest/fair"
-                            {{ isset($ad->services) && in_arrary('fest/fair',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('fest/fair', $ad->services) ? 'checked' : '' }}
                                 id="fest/fair">
                             <label class="form-check-label" for="fest/fair">
                                 fest/fair
@@ -63,7 +64,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="literary"
-                            {{ isset($ad->services) && in_arrary('literary',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('literary', $ad->services) ? 'checked' : '' }}
                                 id="literary">
                             <label class="form-check-label" for="literary">
                                 literary
@@ -71,7 +72,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="sustainability"
-                            {{ isset($ad->services) && in_arrary('sustainability',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('sustainability', $ad->services) ? 'checked' : '' }}
                                 id="sustainability">
                             <label class="form-check-label" for="sustainability">
                                 sustainability
@@ -79,7 +80,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="career"
-                            {{ isset($ad->services) && in_arrary('career',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('career', $ad->services) ? 'checked' : '' }}
                                 id="career">
                             <label class="form-check-label" for="career">
                                 career
@@ -87,7 +88,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="fitness/health"
-                            {{ isset($ad->services) && in_arrary('fitness/health',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('fitness/health', $ad->services) ? 'checked' : '' }}
                                 id="fitness/health">
                             <label class="form-check-label" for="fitness/health">
                                 fitness/health
@@ -95,7 +96,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="music"
-                            {{ isset($ad->services) && in_arrary('music',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('music', $ad->services) ? 'checked' : '' }}
                                 id="music">
                             <label class="form-check-label" for="music">
                                 music
@@ -103,7 +104,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="tech"
-                            {{ isset($ad->services) && in_arrary('tech',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('tech', $ad->services) ? 'checked' : '' }}
                                 id="tech">
                             <label class="form-check-label" for="tech">
                                 tech
@@ -111,7 +112,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="charitable"
-                            {{ isset($ad->services) && in_arrary('charitable',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('charitable', $ad->services) ? 'checked' : '' }}
                                 id="charitable">
                             <label class="form-check-label" for="charitable">
                                 charitable
@@ -119,7 +120,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="food/drink"
-                            {{ isset($ad->services) && in_arrary('food/drink',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('food/drink', $ad->services) ? 'checked' : '' }}
                                 id="food/drink">
                             <label class="form-check-label" for="food/drink">
                                 food/drink
@@ -127,7 +128,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="outdoor"
-                            {{ isset($ad->services) && in_arrary('outdoor',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('outdoor', $ad->services) ? 'checked' : '' }}
                                 id="outdoor">
                             <label class="form-check-label" for="outdoor">
                                 outdoor
@@ -135,7 +136,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="competition"
-                            {{ isset($ad->services) && in_arrary('competition',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('competition', $ad->services) ? 'checked' : '' }}
                                 id="competition">
                             <label class="form-check-label" for="competition">
                                 competition
@@ -143,7 +144,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="free"
-                            {{ isset($ad->services) && in_arrary('free',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('free', $ad->services) ? 'checked' : '' }}
                                 id="free">
                             <label class="form-check-label" for="free">
                                 free
@@ -151,7 +152,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="sale"
-                            {{ isset($ad->services) && in_arrary('sale',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('sale', $ad->services) ? 'checked' : '' }}
                                 id="sale">
                             <label class="form-check-label" for="sale">
                                 sale
@@ -159,7 +160,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="dance"
-                            {{ isset($ad->services) && in_arrary('dance',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('dance', $ad->services) ? 'checked' : '' }}
                                 id="dance">
                             <label class="form-check-label" for="dance">
                                 dance
@@ -167,7 +168,7 @@
                         </div>
                         <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" name="services[]" value="singles"
-                            {{ isset($ad->services) && in_arrary('singles',$ad->services)? "checked" : "" }}
+                            {{ isset($ad->services) && in_array('singles', $ad->services) ? 'checked' : '' }}
                                 id="singles">
                             <label class="form-check-label" for="singles">
                                 singles
@@ -186,96 +187,84 @@
                 <h6>Contact Info</h6>
             </div>
             <div class="row">
-            <div class="col-md-4">
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="text" name="email" id="email"
-                        value="{{ Auth::user()->email ?? old('email') }}" class="form-control"
-                        placeholder="Your email address" required>
-                </div>
-                <div class="mb-3">
-                    <span class="text-dark" style="font-weight:600;">email privacy
-                        options</span>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="email_privacy" id="privacy_1"
-                            value="CL mail relay" {{ $ad->email_privacy ? 'checked' : '' }}>
-                        <label class="form-check-label" for="privacy_1">
-                            CL mail relay (recommended)
-                        </label>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" name="email" id="email" value="{{ Auth::user()->email ?? old('email') }}" class="form-control"
+                            placeholder="Your email address" required>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="email_privacy"
-                            {{ $ad->email_privacy ? 'checked' : '' }} id="privacy_2"
-                            value="show my real email address">
-                        <label class="form-check-label" for="privacy_2">
-                            show my real email address
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio"
-                            name="email_privacy"{{ $ad->email_privacy ? 'checked' : '' }} id="privacy_3"
-                            value="no replies to this email">
-                        <label class="form-check-label" for="privacy_3">
-                            no replies to this email
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8 inline_checkbox disabled_checked">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox"
-                        name="show_phone"{{ $ad->show_phone ? 'checked' : '' }} value="1" id="show_phone">
-                    <label class="form-check-label" for="show_phone">
-                        show my phone number
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox"
-                        name="phone_call"{{ $ad->phone_call ? 'checked' : '' }} id="calls_ok" disabled
-                        value="1">
-                    <label class="form-check-label" for="calls_ok">
-                        phone calls OK
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox"
-                        name="phone_text"{{ $ad->phone_text ? 'checked' : '' }} id="textorsms" disabled
-                        value="1">
-                    <label class="form-check-label" for="textorsms">
-                        text/sms OK
-                    </label>
-                </div>
-                <div class="row mt-1">
-                    <div class="col-lg-6">
-                        <div class="mb-1">
-                            <label for="phone" class="form-label">Phone number</label>
-                            <input type="number" name="phone" id="phone" class="form-control"
-                                value="{{ $ad->phone }}" disabled>
+                    <div class="mb-3">
+                        <span class="text-dark" style="font-weight:600;">email privacy
+                            options</span>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" {{ $ad->email_privacy == "ffuts mail relay"? "checked" : "" }} name="email_privacy"
+                                id="privacy_1" value="ffuts mail relay" checked>
+                            <label class="form-check-label" for="privacy_1">
+                                Ffuts mail relay (recommended)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" {{ $ad->email_privacy == "no replies to this email"? "checked" : "" }} name="email_privacy"
+                                id="privacy_3" value="no replies to this email">
+                            <label class="form-check-label" for="privacy_3">
+                                no replies to this email
+                            </label>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="mb-1">
-                            <label for="phone_2" class="form-label">Local number</label>
-                            <input type="number" name="phone_2" value="{{ $ad->phone_2 }}" id="phone_2"
-                                class="form-control" disabled>
-                        </div>
+                </div>
+                <div class="col-md-8 inline_checkbox disabled_checked">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" {{ $ad->show_phone == "1"? "checked" : "" }} name="show_phone"
+                            value="1" id="show_phone">
+                        <label class="form-check-label" for="show_phone">
+                            show my phone number
+                        </label>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="mb-1">
-                            <label for="contact_name" class="form-label">contact name</label>
-                            <input type="text" name="contact_name" value="{{ $ad->contact_name }}"
-                                id="contact_name" class="form-control" disabled>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" {{ $ad->phone_call == "1"? "checked" : "" }} name="phone_call"
+                            id="calls_ok" disabled value="1">
+                        <label class="form-check-label" for="calls_ok">
+                            phone calls OK
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" {{ $ad->phone_text == "1"? "checked" : "" }} name="phone_text"
+                            id="textorsms" disabled value="1">
+                        <label class="form-check-label" for="textorsms">
+                            text/sms OK
+                        </label>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-lg-6">
+                            <div class="mb-1">
+                                <label for="phone" class="form-label">Phone number</label>
+                                <input type="number" name="phone" value="{{ $ad->phone }}" id="phone"
+                                    class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-1">
+                                <label for="phone_2" class="form-label">Local number</label>
+                                <input type="number" name="phone_2" value="{{ $ad->phone_2}}" id="phone_2"
+                                    class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-1">
+                                <label for="contact_name" class="form-label">contact name</label>
+                                <input type="text" name="contact_name" value="{{ $ad->contact_name }}" id="contact_name"
+                                    class="form-control" disabled>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 
     <div class="col-12">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="term_condition" {{ $ad->term_condition? "checked" : "" }} name="other_contact" value="1"
+            <input class="form-check-input" type="checkbox" id="term_condition" {{  $ad->other_contact == "1"? "checked" : "" }} name="other_contact" value="1"
                 required>
             <label class="form-check-label" for="term_condition" style="font-size: 14px;">
                 ok for others to contact you about other services, products or commercial interests

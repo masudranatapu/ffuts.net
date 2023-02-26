@@ -60,7 +60,8 @@ trait PaymentTrait
 
     private function forgetSessions()
     {
-        session()->forget('plan');
+        // session()->forget('plan');
+        session()->forget('ad_id');
         session()->forget('order_payment');
         session()->forget('transaction_id');
         session()->forget('stripe_amount');

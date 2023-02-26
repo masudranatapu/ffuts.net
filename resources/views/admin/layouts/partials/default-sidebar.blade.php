@@ -119,7 +119,7 @@
                         </x-admin.sidebar-list>
                     @endif
                     {{-- Newsletter Subscription --}}
-                    @if (Module::collections()->has('Newsletter') && $newsletter_enable)
+                    {{-- @if (Module::collections()->has('Newsletter') && $newsletter_enable)
                         @if (userCan('newsletter.view') || userCan('newsletter.mailsend'))
                             <x-sidebar-dropdown :linkActive="Route::is('module.newsletter.*') ? true : false" :subLinkActive="Route::is('module.newsletter.*') ? true : false" icon="fas fa-envelope">
                                 @slot('title')
@@ -145,7 +145,7 @@
 
                             </x-sidebar-dropdown>
                         @endif
-                    @endif
+                    @endif --}}
 
                     <!-- Blog and Tag -->
                     {{-- @if (Module::collections()->has('Blog') && userCan('post.view') && $blog_enable)
