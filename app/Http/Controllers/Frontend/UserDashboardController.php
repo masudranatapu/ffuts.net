@@ -47,7 +47,7 @@ class UserDashboardController extends Controller
     {
         $wishlist = Wishlist::find($id);
         $wishlist->delete();
-        return back()->with('message', 'Item successfully removed from favourite.');
+        return back()->with('message', 'Item successfully removed from favorite.');
     }
 
     public function transaction(){
@@ -242,14 +242,15 @@ class UserDashboardController extends Controller
         }
         if ($ad->status == 'active') {
             flashSuccess('Post Updated successfully');
-            return redirect()->route('frontend.index')->with('message', 'Post Updated successfully');
+            return redirect()->route('user.profile')->with('message', 'Post Updated successfully');
         }
     }
     public function deletePost($id)
     {
         $ad = Ad::find($id);
         $ad->delete();
-        return back()->withSuccess('Post deleted successfully');
+        flashSuccess('Post deleted successfully');
+        return back()->with('message', 'Post deleted successfully');
     }
     public function statusUpdate($id, $status)
     {

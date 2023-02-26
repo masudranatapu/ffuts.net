@@ -14,6 +14,14 @@
         display: inline !important;
         color: black !important;
     }
+    .empty-post{
+        width: 100%;text-align: center; background: #fff;
+    }
+
+    .empty-post h5{
+        font-weight: bold;
+        font-size: 18px;
+    }
 </style>
 @endpush
 @section('title')
@@ -155,35 +163,41 @@
             </form>
         </div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-            @foreach ($ads as $key => $value)
-            <div class="col mb-3">
-                <div class="prodouct_wrap">
-                    <div class="favorite">
-                        <div class="form-check">
-                            <input class="form-check-input" name="wishlist" type="checkbox"
-                                id="wishlist_{{ $value->id }}" {{ isWishlisted($value->id) ? 'checked' : '' }}
-                            onchange="AddWishlist2({{ $value->id }}, {{ Auth::user()->id ?? '' }})">
-                            <label class="form-check-label" for="wishlist_{{ $value->id }}"></label>
+            @if($ads && $ads->count() > 0)
+                @foreach ($ads as $key => $value)
+                    <div class="col mb-3">
+                        <div class="prodouct_wrap">
+                            <div class="favorite">
+                                <div class="form-check">
+                                    <input class="form-check-input" name="wishlist" type="checkbox"
+                                        id="wishlist_{{ $value->id }}" {{ isWishlisted($value->id) ? 'checked' : '' }}
+                                    onchange="AddWishlist2({{ $value->id }}, {{ Auth::user()->id ?? '' }})">
+                                    <label class="form-check-label" for="wishlist_{{ $value->id }}"></label>
+                                </div>
+                                <span>{{ date('d Y', strtotime($value->created_at)) }}</span>
+                            </div>
+                            <div class="product_img">
+                                <a href="{{ route('frontend.details', $value->slug) }}"><img
+                                        src="{{ asset($value->thumbnail) }}" class="w-100" alt="image"></a>
+                            </div>
+                            <div class="product_content">
+                                <h5>{{ $value->price }}</h5>
+                                <h4><a href="{{ route('frontend.details', $value->slug) }}">{{ Str::limit($value->title, '32',
+                                        '...') }}</a>
+                                </h4>
+                                <p>({{ $value->city }}
+                                    {{ isset($value->countries->name) ? ', ' . ucfirst(strtolower($value->countries->name)) : ''
+                                    }})
+                                </p>
+                            </div>
                         </div>
-                        <span>{{ date('d Y', strtotime($value->created_at)) }}</span>
                     </div>
-                    <div class="product_img">
-                        <a href="{{ route('frontend.details', $value->slug) }}"><img
-                                src="{{ asset($value->thumbnail) }}" class="w-100" alt="image"></a>
-                    </div>
-                    <div class="product_content">
-                        <h5>{{ $value->price }}</h5>
-                        <h4><a href="{{ route('frontend.details', $value->slug) }}">{{ Str::limit($value->title, '32',
-                                '...') }}</a>
-                        </h4>
-                        <p>({{ $value->city }}
-                            {{ isset($value->countries->name) ? ', ' . ucfirst(strtolower($value->countries->name)) : ''
-                            }})
-                        </p>
-                    </div>
-                </div>
-            </div>
-            @endforeach
+                 @endforeach
+               @else
+                <div class="col-md-12 mb-5 p-4 empty-post">
+                    <h5>Post Not available</h5>
+                </div>  
+            @endif
         </div>
     </div>
 

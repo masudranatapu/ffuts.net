@@ -32,12 +32,12 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="posting-tab" data-bs-toggle="tab"
                         data-bs-target="#posting-tab-pane" type="button" role="tab" aria-controls="posting-tab-pane"
-                        aria-selected="true"><a href="{{ route('user.profile') }}">Posting</a></button>
+                        aria-selected="true"><a href="{{ route('user.profile') }}">Published Ad</a></button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="drafts-tab" data-bs-toggle="tab" data-bs-target="#drafts-tab-pane"
                         type="button" role="tab" aria-controls="drafts-tab-pane" aria-selected="false"><a
-                            href="{{ route('user.drafts') }}">Drafts</a></button>
+                            href="{{ route('user.drafts') }}">Unpublished Ad</a></button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="searches-tab" data-bs-toggle="tab" data-bs-target="#searches-tab-pane"
@@ -101,7 +101,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="7" class="text-center">Not Found</td>
+                                <td colspan="8" class="text-center">Not Found</td>
                             </tr>
 
                             @endforelse

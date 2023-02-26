@@ -1,7 +1,6 @@
 @extends('frontend.layouts.app', ['nav' => 'yes'])
 
 @push('style')
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <style>
     td {
         border: 1px solid #EEE !important;
@@ -32,12 +31,12 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="posting-tab" data-bs-toggle="tab" data-bs-target="#posting-tab-pane"
                         type="button" role="tab" aria-controls="posting-tab-pane" aria-selected="true"><a
-                            href="{{ route('user.profile') }}">Posting</a></button>
+                            href="{{ route('user.profile') }}">Published Ad</a></button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="drafts-tab" data-bs-toggle="tab" data-bs-target="#drafts-tab-pane"
                         type="button" role="tab" aria-controls="drafts-tab-pane" aria-selected="false"><a
-                            href="{{ route('user.drafts') }}">Drafts</a></button>
+                            href="{{ route('user.drafts') }}">Unpublished Ad</a></button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="searches-tab" data-bs-toggle="tab"
@@ -92,12 +91,12 @@
                             </td>
                             <td>
                                 <a href="{{route('frontend.details', $item->ad->slug?? "")}}" class="btn btn-sm btn-secondary">View</a>
-                                <a href="{{ route('user.favourite.delete', $item->id) }}" onclick="return confirm('Are you sure to remove from favourite?')" class="btn btn-sm btn-danger">Remove</a>
+                                <a href="{{ route('user.favourite.delete', $item->id) }}" onclick="return confirm('Are you sure to remove from favorite?')" class="btn btn-sm btn-danger">Remove</a>
                             </td>
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="6" class="text-center">Not Found</td>
+                            <td colspan="7" class="text-center">Not Found</td>
                         </tr>
 
                         @endforelse
@@ -117,39 +116,5 @@
 @endsection
 
 @push('script')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script>
-    @if (Session::has('message'))
-            toastr.options = {
-                "closeButton": true,
-                "progressBar": true
-            }
-            toastr.success("{{ session('message') }}");
-        @endif
 
-        @if (Session::has('error'))
-            toastr.options = {
-                "closeButton": true,
-                "progressBar": true
-            }
-            toastr.error("{{ session('error') }}");
-        @endif
-
-        @if (Session::has('info'))
-            toastr.options = {
-                "closeButton": true,
-                "progressBar": true
-            }
-            toastr.info("{{ session('info') }}");
-        @endif
-
-        @if (Session::has('warning'))
-            toastr.options = {
-                "closeButton": true,
-                "progressBar": true
-            }
-            toastr.warning("{{ session('warning') }}");
-        @endif
-</script>
 @endpush
