@@ -27,7 +27,7 @@
                             <div class="row">
                                 <table class="table table-striped table-bordered mt-0 pt-0" id="tranlation-table"
                                     cellspacing="0" width="100%">
-                                    <thead>
+                                    {{-- <thead>
                                         <tr>
                                             <th>#</th>
                                             <th width="48%">English Text</th>
@@ -41,7 +41,7 @@
                                                 </span>
                                             </th>
                                         </tr>
-                                    </thead>
+                                    </thead> --}}
                                     <tbody>
                                         @foreach ($translations as $key => $value)
                                             <tr>

@@ -230,7 +230,7 @@ function getCountryCode()
         return session()->get('local_country');
     } else {
 
-        $local_country = 'bd';
+        $local_country = 'US';
         $country = Country::where('is_default', 1)->first();
 
         if ($country) {
