@@ -3,10 +3,8 @@
 @endsection
 @push('style')
     <style>
-        .payment-style {
-            width: 35px;
-            padding: 1px;
-        }
+        .payment-style {width: 35px;padding: 1px;}
+        h2.pay_to_publish {text-align: center;font-size: 25px;margin-bottom: 15px;}
     </style>
 @endpush
 @section('title')
