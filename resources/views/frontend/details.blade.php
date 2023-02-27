@@ -48,7 +48,7 @@
                                 <div class="swiper-wrapper single_item">
                                     @foreach ($ad_galleies as $key => $value)
                                         <div class="swiper-slide">
-                                            <img src="{{ asset($value->image) }}" alt="{{ $value->name }}" />
+                                            <img src="{{ asset($value->image) }} " alt="{{ $value->name }}" />
                                         </div>
                                     @endforeach
                                 </div>

@@ -22,7 +22,7 @@
         @forelse ($ads as $key =>$ad)
             <tr>
                 <td class="text-center">
-                    <img src="{{ $ad->image_url }}" class="rounded" height="50px" width="50px" alt="image">
+                    <img src="@if($ad->image_url){{ $ad->image_url }} @else {{asset('frontend/images/no-img.png')}}  @endif" class="rounded" height="50px" width="50px" alt="image">
                 </td>
                 <td class="text-center">
                     {{ $ad->title }}
