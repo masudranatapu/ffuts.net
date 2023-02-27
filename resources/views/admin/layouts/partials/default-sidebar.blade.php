@@ -32,7 +32,7 @@
                             <a href="{{ route('module.customer.index') }}"
                                 class="nav-link {{ Route::is('module.customer.*') ? ' active' : '' }}">
                                 <i class="nav-icon fas fa-users"></i>
-                                <p>{{ __('Customer') }}</p>
+                                <p>{{ __('customer') }}</p>
                             </a>
                         </li>
                     @endif
@@ -51,17 +51,17 @@
                             {{ __('all_listings') }}
                         </x-sidebar-list>
                     @endif
-                        <x-sidebar-list :linkActive="Route::is('adtypes.*') ? true : false" route="adtypes.index" icon="fa fa-bars">
-                            {{ __('Ad Types') }}
-                        </x-sidebar-list>
+                    <x-sidebar-list :linkActive="Route::is('adtypes.*') ? true : false" route="adtypes.index" icon="fa fa-bars">
+                        {{ __('Ad Types') }}
+                    </x-sidebar-list>
 
-                        <x-sidebar-list :linkActive="Route::is('transaction.*') ? true : false" route="transaction.index" icon="fa fa-outdent">
-                            {{ __('Transaction') }}
-                        </x-sidebar-list>
+                    <x-sidebar-list :linkActive="Route::is('transaction.*') ? true : false" route="transaction.index" icon="fa fa-outdent">
+                        {{ __('Transaction') }}
+                    </x-sidebar-list>
 
-                        <x-sidebar-list :linkActive="Route::is('city.*') ? true : false" route="city.index" icon="fa fa-plus-square">
-                            {{ __('City') }}
-                        </x-sidebar-list>
+                    <x-sidebar-list :linkActive="Route::is('city.*') ? true : false" route="city.index" icon="fa fa-plus-square">
+                        {{ __('City') }}
+                    </x-sidebar-list>
 
                     @if (Module::collections()->has('Category') && (userCan('category.view') || userCan('subcategory.view')))
                         <x-admin.sidebar-list :linkActive="Route::is('module.category.*') || Route::is('module.subcategory.*') ? true : false" route="module.category.index" icon="fas fa-th">
@@ -160,12 +160,12 @@
                             {{ __('testimonial') }}
                         </x-admin.sidebar-list>
                     @endif --}}
-                        <x-admin.sidebar-list :linkActive="Route::is('faq.*') ? true : false" route="faq.index" icon="fas fa-question">
-                            {{ __('faq') }}
-                        </x-admin.sidebar-list>
-                        <x-admin.sidebar-list :linkActive="Route::is('contact.*') ? true : false" route="contact.index" icon="fa fa-phone-square">
-                            {{ __('User Contact') }}
-                        </x-admin.sidebar-list>
+                    <x-admin.sidebar-list :linkActive="Route::is('faq.*') ? true : false" route="faq.index" icon="fas fa-question">
+                        {{ __('faq') }}
+                    </x-admin.sidebar-list>
+                    <x-admin.sidebar-list :linkActive="Route::is('contact.*') ? true : false" route="contact.index" icon="fa fa-phone-square">
+                        {{ __('User Contact') }}
+                    </x-admin.sidebar-list>
                     @if ($settings->ads_admin_approval)
                         <form action="{{ route('module.ad.index') }}" method="GET" id="pending_ads_form">
                             <input name="filter_by" type="text" value="pending" hidden>

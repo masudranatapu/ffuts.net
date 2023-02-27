@@ -18,6 +18,7 @@ use Modules\Category\Entities\Category;
 use Modules\Wishlist\Entities\Wishlist;
 use Google\Service\Dfareporting\Country;
 use Modules\Category\Entities\SubCategory;
+use Modules\Language\Entities\Language;
 
 class FrontendController extends Controller
 {
@@ -33,6 +34,7 @@ class FrontendController extends Controller
         }
 
         $ads = $ads->get();
+        $languages = Language::orderBy('name', 'asc')->get();
 
         $countries =  DB::table('country')->orderBy('name', 'asc')->get();
         $ad_types = AdType::orderBy('id', 'asc')->get();
@@ -48,7 +50,7 @@ class FrontendController extends Controller
         $meta_keywords = $seo->contents->keywords;
         $meta_image = $seo->contents->image;
 
-        return view('frontend.index', compact('ads', 'ad_types', 'countries', 'cities', 'meta_title', 'meta_description', 'meta_image', 'meta_keywords', 'categories'));
+        return view('frontend.index', compact('ads', 'ad_types', 'countries', 'cities', 'languages','meta_title', 'meta_description', 'meta_image', 'meta_keywords', 'categories'));
     }
 
     public function setCountry(Request $request)
