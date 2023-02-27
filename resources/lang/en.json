@@ -1127,7 +1127,9 @@
     "pinterest_verification": "Pinterest Verification",
     "logo_and_favicon_here": "Logo and favicon here",
     "many_more": "many more",
-    "user_verification": "user verification"
+    "user_verification": "user verification",
+    "pay_to_publish":"Make Payment to Publish your Advert",
+    "ad_type":"Ad Type"
 
 
 }

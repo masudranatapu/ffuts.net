@@ -53,8 +53,8 @@
                                 cellspacing="0" width="100%">
                                 <tbody>
                                     <tr class="mb-5">
-                                        <th width="15%">{{ __('Customer Name') }}</th>
-                                        <td width="80%">{{ $transactionDetails->customer->username ?? '' }}</td>
+                                        <th width="15%">{{ __('Customer Email') }}</th>
+                                        <td width="80%">{{ $transactionDetails->customer->email ?? '' }}</td>
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="15%">{{ __('Posting Title') }}</th>

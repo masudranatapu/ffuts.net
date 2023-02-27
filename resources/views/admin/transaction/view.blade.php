@@ -27,8 +27,8 @@ $user = auth()->user();
                                 cellspacing="0" width="100%">
                                 <tbody>
                                     <tr class="mb-5">
-                                        <th width="20%">{{ __('Customer Name') }}</th>
-                                        <td width="80%">{{ $transaction->customer->username ?? '' }}</td>
+                                        <th width="20%">{{ __('Customer Email') }}</th>
+                                        <td width="80%">{{ $transaction->customer->email ?? '' }}</td>
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="20%">{{ __('Posting Title') }}</th>
