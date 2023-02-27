@@ -63,7 +63,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="education" class="form-label text-success">education</label>
+                        <label for="education" class="form-label text-success">education <small class="text-danger">*</small></label>
                         <select name="education" id="education" class="form-control" required>
                             <option class="d-none">-</option>
                             <option value="less than high school" {{ $ad->education == "less than high school"? "selected" : ""}}>less than high school</option>
@@ -105,7 +105,7 @@
             </label>
         </div>
         <div class="mb-3">
-            <label for="license_info" class="form-label">licensure information</label>
+            <label for="license_info" class="form-label">licensure information <small class="text-danger">*</small></label>
             <input type="text" name="license_info" id="license_info" value="{{ $ad->license_info}}" class="form-control" disabled
                 required>
         </div>
@@ -119,7 +119,7 @@
             <div class="row">
             <div class="col-md-4">
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">Email <small class="text-danger">*</small></label>
                     <input type="text" name="email" id="email"
                         value="{{ Auth::user()->email ?? old('email') }}" class="form-control"
                         placeholder="Your email address" required>
@@ -210,7 +210,7 @@
             {{ $ad->other_contact == "1"? "checked"  : "" }}
             value="1" required>
             <label class="form-check-label" for="term_condition" style="font-size: 14px;">
-                ok for others to contact you about other services, products or commercial interests
+                ok for others to contact you about other services, products or commercial interests 
             </label>
         </div>
     </div>

@@ -78,7 +78,7 @@ class RegisterController extends Controller
             ];
 
             Mail::to($request->email)->send(new RegisterMail($details));
-            return redirect()->back()->with('message', 'An verify link has been sent to your mail address. Plase verify you account');
+            return redirect()->back()->with('message', 'A verification link has been sent to your mail. Please Check Your mail.');
         }
     }
 
