@@ -6,7 +6,7 @@
                 <li><a href="{{ route('frontend.faq') }}">{{ __('faq') }} |</a></li>
                 <li><a href="{{ route('frontend.search') }}">{{ __('Ads') }} |</a></li>
                 <li><a href="{{ route('frontend.privacy.policy') }}">{{ __('privacy') }} |</a></li>
-                <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms & conditions') }} |</a>
+                <li><a href="{{ route('frontend.terms.condition') }}">{{ __('terms_conditions') }} |</a>
                 </li>
                 <li><a href="{{ route('frontend.about') }}">{{ __('about') }} |</a></li>
                 <li><a href="{{ route('frontend.contact') }}">{{ __('contact') }} </a></li>
