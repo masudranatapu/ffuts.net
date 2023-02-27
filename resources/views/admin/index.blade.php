@@ -44,20 +44,7 @@
                 </div>
             </div>
         </div>
-        {{-- @if (enableModule('blog'))
-            <div class="col-sm-6 col-lg-4 col-xl-3">
-                <div class="info-box">
-                    <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-book"></i></span>
 
-                    <div class="info-box-content">
-                        <span class="info-box-text">{{ __('total_blog_posts') }}</span>
-                        <span class="info-box-number">
-                            {{ $blogpostCount }}
-                        </span>
-                    </div>
-                </div>
-            </div>
-        @endif --}}
         <div class="col-sm-6 col-lg-4 col-xl-3">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-photo-video"></i></span>
@@ -67,15 +54,7 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="col-sm-6 col-lg-4 col-xl-3">
-            <div class="info-box mb-3">
-                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-clock"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">{{ __('pending_ads') }}</span>
-                    <span class="info-box-number"> {{ $adcountPending }} </span>
-                </div>
-            </div>
-        </div> --}}
+ 
         <div class="col-sm-6 col-lg-4 col-xl-3">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-success elevation-1">
@@ -143,27 +122,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-4 col-xl-3">
-            <div class="info-box mb-3">
-                <span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-globe-africa"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">{{ __('total_country') }}</span>
-                    <span class="info-box-number"> {{ $totalCountry }} </span>
-                </div>
-            </div>
-        </div>
-        {{-- <div class="col-sm-6 col-lg-4 col-xl-3">
-            <div class="info-box mb-3">
-                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-money-check"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">{{ __('total_plan') }}</span>
-                    <span class="info-box-number"> {{ $total_plan }} </span>
-                </div>
-            </div>
-        </div> --}}
-
         <div class="clearfix hidden-md-up"></div>
     </div>
     <div class="row">
