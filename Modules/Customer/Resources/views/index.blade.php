@@ -59,7 +59,7 @@
                                     <thead>
                                         <tr class="text-center">
                                             <th width="2%">#</th>
-                                            <th width="10%">{{ __('name') }}</th>
+                                            {{-- <th width="10%">{{ __('name') }}</th> --}}
                                             <th width="10%">{{ __('email') }}</th>
                                             <th width="10%">{{ __('username') }}</th>
                                             <th width="10%">{{ __('Transaction') }}</th>
@@ -76,7 +76,7 @@
                                                     <img src="{{ $customer->image_url }}" class="rounded" height="50px"
                                                         width="50px" alt="image">
                                                 </td> --}}
-                                                <td class="text-center" tabindex="0">{{ $customer->name }}</td>
+                                                {{-- <td class="text-center" tabindex="0">{{ $customer->name }}</td> --}}
                                                 <td class="text-center" tabindex="0">{{ $customer->email }}</td>
                                                 <td class="text-center" tabindex="0">{{ $customer->username }}</td>
                                                 <td class="text-center" tabindex="0">
