@@ -181,7 +181,7 @@
                                         src="@if($value->thumbnail){{ asset($value->thumbnail) }} @else {{asset('frontend/images/no-img.png')}}  @endif" class="w-100" alt="image"></a>
                             </div>
                             <div class="product_content">
-                                @if($value->price)<h5>${{ $value->price }}</h5>@endif
+                                <h5>@if($value->price)${{ $value->price }}@endif</h5>
                                 <h4><a href="{{ route('frontend.details', $value->slug) }}">{{ Str::limit($value->title, '32',
                                         '...') }}</a>
                                 </h4>
