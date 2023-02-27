@@ -4,13 +4,15 @@
 @push('style')
     <link rel="stylesheet" href="{{ asset('image_uploader/dist/image-uploader.min.css') }}">
     <style>
-        .select2-selection--single{
+        .select2-selection--single {
             height: 35px !important;
         }
-        .select2-selection__rendered{
+
+        .select2-selection__rendered {
             line-height: 35px !important;
         }
-        .select2-selection__arrow{
+
+        .select2-selection__arrow {
             height: 35px !important;
         }
     </style>
@@ -47,43 +49,67 @@
                     <input type="hidden" name="category_id" value="{{ $category->id }}">
                     <input type="hidden" name="subcategory_id" value="{{ $subCategory->id }}">
                     <h4 class="text-center mb-4 mt-4 bg-light">{{ $subCategory->name }}</h4>
-                    @if($ad_type->slug == 'service-offered')
-                        <h5 class="mb-4"><strong>Please be certain your ad is legal, local, and conforms with our Terms of Use</strong><a class="text-success" href="#">[?]</a></h5>
+                    @if ($ad_type->slug == 'service-offered')
+                        <h5 class="mb-4"><strong>Please be certain your ad is legal, local, and conforms with our Terms of
+                                Use</strong><a class="text-success" href="#">[?]</a></h5>
                         <h6 class="mb-5">No URLs, links, or web addresses in your text or image please.</h6>
                     @endif
                     <div class="row">
-                        <div class="
-                            @if($ad_type->slug == 'service-offered' || $ad_type->slug == 'housing-wanted' || $ad_type->slug == 'housing-offered' || $ad_type->slug == 'engagement-offered' || $ad_type->slug == 'community' || $ad_type->slug == 'job-offered' || $ad_type->slug == 'job-wanted')
-                                col-md-5
+                        <div
+                            class="
+                            @if (
+                                $ad_type->slug == 'service-offered' ||
+                                    $ad_type->slug == 'housing-wanted' ||
+                                    $ad_type->slug == 'housing-offered' ||
+                                    $ad_type->slug == 'engagement-offered' ||
+                                    $ad_type->slug == 'community' ||
+                                    $ad_type->slug == 'job-offered' ||
+                                    $ad_type->slug == 'job-wanted') col-md-5
                             @else
-                               col-md-4
-                            @endif
+                               col-md-4 @endif
 
                         ">
                             <div class="mb-3">
-                                <label for="title" class="form-label text-success">posting title <small class="text-danger">*</small></label>
-                                <input type="text" name="title" id="title" value="{{ old('title') }}" class="form-control" required>
+                                <label for="title" class="form-label text-success">posting title <small
+                                        class="text-danger">*</small></label>
+                                <input type="text" name="title" id="title" value="{{ old('title') }}"
+                                    class="form-control" required>
                             </div>
                         </div>
-                        @if($ad_type->slug == 'for-sale-by-owner' || $ad_type->slug == 'for-sale-by-dealer' || $ad_type->slug == 'wanted-by-owner' || $ad_type->slug == 'wanted-by-dealer' || $ad_type->slug == 'event-class')
+                        @if (
+                            $ad_type->slug == 'for-sale-by-owner' ||
+                                $ad_type->slug == 'for-sale-by-dealer' ||
+                                $ad_type->slug == 'wanted-by-owner' ||
+                                $ad_type->slug == 'wanted-by-dealer' ||
+                                $ad_type->slug == 'event-class')
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label for="price" class="form-label text-success">Price <small class="text-danger">*</small><small class="text-dark">€</small> </label>
-                                    <input type="number" name="price" id="price" value="{{ old('price') }}" class="form-control" required>
+                                    <label for="price" class="form-label text-success">Price <small
+                                            class="text-danger">*</small><small
+                                            class="text-dark">{{ env('APP_CURRENCY_SYMBOL') }}</small> </label>
+                                    <input type="number" name="price" id="price" value="{{ old('price') }}"
+                                        class="form-control" required>
                                 </div>
                             </div>
                         @endif
-                        <div class="
-                                @if($ad_type->slug == 'service-offered'|| $ad_type->slug == 'housing-wanted' || $ad_type->slug == 'housing-offered' || $ad_type->slug == 'engagement-offered' || $ad_type->slug == 'job-wanted' || $ad_type->slug == 'community' || $ad_type->slug == 'job-offered')
-                                  col-md-5
+                        <div
+                            class="
+                                @if (
+                                    $ad_type->slug == 'service-offered' ||
+                                        $ad_type->slug == 'housing-wanted' ||
+                                        $ad_type->slug == 'housing-offered' ||
+                                        $ad_type->slug == 'engagement-offered' ||
+                                        $ad_type->slug == 'job-wanted' ||
+                                        $ad_type->slug == 'community' ||
+                                        $ad_type->slug == 'job-offered') col-md-5
                                 @else
-                                    col-md-4
-                                @endif
+                                    col-md-4 @endif
                             ">
                             <div class="mb-3">
-                                <label for="city" class="form-label">city ​​or neighborhood <small class="text-danger">*</small></label>
+                                <label for="city" class="form-label">city ​​or neighborhood <small
+                                        class="text-danger">*</small></label>
                                 <select name="city" id="city" class="form-control select2">
-                                    @foreach($country->cities as  $value)
+                                    @foreach ($country->cities as $value)
                                         <option value="{{ $value->slug }}">{{ $value->name }}</option>
                                     @endforeach
                                 </select>
@@ -91,13 +117,16 @@
                         </div>
                         <div class="col-md-2">
                             <div class="mb-3">
-                                <label for="postcode" class="form-label">Postal code <small class="text-danger">*</small></label>
-                                <input type="number" name="postcode" id="postcode" value="{{ old('postcode') }}" class="form-control" required>
+                                <label for="postcode" class="form-label">Postal code <small
+                                        class="text-danger">*</small></label>
+                                <input type="number" name="postcode" id="postcode" value="{{ old('postcode') }}"
+                                    class="form-control" required>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="mb-3">
-                                <span class="text-dark">Only one description per posting. <small class="text-danger">*</small></span><br />
+                                <span class="text-dark">Only one description per posting. <small
+                                        class="text-danger">*</small></span><br />
                                 <label for="description" class="form-label text-success">description</label>
                                 <textarea name="description" id="description" cols="30" rows="5" class="form-control" style="height: 150px;"
                                     required>{{ old('description') }}</textarea>
@@ -184,8 +213,8 @@
             } else {
                 $('.disabled_checked input').not(id).attr('disabled', true);
             }
-         }
-         show_phone('#show_phone');
+        }
+        show_phone('#show_phone');
 
         $('#show_phone').change(function() {
             show_phone(this);
@@ -205,7 +234,7 @@
             if ($(this).is(':checked')) {
                 console.log(1);
                 $('#broker_fee_detailed').removeAttr('disabled');
-            }else{
+            } else {
                 $('#broker_fee_detailed').attr('disabled', true);
 
             }
@@ -213,7 +242,7 @@
         $('#application_1').change(function() {
             if ($(this).is(':checked')) {
                 $('#application_fee_detailed').removeAttr('disabled');
-            }else{
+            } else {
                 $('#application_fee_detailed').attr('disabled', true);
 
             }

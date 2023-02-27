@@ -93,7 +93,7 @@
                             <div class="col-md-2">
                                 <div class="mb-3">
                                     <label for="price" class="form-label text-success">Price <small class="text-danger">*</small><small
-                                            class="text-dark">€</small> </label>
+                                            class="text-dark">{{ env('APP_CURRENCY_SYMBOL') }}</small> </label>
                                     <input type="number" name="price" id="price"
                                         value="{{ $ad->price ?? old('price') }}" class="form-control" required>
                                 </div>
