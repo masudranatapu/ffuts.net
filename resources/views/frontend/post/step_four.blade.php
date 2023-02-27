@@ -61,14 +61,14 @@
 
                         ">
                             <div class="mb-3">
-                                <label for="title" class="form-label text-success">posting title</label>
+                                <label for="title" class="form-label text-success">posting title <small class="text-danger">*</small></label>
                                 <input type="text" name="title" id="title" value="{{ old('title') }}" class="form-control" required>
                             </div>
                         </div>
                         @if($ad_type->slug == 'for-sale-by-owner' || $ad_type->slug == 'for-sale-by-dealer' || $ad_type->slug == 'wanted-by-owner' || $ad_type->slug == 'wanted-by-dealer' || $ad_type->slug == 'event-class')
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label for="price" class="form-label text-success">Price <small class="text-dark">€</small> </label>
+                                    <label for="price" class="form-label text-success">Price <small class="text-danger">*</small><small class="text-dark">€</small> </label>
                                     <input type="number" name="price" id="price" value="{{ old('price') }}" class="form-control" required>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                                 @endif
                             ">
                             <div class="mb-3">
-                                <label for="city" class="form-label">city ​​or neighborhood</label>
+                                <label for="city" class="form-label">city ​​or neighborhood <small class="text-danger">*</small></label>
                                 <select name="city" id="city" class="form-control select2">
                                     @foreach($country->cities as  $value)
                                         <option value="{{ $value->slug }}">{{ $value->name }}</option>
@@ -91,20 +91,20 @@
                         </div>
                         <div class="col-md-2">
                             <div class="mb-3">
-                                <label for="postcode" class="form-label">Postal code</label>
+                                <label for="postcode" class="form-label">Postal code <small class="text-danger">*</small></label>
                                 <input type="number" name="postcode" id="postcode" value="{{ old('postcode') }}" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="mb-3">
-                                <span class="text-dark">Only one description per posting.</span><br />
+                                <span class="text-dark">Only one description per posting. <small class="text-danger">*</small></span><br />
                                 <label for="description" class="form-label text-success">description</label>
                                 <textarea name="description" id="description" cols="30" rows="5" class="form-control" style="height: 150px;"
                                     required>{{ old('description') }}</textarea>
                             </div>
                         </div>
                         <div class="input-field mb-3">
-                            <label class="active">{{ __('upload_photos') }}</label>
+                            <label class="active">{{ __('upload_photos') }} <small class="text-danger">*</small></label>
                             <div id="multiple_image_upload" class="input-images-2" style="padding-top: .5rem;"></div>
                         </div>
                     </div>

@@ -79,7 +79,7 @@
 
                         ">
                             <div class="mb-3">
-                                <label for="title" class="form-label text-success">posting title</label>
+                                <label for="title" class="form-label text-success">posting title <small class="text-danger">*</small></label>
                                 <input type="text" name="title" id="title"
                                     value="{{ $ad->title ?? old('title') }}" class="form-control" required>
                             </div>
@@ -92,7 +92,7 @@
                                 $ad->ad_type->slug == 'event-class')
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label for="price" class="form-label text-success">Price <small
+                                    <label for="price" class="form-label text-success">Price <small class="text-danger">*</small><small
                                             class="text-dark">€</small> </label>
                                     <input type="number" name="price" id="price"
                                         value="{{ $ad->price ?? old('price') }}" class="form-control" required>
@@ -123,14 +123,14 @@
                         </div>
                         <div class="col-md-2">
                             <div class="mb-3">
-                                <label for="postcode" class="form-label">Postal code</label>
+                                <label for="postcode" class="form-label">Postal code <small class="text-danger">*</small></label>
                                 <input type="number" name="postcode" id="postcode"
                                     value="{{ $ad->postcode ?? old('postcode') }}" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="mb-3">
-                                <span class="text-dark">Only one description per posting.</span><br />
+                                <span class="text-dark">Only one description per posting <small class="text-danger">*</small></span><br />
                                 <label for="description" class="form-label text-success">description</label>
                                 <textarea name="description" id="description" cols="30" rows="5" class="form-control" style="height: 150px;"
                                     required>{{ $ad->description ?? old('description') }}</textarea>
