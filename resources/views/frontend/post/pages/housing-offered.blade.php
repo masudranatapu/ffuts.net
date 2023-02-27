@@ -7,14 +7,14 @@
             <div class="row">
                 <div class="col-md-6 col-lg-3">
                     <div class="mb-3">
-                        <label for="sqft" class="form-label">sqft <small class="text-danger">*</small></label>
+                        <label for="sqft" class="form-label">sqft</label>
                         <input type="number" name="sqft" value="{{  old('sqft') }}" id="sqft" value="0"
                             class="form-control">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="select_dropdown">
-                        <label for="houssing_type">houssing type <small class="text-danger">*</small></label>
+                        <label for="houssing_type">houssing type </label>
                         <select name="houssing_type" id="houssing_type" class="form-control">
                             <option value="apartment">apartment</option>
                             <option value="condo">condo</option>
@@ -30,8 +30,8 @@
                         </select>
                     </div>
                     <div class="select_dropdown">
-                        <label for="laundry" class="text-success">laundry</label>
-                        <select name="laundry" id="laundry" class="form-control">
+                        <label for="laundry" class="text-success">laundry <small class="text-danger">*</small></label>
+                        <select name="laundry" id="laundry" class="form-control" required
                             <option value="" class="d-none">-</option>
                             <option value="w/d in unit">w/d in unit</option>
                             <option value="w/d hookups">w/d hookups</option>
@@ -41,8 +41,8 @@
                         </select>
                     </div>
                     <div class="select_dropdown">
-                        <label for="parking" class="text-success">parking</label>
-                        <select name="parking" id="parking" class="form-control">
+                        <label for="parking" class="text-success">parking <small class="text-danger">*</small></label>
+                        <select name="parking" id="parking" class="form-control" required>
                             <option value="" class="d-none">-</option>
                             <option value="carport">carport</option>
                             <option value="attached garage">attached garage</option>
@@ -54,8 +54,8 @@
                         </select>
                     </div>
                     <div class="select_dropdown">
-                        <label for="bedrooms">bedrooms</label>
-                        <select name="bedrooms" id="bedrooms" class="form-control">
+                        <label for="bedrooms">bedrooms <small class="text-danger">*</small></label>
+                        <select name="bedrooms" id="bedrooms" class="form-control" required>
                             <option value="" class="d-none">-</option>
                             <option value="0">0</option>
                             <option value="1">1</option>
@@ -69,8 +69,8 @@
                         </select>
                     </div>
                     <div class="select_dropdown">
-                        <label for="bathrooms">bathrooms</label>
-                        <select name="bathrooms" id="bathrooms" class="form-control">
+                        <label for="bathrooms">bathrooms <small class="text-danger">*</small></label>
+                        <select name="bathrooms" id="bathrooms" class="form-control" required>
                             <option value="" class="d-none">-</option>
                             <option value="shared">shared</option>
                             <option value="split">split</option>
@@ -198,21 +198,21 @@
                     <div class="row mt-1">
                         <div class="col-lg-6">
                             <div class="mb-1">
-                                <label for="phone" class="form-label">Phone number <small class="text-danger">*</small></label>
+                                <label for="phone" class="form-label">Phone number</label>
                                 <input type="number" name="phone" value="{{ old('phone')}}" id="phone"
                                     class="form-control" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-1">
-                                <label for="phone_2" class="form-label">Local number <small class="text-danger">*</small></label>
+                                <label for="phone_2" class="form-label">Local number </label>
                                 <input type="number" name="phone_2" value="{{ old('phone_2')}}" id="phone_2"
                                     class="form-control" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-1">
-                                <label for="contact_name" class="form-label">contact name <small class="text-danger">*</small></label>
+                                <label for="contact_name" class="form-label">contact name </label>
                                 <input type="text" name="contact_name" value="{{ old('contact_name')}}" id="contact_name"
                                     class="form-control" disabled>
                             </div>

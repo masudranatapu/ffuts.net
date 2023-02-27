@@ -85,10 +85,9 @@
                             <div class="col-md-2">
                                 <div class="mb-3">
                                     <label for="price" class="form-label text-success">Price <small
-                                            class="text-danger">*</small><small
                                             class="text-dark">{{ env('APP_CURRENCY_SYMBOL') }}</small> </label>
                                     <input type="number" name="price" id="price" value="{{ old('price') }}"
-                                        class="form-control" required>
+                                        class="form-control" >
                                 </div>
                             </div>
                         @endif
@@ -106,8 +105,7 @@
                                     col-md-4 @endif
                             ">
                             <div class="mb-3">
-                                <label for="city" class="form-label">city ​​or neighborhood <small
-                                        class="text-danger">*</small></label>
+                                <label for="city" class="form-label">city ​​or neighborhood </label>
                                 <select name="city" id="city" class="form-control select2">
                                     @foreach ($country->cities as $value)
                                         <option value="{{ $value->slug }}">{{ $value->name }}</option>
@@ -117,10 +115,9 @@
                         </div>
                         <div class="col-md-2">
                             <div class="mb-3">
-                                <label for="postcode" class="form-label">Postal code <small
-                                        class="text-danger">*</small></label>
+                                <label for="postcode" class="form-label">Postal code</label>
                                 <input type="number" name="postcode" id="postcode" value="{{ old('postcode') }}"
-                                    class="form-control" required>
+                                    class="form-control">
                             </div>
                         </div>
                         <div class="col-12">
@@ -133,7 +130,7 @@
                             </div>
                         </div>
                         <div class="input-field mb-3">
-                            <label class="active">{{ __('upload_photos') }} <small class="text-danger">*</small></label>
+                            <label class="active">{{ __('upload_photos') }} </label>
                             <div id="multiple_image_upload" class="input-images-2" style="padding-top: .5rem;"></div>
                         </div>
                     </div>

@@ -2,12 +2,12 @@
     <div class="col-12 mb-4">
         <div class="form_wrapper availability_check">
             <div class="title mb-3">
-                <h6 class="text-success">availability (you must select at least one)</h6>
+                <h6 class="text-success">availability (you must select at least one) <small class="text-danger">*</small></h6>
             </div>
             <div class="form-check me-3">
                 <input class="form-check-input" type="checkbox" name="availability[]"
                 {{ isset($ad->availability) && in_array('morning',$ad->availability)? "checked" : "" }}
-                    id="availabillity_1" value="morning">
+                    id="availabillity_1" value="morning" >
                 <label class="form-check-label" for="availabillity_1">
                     morning
                 </label>
@@ -15,7 +15,7 @@
             <div class="form-check me-3">
                 <input class="form-check-input" type="checkbox" name="availability[]"
                   {{ isset($ad->availability) && in_array('afternoon',$ad->availability)? "checked" : "" }}
-                    id="availabillity_2" value="afternoon">
+                    id="availabillity_2" value="afternoon" >
                 <label class="form-check-label" for="availabillity_2">
                     afternoon
                 </label>
@@ -23,7 +23,7 @@
             <div class="form-check me-3">
                 <input class="form-check-input" type="checkbox" name="availability[]"
                 {{ isset($ad->availability) && in_array('evening',$ad->availability)? "checked" : "" }}
-                    id="availabillity_3" value="evening">
+                    id="availabillity_3" value="evening" >
                 <label class="form-check-label" for="availabillity_3">
                     evening
                 </label>
@@ -31,7 +31,7 @@
             <div class="form-check me-3">
                 <input class="form-check-input" type="checkbox" name="availability[]"
                 {{ isset($ad->availability) && in_array('overnight',$ad->availability)? "checked" : "" }}
-                    id="availabillity_4" value="overnight">
+                    id="availabillity_4" value="overnight" >
                 <label class="form-check-label" for="availabillity_4">
                     overnight
                 </label>
@@ -39,7 +39,7 @@
             <div class="form-check me-3">
                 <input class="form-check-input" type="checkbox" name="availability[]"
                 {{ isset($ad->availability) && in_array('weekdays',$ad->availability)? "checked" : "" }}
-                    id="availabillity_5" value="weekdays">
+                    id="availabillity_5" value="weekdays" >
                 <label class="form-check-label" for="availabillity_5">
                     weekdays
                 </label>
@@ -47,7 +47,7 @@
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="availability[]"
                 {{ isset($ad->availability) && in_array('weekends',$ad->availability)? "checked" : "" }}
-                    id="availabillity_6" value="weekends">
+                    id="availabillity_6" value="weekends" >
                 <label class="form-check-label" for="availabillity_6">
                     weekends
                 </label>
@@ -105,9 +105,9 @@
             </label>
         </div>
         <div class="mb-3">
-            <label for="license_info" class="form-label">licensure information <small class="text-danger">*</small></label>
+            <label for="license_info" class="form-label">licensure information </label>
             <input type="text" name="license_info" id="license_info" value="{{ $ad->license_info}}" class="form-control" disabled
-                required>
+                >
         </div>
     </div>
 

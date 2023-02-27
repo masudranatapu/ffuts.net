@@ -201,7 +201,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>{{ __('name') }}</th>
+                                {{-- <th>{{ __('name') }}</th> --}}
                                 <th>{{ __('email') }}</th>
                                 <th>{{ __('since') }}</th>
                             </tr>
@@ -209,11 +209,11 @@
                         <tbody>
                             @forelse ($latestusers as $user)
                                 <tr>
-                                    <td>
+                                    {{-- <td>
                                         <a href="{{ route('module.customer.show', $user->username) }}">
                                             {{ $user->name }}
                                         </a>
-                                    </td>
+                                    </td> --}}
                                     <td>{{ $user->email }}</td>
                                     <td>{{ date('M d, Y', strtotime($user->created_at)) }}</td>
                                 </tr>

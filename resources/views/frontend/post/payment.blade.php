@@ -48,37 +48,62 @@
                 </div>
             </div>
             <div class="row">
+                @if (config('paypal.mode') == 'sandbox')
+                    @if (config('paypal.active') && config('paypal.sandbox.client_id') && config('paypal.sandbox.client_id'))
+                        <div class="col-md-6">
+                            <div class="card p-4 w-100">
+                                <h5>
+                                    <img class="payment-style" src="{{ asset('frontend/paypal.png') }}" alt="">
+                                    Paypal Payment
+                                </h5>
+                                <div class="card-body mt-5 mb-0">
+                                    <form action="{{ route('paypal.post') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="price" value="{{ $ad->ad_type->amount }}">
+                                        <input type="hidden" name="ad_id" value="{{ $ad->id }}">
+                                        <button type="submit" class="btn btn-info">Pay Now</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @else
+                @if (config('paypal.active') && config('paypal.live.client_id') && config('paypal.live.client_secret'))
                 <div class="col-md-6">
-                    <div class="card p-4 w-100">
-                        <h5>
-                            <img class="payment-style" src="{{ asset('frontend/paypal.png') }}" alt="">
-                            Paypal Payment
-                        </h5>
-                        <div class="card-body mt-5 mb-0">
-                            <form action="{{ route('paypal.post') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="price" value="{{ $ad->ad_type->amount }}">
-                                <input type="hidden" name="ad_id" value="{{ $ad->id }}">
-                                <button type="submit" class="btn btn-info">Pay Now</button>
-                            </form>
+                        <div class="card p-4 w-100">
+                            <h5>
+                                <img class="payment-style" src="{{ asset('frontend/paypal.png') }}" alt="">
+                                Paypal Payment
+                            </h5>
+                            <div class="card-body mt-5 mb-0">
+                                <form action="{{ route('paypal.post') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="price" value="{{ $ad->ad_type->amount }}">
+                                    <input type="hidden" name="ad_id" value="{{ $ad->id }}">
+                                    <button type="submit" class="btn btn-info">Pay Now</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card p-4 w-100">
-                        <h5>
-                            <img class="payment-style" src="{{ asset('frontend/stripe.png') }}" alt="">
-                            Stripe Payment
-                        </h5>
-                        <div class="card-body mt-5 mb-0">
-                            <button class="btn btn-info" id="stripe_btn">Pay Now</button>
+                    @endif
+                @endif
+                @if (config('zakirsoft.stripe_active') && config('zakirsoft.stripe_key') && config('zakirsoft.stripe_secret'))
+                    <div class="col-md-6">
+                        <div class="card p-4 w-100">
+                            <h5>
+                                <img class="payment-style" src="{{ asset('frontend/stripe.png') }}" alt="">
+                                Stripe Payment
+                            </h5>
+                            <div class="card-body mt-5 mb-0">
+                                <button class="btn btn-info" id="stripe_btn">Pay Now</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-
+              @endif
             </div>
         </div>
     </div>
+@if (config('zakirsoft.stripe_active') && config('zakirsoft.stripe_key') && config('zakirsoft.stripe_secret'))
     <form action="{{ route('stripe.post') }}" method="POST" class="d-none">
         @csrf
         <input type="hidden" name="ad_id" value="{{ $ad->id  }}">
@@ -88,6 +113,7 @@
                 data-name="{{ config('app.name') }}" data-description="Money pay with stripe"
                 data-locale="{{ app()->getLocale() == 'default' ? 'en' : app()->getLocale() }}" data-currency="USD"></script>
     </form>
+@endif
 @endsection
 
 @push('script')

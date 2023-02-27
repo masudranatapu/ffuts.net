@@ -92,7 +92,7 @@
                                 $ad->ad_type->slug == 'event-class')
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label for="price" class="form-label text-success">Price <small class="text-danger">*</small><small
+                                    <label for="price" class="form-label text-success">Price <small
                                             class="text-dark">{{ env('APP_CURRENCY_SYMBOL') }}</small> </label>
                                     <input type="number" name="price" id="price"
                                         value="{{ $ad->price ?? old('price') }}" class="form-control" required>
@@ -123,9 +123,9 @@
                         </div>
                         <div class="col-md-2">
                             <div class="mb-3">
-                                <label for="postcode" class="form-label">Postal code <small class="text-danger">*</small></label>
+                                <label for="postcode" class="form-label">Postal code </label>
                                 <input type="number" name="postcode" id="postcode"
-                                    value="{{ $ad->postcode ?? old('postcode') }}" class="form-control" required>
+                                    value="{{ $ad->postcode ?? old('postcode') }}" class="form-control" >
                             </div>
                         </div>
                         <div class="col-12">
@@ -138,18 +138,26 @@
                         </div>
                          <div class="col-md-12 mt-3">
                             <div class="row">
-                                <div class="col-md-10">
+                                <div class="
+                                    @if($ad->thumbnail)
+                                        col-md-10
+                                    @else
+                                    col-md-12    
+                                    @endif
+                                ">
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload Thumb</label>
                                     <input class="form-control" type="file" name="thumbnail" id="formFile">
                                  </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="">
-                                        <span class="text-dark">Thumbnail</span><br />
-                                        <img class="img-style" src="{{ asset($ad->thumbnail) }}" alt="Paris">
+                                @if($ad->thumbnail)
+                                    <div class="col-md-2">
+                                        <div class="">
+                                            <span class="text-dark">Thumbnail</span><br />
+                                            <img class="img-style" src="{{ asset($ad->thumbnail) }}" alt="Paris">
+                                        </div>
                                     </div>
-                                </div>    
+                                @endif    
                             </div>    
                         </div>   
                         <div class="input-field mb-3">

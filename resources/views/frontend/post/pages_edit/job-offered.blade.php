@@ -78,16 +78,16 @@
 </div>
 <div class="col-md-4">
     <div class="mb-3">
-        <label for="salary" class="form-label text-success">salary <small class="text-danger">*</small></label>
+        <label for="salary" class="form-label text-success">salary </label>
         <input type="number" name="price" value="{{ $ad->price }}" id="salary" class="form-control"
-            placeholder="Salary" required>
+            placeholder="Salary" >
     </div>
 </div>
 <div class="col-md-4">
     <div class="mb-3">
-        <label for="company_name" class="form-label">company name <small class="text-danger">*</small></label>
+        <label for="company_name" class="form-label">company name </label>
         <input type="text" name="company_name" value="{{ $ad->company_name }}" id="company_name" class="form-control"
-            required>
+            >
     </div>
 </div>
 <div class="col-12 mb-4">
@@ -159,21 +159,21 @@
                 <div class="row mt-1">
                     <div class="col-lg-6">
                         <div class="mb-1">
-                            <label for="phone" class="form-label">Phone number <small class="text-danger">*</small></label>
+                            <label for="phone" class="form-label">Phone number </label>
                             <input type="number" name="phone" id="phone" class="form-control"
                                 value="{{ $ad->phone }}" disabled>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="mb-1">
-                            <label for="phone_2" class="form-label">Local number <small class="text-danger">*</small></label>
+                            <label for="phone_2" class="form-label">Local number </label>
                             <input type="number" name="phone_2" value="{{ $ad->phone_2 }}" id="phone_2"
                                 class="form-control" disabled>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="mb-1">
-                            <label for="contact_name" class="form-label">contact name <small class="text-danger">*</small></label>
+                            <label for="contact_name" class="form-label">contact name </label>
                             <input type="text" name="contact_name" value="{{ $ad->contact_name }}"
                                 id="contact_name" class="form-control" disabled>
                         </div>

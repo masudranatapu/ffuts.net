@@ -21,18 +21,18 @@
             </div>
             <div class="row mb-3">
                 <div class="mb-3">
-                    <label for="venue" class="form-label">venue <small class="text-danger">*</small></label>
-                    <input type="text" name="venue" id="venue" value="{{ old('venue') }}" class="form-control" required>
+                    <label for="venue" class="form-label">venue </label>
+                    <input type="text" name="venue" id="venue" value="{{ old('venue') }}" class="form-control" >
                 </div>
                 <div class="col-md-6">
                     <div class="row">
                         <div class="mb-3 col-md-6">
-                            <label for="datepicker" class="form-label">event start date <small class="text-danger">*</small></label>
-                            <input type="text" name="event_start_date" value="{{ old('event_start_date')}}" id="datepicker" class="form-control" required readonly>
+                            <label for="datepicker" class="form-label">event start date</label>
+                            <input type="text" name="event_start_date" value="{{ old('event_start_date')}}" id="datepicker" class="form-control"  readonly>
                         </div>
                         <div class="mb-3 col-md-6">
-                            <label for="event_duration" class="form-label">event duration <small class="text-danger">*</small></label>
-                            <select type="text" name="event_duration" id="event_duration" class="form-control select2" required>
+                            <label for="event_duration" class="form-label">event duration </label>
+                            <select type="text" name="event_duration" id="event_duration" class="form-control select2" >
                                 @for ($i = 1; $i <= 14; $i++)
                                 <option value="{{ $i }}">{{ $i }} Days</option>
                                 @endfor
@@ -183,7 +183,7 @@
                             <input class="form-check-input" type="radio" name="email_privacy"
                                 id="privacy_1" value="ffuts mail relay" checked>
                             <label class="form-check-label" for="privacy_1">
-                                Ffuts <small class="text-danger">*</small> mail relay (recommended)
+                                Ffuts  mail relay (recommended)
                             </label>
                         </div>
                         <div class="form-check">
@@ -220,21 +220,21 @@
                     <div class="row mt-1">
                         <div class="col-lg-6">
                             <div class="mb-1">
-                                <label for="phone" class="form-label">Phone number <small class="text-danger">*</small></label>
+                                <label for="phone" class="form-label">Phone number </label>
                                 <input type="number" name="phone" {{ old('phone') }} id="phone"
                                     class="form-control" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-1">
-                                <label for="phone_2" class="form-label">Local number <small class="text-danger">*</small></label>
+                                <label for="phone_2" class="form-label">Local number </label>
                                 <input type="number" name="phone_2" value="{{ old('phone_2') }}" id="phone_2"
                                     class="form-control" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-1">
-                                <label for="contact_name" class="form-label">contact name <small class="text-danger">*</small></label>
+                                <label for="contact_name" class="form-label">contact name </label>
                                 <input type="text" name="contact_name" value="{{ old('contact_name') }}" id="contact_name"
                                     class="form-control" disabled>
                             </div>

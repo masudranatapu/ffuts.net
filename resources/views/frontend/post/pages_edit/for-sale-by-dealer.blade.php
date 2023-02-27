@@ -7,17 +7,17 @@
             <div class="row mb-3">
                 <div class="col-lg-4">
                     <div class="mb-1">
-                        <label for="manufacturer" class="form-label">make / manufacturer <small class="text-danger">*</small></label>
+                        <label for="manufacturer" class="form-label">make / manufacturer </label>
                         <input type="text" name="manufacturer" value="{{ $ad->manufacturer ?? old('manufacturer') }}"
                             id="manufacturer" class="form-control">
                     </div>
                     <div class="mb-1">
-                        <label for="model_name" class="form-label">model name / number <small class="text-danger">*</small></label>
+                        <label for="model_name" class="form-label">model name / number </label>
                         <input type="text" name="model_name" value="{{ $ad->model_name ?? old('model_name') }}"
                             id="model_name" class="form-control">
                     </div>
                     <div class="mb-1">
-                        <label for="dimension" class="form-label">size / dimensions <small class="text-danger">*</small></label>
+                        <label for="dimension" class="form-label">size / dimensions </label>
                         <input type="text" name="dimension" value="{{ $ad->dimension ?? old('dimension') }}"
                             id="dimension" value="{{ $ad->dimension ?? old('dimension') }}"
                             placeholder="length x width x height" class="form-control">
@@ -26,7 +26,7 @@
                 <div class="col-lg-4">
                     <div class="col-lg-10">
                         <div class="mb-1">
-                            <label for="condition" class="form-label">condition <small class="text-danger">*</small></label>
+                            <label for="condition" class="form-label">condition </label>
                             <select name="condition" id="condition" class="form-control">
                                 <option value="" selected disabled>Choose One</option>
                                 <option value="new" {{ $ad->conditions == 'new' ? 'selected' : '' }}>new</option>
@@ -152,21 +152,21 @@
                     <div class="row mt-1">
                         <div class="col-lg-6">
                             <div class="mb-1">
-                                <label for="phone" class="form-label">Phone number <small class="text-danger">*</small></label>
+                                <label for="phone" class="form-label">Phone number </label>
                                 <input type="number" name="phone" id="phone" class="form-control"
                                     value="{{ $ad->phone }}" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-1">
-                                <label for="phone_2" class="form-label">Local number <small class="text-danger">*</small></label>
+                                <label for="phone_2" class="form-label">Local number </label>
                                 <input type="number" name="phone_2" value="{{ $ad->phone_2 }}" id="phone_2"
                                     class="form-control" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-1">
-                                <label for="contact_name" class="form-label">contact name <small class="text-danger">*</small></label>
+                                <label for="contact_name" class="form-label">contact name </label>
                                 <input type="text" name="contact_name" value="{{ $ad->contact_name }}"
                                     id="contact_name" class="form-control" disabled>
                             </div>

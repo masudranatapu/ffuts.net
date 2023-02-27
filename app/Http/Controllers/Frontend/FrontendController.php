@@ -166,6 +166,9 @@ class FrontendController extends Controller
     public function details($slug)
     {
         $ad_details = Ad::with('ad_type')->where('slug', $slug)->first();
+
+        if($ad_details->status == 'active'){
+
         // dd($ad_details->ad_type->slug);
         $ad_galleies = AdGallery::where('ad_id', $ad_details->id)->get();
         $seo = Seo::where('page_slug', 'home')->first();
@@ -175,6 +178,9 @@ class FrontendController extends Controller
         $meta_image = $seo->contents->image;
 
         return view('frontend.details', compact('ad_details', 'ad_galleies', 'meta_title', 'meta_description', 'meta_keywords', 'meta_image'));
+        }else{
+            return redirect()->route('frontend.index');
+        }
     }
 
     public function wishlistCreate(Request $request)
