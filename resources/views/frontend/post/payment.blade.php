@@ -25,22 +25,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <h2 class="pay_to_publish">{{__('pay_to_publish')}}</h2>
                     <div class="card p-4 w-100 mb-5">
                         <table class="table table-striped table-bordered dt-responsive nowrap">
                             <tr>
-                                <td>Post Title:</td>
+                                <td>{{__('post_title')}}:</td>
                                 <td>{{ $ad->title }}</td>
                             </tr>
                             <tr>
-                                <td>Ad Type:</td>
+                                <td>{{__('ad_type')}}:</td>
                                 <td>{{ $ad->ad_type->name }}</td>
                             </tr>
                             <tr>
-                                <td>Category:</td>
+                                <td>{{__('category')}}:</td>
                                 <td>{{ $ad->category->name }}</td>
                             </tr>
                             <tr>
-                                <td>Amout:</td>
+                                <td>{{__('amount')}}:</td>
                                 <td>${{ $ad->ad_type->amount }}</td>
                             </tr>
                         </table>
