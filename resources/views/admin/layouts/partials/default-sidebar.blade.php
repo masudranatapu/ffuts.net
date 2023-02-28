@@ -27,15 +27,15 @@
                             </a>
                         </li>
                     @endif --}}
-                    @if (Module::collections()->has('Customer') && userCan('customer.view'))
-                        <li class="nav-item">
-                            <a href="{{ route('module.customer.index') }}"
-                                class="nav-link {{ Route::is('module.customer.*') ? ' active' : '' }}">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>{{ __('customer') }}</p>
-                            </a>
-                        </li>
-                    @endif
+                    {{-- @if (Module::collections()->has('Customer') && userCan('customer.view')) --}}
+                    <li class="nav-item">
+                        <a href="{{ route('module.customer.index') }}"
+                            class="nav-link {{ Route::is('module.customer.*') ? ' active' : '' }}">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>{{ __('customer') }}</p>
+                        </a>
+                    </li>
+                    {{-- @endif --}}
                     {{-- @if (Module::collections()->has('Plan') && userCan('plan.view') && $priceplan_enable)
                         <x-sidebar-list :linkActive="Route::is('module.plan.index') || Route::is('module.plan.create') ? true : false" route="module.plan.index" icon="fas fa-credit-card">
                             {{ __('pricing_plan') }}

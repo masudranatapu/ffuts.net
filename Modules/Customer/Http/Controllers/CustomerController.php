@@ -19,9 +19,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        if (!userCan('customer.view')) {
-            return abort(403);
-        }
+      
 
         $query = User::query();
 

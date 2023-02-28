@@ -45,7 +45,7 @@ $user = auth()->user();
                                         <td>{{ Str::limit($value->answer, 40, '...') }}</td>
                                         <td>{{ date('d M Y',strtotime($value->created_at)) }}</td>
                                         <td>
-                                            @if(Auth::user()->can('faq.edit'))
+                                            @if(Auth::user()->can('faq.update'))
                                             <a href="{{ route('faq.edit',$value->id) }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
                                             @endif
                                             @if(Auth::user()->can('faq.delete'))

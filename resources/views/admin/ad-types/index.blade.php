@@ -1,5 +1,5 @@
 @php
-$user = auth()->user();
+    $user = auth()->user();
 @endphp
 
 @extends('admin.layouts.app')
@@ -17,10 +17,11 @@ $user = auth()->user();
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title" style="line-height: 36px;">{{ __('Ad Types list') }}</h3>
                             <div>
-                                @if(Auth::user()->can('adtypes.create'))
-                                <a href="{{ route('adtypes.create') }}"
-                                         class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
-                                class="fas fa-plus"></i>&nbsp; {{ __('Add Adtype') }}</a>
+                                {{-- @dd(Auth::user()) --}}
+                                @if (Auth::user()->can('adtypes.create'))
+                                    <a href="{{ route('adtypes.create') }}"
+                                        class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
+                                            class="fas fa-plus"></i>&nbsp; {{ __('Add Adtype') }}</a>
                                 @endif
                             </div>
                         </div>
@@ -36,37 +37,38 @@ $user = auth()->user();
                                     <th>{{ __('Is Paid') }}</th>
                                     <th>{{ __('Time') }}</th>
                                     <th>{{ __('Action') }}</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody id="sortable">
-                                @foreach($ad_types as $key => $value)
+                                @foreach ($ad_types as $key => $value)
                                     <tr class="text-center">
-                                        <td>{{  $ad_types->firstItem() + $key  }}</td>
+                                        <td>{{ $ad_types->firstItem() + $key }}</td>
                                         <td>{{ $value->name }}</td>
                                         <td>{{ $value->slug }}</td>
                                         <td>{{ $value->amount }}</td>
                                         <td>
-                                            @if($value->is_paid == "1")
-                                                <span class="btn btn-info" >Yes</span>
-                                            @else    
-                                               <span class="btn btn-danger" >No</span>
+                                            @if ($value->is_paid == '1')
+                                                <span class="btn btn-info">Yes</span>
+                                            @else
+                                                <span class="btn btn-danger">No</span>
                                             @endif
                                         </td>
-                                        <td>{{ date('d M Y',strtotime($value->created_at)) }}</td>
+                                        <td>{{ date('d M Y', strtotime($value->created_at)) }}</td>
                                         <td>
-                                            @if(Auth::user()->can('adtypes.edit'))
-                                            <a href="{{ route('adtypes.edit',$value->slug) }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                                            @if (Auth::user()->can('adtypes.update'))
+                                                <a href="{{ route('adtypes.edit', $value->slug) }}"
+                                                    class="btn btn-secondary"><i class="fas fa-edit"></i></a>
                                             @endif
-                                            @if(Auth::user()->can('adtypes.delete'))
-                                                <form action="{{ route('adtypes.delete', $value->id) }}"
-                                                        method="POST" class="d-inline">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button data-toggle="tooltip" data-placement="top"
-                                                            title="{{ __('Delete Ad Type') }}"
-                                                            onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');"
-                                                            class="btn bg-danger mr-1"><i class="fas fa-trash"></i></button>
+                                            @if (Auth::user()->can('adtypes.delete'))
+                                                <form action="{{ route('adtypes.delete', $value->id) }}" method="POST"
+                                                    class="d-inline">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button data-toggle="tooltip" data-placement="top"
+                                                        title="{{ __('Delete Ad Type') }}"
+                                                        onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');"
+                                                        class="btn bg-danger mr-1"><i class="fas fa-trash"></i></button>
                                                 </form>
                                             @endif
                                             {{-- <a href="{{ route('adtypes.delete',$value->id) }}" id="deleteData" class="btn btn-danger"><i class="fas fa-trash"></i></a> --}}
@@ -76,16 +78,15 @@ $user = auth()->user();
                             </tbody>
                         </table>
                     </div>
-                        <div class="card-footer ">
-                            <div class="d-flex justify-content-center">
-                                {{ $ad_types->links() }}
-                            </div>
+                    <div class="card-footer ">
+                        <div class="d-flex justify-content-center">
+                            {{ $ad_types->links() }}
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection
 
 @section('script')
@@ -159,7 +160,7 @@ $user = auth()->user();
             width: 35px;
             height: 19px;
             /* width: 60px;
-                                                                            height: 34px; */
+                                                                                        height: 34px; */
         }
 
         /* Hide default HTML checkbox */
