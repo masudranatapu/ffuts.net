@@ -18,21 +18,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4 col-md-4">
+                    <div class="col-sm-6 col-md-6">
                         <x-forms.label name="{{ __('logo') }}" />
                         <input type="file" class="form-control dropify"
                             data-default-file="{{ $setting->logo_image_url }}" name="logo_image"
                             data-allowed-file-extensions='["jpg", "jpeg","png","svg"]'
                             accept="image/png, image/jpg,image/svg image/jpeg" data-max-file-size="3M">
                     </div>
-                    <div class="col-sm-4 col-md-4">
+                    {{-- <div class="col-sm-4 col-md-4">
                         <x-forms.label name="{{ __('white_logo') }}" />
                         <input type="file" class="form-control dropify"
                             data-default-file="{{ $setting->white_logo_url }}" name="white_logo"
                             data-allowed-file-extensions='["jpg", "jpeg","png","svg"]'
                             accept="image/png, image/jpg,image/svg image/jpeg" data-max-file-size="3M">
-                    </div>
-                    <div class="col-sm-4 col-md-4">
+                    </div> --}}
+                    <div class="col-sm-6 col-md-6">
                         <x-forms.label name="{{ __('favicon') }}" />
                         <input type="file" class="form-control dropify"
                             data-default-file="{{ $setting->favicon_image_url }}" name="favicon_image"

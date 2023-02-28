@@ -47,16 +47,20 @@ $user = auth()->user();
                                         <td>{{ Str::limit($value->message, 40, '...') }}</td>
                                        <td>{{ date('d M Y',strtotime($value->created_at)) }}</td>
                                         <td>
+                                            @if(Auth::user()->can('contact.view'))
                                             <a href="{{ route('contact.view',$value->id) }}" class="btn btn-secondary"><i class="fa fa-eye"></i></a>
-                                            <form action="{{ route('contact.delete', $value->id) }}"
-                                                    method="POST" class="d-inline">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button data-toggle="tooltip" data-placement="top"
-                                                        title="{{ __('Delete Ad Type') }}"
-                                                        onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');"
-                                                        class="btn bg-danger mr-1"><i class="fas fa-trash"></i></button>
-                                            </form>
+                                            @endif
+                                            @if(Auth::user()->can('contact.delete'))
+                                                <form action="{{ route('contact.delete', $value->id) }}"
+                                                        method="POST" class="d-inline">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button data-toggle="tooltip" data-placement="top"
+                                                            title="{{ __('Delete Ad Type') }}"
+                                                            onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');"
+                                                            class="btn bg-danger mr-1"><i class="fas fa-trash"></i></button>
+                                                </form>
+                                          @endif  
                                         </td>
                                     </tr>
                                 @endforeach

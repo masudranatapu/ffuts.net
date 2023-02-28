@@ -80,7 +80,7 @@ $country = getCountryCode();
 
             <div class="col-md-7">
                 <div class="heading2 text-center py-3">
-                    <h5><a href="{{ route('frontend.index') }}">Ffuts.net</a></h5>
+                    <h5><a href="{{ route('frontend.index') }}">{{ config('app.name') }}</a></h5>
                 </div>
                 <div class="main_body">
                     <div class="row">

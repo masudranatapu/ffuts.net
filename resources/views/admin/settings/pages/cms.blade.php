@@ -113,13 +113,13 @@
                                 data-toggle="pill" href="#cms-errorpages" role="tab" aria-controls="errorpages"
                                 aria-selected="false">{{ __('error_pages') }}</a>
                         </li> --}}
-                        <li class="nav-item border rounded mb-1" role="presentation">
+                        {{-- <li class="nav-item border rounded mb-1" role="presentation">
                             <a class="nav-link {{ $cms_tab == 'footer_text' ? 'active' : '' }}" id="footer_text-tab"
                                 data-toggle="pill" href="#cms-footer_text" role="tab" aria-controls="footer_text"
                                 aria-selected="false">
                                 {{ __('footer_text') }}
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
                 <div class="col-12 col-sm-12 col-md-10">
@@ -131,7 +131,7 @@
                         </div> --}}
 
                         {{-- About Settings --}}
-                        <div class="tab-pane fade {{ $cms_tab == 'about' ? 'show active' : '' }}" id="cms-about"
+                        <div class="tab-pane fade {{ $cms_tab == 'about' ? 'show active' : 'show active' }} " id="cms-about"
                             role="tabpanel" aria-labelledby="about-tab">
                             <x-backend.setting.cms.about-setting :aboutcontent="$cms->about_body" :aboutVideoThumb="$cms->about_video_thumb" :aboutBackground="$cms->about_background" />
                         </div>
@@ -212,10 +212,10 @@
                             <x-backend.setting.cms.errorpages :cms="$cms" />
                         </div> --}}
                         <!-- Footer Text-->
-                        <div class="tab-pane fade {{ $cms_tab == 'footer_text' ? 'show active' : '' }}"
+                        {{-- <div class="tab-pane fade {{ $cms_tab == 'footer_text' ? 'show active' : '' }}"
                             id="cms-footer_text" role="tabpanel" aria-labelledby="footer_text-tab">
                             <x-backend.setting.cms.footer_text :cms="$cms" />
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

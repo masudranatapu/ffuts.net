@@ -58,19 +58,19 @@
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="15%">{{ __('Posting Title') }}</th>
-                                        <td width="80%">{{ $transactionDetails->ad->title ?? '' }}</td>
+                                        <td width="80%">{{ $transactionDetails->ad->title ?? 'N/A' }}</td>
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="15%">{{ __('Add Type') }}</th>
-                                        <td width="80%">{{ $transactionDetails->ad->ad_type->name ?? '' }}</td>
+                                        <td width="80%">{{ $transactionDetails->ad->ad_type->name ?? 'N/A' }}</td>
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="15%">{{ __('Category') }}</th>
-                                        <td width="80%">{{ $transactionDetails->ad->category->name ?? '' }}</td>
+                                        <td width="80%">{{ $transactionDetails->ad->category->name ?? 'N/A' }}</td>
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="15%">{{ __('Sub Category') }}</th>
-                                        <td width="80%">{{ $transactionDetails->ad->subCategory->name ?? '' }}</td>
+                                        <td width="80%">{{ $transactionDetails->ad->subCategory->name ?? 'N/A' }}</td>
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="15%">{{ __('Order ID') }}</th>
@@ -92,7 +92,7 @@
                                     </tr>
                                     <tr class="mb-5">
                                         <th width="15%">{{ __('Area') }}</th>
-                                        <td width="80%">{{ $transactionDetails->ad->city ?? '' }}
+                                        <td width="80%">{{ $transactionDetails->ad->city ?? 'N/A' }}
                                             {{ isset($transactionDetails->ad->countries->name) ? ', ' . ucfirst(strtolower($transactionDetails->ad->countries->name)) : '' }}
                                         </td>
                                     </tr>

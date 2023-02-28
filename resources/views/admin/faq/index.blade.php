@@ -17,9 +17,11 @@ $user = auth()->user();
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title" style="line-height: 36px;">{{ __('Faq list') }}</h3>
                             <div>
+                                @if(Auth::user()->can('faq.create'))
                                 <a href="{{ route('faq.create') }}"
                                          class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
                                 class="fas fa-plus"></i>&nbsp; {{ __('Faq') }}</a>
+                               @endif 
                             </div>
                         </div>
                     </div>
@@ -43,7 +45,10 @@ $user = auth()->user();
                                         <td>{{ Str::limit($value->answer, 40, '...') }}</td>
                                         <td>{{ date('d M Y',strtotime($value->created_at)) }}</td>
                                         <td>
+                                            @if(Auth::user()->can('faq.edit'))
                                             <a href="{{ route('faq.edit',$value->id) }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                                            @endif
+                                            @if(Auth::user()->can('faq.delete'))
                                             <form action="{{ route('faq.delete', $value->id) }}"
                                                     method="POST" class="d-inline">
                                                     @method('DELETE')
@@ -53,6 +58,7 @@ $user = auth()->user();
                                                         onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');"
                                                         class="btn bg-danger mr-1"><i class="fas fa-trash"></i></button>
                                             </form>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

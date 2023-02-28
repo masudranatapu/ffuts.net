@@ -81,16 +81,16 @@
                                     <td>{{ $transactions->firstItem() + $key }}</td>
                                     <td>
                                         <a href="{{ route('frontend.details', $value->ad->slug ?? '') }}">
-                                            {{ Str::limit($value->ad->title ?? '', 35, '....') }}</a>
+                                            {{ Str::limit($value->ad->title ?? 'N/A', 35, '....') }}</a>
                                     </td>
                                     <td>
-                                        {{ $value->ad->ad_type->name ?? '' }}
+                                        {{ $value->ad->ad_type->name ?? 'N/A' }}
                                     </td>
                                     <td>
-                                        {{ $value->ad->category->name ?? '' }}
+                                        {{ $value->ad->category->name ?? 'N/A' }}
                                     </td>
                                     <td>
-                                        {{ $value->amount }}
+                                        {{ $value->currency_symbol }}{{ $value->amount }}
                                     </td>
                                     <td>{{ $value->payment_provider }}</td>
                                     <td>

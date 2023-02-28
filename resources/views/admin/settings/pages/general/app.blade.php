@@ -40,7 +40,7 @@
                             @enderror
                         </select>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <x-forms.label name="{{ __('set_default_currency') }}" for="inlineFormCustomSelect" />
                         <select name="currency" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                             <option value="" disabled selected>{{ __('Currency') }}
@@ -52,7 +52,7 @@
                             </option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     {{-- <div class="form-group">
                         <x-forms.label name="free_ad_limit" required="true" />
                         <x-forms.input type="number" name="free_ad_limit" value="{{ $setting->free_ad_limit }}"
@@ -151,11 +151,11 @@
                             {{ $setting->customer_email_verification ? 'checked' : '' }} data-bootstrap-switch
                             value="1">
                     </div> --}}
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <x-forms.label name="ads_admin_approval" required="true" class="d-block" />
                         <input type="checkbox" name="ads_admin_approval"
                             {{ $setting->ads_admin_approval ? 'checked' : '' }} data-bootstrap-switch value="1">
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

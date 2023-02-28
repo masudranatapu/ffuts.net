@@ -17,10 +17,11 @@ $user = auth()->user();
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title" style="line-height: 36px;">{{ __('Ad Types list') }}</h3>
                             <div>
+                                @if(Auth::user()->can('adtypes.create'))
                                 <a href="{{ route('adtypes.create') }}"
                                          class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
                                 class="fas fa-plus"></i>&nbsp; {{ __('Add Adtype') }}</a>
-                                
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -54,16 +55,20 @@ $user = auth()->user();
                                         </td>
                                         <td>{{ date('d M Y',strtotime($value->created_at)) }}</td>
                                         <td>
+                                            @if(Auth::user()->can('adtypes.edit'))
                                             <a href="{{ route('adtypes.edit',$value->slug) }}" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
-                                            <form action="{{ route('adtypes.delete', $value->id) }}"
-                                                    method="POST" class="d-inline">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button data-toggle="tooltip" data-placement="top"
-                                                        title="{{ __('Delete Ad Type') }}"
-                                                        onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');"
-                                                        class="btn bg-danger mr-1"><i class="fas fa-trash"></i></button>
-                                            </form>
+                                            @endif
+                                            @if(Auth::user()->can('adtypes.delete'))
+                                                <form action="{{ route('adtypes.delete', $value->id) }}"
+                                                        method="POST" class="d-inline">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button data-toggle="tooltip" data-placement="top"
+                                                            title="{{ __('Delete Ad Type') }}"
+                                                            onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');"
+                                                            class="btn bg-danger mr-1"><i class="fas fa-trash"></i></button>
+                                                </form>
+                                            @endif
                                             {{-- <a href="{{ route('adtypes.delete',$value->id) }}" id="deleteData" class="btn btn-danger"><i class="fas fa-trash"></i></a> --}}
                                         </td>
                                     </tr>

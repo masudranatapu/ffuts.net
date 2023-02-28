@@ -69,7 +69,7 @@
                     </svg>
                 </span>
                 <div class="info-box-content">
-                    <span class="info-box-text">{{ __('active_ads') }}</span>
+                    <span class="info-box-text">{{ __('Published Ads') }}</span>
                     <span class="info-box-number"> {{ $adcountActive }} </span>
                 </div>
             </div>
@@ -113,7 +113,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-4 col-xl-3">
+        {{-- <div class="col-sm-6 col-lg-4 col-xl-3">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-info elevation-1"><i class="fa fa-th-list"></i></span>
                 <div class="info-box-content">
@@ -121,10 +121,10 @@
                     <span class="info-box-number"> {{ $subCategory }} </span>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="clearfix hidden-md-up"></div>
     </div>
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-sm-12 col-lg-6">
             <div class="card">
                 <div class="card-header">
@@ -264,14 +264,14 @@
                                             {{ $transaction->customer->username }}
                                         </td>
                                         <td class="text-muted">
-                                            <a href="{{ route('frontend.details', $transaction->ad->slug) }}">
-                                                {{ $transaction->ad->title }}</a>
+                                            <a href="{{ route('frontend.details', $transaction->ad->slug?? "") }}">
+                                                {{ $transaction->ad->title ?? "N/A"}}</a>
                                         </td>
                                         <td class="text-muted">
-                                            {{ $transaction->ad->ad_type->name ?? '' }}
+                                            {{ $transaction->ad->ad_type->name ?? 'N/A' }}
                                         </td>
                                         <td class="text-muted">
-                                            {{ $transaction->ad->category->name ?? '' }}
+                                            {{ $transaction->ad->category->name ?? 'N/A' }}
                                         </td>
                                         <td class="text-muted">
                                             {{ $transaction->currency_symbol }}{{ $transaction->amount }}
@@ -280,7 +280,7 @@
                                             {{ $transaction->payment_provider }}
                                         </td>
                                         <td class="text-muted">
-                                            {{ $transaction->ad->city ?? '' }}
+                                            {{ $transaction->ad->city ?? 'N/A' }}
                                             {{ isset($transaction->ad->countries->name) ? ', ' . ucfirst(strtolower($transaction->ad->countries->name)) : '' }}
                                         </td>
                                         <td class="text-muted">
