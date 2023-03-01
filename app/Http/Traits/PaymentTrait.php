@@ -44,12 +44,21 @@ trait PaymentTrait
         $this->forgetSessions();
 
         // create notification and send mail to customer
-        // if (checkMailConfig()) {
-        //     $user = auth('user')->user();
-        //     if (checkSetup('mail')) {
-        //         $user->notify(new MembershipUpgradeNotification($user, $ad->title));
-        //     }
-        // }
+          if (checkMailConfig()) {
+            $user = auth('user')->user();
+            if (checkSetup('mail')) {
+                $details = [
+                    'greeting' => 'Hello ' . $user->username,
+                    'subject' => 'Your Payement Successfully',
+                    'body'    => 'Thank You, Your Payement Successfully',
+                    'ad_text' => 'Go to Veiw Details',
+                    'ad_url' => route('frontend.details', $ad->slug),
+                    'thanks' => 'Thaks for Using the application..'
+                ];
+
+                Notification::route('mail', $user->email)->notify(new MembershipUpgradeNotification($details));
+            }
+        }
 
         // redirect to customer billing
         if ($redirect) {
