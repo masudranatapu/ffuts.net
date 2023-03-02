@@ -336,7 +336,7 @@
                                         @endif
                                     @endif
                                     @if ($ad_details->price)
-                                        <li>Price: <strong>{{ $ad_details->price }}</strong></li>
+                                        <li>Price: <strong>${{ $ad_details->price }}</strong></li>
                                     @endif
                                 </ul>
                             </div>
