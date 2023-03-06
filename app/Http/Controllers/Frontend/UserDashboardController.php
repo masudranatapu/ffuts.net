@@ -220,11 +220,6 @@ class UserDashboardController extends Controller
         }
         if ($images) {
             foreach ($images as $key => $image) {
-                if ($key == 0 && $image && $image->isValid()) {
-
-                    $url = uploadResizedImage($image, 'addss_image', 850, 650, false);
-                    $ad->update(['thumbnail' => $url]);
-                }
 
                 if ($image && $image->isValid()) {
 
